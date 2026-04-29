@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Articles · 内容合集</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", sans-serif;
+      background: #0a0a0a;
+      color: #e8e8e8;
+      min-height: 100vh;
+      padding: 60px 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    header .badge {
+      display: inline-block;
+      font-size: 12px;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #fff, #888);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      color: #666;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .topic-section {
+      margin-bottom: 48px;
+    }
+    .topic-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .topic-date {
+      font-size: 13px;
+      color: #555;
+      font-family: "JetBrains Mono", monospace;
+    }
+    .topic-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .topic-desc {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .files-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .file-card {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 12px;
+      padding: 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .file-card:hover {
+      border-color: #10b981;
+      background: #0f1f1a;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.08);
+    }
+    .file-card .icon {
+      font-size: 24px;
+    }
+    .file-card .name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #ddd;
+    }
+    .file-card .desc {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.5;
+    }
+    .file-card .tag {
+      display: inline-block;
+      font-size: 11px;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.08);
+      padding: 2px 8px;
+      border-radius: 4px;
+      align-self: flex-start;
+    }
+    .status-published {
+      color: #10b981;
+    }
+    .status-draft {
+      color: #eab308;
+    }
+    footer {
+      text-align: center;
+      margin-top: 80px;
+      padding-top: 32px;
+      border-top: 1px solid #1a1a1a;
+      color: #444;
+      font-size: 13px;
+    }
+    footer a {
+      color: #666;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #10b981;
+    }
+    @media (max-width: 640px) {
+      h1 { font-size: 28px; }
+      .files-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">AI CONTENT ARCHIVE</div>
+      <h1>AI Articles</h1>
+      <p class="subtitle">分享有用的 AI 知识，真诚、不装、有点幽默</p>
+    </header>
+
+    <!-- Topic 1: DeepSeek V4 -->
+    <section class="topic-section">
+      <div class="topic-header">
+        <span class="topic-date">2026-04-24</span>
+        <span class="status-published">● 已发布</span>
+      </div>
+      <h2 class="topic-title">DeepSeek V4 深度解读</h2>
+      <p class="topic-desc">58 页技术报告拆解 × 六大旗舰横评。Pro 版 1.6T 参数/49B 激活，推理成本仅 V3.2 的 27%，MIT 开源。获微信公众号官方推广奖励 🎉</p>
+      <div class="files-grid">
+        <a class="file-card" href="deepseek-v4/wechat-article-mp.html">
+          <span class="icon">📱</span>
+          <span class="name">公众号专用版</span>
+          <span class="desc">白底内联样式，复制粘贴到微信编辑器即可</span>
+          <span class="tag">微信公众号</span>
+        </a>
+        <a class="file-card" href="deepseek-v4/deepseek-v4-article.html">
+          <span class="icon">🌐</span>
+          <span class="name">网站全文版</span>
+          <span class="desc">深色科技风，V4 发布介绍完整版</span>
+          <span class="tag">网站</span>
+        </a>
+        <a class="file-card" href="deepseek-v4/deepseek-v4-analysis.html">
+          <span class="icon">🔬</span>
+          <span class="name">技术深度分析</span>
+          <span class="desc">CSA+HCA 混合注意力、mHC 超连接等架构创新</span>
+          <span class="tag">技术向</span>
+        </a>
+        <a class="file-card" href="deepseek-v4/wechat-article.html">
+          <span class="icon">🌙</span>
+          <span class="name">深色科技风版</span>
+          <span class="desc">深色主题备选版本</span>
+          <span class="tag">备选</span>
+        </a>
+        <a class="file-card" href="deepseek-v4/assets-generator.html">
+          <span class="icon">🎨</span>
+          <span class="name">素材生成器</span>
+          <span class="desc">封面图和缩略图生成工具</span>
+          <span class="tag">工具</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Topic 2: ChatGPT Ads -->
+    <section class="topic-section">
+      <div class="topic-header">
+        <span class="topic-date">2026-04-29</span>
+        <span class="status-draft">● 待发布</span>
+      </div>
+      <h2 class="topic-title">ChatGPT 开始投放广告了</h2>
+      <p class="topic-desc">完整技术链路拆解：SSE 注入机制 → 4 层 Fernet 加密归因 → OAIQ SDK 追踪闭环。普通读者学识别和屏蔽，技术读者看实现原理。</p>
+      <div class="files-grid">
+        <a class="file-card" href="chatgpt-ads/wechat-article-mp.html">
+          <span class="icon">📱</span>
+          <span class="name">公众号专用版</span>
+          <span class="desc">白底内联样式，复制粘贴到微信编辑器即可</span>
+          <span class="tag">微信公众号</span>
+        </a>
+        <a class="file-card" href="chatgpt-ads/article-full.html">
+          <span class="icon">🌐</span>
+          <span class="name">网站全文版</span>
+          <span class="desc">深色科技风，包含完整技术细节</span>
+          <span class="tag">网站</span>
+        </a>
+        <a class="file-card" href="chatgpt-ads/share-cards.html">
+          <span class="icon">📸</span>
+          <span class="name">贴图分享卡片</span>
+          <span class="desc">7 张极简风格卡片，适合社媒截图分享</span>
+          <span class="tag">社媒</span>
+        </a>
+        <a class="file-card" href="chatgpt-ads/cover-assets.html">
+          <span class="icon">🖼️</span>
+          <span class="name">封面素材</span>
+          <span class="desc">头图 + 缩略图 + 分享图</span>
+          <span class="tag">素材</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Guang Yang · <a href="https://yeranyang.pages.woa.com/">← 返回主页</a></p>
+    </footer>
+  </div>
+</body>
+</html>
