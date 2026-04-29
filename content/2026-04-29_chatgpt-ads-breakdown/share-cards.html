@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatGPT 广告深度解读 - 贴图分享卡片</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+.card {
+  width: 375px;
+  min-height: 520px;
+  border-radius: 16px;
+  padding: 40px 32px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Card 1: 封面 ===== */
+.card-1 {
+  background: #000000;
+  color: #ffffff;
+}
+
+.card-1 .tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid #333;
+  border-radius: 100px;
+  font-size: 11px;
+  color: #888;
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+}
+
+.card-1 h1 {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.card-1 h1 span {
+  color: #10b981;
+}
+
+.card-1 .subtitle {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.7;
+  margin-bottom: auto;
+}
+
+.card-1 .footer-info {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #222;
+}
+
+.card-1 .footer-info p {
+  font-size: 11px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ===== Card 2-7: 内容卡片 ===== */
+.card-light {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #111;
+}
+
+.card-light .card-number {
+  font-size: 11px;
+  font-weight: 600;
+  color: #10b981;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.card-light h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+}
+
+.card-light .content {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.9;
+  flex: 1;
+}
+
+.card-light .content strong {
+  color: #111;
+}
+
+.card-light .highlight-box {
+  background: #f9fafb;
+  border-left: 3px solid #10b981;
+  padding: 14px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.card-light .code-block {
+  background: #111827;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  font-family: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
+  font-size: 12px;
+  color: #e5e7eb;
+  line-height: 1.8;
+}
+
+.card-light .card-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-light .card-footer .page-num {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.card-light .card-footer .author {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* ===== Card Dark variant ===== */
+.card-dark {
+  background: #0a0a0a;
+  border: 1px solid #1f1f1f;
+  color: #fafafa;
+}
+
+.card-dark .card-number {
+  font-size: 11px;
+  font-weight: 600;
+  color: #10b981;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.card-dark h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+  color: #fafafa;
+}
+
+.card-dark .content {
+  font-size: 14px;
+  color: #a1a1aa;
+  line-height: 1.9;
+  flex: 1;
+}
+
+.card-dark .content strong {
+  color: #fafafa;
+}
+
+.card-dark .highlight-box {
+  background: #18181b;
+  border-left: 3px solid #10b981;
+  padding: 14px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #d4d4d8;
+}
+
+.card-dark .code-block {
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  font-family: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
+  font-size: 12px;
+  color: #a1a1aa;
+  line-height: 1.8;
+}
+
+.card-dark .card-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #27272a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-dark .card-footer .page-num {
+  font-size: 11px;
+  color: #52525b;
+}
+
+.card-dark .card-footer .author {
+  font-size: 11px;
+  color: #52525b;
+}
+
+/* Table styling */
+.mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 12px;
+}
+
+.mini-table th {
+  text-align: left;
+  padding: 8px 10px;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+  color: #374151;
+}
+
+.mini-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #555;
+}
+
+.mini-table-dark th {
+  background: #18181b;
+  border-bottom: 1px solid #27272a;
+  color: #d4d4d8;
+}
+
+.mini-table-dark td {
+  border-bottom: 1px solid #1f1f1f;
+  color: #a1a1aa;
+}
+
+/* Metric pills */
+.metric-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+
+.metric-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.metric-pill-green {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+}
+
+.metric-pill-blue {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+}
+
+.metric-pill-red {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.tips-section {
+  margin-top: 16px;
+}
+
+.tips-section p {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+/* Print/Screenshot helper */
+@media print {
+  body { background: white; }
+  .card { break-inside: avoid; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="card-container">
+
+<!-- ===== CARD 1: 封面 ===== -->
+<div class="card card-1">
+  <span class="tag">深度调查 · 2026.04.29</span>
+  <h1><span>ChatGPT</span><br>开始投放广告了</h1>
+  <p class="subtitle">
+    你的 AI 对话里已经出现了广告。<br><br>
+    它是如何注入的？<br>
+    怎么根据你的聊天内容精准投放？<br>
+    追踪链路是什么样的？<br>
+    怎么屏蔽？<br><br>
+    基于安全研究员实际抓包数据的<br>完整技术链路拆解。
+  </p>
+  <div class="footer-info">
+    <p>基于 Buchodi's Threat Intel 调查报告 (2026-04-28)</p>
+    <p>Hacker News 413 points · 全网热议</p>
+  </div>
+</div>
+
+<!-- ===== CARD 2: 发生了什么 ===== -->
+<div class="card card-light">
+  <span class="card-number">01 / 06</span>
+  <h2>🚨 到底发生了什么？</h2>
+  <div class="content">
+    <p><strong>OpenAI 已经在 ChatGPT 中上线了广告系统。</strong></p>
+    <br>
+    <p>当你在 ChatGPT 聊天时，后台会根据你的对话内容，在模型回复的数据流中直接插入广告卡片。</p>
+    <br>
+    <p>这意味着：</p>
+    <br>
+    <p>① 你的<strong>对话内容</strong>被用来做广告定向</p>
+    <p>② 广告像<strong>模型回复一样自然</strong>地出现</p>
+    <p>③ 点击后被加密 token 追踪 <strong>30 天</strong></p>
+    <p>④ 已有品牌入驻：Grubhub、Canva、GetYourGuide…</p>
+
+    <div class="highlight-box">
+      💡 这不是传言——是安全研究人员基于真实网络流量抓包的完整技术分析。
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">1/6</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 3: 精准投放 ===== -->
+<div class="card card-light">
+  <span class="card-number">02 / 06</span>
+  <h2>🎯 怎么做到精准投放？</h2>
+  <div class="content">
+    <p><strong>同一账号，6 个话题，6 个不同品牌广告：</strong></p>
+    <br>
+    <table class="mini-table">
+      <tr><th>你在聊</th><th>给你推</th></tr>
+      <tr><td>北京旅行攻略</td><td>Grubhub 中餐外卖</td></tr>
+      <tr><td>北京旅游预订</td><td>GetYourGuide 一日游</td></tr>
+      <tr><td>北京机票</td><td>Axel 航班预订</td></tr>
+      <tr><td>NBA 季后赛</td><td>Gametime 门票</td></tr>
+      <tr><td>春季穿搭</td><td>Aritzia 时尚</td></tr>
+      <tr><td>做 PPT</td><td>Canva 设计工具</td></tr>
+    </table>
+
+    <div class="highlight-box">
+      投放逻辑：<strong>上下文定向</strong>（contextual targeting）——读取你当前对话内容匹配广告主。
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">2/6</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 4: 技术实现 ===== -->
+<div class="card card-dark">
+  <span class="card-number">03 / 06</span>
+  <h2>⚙️ 技术实现：SSE 流注入</h2>
+  <div class="content">
+    <p>广告通过 ChatGPT 的 <strong>SSE 流</strong>（Server-Sent Events）直接注入到模型回复中：</p>
+
+    <div class="code-block">
+      event: delta<br>
+      data: {<br>
+      &nbsp;&nbsp;"type": "single_advertiser_ad_unit",<br>
+      &nbsp;&nbsp;"advertiser_brand": {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;"name": "Grubhub",<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;"id": "adacct_6984ed..."<br>
+      &nbsp;&nbsp;},<br>
+      &nbsp;&nbsp;"carousel_cards": [{<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;"title": "Get Chinese Food",<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;"target": { "url": "..." }<br>
+      &nbsp;&nbsp;}]<br>
+      }
+    </div>
+
+    <p>关键细节：</p>
+    <br>
+    <p>• 广告是<strong>独立数据类型</strong>，不是模型生成的文本</p>
+    <p>• 素材托管在 <strong>bzrcdn.openai.com</strong></p>
+    <p>• 默认在 ChatGPT <strong>内置浏览器</strong>中打开</p>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">3/6</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 5: 追踪链路 ===== -->
+<div class="card card-dark">
+  <span class="card-number">04 / 06</span>
+  <h2>🔐 4 层加密追踪</h2>
+  <div class="content">
+    <p>每个广告携带 <strong>4 个 Fernet 加密 token</strong>：</p>
+    <br>
+    <p style="color:#f87171">❶ ads_spam_integrity_payload</p>
+    <p style="font-size:12px;margin-left:16px">→ 防伪造点击校验（不在URL中）</p>
+    <br>
+    <p style="color:#60a5fa">❷ oppref</p>
+    <p style="font-size:12px;margin-left:16px">→ 核心归因 token → 写入 cookie 30 天</p>
+    <br>
+    <p style="color:#c084fc">❸ olref</p>
+    <p style="font-size:12px;margin-left:16px">→ 出站链接日志（仅URL中）</p>
+    <br>
+    <p style="color:#fbbf24">❹ ad_data_token</p>
+    <p style="font-size:12px;margin-left:16px">→ 嵌套加密，服务端数据核对</p>
+
+    <div class="highlight-box">
+      闭环：你点击 → OAIQ SDK 种 cookie → 你的后续浏览/购买行为 → 上报回 OpenAI → 归因完成 ✓
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">4/6</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 6: 屏蔽方法 ===== -->
+<div class="card card-light">
+  <span class="card-number">05 / 06</span>
+  <h2>🛡️ 怎么屏蔽？</h2>
+  <div class="content">
+    <p><strong>方法一：拦截广告域名</strong></p>
+    <div class="code-block" style="background:#111827;color:#e5e7eb">
+      bzrcdn.openai.com<br>
+      bzr.openai.com
+    </div>
+    <p style="font-size:12px;color:#666">添加到 uBlock Origin 或系统 hosts 文件</p>
+    <br>
+    <p><strong>方法二：清除追踪 Cookie</strong></p>
+    <div class="code-block" style="background:#111827;color:#e5e7eb">
+      __oppref（30天归因追踪）<br>
+      __oaiq_domain_probe（域名探测）
+    </div>
+    <br>
+    <p><strong>方法三：用 API 替代网页版</strong></p>
+    <p style="font-size:13px;color:#555">API 调用暂未发现广告注入，是最干净的方式。</p>
+    <br>
+    <p><strong>方法四：注意 open_externally</strong></p>
+    <p style="font-size:13px;color:#555">如需点击广告链接，复制到独立浏览器打开。</p>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">5/6</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 7: 总结 ===== -->
+<div class="card card-1" style="min-height:480px">
+  <span class="tag">总结 · TAKEAWAY</span>
+  <h1 style="font-size:22px">记住这 <span>5</span> 件事</h1>
+  <div class="subtitle" style="margin-top:20px;line-height:2.2;font-size:14px">
+    <p>1. ChatGPT 已经在对话流中投放广告了</p>
+    <br>
+    <p>2. 基于你当前对话内容做上下文定向</p>
+    <br>
+    <p>3. 4 层加密 token + 30 天 cookie 追踪</p>
+    <br>
+    <p>4. 屏蔽 bzrcdn.openai.com 和 bzr.openai.com</p>
+    <br>
+    <p>5. API 调用暂时干净，网页/App 有风险</p>
+  </div>
+  <div class="footer-info" style="margin-top:auto">
+    <p style="color:#10b981;font-size:12px">只分享真正有用的 · 不装 · 不水</p>
+    <p>@Guang Yang · 2026.04.29</p>
+  </div>
+</div>
+
+</div>
+
+<!-- 使用说明 -->
+<div style="max-width:600px;margin-top:40px;padding:24px;background:#fff;border-radius:12px;border:1px solid #e5e7eb">
+  <h3 style="font-size:16px;margin-bottom:12px;color:#111">📋 使用说明</h3>
+  <p style="font-size:13px;color:#555;line-height:1.8">
+    1. 每张卡片尺寸为 375×520px，适合手机屏幕截图分享<br>
+    2. 可以直接对每张卡片截图，用于小红书 / 即刻 / 朋友圈图片分享<br>
+    3. 浅色卡片 + 深色卡片交替使用，视觉节奏感更好<br>
+    4. 设计风格：Vercel/Linear 极简风（黑白灰 + 绿色点缀）
+  </p>
+</div>
+
+</body>
+</html>
