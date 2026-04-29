@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatGPT 开始投放广告了 - 公众号版</title>
+</head>
+<body>
+
+<!--
+====================================================================
+微信公众号专用版 — 导入方法：
+1. 在浏览器中打开此 HTML 文件
+2. 全选复制（Ctrl+A → Ctrl+C）
+3. 粘贴到公众号编辑器（Ctrl+V）
+
+设计原则：
+- 每个元素都有独立的 section 容器带 background-color
+- 不依赖 CSS Grid/Flex 布局，用 table 实现列布局
+- 不使用 rgba()，全用 HEX 颜色
+- 不使用 linear-gradient
+- 不使用 -webkit-background-clip:text
+- 所有文字颜色可在白底和深色底上清晰阅读
+- 所有样式纯内联
+====================================================================
+-->
+
+<section style="max-width:680px;margin:0 auto;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Microsoft YaHei',sans-serif;font-size:15px;color:#333333;line-height:1.85;word-wrap:break-word">
+
+<!-- ===== 封面区 ===== -->
+<section style="background-color:#111111;padding:52px 28px 44px;text-align:center;border-radius:0">
+  <p style="display:inline-block;padding:4px 16px;border:1px solid #333333;border-radius:100px;font-size:12px;color:#888888;letter-spacing:1px;margin:0 0 18px 0">🔍 深度调查 · AI 商业化 · 2026.04.29</p>
+  <h1 style="font-size:26px;font-weight:900;line-height:1.35;letter-spacing:-0.5px;margin:0 0 14px 0;color:#ffffff">ChatGPT 开始投放广告了<br><span style="color:#10b981">完整技术链路拆解</span></h1>
+  <p style="font-size:15px;color:#999999;font-weight:400;margin:0 0 10px 0">你的 AI 对话里已经悄悄出现了广告<br>它是如何注入的？如何追踪你的？怎么屏蔽？</p>
+  <p style="font-size:12px;color:#555555;margin:14px 0 0 0">基于安全研究员实际抓包数据 · 含完整 SSE 流注入分析</p>
+</section>
+
+<!-- ===== 导语 ===== -->
+<section style="padding:28px 24px 24px;background-color:#ffffff">
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">4 月 28 日，安全研究员 Buchodi 发布了一篇技术调查报告，完整揭示了 <strong style="color:#111111">ChatGPT 广告系统的工作原理</strong>。这不是传言，不是推测——而是基于真实网络流量抓包的完整技术分析。</p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">简单说：<strong style="color:#111111">当你在 ChatGPT 里聊天时，OpenAI 已经在你的对话流中直接注入了广告对象</strong>，广告会根据你的对话内容精准投放，并在你点击后通过加密 cookie 追踪长达 30 天。</p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">这篇文章会用最通俗的方式告诉你发生了什么，也会给技术朋友讲清楚完整的实现机制。</p>
+</section>
+
+<!-- ===== 目录 ===== -->
+<section style="padding:20px 24px;background-color:#f9fafb">
+  <p style="font-size:12px;color:#10b981;letter-spacing:2px;margin:0 0 10px 0">📑 文章导航</p>
+  <table cellpadding="0" cellspacing="6" border="0" style="width:100%">
+    <tr>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#ecfdf5;border:1px solid #a7f3d0;font-size:13px;color:#065f46;text-align:center;white-space:nowrap">一、发生了什么</td>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#f0fdf4;border:1px solid #bbf7d0;font-size:13px;color:#166534;text-align:center;white-space:nowrap">二、广告长什么样</td>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#f0f9ff;border:1px solid #bae6fd;font-size:13px;color:#075985;text-align:center;white-space:nowrap">三、怎么精准投放</td>
+    </tr>
+    <tr>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#fdf4ff;border:1px solid #f5d0fe;font-size:13px;color:#86198f;text-align:center;white-space:nowrap">四、追踪链路</td>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#fefce8;border:1px solid #fde68a;font-size:13px;color:#854d0e;text-align:center;white-space:nowrap">五、怎么屏蔽</td>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#f1f5f9;border:1px solid #cbd5e1;font-size:13px;color:#334155;text-align:center;white-space:nowrap">六、怎么看这事</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ===== PART 1 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#10b981;letter-spacing:3px;margin:0 0 6px 0">PART 1</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">🚨 到底发生了什么？</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 16px 0">先说结论，不绕弯子：</p>
+
+  <section style="padding:20px;border-radius:12px;background-color:#fef2f2;border:1px solid #fecaca;margin:0 0 16px 0">
+    <p style="font-size:15px;color:#991b1b;line-height:1.9;margin:0"><strong>OpenAI 已经在 ChatGPT 中上线了广告系统。</strong><br>当你在 ChatGPT 聊天时，后台会根据你的对话内容，在模型回复的数据流中直接插入广告卡片。</p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">这意味着几件事：</p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 6px 0">① 你和 ChatGPT 的对话内容会被用来<strong style="color:#111111">做广告定向</strong></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 6px 0">② 广告不是弹窗，而是<strong style="color:#111111">像模型回复一样自然地出现</strong>在对话流中</p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 6px 0">③ 点击后会被加密 token 追踪，<strong style="color:#111111">cookie 有效期 30 天</strong></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">④ 已经有真实广告主入驻：Grubhub、GetYourGuide、Canva、Aritzia 等</p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 2 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#0369a1;letter-spacing:3px;margin:0 0 6px 0">PART 2</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">👀 广告长什么样？</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 16px 0">广告以 <strong style="color:#111111">carousel_cards</strong>（走马灯卡片）的形式出现在对话中。每张卡片包含：</p>
+
+  <table cellpadding="0" cellspacing="8" border="0" style="width:100%;margin:0 0 20px 0">
+    <tr>
+      <td style="width:50%;padding:16px 14px;border-radius:10px;background-color:#f0f9ff;border:1px solid #bae6fd;text-align:center">
+        <p style="font-size:22px;margin:0 0 4px 0">🏷️</p>
+        <p style="font-size:13px;font-weight:600;color:#0c4a6e;margin:0">品牌名 + Logo</p>
+        <p style="font-size:11px;color:#64748b;margin:4px 0 0 0">advertiser_brand</p>
+      </td>
+      <td style="width:50%;padding:16px 14px;border-radius:10px;background-color:#f0fdf4;border:1px solid #bbf7d0;text-align:center">
+        <p style="font-size:22px;margin:0 0 4px 0">📝</p>
+        <p style="font-size:13px;font-weight:600;color:#14532d;margin:0">标题 + 描述</p>
+        <p style="font-size:11px;color:#64748b;margin:4px 0 0 0">title + body</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="width:50%;padding:16px 14px;border-radius:10px;background-color:#fdf4ff;border:1px solid #f5d0fe;text-align:center">
+        <p style="font-size:22px;margin:0 0 4px 0">🖼️</p>
+        <p style="font-size:13px;font-weight:600;color:#701a75;margin:0">广告配图</p>
+        <p style="font-size:11px;color:#64748b;margin:4px 0 0 0">image_url</p>
+      </td>
+      <td style="width:50%;padding:16px 14px;border-radius:10px;background-color:#fefce8;border:1px solid #fde68a;text-align:center">
+        <p style="font-size:22px;margin:0 0 4px 0">🔗</p>
+        <p style="font-size:13px;font-weight:600;color:#713f12;margin:0">跳转链接</p>
+        <p style="font-size:11px;color:#64748b;margin:4px 0 0 0">target.value</p>
+      </td>
+    </tr>
+  </table>
+
+  <section style="padding:18px 20px;border-radius:12px;background-color:#f8fafc;border-left:4px solid #0ea5e9;margin:0 0 16px 0">
+    <p style="font-size:14px;font-weight:700;color:#111111;margin:0 0 8px 0">💡 真实案例</p>
+    <p style="font-size:14px;color:#444444;line-height:1.9;margin:0">
+      一位用户聊"北京旅游攻略（长城、故宫）"时，ChatGPT 回复中出现了 <strong style="color:#0369a1">Grubhub</strong> 的广告卡片：<br>
+      标题："Get Chinese Food Delivered"<br>
+      描述："Satisfy Your Cravings with Grubhub Delivery."<br><br>
+      没错——你聊北京旅行，它给你推中餐外卖。<strong style="color:#111111">这不是巧合，是精准投放。</strong>
+    </p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">值得注意的是，广告配图和 Logo 都托管在 OpenAI 自己的 CDN（<strong style="color:#111111">bzrcdn.openai.com</strong>），不是从广告主服务器加载。这意味着 OpenAI 完全控制了广告素材的分发和加载体验。</p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 3 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#7c3aed;letter-spacing:3px;margin:0 0 6px 0">PART 3</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">🎯 怎么做到精准投放的？</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 16px 0">研究人员用<strong style="color:#111111">同一个账号</strong>，在 6 个不同话题的对话中，收到了 6 个不同品牌的广告：</p>
+
+  <table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:separate;border-spacing:0;margin:0 0 20px 0;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0">
+    <tr style="background-color:#f1f5f9">
+      <td style="padding:10px 14px;font-size:13px;font-weight:600;color:#334155;border-bottom:1px solid #e2e8f0">对话话题</td>
+      <td style="padding:10px 14px;font-size:13px;font-weight:600;color:#334155;border-bottom:1px solid #e2e8f0">投放品牌</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 14px;font-size:13px;color:#444444;border-bottom:1px solid #f1f5f9">北京旅行（长城、故宫）</td>
+      <td style="padding:10px 14px;font-size:13px;color:#444444;border-bottom:1px solid #f1f5f9"><strong>Grubhub</strong> — 中餐外卖</td>
+    </tr>
+    <tr style="background-color:#fafafa">
+      <td style="padding:10px 14px;font-size:13px;color:#444444;border-bottom:1px solid #f1f5f9">北京旅游预订</td>
+      <td style="padding:10px 14px;font-size:13px;color:#444444;border-bottom:1px solid #f1f5f9"><strong>GetYourGuide</strong> — 长城一日游</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 14px;font-size:13px;color:#444444;border-bottom:1px solid #f1f5f9">北京机票</td>
+      <td style="padding:10px 14px;font-size:13px;color:#444444;border-bottom:1px solid #f1f5f9"><strong>Axel</strong> — 航班预订</td>
+    </tr>
+    <tr style="background-color:#fafafa">
+      <td style="padding:10px 14px;font-size:13px;color:#444444;border-bottom:1px solid #f1f5f9">NBA 季后赛</td>
+      <td style="padding:10px 14px;font-size:13px;color:#444444;border-bottom:1px solid #f1f5f9"><strong>Gametime</strong> — 赛事门票</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 14px;font-size:13px;color:#444444;border-bottom:1px solid #f1f5f9">春季时尚潮流</td>
+      <td style="padding:10px 14px;font-size:13px;color:#444444;border-bottom:1px solid #f1f5f9"><strong>Aritzia</strong> — 时尚服饰</td>
+    </tr>
+    <tr style="background-color:#fafafa">
+      <td style="padding:10px 14px;font-size:13px;color:#444444">效率工具 / 演示文稿</td>
+      <td style="padding:10px 14px;font-size:13px;color:#444444"><strong>Canva</strong> — 设计工具</td>
+    </tr>
+  </table>
+
+  <section style="padding:18px 20px;border-radius:12px;background-color:#faf5ff;border-left:4px solid #7c3aed;margin:0 0 16px 0">
+    <p style="font-size:14px;font-weight:700;color:#111111;margin:0 0 8px 0">🤔 投放逻辑是什么？</p>
+    <p style="font-size:14px;color:#444444;line-height:1.9;margin:0">
+      <strong>同一个账号，不同话题 → 不同广告。</strong><br>
+      这说明广告投放至少是<strong style="color:#7c3aed">上下文定向</strong>（contextual targeting）——读取你当前的对话内容来匹配广告主。<br><br>
+      目前没有证据表明系统会利用你的<strong>历史对话记录</strong>做投放（但也不能排除）。如果未来引入 Memory 跨会话数据做定向……那就是另一个级别的精准了。
+    </p>
+  </section>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 4 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#dc2626;letter-spacing:3px;margin:0 0 6px 0">PART 4</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">🔐 四层加密追踪链路</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">这是技术人最应该关注的部分。ChatGPT 的广告归因系统使用了 <strong style="color:#111111">4 个独立的 Fernet 加密 token</strong>，形成完整的追踪闭环：</p>
+
+  <p style="font-size:13px;color:#666666;margin:0 0 16px 0">（Fernet = AES-128-CBC 加密 + HMAC-SHA256 完整性校验，每个 token 前 9 字节含时间戳）</p>
+
+  <!-- Token 1 -->
+  <section style="padding:16px 18px;border-radius:10px;background-color:#fef2f2;border:1px solid #fecaca;margin:0 0 10px 0">
+    <p style="font-size:14px;margin:0"><strong style="color:#991b1b">Token ①</strong> <code style="background-color:#fee2e2;padding:2px 6px;border-radius:4px;font-size:12px;color:#7f1d1d">ads_spam_integrity_payload</code></p>
+    <p style="font-size:13px;color:#555555;margin:6px 0 0 0">在 SSE 数据内传输，<strong>不出现在点击 URL 中</strong>。用于服务端校验广告点击是否被伪造。</p>
+  </section>
+
+  <!-- Token 2 -->
+  <section style="padding:16px 18px;border-radius:10px;background-color:#f0f9ff;border:1px solid #bae6fd;margin:0 0 10px 0">
+    <p style="font-size:14px;margin:0"><strong style="color:#0c4a6e">Token ②</strong> <code style="background-color:#e0f2fe;padding:2px 6px;border-radius:4px;font-size:12px;color:#0c4a6e">oppref</code></p>
+    <p style="font-size:13px;color:#555555;margin:6px 0 0 0">出现在点击 URL 上，被 OAIQ SDK 写入 cookie <code style="background-color:#f1f5f9;padding:1px 4px;border-radius:3px;font-size:12px">__oppref</code>（有效期 <strong style="color:#0369a1">720 小时 / 30 天</strong>）。这是核心归因 token——它跟着你在商户网站的每一次后续操作。</p>
+  </section>
+
+  <!-- Token 3 -->
+  <section style="padding:16px 18px;border-radius:10px;background-color:#fdf4ff;border:1px solid #f5d0fe;margin:0 0 10px 0">
+    <p style="font-size:14px;margin:0"><strong style="color:#86198f">Token ③</strong> <code style="background-color:#fae8ff;padding:2px 6px;border-radius:4px;font-size:12px;color:#86198f">olref</code></p>
+    <p style="font-size:13px;color:#555555;margin:6px 0 0 0">与 oppref 一起出现在点击 URL，但 SDK 不存储它。推测用于 OpenAI 服务端的出站链接日志记录。</p>
+  </section>
+
+  <!-- Token 4 -->
+  <section style="padding:16px 18px;border-radius:10px;background-color:#fefce8;border:1px solid #fde68a;margin:0 0 16px 0">
+    <p style="font-size:14px;margin:0"><strong style="color:#854d0e">Token ④</strong> <code style="background-color:#fef9c3;padding:2px 6px;border-radius:4px;font-size:12px;color:#854d0e">ad_data_token</code></p>
+    <p style="font-size:13px;color:#555555;margin:6px 0 0 0">Base64 包装的 JSON 内含另一个 Fernet token。在 SSE 载荷中传输，推测用于服务端点击时刻的数据核对。</p>
+  </section>
+
+  <!-- 归因流程 -->
+  <section style="padding:20px;border-radius:12px;background-color:#f8fafc;border:1px solid #e2e8f0;margin:0 0 16px 0">
+    <p style="font-size:14px;font-weight:700;color:#111111;margin:0 0 12px 0">🔄 完整归因闭环（一张图看懂）</p>
+    <p style="font-size:13px;color:#444444;line-height:2.2;margin:0">
+      <strong>1.</strong> 你发消息 → ChatGPT 后端打开 SSE 流<br>
+      <strong>2.</strong> SSE 流中夹带 <code style="background-color:#f1f5f9;padding:1px 4px;border-radius:3px;font-size:12px">single_advertiser_ad_unit</code> 广告对象<br>
+      <strong>3.</strong> 前端渲染为卡片，你点击 → 跳转到商户页面<br>
+      <strong>4.</strong> URL 携带 oppref + olref 加密参数<br>
+      <strong>5.</strong> 商户页面加载 <code style="background-color:#f1f5f9;padding:1px 4px;border-radius:3px;font-size:12px">oaiq.min.js</code>（OAIQ SDK v0.1.3）<br>
+      <strong>6.</strong> SDK 读取 URL 中的 oppref → 写入 cookie（30天）<br>
+      <strong>7.</strong> 你在商户网站的后续浏览/购买 → SDK 上报事件到 <code style="background-color:#f1f5f9;padding:1px 4px;border-radius:3px;font-size:12px">bzr.openai.com</code><br>
+      <strong>8.</strong> OpenAI 完成归因：知道哪个广告带来了哪个转化 ✓
+    </p>
+  </section>
+
+  <section style="padding:16px 18px;border-radius:10px;background-color:#ecfdf5;border:1px solid #a7f3d0;margin:0">
+    <p style="font-size:13px;color:#065f46;line-height:1.8;margin:0">
+      <strong>🧪 一个有趣的细节：</strong>研究人员抓到一个 Home Depot 的广告点击，token 铸造时间是 11:30:08 UTC，浏览器实际打开商户页面是 11:31:43 UTC。点击延迟：95 秒。说明用户看到广告后，犹豫了一分半才点——非常真实的人类行为。
+    </p>
+  </section>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 5 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#ea580c;letter-spacing:3px;margin:0 0 6px 0">PART 5</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">🛡️ 普通人怎么屏蔽？</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 16px 0">好消息是，这套系统的关键节点是已知的。你可以：</p>
+
+  <!-- 屏蔽方法 -->
+  <section style="padding:20px;border-radius:12px;background-color:#fff7ed;border:1px solid #fed7aa;margin:0 0 12px 0">
+    <p style="font-size:15px;font-weight:700;color:#111111;margin:0 0 12px 0">方法一：屏蔽广告域名</p>
+    <p style="font-size:14px;color:#444444;line-height:1.9;margin:0 0 8px 0">在你的广告拦截器（uBlock Origin 等）或系统 hosts 文件中添加：</p>
+    <section style="padding:14px 18px;border-radius:8px;background-color:#1e293b;margin:0">
+      <p style="font-size:13px;color:#e2e8f0;font-family:'JetBrains Mono','SF Mono',Consolas,monospace;margin:0;line-height:1.8">
+        bzrcdn.openai.com<br>
+        bzr.openai.com
+      </p>
+    </section>
+    <p style="font-size:12px;color:#92400e;margin:8px 0 0 0">⚠️ 注意：bzrcdn 负责加载广告素材，bzr 负责上报追踪事件。屏蔽后广告卡片可能无法渲染。</p>
+  </section>
+
+  <section style="padding:20px;border-radius:12px;background-color:#f0f9ff;border:1px solid #bae6fd;margin:0 0 12px 0">
+    <p style="font-size:15px;font-weight:700;color:#111111;margin:0 0 12px 0">方法二：定期清除追踪 Cookie</p>
+    <p style="font-size:14px;color:#444444;line-height:1.9;margin:0 0 8px 0">如果你已经点过广告链接，检查并删除这两个 cookie：</p>
+    <section style="padding:14px 18px;border-radius:8px;background-color:#1e293b;margin:0">
+      <p style="font-size:13px;color:#e2e8f0;font-family:'JetBrains Mono','SF Mono',Consolas,monospace;margin:0;line-height:1.8">
+        __oppref（归因追踪，30天有效）<br>
+        __oaiq_domain_probe（域名探测）
+      </p>
+    </section>
+  </section>
+
+  <section style="padding:20px;border-radius:12px;background-color:#ecfdf5;border:1px solid #a7f3d0;margin:0 0 12px 0">
+    <p style="font-size:15px;font-weight:700;color:#111111;margin:0 0 12px 0">方法三：使用 API 而非网页版</p>
+    <p style="font-size:14px;color:#444444;line-height:1.9;margin:0">目前广告系统只在 <strong style="color:#111111">chatgpt.com 网页/App 端</strong>观察到。通过 API 调用模型（GPT-4o 等）暂未发现广告注入。如果你是开发者或重度用户，用 API 是当前最干净的方式。</p>
+  </section>
+
+  <section style="padding:20px;border-radius:12px;background-color:#f5f3ff;border:1px solid #ddd6fe;margin:0">
+    <p style="font-size:15px;font-weight:700;color:#111111;margin:0 0 12px 0">方法四：关注 open_externally 字段</p>
+    <p style="font-size:14px;color:#444444;line-height:1.9;margin:0">广告数据中有个字段 <code style="background-color:#ede9fe;padding:2px 6px;border-radius:4px;font-size:12px;color:#5b21b6">open_externally: false</code>，意味着点击广告<strong style="color:#111111">默认在 ChatGPT 内置浏览器中打开</strong>（而非跳转外部浏览器）。这让 OpenAI 能进一步观察你点击后的导航行为。如果必须点，尽量复制链接到独立浏览器中打开。</p>
+  </section>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 6 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#334155;letter-spacing:3px;margin:0 0 6px 0">PART 6</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">💭 怎么看这件事？</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 16px 0">说完技术，聊聊观点。</p>
+
+  <section style="padding:20px;border-radius:12px;background-color:#f9fafb;border:1px solid #e5e7eb;margin:0 0 16px 0">
+    <p style="font-size:15px;font-weight:600;color:#111111;margin:0 0 10px 0">📊 OpenAI 的商业压力</p>
+    <p style="font-size:14px;color:#444444;line-height:1.9;margin:0">
+      OpenAI 目前估值 3000 亿美元，但烧钱速度极快。训练和推理成本是天文数字。广告是除了订阅和 API 之外的第三条收入线。对于 7 亿月活用户中的免费用户群体，广告模式几乎是必然选择。<br><br>
+      <strong style="color:#111111">Google 走过的路，OpenAI 也在走。</strong>只不过，搜索结果里夹广告大家已经习惯了，AI 对话里夹广告……你习惯吗？
+    </p>
+  </section>
+
+  <section style="padding:20px;border-radius:12px;background-color:#f9fafb;border:1px solid #e5e7eb;margin:0 0 16px 0">
+    <p style="font-size:15px;font-weight:600;color:#111111;margin:0 0 10px 0">🧠 信任的代价</p>
+    <p style="font-size:14px;color:#444444;line-height:1.9;margin:0">
+      AI 对话和搜索有一个本质区别：<strong style="color:#111111">人们对 AI 助手的信任度远高于搜索引擎。</strong><br><br>
+      你 Google 搜索时知道前几条是广告。但当你的 AI "助手" 在帮你规划北京旅行时突然推荐一个外卖 app——你能分清这是它的 "建议" 还是广告吗？<br><br>
+      这就是问题所在：<strong style="color:#dc2626">当广告和回答混在一起，信任会被稀释。</strong>
+    </p>
+  </section>
+
+  <section style="padding:20px;border-radius:12px;background-color:#f9fafb;border:1px solid #e5e7eb;margin:0">
+    <p style="font-size:15px;font-weight:600;color:#111111;margin:0 0 10px 0">⚖️ 客观说一句</p>
+    <p style="font-size:14px;color:#444444;line-height:1.9;margin:0">
+      从技术实现上看，OpenAI 做得是比较克制的：<br>
+      • 广告是独立数据类型，不是模型输出<br>
+      • 有明确的品牌标识（不是伪装成回答）<br>
+      • 使用加密 token 而非明文追踪<br><br>
+      但"克制"和"可接受"是两回事。尤其是考虑到 ChatGPT Plus 用户每月 20 美金——如果付费用户也看到广告，那就完全是另一个性质了。
+    </p>
+  </section>
+</section>
+
+<!-- ===== 总结区 ===== -->
+<section style="padding:28px 24px 24px;background-color:#f9fafb">
+  <p style="font-size:12px;color:#10b981;letter-spacing:2px;margin:0 0 10px 0">📌 总结</p>
+  <h3 style="font-size:18px;font-weight:700;color:#111111;margin:0 0 16px 0">今天你需要记住的 5 件事</h3>
+  <p style="font-size:14px;color:#444444;line-height:2.2;margin:0">
+    <strong style="color:#111111">1.</strong> ChatGPT 已经在对话流中投放广告了（真的，不是玩笑）<br>
+    <strong style="color:#111111">2.</strong> 投放基于你当前对话内容的上下文定向<br>
+    <strong style="color:#111111">3.</strong> 点击后通过 4 层加密 token + 30 天 cookie 做转化追踪<br>
+    <strong style="color:#111111">4.</strong> 屏蔽 bzrcdn.openai.com 和 bzr.openai.com 可阻断广告<br>
+    <strong style="color:#111111">5.</strong> API 调用暂时是干净的，网页/App 端有风险
+  </p>
+</section>
+
+<!-- ===== 参考来源 ===== -->
+<section style="padding:20px 24px;background-color:#ffffff">
+  <p style="font-size:12px;color:#94a3b8;margin:0 0 8px 0">📎 参考来源</p>
+  <p style="font-size:12px;color:#64748b;line-height:1.8;margin:0">
+    • Buchodi's Threat Intel: "How ChatGPT serves ads. Here's the full attribution loop." (2026-04-28)<br>
+    • Hacker News 讨论 (413 points, 2026-04-28)<br>
+    • The Verge: "How ChatGPT serves ads" (2026-04-29)
+  </p>
+</section>
+
+<!-- ===== 尾部 ===== -->
+<section style="padding:24px;background-color:#111111;text-align:center">
+  <p style="font-size:14px;color:#e2e8f0;margin:0 0 6px 0"><strong>关注获取更多 AI 深度解读</strong></p>
+  <p style="font-size:12px;color:#64748b;margin:0">只分享真正有用的 · 不装 · 不水</p>
+</section>
+
+</section>
+
+</body>
+</html>
