@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>封面素材 - AI 编码 Agent 终端战争</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* 公众号头图 900x383 (2.35:1) */
+.cover-main {
+  width: 900px;
+  height: 383px;
+  background: #000000;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-main::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cover-main::after {
+  content: '';
+  position: absolute;
+  bottom: -40%;
+  right: -15%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+}
+
+.cover-content .tag {
+  display: inline-block;
+  padding: 4px 14px;
+  border: 1px solid #333;
+  border-radius: 100px;
+  font-size: 12px;
+  color: #666;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.cover-content h1 {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.cover-content h1 span {
+  color: #10b981;
+}
+
+.cover-content .sub {
+  font-size: 15px;
+  color: #888;
+  line-height: 1.6;
+}
+
+.cover-content .brands {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.cover-content .brands .brand {
+  padding: 4px 14px;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #aaa;
+  font-family: 'SF Mono', 'JetBrains Mono', monospace;
+}
+
+/* 缩略图 200x200 */
+.cover-thumb {
+  width: 200px;
+  height: 200px;
+  background: #000;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-thumb::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -30%;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(16,185,129,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cover-thumb h2 {
+  position: relative;
+  z-index: 1;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.cover-thumb h2 span {
+  color: #10b981;
+  font-size: 14px;
+}
+
+/* 朋友圈分享图 (1:1) */
+.cover-share {
+  width: 400px;
+  height: 400px;
+  background: #000;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-share::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: -25%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cover-share::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cover-share .z {
+  position: relative;
+  z-index: 1;
+}
+
+.cover-share h2 {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.cover-share h2 span {
+  color: #10b981;
+}
+
+.cover-share .desc {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.cover-share .pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cover-share .pill {
+  padding: 4px 10px;
+  border: 1px solid #333;
+  border-radius: 100px;
+  font-size: 11px;
+  color: #666;
+}
+
+.instructions {
+  max-width: 600px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 24px;
+}
+
+.instructions h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.instructions p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.8;
+}
+</style>
+</head>
+<body>
+
+<p class="label">📐 公众号头图（900×383，截图使用）</p>
+<div class="cover-main">
+  <div class="cover-content">
+    <span class="tag">⌨️ 深度解读 · 2026.05.17</span>
+    <h1>AI 编码 Agent<br><span>终端战争</span></h1>
+    <p class="sub">五强争霸，谁能成为开发者的"新操作系统"？</p>
+    <div class="brands">
+      <span class="brand">Claude Code</span>
+      <span class="brand">Cursor</span>
+      <span class="brand">Copilot</span>
+      <span class="brand">Windsurf</span>
+      <span class="brand">Grok</span>
+    </div>
+  </div>
+</div>
+
+<p class="label">📐 公众号缩略图（200×200，截图使用）</p>
+<div class="cover-thumb">
+  <h2>AI 编码 Agent<br><span>⌨️ 终端战争</span><br>五强争霸</h2>
+</div>
+
+<p class="label">📐 朋友圈/社媒分享图（400×400，截图使用）</p>
+<div class="cover-share">
+  <div class="z">
+    <h2>AI 编码 Agent<br><span>终端战争已经打响</span></h2>
+    <p class="desc">从补全到对话再到 Agent<br>软件工程正在被重新定义</p>
+    <div class="pills">
+      <span class="pill">Claude Code</span>
+      <span class="pill">Cursor</span>
+      <span class="pill">Copilot</span>
+      <span class="pill">Windsurf</span>
+      <span class="pill">Grok Build</span>
+    </div>
+  </div>
+</div>
+
+<div class="instructions">
+  <h3>📋 使用说明</h3>
+  <p>
+    1. 在浏览器中打开此文件<br>
+    2. 使用浏览器截图工具或系统截图，对准对应尺寸的元素截取<br>
+    3. 公众号头图：900×383px（文章顶部大图）<br>
+    4. 缩略图：200×200px（文章列表小图）<br>
+    5. 分享图：400×400px（朋友圈/社媒分享缩略图）<br>
+    6. 设计风格：纯黑背景 + 绿色/紫色点缀，极简现代风格，无版权风险
+  </p>
+</div>
+
+</body>
+</html>
