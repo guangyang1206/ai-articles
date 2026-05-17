@@ -26,3 +26,6 @@ __pycache__/
 # Other projects (not part of ai-articles)
 my-space/
 workbuddy-guide.html
+
+# Auto-generated scripts output
+scripts/__pycache__/
