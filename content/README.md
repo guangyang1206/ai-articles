@@ -42,6 +42,9 @@ content/
 |---|------|------|------|
 | 1 | 2026-04-24 | [DeepSeek V4 深度解读](./2026-04-24_deepseek-v4-deep-dive/) | ✅ 已发布（获推广奖励） |
 | 2 | 2026-04-29 | [ChatGPT 广告技术链路拆解](./2026-04-29_chatgpt-ads-breakdown/) | 📝 待发布 |
+| 3 | 2026-05-03 | [部署静态网站踩坑实录](./2026-05-03_deploy-static-site-lessons/) | 📝 待发布 |
+| 4 | 2026-05-17 | [Anthropic 估值 $9000 亿超越 OpenAI](./2026-05-17_anthropic-900b-valuation/) | 📝 待发布 |
+| 5 | 2026-05-17 | [AI 编码 Agent 终端战争](./2026-05-17_ai-coding-agent-war/) | 📝 待发布 |
 
 ## Git 工作流
 
