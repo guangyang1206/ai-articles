@@ -3,424 +3,332 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>不融资的DeepSeek终于拿钱了：500亿、梁文锋自掏200亿、V4.1六月见</title>
-<style>
-/* ===== 公众号基础样式（复制到编辑器后内联生效） ===== */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
-  color: #333;
-  line-height: 1.8;
-  font-size: 16px;
-  background: #fff;
-  padding: 0;
-}
-.wrapper {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 20px 20px 40px;
-}
-
-/* ===== 标题 ===== */
-.article-title {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.5;
-  margin-bottom: 16px;
-  color: #1a1a1a;
-  letter-spacing: 0.5px;
-}
-.article-meta {
-  font-size: 14px;
-  color: #999;
-  margin-bottom: 28px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #eee;
-}
-
-/* ===== 正文 ===== */
-p {
-  margin-bottom: 18px;
-  text-align: justify;
-  letter-spacing: 0.3px;
-}
-
-/* ===== 小标题 ===== */
-h2 {
-  font-size: 18px;
-  font-weight: 700;
-  margin: 32px 0 16px;
-  color: #1a1a1a;
-  line-height: 1.6;
-  padding-left: 12px;
-  border-left: 4px solid #2b6cb0;
-}
-h3 {
-  font-size: 16px;
-  font-weight: 700;
-  margin: 24px 0 12px;
-  color: #2c5282;
-}
-
-/* ===== 引用 ===== */
-blockquote {
-  margin: 18px 0;
-  padding: 12px 18px;
-  background: #f7f8fa;
-  border-left: 4px solid #cbd5e0;
-  color: #555;
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-/* ===== 时间线 ===== */
-.timeline {
-  margin: 20px 0;
-  border: 1px solid #e8e8e8;
-  border-radius: 8px;
-  overflow: hidden;
-}
-.timeline-row {
-  display: flex;
-  border-bottom: 1px solid #f0f0f0;
-  font-size: 14px;
-  line-height: 1.5;
-}
-.timeline-row:last-child { border-bottom: none; }
-.timeline-row:nth-child(odd) { background: #fafbfc; }
-.timeline-date {
-  width: 100px;
-  min-width: 100px;
-  padding: 10px 12px;
-  font-weight: 600;
-  color: #2b6cb0;
-}
-.timeline-event {
-  flex: 1;
-  padding: 10px 12px;
-  color: #444;
-}
-.timeline-valuation {
-  width: 120px;
-  min-width: 120px;
-  padding: 10px 12px;
-  text-align: right;
-  color: #e53e3e;
-  font-weight: 600;
-}
-
-/* ===== 信息来源 ===== */
-.source {
-  font-size: 13px;
-  color: #888;
-  margin: 6px 0 18px;
-  line-height: 1.5;
-}
-
-/* ===== 总结框 ===== */
-.highlight-box {
-  background: #ebf8ff;
-  border: 1px solid #bee3f8;
-  border-radius: 8px;
-  padding: 16px 18px;
-  margin: 20px 0;
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-/* ===== 分割线 ===== */
-.divider {
-  text-align: center;
-  color: #ccc;
-  margin: 30px 0;
-  font-size: 18px;
-  letter-spacing: 8px;
-}
-
-/* ===== 结语 ===== */
-.conclusion {
-  margin: 30px 0;
-  padding: 20px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
-  border-radius: 8px;
-  text-align: center;
-}
-.conclusion cite {
-  display: block;
-  margin-top: 10px;
-  font-style: normal;
-  color: #666;
-  font-size: 14px;
-}
-
-/* ===== 脚注 ===== */
-.footnote {
-  margin-top: 36px;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
-  font-size: 13px;
-  color: #999;
-  line-height: 1.6;
-}
-.footnote a { color: #2b6cb0; text-decoration: none; }
-
-/* ===== 卡片式段落（重要数据） ===== */
-.data-card {
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 16px 18px;
-  margin: 18px 0;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.data-card strong { color: #2b6cb0; }
-
-/* ===== 列表 ===== */
-ul, ol {
-  margin: 12px 0 18px;
-  padding-left: 22px;
-}
-li {
-  margin-bottom: 8px;
-  line-height: 1.7;
-}
-</style>
+<title>DeepSeek 的 500 亿转身 - 公众号版</title>
 </head>
 <body>
-<div class="wrapper">
 
-<!-- 封面图占位：请在公众号编辑器此位置插入 cover.png -->
-<p style="text-align:center;margin-bottom:24px;">
-  <img src="cover.png" alt="封面图" style="width:100%;border-radius:8px;">
-  <span style="display:block;font-size:12px;color:#bbb;margin-top:4px;">（插入封面图：cover.png）</span>
-</p>
-
-<!-- 标题 -->
-<div class="article-title">不融资的DeepSeek终于拿钱了<br>500亿、梁文锋自掏200亿、V4.1六月见</div>
-<div class="article-meta">AI深度解读 · 2026年5月18日</div>
-
-<!-- 引言 -->
-<p>2026年5月的中国一级市场，被一则消息彻底点燃。</p>
-
-<p>长期坚持"不融资、不商业化、不路演"的DeepSeek，正式启动成立以来的首轮外部股权融资。据The Information援引知情人士消息，本轮计划募资规模高达500亿元人民币（约合73.5亿美元），投后估值直指3500亿元人民币（约515亿美元）。<sup>[1][2]</sup></p>
-
-<p>更令人意外的是——创始人梁文锋个人计划出资最高达200亿元，占本轮募资总额的40%。<sup>[1][3]</sup></p>
-
-<p>21天前，市场对DeepSeek的估值还停留在100亿美元左右，初始融资计划仅为3亿美元，主要用于期权定价。21天后，估值暴涨超4倍，融资规模翻了24倍。<sup>[4]</sup></p>
-
-<p>这家曾经最"佛系"的AI公司，突然以一场刷新纪录的融资回到聚光灯下。发生了什么？</p>
-
-<div class="divider">· · ·</div>
-
-<!-- 第一部分 -->
-<h2>一、一个理想主义者的"三不铁律"</h2>
-
-<p>梁文锋，1985年生于广东湛江，浙江大学本硕毕业。他的故事从金融圈开始：2008年，刚毕业的他带着7人团队，用机器学习模型做量化交易，五个月实现500%收益。2015年正式创立幻方量化，凭借AI驱动的量化策略迅速崛起，2021年管理规模突破千亿。2025年，幻方量化平均收益率达56.6%，仅当年就为梁文锋带来超7亿美元收入。<sup>[4]</sup> 同年，他登上福布斯中国内地富豪榜，以115亿美元身家位列第34位。<sup>[5]</sup></p>
-
-<p>但梁文锋的野心不止于金融。</p>
-
-<p>早在2020年，幻方量化就做出一个在当时看来极为超前的决策——将大量利润投入自建GPU计算集群。"萤火一号"搭载上千张高端GPU，为后来布局AGI埋下了伏笔。<sup>[4]</sup></p>
-
-<p>2023年7月，杭州深度求索人工智能基础技术研究有限公司注册成立，DeepSeek正式亮相。梁文锋立下三条铁律：不融资、不上市、不商业化。</p>
-
-<blockquote>"DeepSeek的目标是做世界顶级的通用大模型，不是为了赚钱，也不是为了上市。资本会追求短期回报，商业化会妥协技术路线。"<sup>[4]</sup></blockquote>
-
-<p>在资本疯狂涌入AI赛道的2023-2024年，这是一个近乎"叛逆"的选择。当字节、阿里、百度砸钱做模型，当智谱、百川、月之暗面靠资本输血快速扩张时，DeepSeek靠着幻方量化的自有资金，闭门研发，不路演、不宣传、不接商业订单。</p>
-
-<p>而技术上的回报，超出了几乎所有人的预期。</p>
-
-<div class="data-card">
-<p><strong>2024年5月</strong> — DeepSeek-V2发布，创新的MoE架构引发行业热议。</p>
-<p><strong>2024年12月</strong> — DeepSeek-V3开源，公布53页技术细节。</p>
-<p><strong>2025年1月</strong> — DeepSeek-R1发布，在数学、代码、推理等任务上性能比肩OpenAI o1正式版。据团队在英国《自然》杂志发表的论文披露，R1训练成本仅为29.4万美元，基础大语言模型约花费600万美元——这一数字远低于美国同行的公开成本。<sup>[6]</sup></p>
-</div>
-
-<p>技术上的成功，让DeepSeek成为国产大模型的技术标杆，也让"三不铁律"一度成为行业美谈——原来，不靠资本，不靠商业化，也能做出世界一流的大模型。</p>
-
-<div class="divider">· · ·</div>
-
-<!-- 第二部分 -->
-<h2>二、21天估值翻5倍：融资时间线</h2>
-
-<p>从4月初到5月上旬，DeepSeek的估值经历了戏剧性的"三级跳"。</p>
-
-<!-- 在此位置插入 timeline.png -->
-<p style="text-align:center;margin:18px 0;">
-  <img src="timeline.png" alt="融资时间线" style="width:100%;border-radius:8px;">
-  <span style="display:block;font-size:12px;color:#bbb;margin-top:4px;">（插入配图：timeline.png）</span>
-</p>
-
-<div class="timeline">
-  <div class="timeline-row">
-    <div class="timeline-date">4月初</div>
-    <div class="timeline-event">启动首轮融资，初始计划募资3亿美元，主要用于期权定价</div>
-    <div class="timeline-valuation">≈100亿美元</div>
-  </div>
-  <div class="timeline-row">
-    <div class="timeline-date">4月22日</div>
-    <div class="timeline-event">腾讯、阿里等洽谈投资消息传出，估值翻倍</div>
-    <div class="timeline-valuation">>200亿美元</div>
-  </div>
-  <div class="timeline-row">
-    <div class="timeline-date">4月27日</div>
-    <div class="timeline-event">工商变更：注册资本1000万→1500万，梁文锋直接持股从1%增至34%，合计控制约84.29%股权<sup>[7][8]</sup></div>
-    <div class="timeline-valuation">—</div>
-  </div>
-  <div class="timeline-row">
-    <div class="timeline-date">5月6日</div>
-    <div class="timeline-event">国家集成电路产业投资基金（大基金）被曝洽谈领投<sup>[9]</sup></div>
-    <div class="timeline-valuation">≈450亿美元</div>
-  </div>
-  <div class="timeline-row">
-    <div class="timeline-date">5月8-9日</div>
-    <div class="timeline-event">梁文锋自掏200亿消息传出；计划募资500亿元<sup>[1][3]</sup></div>
-    <div class="timeline-valuation">≈515亿美元</div>
-  </div>
-</div>
-<div class="source">数据来源：The Information、36氪、新浪财经、天眼查等多家媒体及平台的综合报道。融资仍在洽谈中，DeepSeek官方尚未置评。</div>
-
-<div class="divider">· · ·</div>
-
-<!-- 第三部分 -->
-<h2>三、为什么要拿钱？三重现实压力</h2>
-
-<h3>算力：从"算法巧胜"到"消耗战"</h3>
-
-<p>如果说两年前大模型的竞赛还可以靠算法巧思"四两拨千斤"，那么如今则是赤裸裸的算力消耗战。</p>
-
-<p>今年4月24日，DeepSeek-V4正式发布，包含两个版本：V4-Pro（1.6T参数，49B激活）和V4-Flash（284B，13B激活），均支持百万级上下文。<sup>[10]</sup> 而在6月即将推出的V4.1，还将新增图像与音频处理能力，以及更完善的企业级MCP协议支持。<sup>[11][12]</sup></p>
-
-<p>背后是天文数字的算力投入。从训练到推理，从千卡集群到万卡集群——36氪的一段话很直接：<strong>"幻方量化再有钱，也撑不住一场与全球巨头正面交锋的算力军备竞赛。"</strong><sup>[4]</sup></p>
-
-<h3>人才：明星研究员接连出走</h3>
-
-<p>DeepSeek一直被视为中国大模型行业最特殊的一家公司——团队规模小、人才密度极高、几乎不社招，以应届生和实习生留任为主。但正是这种小团队的精锐模式，使得每一个核心研究员的权重被放大到极致。</p>
-
-<p>公开信息显示，自2025年下半年以来，公司至少5名核心研发人员相继出走：研究员郭达雅加入字节跳动，担任Agent负责人之一；AI才女罗福莉被雷军挖至小米；王炳宣、魏浩然等也陆续离开。<sup>[4]</sup></p>
-
-<p>行业有说法认为，梁文锋此轮融资的一个重要目的，就是给员工做期权定价，用股权留住人才。</p>
-
-<h3>产品化：实验室必须走向市场</h3>
-
-<p>据The Information报道，DeepSeek员工已开始向各行业企业推广模型，希望把技术变成可收费的产品和服务。V4.1计划提供的MCP协议支持，正是为了更方便企业接入使用。公司还计划把模型发布节奏加快到接近行业常规速度。<sup>[1]</sup></p>
-
-<p>一个实验室可以只关心模型指标。但一家重资产AI公司，必须关心客户、收入、交付、成本和人才结构。</p>
-
-<div class="divider">· · ·</div>
-
-<!-- 第四部分 -->
-<h2>四、一场精心设计的"资本局"</h2>
-
-<h3>200亿买的是什么？控制权。</h3>
-
-<p>创始人自掏200亿参与融资，这在全球AI史上都极为罕见。但这不是冲动——这是一场精心设计的控制权保卫战。</p>
-
-<p>消息显示，梁文锋个人计划出资200亿元，占募资总额的40%，成为本轮最大投资方。有业内人士向《科创板日报》分析，这笔资金背后大概率有银行授信支持。<sup>[13]</sup></p>
-
-<p>如果他在这一轮只小额跟投甚至不参与，外部投资人对公司的定价权就会更大，战略方向会受到牵制。200亿买下的，是在这个估值区间主导对话的权利。</p>
-
-<h3>只收"两种钱"</h3>
-
-<p>从目前公开信息来看，DeepSeek的融资策略极为挑剔：</p>
-
-<ul>
-  <li><strong>国家集成电路产业投资基金</strong>（大基金）洽谈领投——战略级资本，不干预技术路线，还能提供算力、政策等资源协同<sup>[9]</sup></li>
-  <li><strong>腾讯</strong>拟出资约60亿元，获得约2%股权——产业资本，生态协同<sup>[4]</sup></li>
-  <li>传统财务VC（红杉、高瓴等）据称全部被拒之门外<sup>[4]</sup></li>
-</ul>
-
-<p>另有消息称，阿里巴巴与DeepSeek未能在融资条款上达成一致。<sup>[4]</sup>（注：此消息为单信源报道，尚未获多方证实。）</p>
-
-<h3>先锁死股权，再开门迎客</h3>
-
-<p>在正式启动外部融资前，DeepSeek完成了一步关键操作。2026年4月27日，公司注册资本由1000万元增至1500万元。梁文锋通过直接增资将持股比例从1%提升至34%，通过直接与间接持股合计控制公司约84.29%股权。<sup>[7][8]</sup></p>
-
-<p>这意味着，无论外部资本进来多少，梁文锋的控制权都牢不可破。</p>
-
-<div class="divider">· · ·</div>
-
-<!-- 第五部分 -->
-<h2>五、更大的背景：国产大模型"五强"格局成型</h2>
-
-<p>DeepSeek的融资并非孤例。2026年5月7日至14日，短短一周内，中国大模型公司轮番刷新估值天花板。<sup>[13]</sup></p>
-
-<!-- 在此位置插入 five-strong.png -->
-<p style="text-align:center;margin:18px 0;">
-  <img src="five-strong.png" alt="五强格局" style="width:100%;border-radius:8px;">
-  <span style="display:block;font-size:12px;color:#bbb;margin-top:4px;">（插入配图：five-strong.png）</span>
-</p>
-
-<div class="data-card">
-<p><strong>5月7日</strong> — 月之暗面（Kimi）完成约20亿美元D轮融资，投后估值突破200亿美元，由美团龙珠领投，中国移动、CPE源峰等跟投。</p>
-<p><strong>5月8日</strong> — 阶跃星辰传出近25亿美元融资，产业链资本（华勤、龙旗、豪威等）集中入场，加快赴港上市进程。</p>
-<p><strong>5月13日</strong> — 智谱港股收盘大涨36.9%，市值突破5000亿港元；MiniMax同步上涨18.46%，市值达2566亿港元。</p>
-</div>
-<div class="source">信息来源：科创板日报《五强格局成型 中国大模型估值集体暴走》，2026年5月15日。</div>
-
-<p>一组值得细品的对比：智谱2025年全年营收不足8亿元，市值已超5000亿港元；老牌AI公司科大讯飞年营收271亿元、净利润8.39亿元，当日市值约1187亿元。尚处于亏损阶段的智谱，市值已是盈利稳健的科大讯飞近四倍。<sup>[13]</sup></p>
-
-<p>资本来源的结构也在发生微妙变化。从"美元+互联网"到"国资+产业链资本"——月之暗面出现了中国移动，阶跃星辰引入了香港投资管理有限公司，DeepSeek传出国家大基金的身影。投资方的迭代本身就在折射：大模型已不再只是一个商业故事，而是国家科技竞争力的关键筹码。</p>
-
-<div class="divider">· · ·</div>
-
-<!-- 第六部分 -->
-<h2>六、V4.1六月见，DeepSeek正在加速</h2>
-
-<p>融资之外，DeepSeek的产品节奏也在明显加快。</p>
-
-<p>据The Information报道，DeepSeek计划在<strong>2026年6月</strong>推出V4.1版本。新版本将带来三大升级：</p>
-
-<ul>
-  <li><strong>全模态覆盖</strong> — 新增图像与音频理解能力（输出仍以文本为主）</li>
-  <li><strong>原生MCP协议支持</strong> — 更方便企业客户接入真实业务流程</li>
-  <li><strong>企业级工具链</strong> — 配套发布</li>
-</ul>
-
-<p>此外，V4发布时已明确：<strong>下半年将支持华为昇腾算力</strong>——从英伟达向国产算力适配已启动。<sup>[10]</sup></p>
-
-<p>旧模型名称也将在7月24日停用：deepseek-chat和deepseek-reasoner将被新模型名替代，生产环境的开发者需在此之前完成迁移。<sup>[10]</sup></p>
-
-<div class="divider">· · ·</div>
-
-<!-- 结语 -->
-<h2>理想主义者的下一站</h2>
-
-<p>今年4月V4发布时，DeepSeek在发布稿的末尾引用了一句古语：</p>
-
-<blockquote>"不诱于誉，不恐于诽，率道而行，端然正己。"——荀子《非十二子》<sup>[10]</sup></blockquote>
-
-<p>不被赞誉诱惑，不被诽谤吓倒，按自己认定的路往前走。这是DeepSeek想要保持的姿态。</p>
-
-<p>但"率道而行"的前提，是先有足够的弹药。</p>
-
-<p>500亿是弹药。200亿是姿态。V4.1是下一步。</p>
-
-<p>曾经不融资、不商业化的DeepSeek，正在学习用一家公司的方式继续做AI。而它能否在"不丢失灵魂"的前提下，完成从实验室到商业公司的蜕变——这或许是2026年中国AI最值得关注的故事。</p>
-
-<p>技术理想主义没有错。但理想主义也需要被喂养。</p>
-
-<div class="divider">· · ·</div>
-
-<!-- 声明 -->
-<div class="footnote">
-<p><strong>声明与说明</strong></p>
-<p>本文所引用的融资信息均来自The Information、36氪、新浪财经、科创板日报、量子位等媒体的公开报道。截至发稿，DeepSeek官方尚未对融资事宜作出正式置评。文中所有关于融资金额、估值的描述均标注了信息来源，部分数据因不同媒体报道存在差异，我们选取了多方交叉验证的主流说法。</p>
-<p>参考资料：</p>
-<p>[1] The Information, "DeepSeek to Raise $7 Billion, Startup Plots Revenue Efforts", 2026年5月（量子位编译）</p>
-<p>[2] 新浪财经，《DeepSeek 500亿天价融资：国产AI的资本分水岭》，2026年5月11日</p>
-<p>[3] 凤凰科技/量子位，《梁文锋出资200亿！DeepSeek首轮创纪录融资500亿，V4.1定档6月》，2026年5月9日</p>
-<p>[4] 36氪，《DeepSeek融资500亿，梁文锋难逃资本局》，2026年5月13日</p>
-<p>[5] 福布斯中国内地富豪榜，2025年</p>
-<p>[6] 英国《自然》杂志（Nature），DeepSeek团队论文，2025年1月</p>
-<p>[7] 天眼查工商信息，2026年4月27日</p>
-<p>[8] 搜狐财经，《DeepSeek注册资本增至1500万，梁文锋持股超84%》，2026年4月28日</p>
-<p>[9] 上海证券报，引述渠道人士报道</p>
-<p>[10] 量子位/36氪，DeepSeek-V4发布报道，2026年4月24日</p>
-<p>[11] 百度百科"DeepSeek-V4.1"词条</p>
-<p>[12] ChooseAI, "DeepSeek V4.1锁定6月", 2026年5月9日</p>
-<p>[13] 科创板日报，《五强格局成型 中国大模型估值集体暴走》，2026年5月15日</p>
-</div>
-
-</div>
+<!--
+====================================================================
+微信公众号专用版 — 导入方法：
+1. 在浏览器中打开此 HTML 文件
+2. 全选复制（Ctrl+A → Ctrl+C）
+3. 粘贴到公众号编辑器（Ctrl+V）
+
+设计原则（参考 AI 编码 Agent 文章标准）：
+- 每个元素都有独立的 section 容器带 background-color
+- 不依赖 CSS Grid/Flex 布局，用 table 实现列布局
+- 不使用 rgba()，全用 HEX 颜色
+- 不使用 linear-gradient
+- 不使用 -webkit-background-clip:text
+- 所有文字颜色可在白底和深色底上清晰阅读
+- 所有样式纯内联
+====================================================================
+-->
+
+<section style="max-width:680px;margin:0 auto;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Microsoft YaHei',sans-serif;font-size:15px;color:#333333;line-height:1.85;word-wrap:break-word">
+
+<!-- ===== 封面区 ===== -->
+<section style="background-color:#0f172a;padding:52px 28px 44px;text-align:center;border-radius:0">
+  <p style="display:inline-block;padding:4px 16px;border:1px solid #334155;border-radius:100px;font-size:12px;color:#94a3b8;letter-spacing:1px;margin:0 0 18px 0">💎 深度解读 · AI 融资 · 2026.05.18</p>
+  <h1 style="font-size:26px;font-weight:900;line-height:1.35;letter-spacing:-0.5px;margin:0 0 14px 0;color:#ffffff">不融资的 DeepSeek<br><span style="color:#3b82f6">终于拿钱了</span></h1>
+  <p style="font-size:15px;color:#94a3b8;font-weight:400;margin:0 0 10px 0">500亿 · 梁文锋自掏200亿 · V4.1六月见</p>
+  <p style="font-size:12px;color:#475569;margin:14px 0 0 0">从"技术乌托邦"到"资本局"——一场21天估值翻5倍的故事</p>
+</section>
+
+<!-- ===== 导语 ===== -->
+<section style="padding:28px 24px 24px;background-color:#ffffff">
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">2026年5月的一级市场，被一则消息彻底点燃。</p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0"><strong style="color:#111111">长期坚持"不融资、不商业化、不路演"的DeepSeek，正式启动了成立以来的首轮外部股权融资。</strong></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">据 The Information 援引知情人士消息，本轮计划募资规模高达<strong style="color:#111111">500亿元人民币（约73.5亿美元）</strong>，投后估值直指3500亿元人民币（约515亿美元）。<sup style="color:#3b82f6">[1][2]</sup></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">更令人意外的是——创始人<strong style="color:#111111">梁文锋个人计划出资最高达200亿元</strong>，占本轮募资总额的40%。<sup style="color:#3b82f6">[1][3]</sup></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">21天前，估值还停留在100亿美元上下，计划仅融资3亿美元用于期权定价。21天后，估值暴涨超4倍，融资规模翻了24倍。<sup style="color:#3b82f6">[4]</sup></p>
+</section>
+
+<!-- ===== 目录 ===== -->
+<section style="padding:20px 24px;background-color:#f8fafc">
+  <p style="font-size:12px;color:#3b82f6;letter-spacing:2px;margin:0 0 10px 0">📑 文章导航</p>
+  <table cellpadding="0" cellspacing="6" border="0" style="width:100%">
+    <tr>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#eff6ff;border:1px solid #bfdbfe;font-size:13px;color:#1e40af;text-align:center;white-space:nowrap">一、理想主义者</td>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#f0f9ff;border:1px solid #bae6fd;font-size:13px;color:#075985;text-align:center;white-space:nowrap">二、融资时间线</td>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#ecfdf5;border:1px solid #a7f3d0;font-size:13px;color:#065f46;text-align:center;white-space:nowrap">三、三重压力</td>
+    </tr>
+    <tr>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#fefce8;border:1px solid #fde68a;font-size:13px;color:#854d0e;text-align:center;white-space:nowrap">四、资本局</td>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#fdf4ff;border:1px solid #f5d0fe;font-size:13px;color:#86198f;text-align:center;white-space:nowrap">五、五强格局</td>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#f1f5f9;border:1px solid #cbd5e1;font-size:13px;color:#334155;text-align:center;white-space:nowrap">六、V4.1展望</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ===== PART 1: 理想主义者 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#3b82f6;letter-spacing:3px;margin:0 0 6px 0">PART 1</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">🌌 一个理想主义者的"三不铁律"</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">梁文锋，1985年生于广东湛江，浙江大学本硕毕业。他的故事从金融圈开始：2008年，刚毕业的他带着7人团队，用机器学习模型做量化交易，<strong style="color:#111111">三个月实现500%收益</strong>。</p>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">2015年，幻方量化正式成立。2021年管理规模突破千亿，2025年平均收益率达56.6%，仅当年就为梁文锋带来超7亿美元收入。<sup style="color:#3b82f6">[4]</sup> 同年，他以115亿美元身家位列福布斯中国富豪榜第34位。<sup style="color:#3b82f6">[5]</sup></p>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 16px 0">但梁文锋的野心不止于金融。</p>
+
+  <!-- 萤火一号 highlight -->
+  <section style="padding:16px 20px;border-radius:10px;background-color:#f0f9ff;border:1px solid #bae6fd;margin:0 0 16px 0">
+    <p style="font-size:14px;color:#0c4a6e;line-height:1.8;margin:0"><strong>2020年3月</strong>，幻方量化做了一个当时看来极为超前且重资产的决策——投资上亿元自建GPU计算集群。<strong>"萤火一号"</strong>搭载上千张高端GPU投入运行。这一远超行业常规做法的投入，为后来AGI布局埋下了决定性伏笔。<sup style="color:#3b82f6">[4]</sup></p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">2023年7月，杭州深度求索注册成立，DeepSeek正式亮相。梁文锋立下三条铁律：<strong style="color:#111111">不融资、不上市、不商业化</strong>。</p>
+
+  <section style="padding:16px 20px;border-radius:10px;background-color:#f1f5f9;border-left:4px solid #3b82f6;margin:0 0 16px 0">
+    <p style="font-size:14px;color:#475569;line-height:1.8;margin:0">"DeepSeek的目标是做世界顶级的通用大模型，不是为了赚钱，也不是为了上市。资本会追求短期回报，商业化会妥协技术路线——这些都会干扰我们的核心目标。"<sup style="color:#3b82f6">[4]</sup></p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">在资本疯狂涌入AI的2023-2024年，这是一个近乎"叛逆"的选择。澎湃新闻评价，DeepSeek不是AI圈的正规军，而是<strong style="color:#111111">"独树一帜的镇元子"</strong>——技术硬、性子倔、不站队。</p>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 16px 0">而技术的回报，超出了所有人的预期：</p>
+
+  <!-- 技术成就 -->
+  <section style="padding:16px 20px;border-radius:10px;background-color:#ecfdf5;border:1px solid #a7f3d0;margin:0 0 12px 0">
+    <p style="font-size:14px;color:#065f46;line-height:1.8;margin:0"><strong>2024年5月</strong> — DeepSeek-V2发布，创新MoE架构震动行业。</p>
+  </section>
+  <section style="padding:16px 20px;border-radius:10px;background-color:#f0fdf4;border:1px solid #bbf7d0;margin:0 0 12px 0">
+    <p style="font-size:14px;color:#166534;line-height:1.8;margin:0"><strong>2024年12月</strong> — DeepSeek-V3开源，53页技术细节全公开。</p>
+  </section>
+  <section style="padding:16px 20px;border-radius:10px;background-color:#f0f9ff;border:1px solid #bae6fd;margin:0 0 16px 0">
+    <p style="font-size:14px;color:#0c4a6e;line-height:1.8;margin:0"><strong>2025年1月</strong> — DeepSeek-R1在数学、代码、推理上比肩OpenAI o1。论文登上英国《自然》杂志，训练成本仅29.4万美元。<sup style="color:#3b82f6">[6]</sup></p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">"三不铁律"一度成为行业美谈——原来不靠融资、不靠商业化，也能做出世界一流的模型。</p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 2: 融资时间线 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#3b82f6;letter-spacing:3px;margin:0 0 6px 0">PART 2</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">⏳ 21天估值翻5倍：融资时间线</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 16px 0">从4月初到5月上旬，DeepSeek的估值经历了戏剧性的<strong style="color:#111111">"三级跳"</strong>：</p>
+
+  <!-- 时间线 - 使用表格实现 -->
+  <table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:0 0 16px 0">
+    <tr>
+      <td style="padding:10px 12px;background-color:#0f172a;color:#ffffff;font-size:13px;font-weight:600;width:80px">日期</td>
+      <td style="padding:10px 12px;background-color:#0f172a;color:#ffffff;font-size:13px;font-weight:600">事件</td>
+      <td style="padding:10px 12px;background-color:#0f172a;color:#3b82f6;font-size:13px;font-weight:600;width:100px;text-align:right">估值</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;background-color:#f8fafc;border-bottom:1px solid #e2e8f0;font-size:13px;color:#3b82f6;font-weight:600">4月初</td>
+      <td style="padding:10px 12px;background-color:#f8fafc;border-bottom:1px solid #e2e8f0;font-size:13px;color:#334155">启动首轮融资，初始计划3亿美元（期权定价）</td>
+      <td style="padding:10px 12px;background-color:#f8fafc;border-bottom:1px solid #e2e8f0;font-size:13px;color:#64748b;text-align:right">≈$10B</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;background-color:#ffffff;border-bottom:1px solid #e2e8f0;font-size:13px;color:#3b82f6;font-weight:600">4.22</td>
+      <td style="padding:10px 12px;background-color:#ffffff;border-bottom:1px solid #e2e8f0;font-size:13px;color:#334155">腾讯、阿里洽谈，估值翻倍</td>
+      <td style="padding:10px 12px;background-color:#ffffff;border-bottom:1px solid #e2e8f0;font-size:13px;color:#64748b;text-align:right">>$20B</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;background-color:#f8fafc;border-bottom:1px solid #e2e8f0;font-size:13px;color:#3b82f6;font-weight:600">4.27</td>
+      <td style="padding:10px 12px;background-color:#f8fafc;border-bottom:1px solid #e2e8f0;font-size:13px;color:#334155">工商变更：梁文锋直接持股1%→34%，合计控制84.29%<sup>[7][8]</sup></td>
+      <td style="padding:10px 12px;background-color:#f8fafc;border-bottom:1px solid #e2e8f0;font-size:13px;color:#64748b;text-align:right">—</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;background-color:#ffffff;border-bottom:1px solid #e2e8f0;font-size:13px;color:#3b82f6;font-weight:600">5.6</td>
+      <td style="padding:10px 12px;background-color:#ffffff;border-bottom:1px solid #e2e8f0;font-size:13px;color:#334155">国家大基金洽谈领投<sup>[9]</sup></td>
+      <td style="padding:10px 12px;background-color:#ffffff;border-bottom:1px solid #e2e8f0;font-size:13px;color:#64748b;text-align:right">≈$45B</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;background-color:#eff6ff;font-size:13px;color:#3b82f6;font-weight:600">5.8-9</td>
+      <td style="padding:10px 12px;background-color:#eff6ff;font-size:13px;color:#1e40af;font-weight:600">梁文锋自掏200亿消息传出；计划募资500亿元</td>
+      <td style="padding:10px 12px;background-color:#eff6ff;font-size:13px;color:#1e40af;font-weight:600;text-align:right">≈$51.5B</td>
+    </tr>
+  </table>
+
+  <p style="font-size:12px;color:#94a3b8;line-height:1.5;margin:0 0 16px 0">数据来源：The Information、36氪、新浪财经、天眼查、澎湃新闻等多方综合。DeepSeek官方尚未置评。</p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 3: 三重压力 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#3b82f6;letter-spacing:3px;margin:0 0 6px 0">PART 3</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">⚡ 为什么要拿钱？三重现实压力</h2>
+
+  <!-- 压力 1: 算力 -->
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 6px 0"><strong style="color:#111111">🔹 算力：从"算法巧胜"到"消耗战"</strong></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">两年前的大模型竞赛还可以靠算法巧思"四两拨千斤"，如今则是赤裸裸的算力消耗战。</p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">V4系列1.6T参数、V4.1即将多模态——每一步都需要天文数字的算力投入。36氪说得直白：<strong style="color:#111111">"幻方量化再有钱，也撑不住一场与全球巨头正面交锋的算力军备竞赛。"</strong><sup style="color:#3b82f6">[4]</sup></p>
+
+  <!-- 压力 2: 人才 -->
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 6px 0"><strong style="color:#111111">🔹 人才：明星研究员接连出走</strong></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">DeepSeek团队以高密度人才著称，几乎不社招。但这也意味着<strong style="color:#111111">每一个核心研究员的权重被放大到极致</strong>。自2025年下半年以来，至少5名核心研发人员出走：</p>
+
+  <section style="padding:14px 18px;border-radius:10px;background-color:#fff7ed;border:1px solid #fed7aa;margin:0 0 16px 0">
+    <p style="font-size:14px;color:#9a3412;line-height:1.7;margin:0 0 4px 0">• 郭达雅 → 字节跳动，Agent负责人之一</p>
+    <p style="font-size:14px;color:#9a3412;line-height:1.7;margin:0 0 4px 0">• 罗福莉 → 小米，雷军亲自挖角</p>
+    <p style="font-size:14px;color:#9a3412;line-height:1.7;margin:0 0 4px 0">• 王炳宣、魏浩然等也陆续离开</p>
+    <p style="font-size:14px;color:#9a3412;line-height:1.7;margin:0">• Meta开出的天价合同包：4年2亿至3亿美元</p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 16px 0">此次融资的重要目的之一，就是给员工做期权定价，用股权留住人才。</p>
+
+  <!-- 压力 3: 产品化 -->
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 6px 0"><strong style="color:#111111">🔹 产品化：实验室必须走向市场</strong></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">据The Information报道，DeepSeek员工已开始向企业客户推广模型。V4.1的MCP协议支持正是为了企业接入。</p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">一个实验室可以只关心benchmark。一家AI公司必须关心客户、收入、交付和成本。</p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 4: 资本局 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#3b82f6;letter-spacing:3px;margin:0 0 6px 0">PART 4</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">♟️ 一场精心设计的"资本局"</h2>
+
+  <!-- 200亿 -->
+  <section style="padding:20px;border-radius:12px;background-color:#0f172a;margin:0 0 16px 0">
+    <p style="font-size:28px;color:#3b82f6;font-weight:900;text-align:center;margin:0 0 8px 0">¥200亿</p>
+    <p style="font-size:14px;color:#94a3b8;line-height:1.7;margin:0;text-align:center">梁文锋自掏腰包，占募资总额40%，成为最大投资方</p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 6px 0"><strong style="color:#111111">创始人自掏200亿——控制权保卫战</strong></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">在全球AI史上，这种"创始人大额领投"的模式极为罕见。业内分析，200亿背后大概率有银行授信支持。<sup style="color:#3b82f6">[13]</sup></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">如果梁文锋在这一轮只小额跟投甚至不参与，外部投资人的定价权会更大，战略方向会受到更多牵制。<strong style="color:#111111">200亿买下的，是在这个估值区间主导对话的权利。</strong></p>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 6px 0"><strong style="color:#111111">只收"两种钱"</strong></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">从公开信息看，DeepSeek对投资方精挑细选：</p>
+
+  <section style="padding:14px 18px;border-radius:10px;background-color:#f0f9ff;border:1px solid #bae6fd;margin:0 0 8px 0">
+    <p style="font-size:14px;color:#0c4a6e;line-height:1.7;margin:0"><strong>国家大基金</strong>洽谈领投——战略资本，不干预技术路线，提供算力、政策资源</p>
+  </section>
+  <section style="padding:14px 18px;border-radius:10px;background-color:#ecfdf5;border:1px solid #a7f3d0;margin:0 0 8px 0">
+    <p style="font-size:14px;color:#065f46;line-height:1.7;margin:0"><strong>腾讯</strong>拟出资约60亿元，获约2%股权——产业资本，生态协同</p>
+  </section>
+  <section style="padding:14px 18px;border-radius:10px;background-color:#fef2f2;border:1px solid #fecaca;margin:0 0 16px 0">
+    <p style="font-size:14px;color:#991b1b;line-height:1.7;margin:0"><strong>传统财务VC</strong>（红杉、高瓴等）全部被拒之门外。阿里巴巴未能在条款上达成一致。<sup>[4]</sup></p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 6px 0"><strong style="color:#111111">先锁股权，再开门迎客</strong></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">4月27日，梁文锋通过直接增资，将持股从1%提升至34%，叠加间接持股合计控制84.29%。<strong style="color:#111111">无论外部资本进来多少，控制权都牢不可破。</strong><sup>[7][8]</sup></p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 5: 五强格局 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#3b82f6;letter-spacing:3px;margin:0 0 6px 0">PART 5</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">🏛️ 更大的背景：国产大模型"五强"格局</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 16px 0">DeepSeek的融资不是孤例。2026年5月7日至14日，一周之内中国大模型公司轮番刷新估值：</p>
+
+  <!-- 五强动态 -->
+  <section style="padding:14px 18px;border-radius:10px;background-color:#f0f9ff;border:1px solid #bae6fd;margin:0 0 8px 0">
+    <p style="font-size:14px;color:#0c4a6e;line-height:1.7;margin:0"><strong>5月7日</strong> — 月之暗面(Kimi)完成约$20亿D轮，估值破$200亿。美团龙珠领投，中国移动、CPE源峰跟投。</p>
+  </section>
+  <section style="padding:14px 18px;border-radius:10px;background-color:#fefce8;border:1px solid #fde68a;margin:0 0 8px 0">
+    <p style="font-size:14px;color:#854d0e;line-height:1.7;margin:0"><strong>5月8日</strong> — 阶跃星辰传出近$25亿融资，产业链资本集中入场，加快赴港IPO。</p>
+  </section>
+  <section style="padding:14px 18px;border-radius:10px;background-color:#ecfdf5;border:1px solid #a7f3d0;margin:0 0 16px 0">
+    <p style="font-size:14px;color:#065f46;line-height:1.7;margin:0"><strong>5月13日</strong> — 智谱港股大涨36.9%，市值突破5000亿港元；MiniMax涨18.46%，市值2566亿港元。<sup>[13]</sup></p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">一组数据值得细品：</p>
+
+  <section style="padding:16px 20px;border-radius:10px;background-color:#fff7ed;border:1px solid #fed7aa;margin:0 0 16px 0">
+    <p style="font-size:14px;color:#9a3412;line-height:1.8;margin:0"><strong>智谱AI</strong> — 2025年营收不足8亿元，市值>5000亿港元</p>
+    <p style="font-size:14px;color:#9a3412;line-height:1.8;margin:0"><strong>科大讯飞</strong> — 年营收271亿元、净利8.39亿元，市值≈1187亿元</p>
+    <p style="font-size:14px;color:#9a3412;line-height:1.8;margin:6px 0 0 0">亏损中的智谱，估值是盈利中的科大讯飞近<strong>4倍</strong>。</p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">资本来源也在变化——从"美元+互联网"到"国资+产业链资本"。大模型已不只是商业故事，更是<b>国家科技竞争力的关键筹码</b>。<sup style="color:#3b82f6">[13]</sup></p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 6: V4.1 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#3b82f6;letter-spacing:3px;margin:0 0 6px 0">PART 6</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">🚀 V4.1六月见，DeepSeek正在加速</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">据The Information报道，DeepSeek计划<strong style="color:#111111">2026年6月</strong>推出V4.1。三大升级：</p>
+
+  <section style="padding:14px 18px;border-radius:10px;background-color:#ecfdf5;border:1px solid #a7f3d0;margin:0 0 8px 0">
+    <p style="font-size:14px;color:#065f46;line-height:1.7;margin:0"><strong>🖼️ 全模态覆盖</strong> — 新增图像、音频理解（输出以文本为主）</p>
+  </section>
+  <section style="padding:14px 18px;border-radius:10px;background-color:#eff6ff;border:1px solid #bfdbfe;margin:0 0 8px 0">
+    <p style="font-size:14px;color:#1e40af;line-height:1.7;margin:0"><strong>🔗 原生MCP协议</strong> — 企业客户可直接接入真实业务流程</p>
+  </section>
+  <section style="padding:14px 18px;border-radius:10px;background-color:#f8fafc;border:1px solid #cbd5e1;margin:0 0 16px 0">
+    <p style="font-size:14px;color:#334155;line-height:1.7;margin:0"><strong>🧰 企业级工具链</strong> — 配套发布</p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">此外，<strong style="color:#111111">下半年将支持华为昇腾算力</strong>——从英伟达到国产芯片的适配已启动。<sup>[10]</sup></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">旧模型名将在7月24日停用，开发者需在此之前完成迁移。<sup>[10]</sup></p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 7: 写在最后 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#3b82f6;letter-spacing:3px;margin:0 0 6px 0">EPILOGUE</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">✍️ 理想主义者的下一站</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 16px 0">V4发布时，DeepSeek在末尾引用了一句古语：</p>
+
+  <section style="padding:16px 20px;border-radius:10px;background-color:#0f172a;margin:0 0 16px 0">
+    <p style="font-size:16px;color:#f8fafc;line-height:1.9;margin:0;text-align:center"><strong>"不诱于誉，不恐于诽，<br>率道而行，端然正己。"</strong></p>
+    <p style="font-size:12px;color:#64748b;text-align:center;margin:8px 0 0 0">—— 荀子《非十二子》<sup>[10]</sup></p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">不被赞誉诱惑，不被诽谤吓倒。这是DeepSeek想要保持的姿态。</p>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">但"率道而行"的前提，是先有足够的弹药。</p>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 6px 0">500亿是弹药。200亿是姿态。V4.1是下一步。</p>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 16px 0">曾经不融资、不商业化的DeepSeek，正在学习用一家公司的方式继续做AI。它能否在"不丢失灵魂"的前提下完成蜕变——这或许是2026年中国AI最值得关注的故事。</p>
+
+  <section style="padding:16px 20px;border-radius:10px;background-color:#f0f9ff;border:1px solid #bae6fd;margin:0">
+    <p style="font-size:15px;color:#0c4a6e;line-height:1.9;margin:0;text-align:center"><strong>理想主义没有错。<br><span style="color:#3b82f6">但理想主义也需要被喂养。</span></strong></p>
+  </section>
+</section>
+
+<!-- ===== 互动区 ===== -->
+<section style="padding:24px 24px 20px;background-color:#f8fafc">
+  <p style="font-size:14px;color:#334155;line-height:1.8;margin:0 0 8px 0"><strong>💬 你怎么看DeepSeek这轮融资？</strong></p>
+  <p style="font-size:14px;color:#64748b;line-height:1.8;margin:0">500亿估值合理吗？梁文锋自掏200亿是信心还是无奈？欢迎评论区聊聊。</p>
+</section>
+
+<!-- ===== 尾部 ===== -->
+<section style="background-color:#0f172a;padding:36px 28px 32px;text-align:center">
+  <p style="font-size:13px;color:#94a3b8;margin:0 0 6px 0">@AI深度解读 · 只分享有用的</p>
+  <p style="font-size:12px;color:#475569;margin:0">关注获取更多 AI 深度解读</p>
+</section>
+
+<!-- ===== 参考资料 ===== -->
+<section style="padding:24px 24px 20px;background-color:#ffffff">
+  <p style="font-size:13px;color:#334155;font-weight:600;margin:0 0 10px 0">📚 参考资料</p>
+  <p style="font-size:12px;color:#94a3b8;line-height:1.8;margin:0 0 4px 0">[1] The Information, "DeepSeek to Raise $7 Billion", 2026.05</p>
+  <p style="font-size:12px;color:#94a3b8;line-height:1.8;margin:0 0 4px 0">[2] 新浪财经，《DeepSeek 500亿天价融资》，2026.05.11</p>
+  <p style="font-size:12px;color:#94a3b8;line-height:1.8;margin:0 0 4px 0">[3] 凤凰科技/量子位，2026.05.09</p>
+  <p style="font-size:12px;color:#94a3b8;line-height:1.8;margin:0 0 4px 0">[4] 36氪/澎湃新闻，《梁文锋难逃资本局》, 2026.05.13</p>
+  <p style="font-size:12px;color:#94a3b8;line-height:1.8;margin:0 0 4px 0">[5] 福布斯中国内地富豪榜，2025</p>
+  <p style="font-size:12px;color:#94a3b8;line-height:1.8;margin:0 0 4px 0">[6] Nature，DeepSeek团队论文，2025.01</p>
+  <p style="font-size:12px;color:#94a3b8;line-height:1.8;margin:0 0 4px 0">[7] 天眼查工商信息，2026.04.27</p>
+  <p style="font-size:12px;color:#94a3b8;line-height:1.8;margin:0 0 4px 0">[8] 搜狐财经，2026.04.28</p>
+  <p style="font-size:12px;color:#94a3b8;line-height:1.8;margin:0 0 4px 0">[9] 上海证券报，引述渠道人士报道，2026.05</p>
+  <p style="font-size:12px;color:#94a3b8;line-height:1.8;margin:0 0 4px 0">[10] 量子位/36氪，DeepSeek-V4发布报道，2026.04.24</p>
+  <p style="font-size:12px;color:#94a3b8;line-height:1.8;margin:0 0 4px 0">[11] 百度百科"DeepSeek-V4.1"词条</p>
+  <p style="font-size:12px;color:#94a3b8;line-height:1.8;margin:0 0 4px 0">[12] ChooseAI, "DeepSeek V4.1 Locked for June", 2026.05.09</p>
+  <p style="font-size:12px;color:#94a3b8;line-height:1.8;margin:0">[13] 科创板日报，《五强格局成型》，2026.05.15</p>
+</section>
+
+</section>
 </body>
 </html>

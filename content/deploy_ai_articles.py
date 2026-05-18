@@ -67,15 +67,15 @@ articles = [
      ['wechat-article-mp.html', 'wechat-article.html', 'deepseek-v4-article.html',
       'deepseek-v4-analysis.html', 'assets-generator.html', 'share-cards.html', 'cover-assets.html']),
     ('2026-04-29_chatgpt-ads-breakdown', '2026-04-29_chatgpt-ads-breakdown',
-     ['wechat-article-mp.html', 'article-full.html', 'share-cards.html', 'cover-assets.html']),
+     ['wechat-article-mp.html', 'wechat-article-mp-en.html', 'article-full.html', 'share-cards.html', 'cover-assets.html']),
     ('2026-05-03_deploy-static-site-lessons', '2026-05-03_deploy-static-site-lessons',
-     ['wechat-article-mp.html', 'article-full.html', 'share-cards.html', 'cover-assets.html']),
+     ['wechat-article-mp.html', 'wechat-article-mp-en.html', 'article-full.html', 'share-cards.html', 'cover-assets.html']),
     ('2026-05-17_anthropic-900b-valuation', '2026-05-17_anthropic-900b-valuation',
      ['wechat-article-mp.html', 'article-full.html', 'cover-assets.html', 'share-cards.html']),
     ('2026-05-17_ai-coding-agent-war', '2026-05-17_ai-coding-agent-war',
      ['wechat-article-mp.html', 'article-full.html', 'cover-assets.html', 'share-cards.html']),
     ('deepseek-funding', 'deepseek-funding',
-     ['wechat-article-mp.html', 'article-full.html', 'share-cards.html', 'cover-assets.html']),
+     ['wechat-article-mp.html', 'wechat-article-mp-en.html', 'article-full.html', 'share-cards.html', 'cover-assets.html']),
 ]
 
 # 收集所有文章文件
