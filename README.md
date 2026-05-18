@@ -11,10 +11,10 @@
 | # | 日期 | 选题 | 类型 | 状态 |
 |---|------|------|------|------|
 | 1 | 2026-04-24 | [DeepSeek V4 深度解读](./content/2026-04-24_deepseek-v4-deep-dive/) | 模型评测 | ✅ **已发布**（获推广奖励🎉） |
-| 2 | 2026-04-29 | [ChatGPT 广告技术链路拆解](./content/2026-04-29_chatgpt-ads-breakdown/) | 技术调查 | 📝 待发布 |
+| 2 | 2026-04-29 | [ChatGPT 广告技术链路拆解](./content/2026-04-29_chatgpt-ads-breakdown/) | 技术调查 | ✅ **已发布** |
 | 3 | 2026-05-03 | [部署静态网站踩坑实录](./content/2026-05-03_deploy-static-site-lessons/) | DevOps实操 | 📝 待发布 |
-| 4 | 2026-05-17 | [Anthropic 估值 $9000 亿超越 OpenAI](./content/2026-05-17_anthropic-900b-valuation/) | 资本分析 | 📝 待发布 |
-| 5 | 2026-05-17 | [AI 编码 Agent 终端战争](./content/2026-05-17_ai-coding-agent-war/) | 趋势解读 | 📝 待发布 |
+| 4 | 2026-05-17 | [Anthropic 估值 $9000 亿超越 OpenAI](./content/2026-05-17_anthropic-900b-valuation/) | 资本分析 | ✅ **已发布** |
+| 5 | 2026-05-17 | [AI 编码 Agent 终端战争](./content/2026-05-17_ai-coding-agent-war/) | 趋势解读 | ✅ **已发布** |
 
 ---
 
