@@ -24,6 +24,9 @@
 | `README.md` | 选题元数据和发布记录 |
 | `wechat-article-mp.html` | 公众号专用版（纯内联样式） |
 | `article-full.html` | 网站全文版（深色科技风） |
+| `share-cards.html` | 贴图分享卡片 |
+| `cover-assets.html` | 封面素材 |
+| `troubleshooting-log.md` | 完整排查日志 |
 
 ## 发布记录
 
