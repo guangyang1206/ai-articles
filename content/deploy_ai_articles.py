@@ -60,41 +60,31 @@ files = {
     'index.html': read_file(os.path.join(CONTENT_DIR, 'ai-articles-index.html')),
 }
 
-# === Article 1: DeepSeek V4 ===
-ds_dir = os.path.join(CONTENT_DIR, '2026-04-24_deepseek-v4-deep-dive')
-for fname in ['wechat-article-mp.html', 'wechat-article.html', 'deepseek-v4-article.html', 
-              'deepseek-v4-analysis.html', 'assets-generator.html']:
-    fpath = os.path.join(ds_dir, fname)
-    if os.path.exists(fpath):
-        files[f'deepseek-v4/{fname}'] = read_file(fpath)
+# === 文章配置：目录 → 部署路径前缀 → 文件清单 ===
+articles = [
+    # (本地目录, 部署路径前缀, 要部署的文件名列表)
+    ('2026-04-24_deepseek-v4-deep-dive', '2026-04-24_deepseek-v4-deep-dive',
+     ['wechat-article-mp.html', 'wechat-article.html', 'deepseek-v4-article.html',
+      'deepseek-v4-analysis.html', 'assets-generator.html', 'share-cards.html', 'cover-assets.html']),
+    ('2026-04-29_chatgpt-ads-breakdown', '2026-04-29_chatgpt-ads-breakdown',
+     ['wechat-article-mp.html', 'article-full.html', 'share-cards.html', 'cover-assets.html']),
+    ('2026-05-03_deploy-static-site-lessons', '2026-05-03_deploy-static-site-lessons',
+     ['wechat-article-mp.html', 'article-full.html', 'share-cards.html', 'cover-assets.html']),
+    ('2026-05-17_anthropic-900b-valuation', '2026-05-17_anthropic-900b-valuation',
+     ['wechat-article-mp.html', 'article-full.html', 'cover-assets.html', 'share-cards.html']),
+    ('2026-05-17_ai-coding-agent-war', '2026-05-17_ai-coding-agent-war',
+     ['wechat-article-mp.html', 'article-full.html', 'cover-assets.html', 'share-cards.html']),
+    ('deepseek-funding', 'deepseek-funding',
+     ['wechat-article-mp.html', 'article-full.html', 'share-cards.html', 'cover-assets.html']),
+]
 
-# === Article 2: ChatGPT Ads ===
-ads_dir = os.path.join(CONTENT_DIR, '2026-04-29_chatgpt-ads-breakdown')
-for fname in ['wechat-article-mp.html', 'article-full.html', 'share-cards.html', 'cover-assets.html']:
-    fpath = os.path.join(ads_dir, fname)
-    if os.path.exists(fpath):
-        files[f'chatgpt-ads/{fname}'] = read_file(fpath)
-
-# === Article 3: Deploy Lessons ===
-deploy_dir = os.path.join(CONTENT_DIR, '2026-05-03_deploy-static-site-lessons')
-for fname in ['wechat-article-mp.html', 'article-full.html']:
-    fpath = os.path.join(deploy_dir, fname)
-    if os.path.exists(fpath):
-        files[f'deploy-lessons/{fname}'] = read_file(fpath)
-
-# === Article 4: Anthropic Valuation ===
-anthropic_dir = os.path.join(CONTENT_DIR, '2026-05-17_anthropic-900b-valuation')
-for fname in ['wechat-article-mp.html', 'article-full.html', 'cover-assets.html']:
-    fpath = os.path.join(anthropic_dir, fname)
-    if os.path.exists(fpath):
-        files[f'anthropic-valuation/{fname}'] = read_file(fpath)
-
-# === Article 5: AI Coding Agent War ===
-agent_dir = os.path.join(CONTENT_DIR, '2026-05-17_ai-coding-agent-war')
-for fname in ['wechat-article-mp.html', 'article-full.html', 'cover-assets.html']:
-    fpath = os.path.join(agent_dir, fname)
-    if os.path.exists(fpath):
-        files[f'ai-coding-agent/{fname}'] = read_file(fpath)
+# 收集所有文章文件
+for local_dir, deploy_prefix, fnames in articles:
+    src_dir = os.path.join(CONTENT_DIR, local_dir)
+    for fname in fnames:
+        fpath = os.path.join(src_dir, fname)
+        if os.path.exists(fpath):
+            files[f'{deploy_prefix}/{fname}'] = read_file(fpath)
 
 # --- 显示文件清单 ---
 print(f"📂 准备部署 {len(files)} 个文件到 {CNAME}\n")
@@ -115,11 +105,12 @@ print(f"   状态码: {status}")
 if status == 200:
     print(f"\n✅ 部署成功！")
     print(f"   🌐 索引页: https://{CNAME}/")
-    print(f"   📱 DeepSeek V4: https://{CNAME}/deepseek-v4/wechat-article-mp.html")
-    print(f"   📱 ChatGPT 广告: https://{CNAME}/chatgpt-ads/wechat-article-mp.html")
-    print(f"   📱 部署踩坑: https://{CNAME}/deploy-lessons/wechat-article-mp.html")
-    print(f"   📱 Anthropic 估值: https://{CNAME}/anthropic-valuation/article-full.html")
-    print(f"   📱 AI 编码 Agent: https://{CNAME}/ai-coding-agent/article-full.html")
+    print(f"   📱 DeepSeek V4: https://{CNAME}/2026-04-24_deepseek-v4-deep-dive/wechat-article-mp.html")
+    print(f"   📱 ChatGPT 广告: https://{CNAME}/2026-04-29_chatgpt-ads-breakdown/wechat-article-mp.html")
+    print(f"   📱 部署踩坑: https://{CNAME}/2026-05-03_deploy-static-site-lessons/wechat-article-mp.html")
+    print(f"   📱 Anthropic 估值: https://{CNAME}/2026-05-17_anthropic-900b-valuation/wechat-article-mp.html")
+    print(f"   📱 AI 编码 Agent: https://{CNAME}/2026-05-17_ai-coding-agent-war/wechat-article-mp.html")
+    print(f"   📱 DeepSeek 融资: https://{CNAME}/deepseek-funding/article-full.html")
 else:
     print(f"\n❌ 部署失败:")
     print(json.dumps(resp, ensure_ascii=False, indent=2))

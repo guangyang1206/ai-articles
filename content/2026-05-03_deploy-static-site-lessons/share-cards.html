@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>部署静态网站踩坑实录 - 贴图分享卡片</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+.card {
+  width: 375px;
+  min-height: 520px;
+  border-radius: 16px;
+  padding: 40px 32px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Card 1: 封面 ===== */
+.card-1 {
+  background: #000000;
+  color: #ffffff;
+}
+
+.card-1 .tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid #333;
+  border-radius: 100px;
+  font-size: 11px;
+  color: #888;
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+}
+
+.card-1 h1 {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.card-1 h1 span {
+  color: #10b981;
+}
+
+.card-1 .subtitle {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.7;
+  margin-bottom: auto;
+}
+
+.card-1 .footer-info {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #222;
+}
+
+.card-1 .footer-info p {
+  font-size: 11px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ===== Card 2-7: 内容卡片 ===== */
+.card-light {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #111;
+}
+
+.card-light .card-number {
+  font-size: 11px;
+  font-weight: 600;
+  color: #10b981;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.card-light h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+}
+
+.card-light .content {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.9;
+  flex: 1;
+}
+
+.card-light .content strong {
+  color: #111;
+}
+
+.card-light .highlight-box {
+  background: #f9fafb;
+  border-left: 3px solid #10b981;
+  padding: 14px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.card-light .code-block {
+  background: #111827;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  font-family: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
+  font-size: 12px;
+  color: #e5e7eb;
+  line-height: 1.8;
+}
+
+.card-light .card-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-light .card-footer .page-num {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.card-light .card-footer .author {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* ===== Card Dark variant ===== */
+.card-dark {
+  background: #0a0a0a;
+  border: 1px solid #1f1f1f;
+  color: #fafafa;
+}
+
+.card-dark .card-number {
+  font-size: 11px;
+  font-weight: 600;
+  color: #10b981;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.card-dark h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+  color: #fafafa;
+}
+
+.card-dark .content {
+  font-size: 14px;
+  color: #a1a1aa;
+  line-height: 1.9;
+  flex: 1;
+}
+
+.card-dark .content strong {
+  color: #fafafa;
+}
+
+.card-dark .highlight-box {
+  background: #18181b;
+  border-left: 3px solid #10b981;
+  padding: 14px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #d4d4d8;
+}
+
+.card-dark .code-block {
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  font-family: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
+  font-size: 12px;
+  color: #a1a1aa;
+  line-height: 1.8;
+}
+
+.card-dark .card-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #27272a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-dark .card-footer .page-num {
+  font-size: 11px;
+  color: #52525b;
+}
+
+.card-dark .card-footer .author {
+  font-size: 11px;
+  color: #52525b;
+}
+
+/* Checklist styling */
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+.checklist li .check-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.checklist li .check-green {
+  background: #065f46;
+  color: #a7f3d0;
+}
+
+.checklist li .check-yellow {
+  background: #78350f;
+  color: #fde68a;
+}
+
+.checklist li .check-red {
+  background: #7f1d1d;
+  color: #fecaca;
+}
+
+/* Error pill */
+.error-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  margin-bottom: 8px;
+}
+
+.error-badge-dark {
+  background: #450a0a;
+  color: #fca5a5;
+  border: 1px solid #7f1d1d;
+}
+
+/* Print/Screenshot helper */
+@media print {
+  body { background: white; }
+  .card { break-inside: avoid; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="card-container">
+
+<!-- ===== CARD 1: 封面 ===== -->
+<div class="card card-1">
+  <span class="tag">实战记录 · 2026.05.03</span>
+  <h1><span>部署静态网站</span><br>踩坑实录</h1>
+  <p class="subtitle">
+    从蓝盾 CI/CD 自动化到本地脚本部署，<br>
+    一次看似简单的上线，经历了 6 轮排查。<br><br>
+    SSH 端口配置 · 防火墙规则 · SELinux 上下文<br>
+    Nginx 代理转发 · fail2ban 安全加固<br><br>
+    把踩过的坑写成检查清单，下次别掉进去。
+  </p>
+  <div class="footer-info">
+    <p>来自一线运维的完整排查记录</p>
+    <p>@Guang Yang · 2026.05.03</p>
+  </div>
+</div>
+
+<!-- ===== CARD 2: CI/CD 陷阱 ===== -->
+<div class="card card-light">
+  <span class="card-number">01 / 06</span>
+  <h2>🚢 CI/CD 配置陷阱</h2>
+  <div class="content">
+    <p><strong>蓝盾流水线显示「部署成功」，但登录服务器无响应。</strong></p>
+    <br>
+    <p>现象很奇怪——<br>
+    流水线日志明明报「连接成功，文件已传输」，<br>
+    手动 SSH 却持续超时，连不上服务。</p>
+    <br>
+    <p>排查后发现根因：</p>
+
+    <div class="highlight-box">
+      BKS_SSH_PORT 变量指向 SSH 默认 22 端口，<br>
+      而实际服务器 SSH 监听在 <strong>2222 端口</strong>。<br>
+      CI/CD 的 SSH 配置被构建变量的默认值覆盖了。
+    </div>
+
+    <p><strong>解决方案：</strong></p>
+    <p>在蓝盾流水线中明确设置 <code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-size:12px">SSH_PORT=2222</code>，<br>
+    并在部署脚本中显式引用 <code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-size:12px">$BKS_SSH_PORT</code> 变量。</p>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">1/6</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 3: 防火墙 ===== -->
+<div class="card card-dark">
+  <span class="card-number">02 / 06</span>
+  <h2>🔥 防火墙规则遗漏</h2>
+  <div class="content">
+    <p><strong>手动 SSH 仍然频繁超时，TCP 端口不可达。</strong></p>
+    <br>
+    <p><code style="background:#27272a;color:#a1a1aa;padding:2px 6px;border-radius:4px;font-size:12px">telnet ip 2222</code> 无响应，<br>
+    <code style="background:#27272a;color:#a1a1aa;padding:2px 6px;border-radius:4px;font-size:12px">nmap -sS ip -p 2222</code> 显示 filtered。</p>
+    <br>
+    <p>检查 <code style="background:#27272a;color:#a1a1aa;padding:2px 6px;border-radius:4px;font-size:12px">firewall-cmd</code> 后发现：</p>
+
+    <div class="code-block">
+      # 当前规则：缺少 2222 端口<br>
+      firewall-cmd --list-all<br>
+      # → public (active)<br>
+      #   ports: 80/tcp 443/tcp
+    </div>
+
+    <p><strong>解决方案：</strong></p>
+    <div class="code-block">
+      firewall-cmd --add-port=2222/tcp --permanent<br>
+      firewall-cmd --reload
+    </div>
+
+    <div class="highlight-box">
+      ⚠️ 添加新端口后一定要 <strong>--reload</strong>，否则规则不会生效。
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">2/6</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 4: SELinux 403 ===== -->
+<div class="card card-light">
+  <span class="card-number">03 / 06</span>
+  <h2>🔒 SELinux 403 之谜</h2>
+  <div class="content">
+    <p><strong>Nginx 配置完毕，访问却返回 403 Forbidden。</strong></p>
+    <br>
+    <p>权限没错，owner 没错，目录可读——<br>
+    浏览器就是固执地返回 403。</p>
+    <br>
+    <p>检查 SELinux 日志：</p>
+
+    <div class="code-block">
+      # /var/log/audit/audit.log 中看到：<br>
+      type=AVC msg=audit(...): avc:  denied  { getattr }<br>
+      for pid=... comm="nginx"<br>
+      scontext=system_u:system_r:httpd_t:s0<br>
+      tcontext=unconfined_u:object_r:<strong>default_t</strong>:s0
+    </div>
+
+    <p>文件从其他路径复制过来，<br>
+    SELinux 上下文标记为 <code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-size:12px">default_t</code>，<br>
+    Nginx 的 <code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-size:12px">httpd_t</code> 域无权读取。</p>
+
+    <div class="highlight-box">
+      <strong>修复：</strong>恢复目录 SELinux 上下文<br>
+      restorecon -Rv /var/www/static-site
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">3/6</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 5: 502 代理转发 ===== -->
+<div class="card card-dark">
+  <span class="card-number">04 / 06</span>
+  <h2>💥 502 Bad Gateway</h2>
+  <div class="content">
+    <p><strong>403 刚解决，又迎来 502 Bad Gateway。</strong></p>
+    <br>
+    <p>Nginx 已经能提供静态文件，<br>
+    但代理转发到后端服务时报 502。</p>
+    <br>
+    <p>排查链路：</p>
+    <br>
+    <p>① 检查后端服务是否运行 → <strong>✓ 正常</strong></p>
+    <p>② 检查 Nginx proxy_pass 配置 → <strong>找到了</strong></p>
+
+    <div class="code-block">
+      # 错误的配置：<br>
+      location /api/ {<br>
+      &nbsp;&nbsp;proxy_pass http://localhost:3000;  ← 少了 <strong>/</strong><br>
+      }
+    </div>
+
+    <p>③ Nginx <code style="background:#27272a;color:#a1a1aa;padding:2px 6px;border-radius:4px;font-size:12px">proxy_pass</code> 末尾有无 <strong>/</strong> 行为完全不同：</p>
+    
+    <div class="highlight-box">
+      带 / → 去掉匹配前缀后转发<br>
+      不带 / → 将完整 URI 原样转发<br>
+      <strong>加了 / 后，502 秒变 200。</strong>
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">4/6</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 6: 安全加固 ===== -->
+<div class="card card-light">
+  <span class="card-number">05 / 06</span>
+  <h2>🛡️ 服务器被爆破攻击</h2>
+  <div class="content">
+    <p><strong>系统刚跑起来，auth.log 里全是爆破记录。</strong></p>
+    <br>
+    <p>上线不到 1 小时，<br>
+    <code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-size:12px">journalctl -u sshd</code> 显示来自 10+ 个 IP 的暴力破解尝试：</p>
+
+    <div class="code-block">
+      Failed password for root from<br>
+      192.168.x.x port 51722 ssh2<br>
+      → 每分钟上百次尝试
+    </div>
+
+    <p><strong>加固方案：</strong></p>
+    <br>
+    <p>① 关闭密码登录，启用 <strong>密钥认证</strong></p>
+
+    <div class="code-block">
+      # /etc/ssh/sshd_config<br>
+      PasswordAuthentication no<br>
+      PubkeyAuthentication yes
+    </div>
+
+    <p>② 安装 <strong>fail2ban</strong> 自动封禁</p>
+
+    <div class="code-block">
+      [sshd]<br>
+      enabled = true<br>
+      maxretry = 3<br>
+      bantime = 3600
+    </div>
+
+    <div class="highlight-box">
+      配置完成后立即生效，爆破 IP 被封禁后，<br>
+      auth.log 安静如初。
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">5/6</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 7: 总结检查清单 ===== -->
+<div class="card card-1" style="min-height:480px">
+  <span class="tag">总结 · CHECKLIST</span>
+  <h1 style="font-size:22px">部署检查清单 <span>6 步</span></h1>
+  <div class="subtitle" style="margin-top:20px;line-height:2.0;font-size:13px;color:#a1a1aa">
+    <p><span style="color:#10b981;font-weight:700">✅</span> ① <strong style="color:#fff">检查 SSH 端口</strong> — CI/CD 变量与服务器一致</p>
+    <p><span style="color:#10b981;font-weight:700">✅</span> ② <strong style="color:#fff">放通防火墙端口</strong> — firewall-cmd + --reload</p>
+    <p><span style="color:#10b981;font-weight:700">✅</span> ③ <strong style="color:#fff">检查 SELinux 上下文</strong> — restorecon 恢复</p>
+    <p><span style="color:#10b981;font-weight:700">✅</span> ④ <strong style="color:#fff">验证 proxy_pass 末尾 /</strong> — 带不带行为不同</p>
+    <p><span style="color:#10b981;font-weight:700">✅</span> ⑤ <strong style="color:#fff">关闭密码登录</strong> — SSH 密钥认证必须</p>
+    <p><span style="color:#10b981;font-weight:700">✅</span> ⑥ <strong style="color:#fff">部署 fail2ban</strong> — 3 次失败即封 1 小时</p>
+    <br>
+    <p style="color:#555;font-size:12px;margin-top:16px;line-height:1.8">
+      ————<br>
+      这些坑不是理论知识，是真实花了好几晚熬出来的。把它们写下来，是为了让你一次跨过。
+    </p>
+  </div>
+  <div class="footer-info" style="margin-top:auto">
+    <p style="color:#10b981;font-size:12px">只分享真正有用的 · 不装 · 不水</p>
+    <p>@Guang Yang · 2026.05.03</p>
+  </div>
+</div>
+
+</div>
+
+<!-- 使用说明 -->
+<div style="max-width:600px;margin-top:40px;padding:24px;background:#fff;border-radius:12px;border:1px solid #e5e7eb">
+  <h3 style="font-size:16px;margin-bottom:12px;color:#111">📋 使用说明</h3>
+  <p style="font-size:13px;color:#555;line-height:1.8">
+    1. 每张卡片尺寸为 375×520px，适合手机屏幕截图分享<br>
+    2. 可以直接对每张卡片截图，用于小红书 / 即刻 / 朋友圈图片分享<br>
+    3. 卡片底色交替排布（黑 → 浅 → 深 → 浅 → 深 → 浅 → 黑），视觉节奏感强<br>
+    4. 设计风格：Vercel/Linear 极简风（黑白灰 + 绿色 #10b981 点缀）<br>
+    5. 卡片编号遵循 01/06 → 06/06，共 6 张内容卡 + 1 张封面
+  </p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>贴图版 · DeepSeek融资速览</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* 贴图卡片（就是一张图，直接截屏即可） */
+.postcard {
+  width: 520px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+}
+
+.postcard-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 50%, #1a365d 100%);
+  color: #fff;
+  padding: 28px 24px 20px;
+  text-align: center;
+}
+
+.postcard-header .label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+.postcard-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.postcard-header .tagline {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-top: 8px;
+}
+
+.postcard-body {
+  padding: 20px 24px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.stat-row:last-child { border-bottom: none; }
+
+.stat-label {
+  font-size: 14px;
+  color: #555;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2b6cb0;
+}
+
+.stat-value.big { font-size: 24px; color: #c53030; }
+
+.postcard-footer {
+  padding: 14px 24px;
+  background: #f7f8fa;
+  font-size: 11px;
+  color: #999;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* 五强对比贴图 */
+.comparison {
+  width: 520px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+}
+
+.comparison-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%);
+  color: #fff;
+  padding: 20px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.comparison-body { padding: 16px 24px; }
+
+.comp-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.comp-row:last-child { border-bottom: none; }
+
+.comp-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.comp-name .tag {
+  display: inline-block;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  font-weight: 400;
+}
+
+.tag-public { background: #c6f6d5; color: #22543d; }
+.tag-private { background: #bee3f8; color: #1a365d; }
+
+.comp-num {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2b6cb0;
+}
+
+.comp-num.highlight { color: #c53030; }
+
+.comp-note {
+  font-size: 11px;
+  color: #999;
+  font-weight: 400;
+}
+
+/* 金句卡 */
+.quote-card {
+  width: 520px;
+  background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%);
+  border-radius: 12px;
+  padding: 36px 30px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.quote-card blockquote {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.quote-card cite {
+  font-style: normal;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+}
+
+/* 数字大卡 */
+.big-number {
+  width: 520px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.big-number .number {
+  font-size: 48px;
+  font-weight: 800;
+  color: #c53030;
+  line-height: 1.2;
+}
+
+.big-number .unit {
+  font-size: 18px;
+  font-weight: 600;
+  color: #666;
+  margin-left: 4px;
+}
+
+.big-number .desc {
+  font-size: 14px;
+  color: #888;
+  margin-top: 6px;
+}
+
+.big-number .note {
+  font-size: 12px;
+  color: #bbb;
+  margin-top: 16px;
+}
+</style>
+</head>
+<body>
+
+<!-- 贴图1：主数字卡 -->
+<div class="postcard">
+  <div class="postcard-header">
+    <div class="label">DEEPSEEK 首轮融资</div>
+    <h2>不融资的理想主义者<br>终于拿钱了</h2>
+    <div class="tagline">梁文锋自掏200亿 · V4.1六月见</div>
+  </div>
+  <div class="postcard-body">
+    <div class="stat-row">
+      <span class="stat-label">计划募资</span>
+      <span class="stat-value big">500亿</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">投后估值</span>
+      <span class="stat-value big">≈515亿美元</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">梁文锋个人出资</span>
+      <span class="stat-value">200亿元（占40%）</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">估值翻倍用时</span>
+      <span class="stat-value">21天</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">腾讯拟出资</span>
+      <span class="stat-value">约60亿元（≈2%股权）</span>
+    </div>
+  </div>
+  <div class="postcard-footer">
+    信息来源：The Information、36氪、新浪财经等 · 截至2026年5月 · 融资仍在洽谈中
+  </div>
+</div>
+
+<!-- 贴图2：五强格局 -->
+<div class="comparison">
+  <div class="comparison-header">2026年5月 · 中国大模型五强格局</div>
+  <div class="comparison-body">
+    <div class="comp-row">
+      <span class="comp-name">DeepSeek <span class="tag tag-private">未上市</span></span>
+      <span class="comp-num highlight">≈515亿<span class="comp-note">美元估值</span></span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-name">月之暗面/Kimi <span class="tag tag-private">未上市</span></span>
+      <span class="comp-num">>200亿<span class="comp-note">美元估值</span></span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-name">智谱 <span class="tag tag-public">已上市</span></span>
+      <span class="comp-num highlight">>5000亿<span class="comp-note">港元市值</span></span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-name">MiniMax <span class="tag tag-public">已上市</span></span>
+      <span class="comp-num">2566亿<span class="comp-note">港元市值</span></span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-name">阶跃星辰 <span class="tag tag-private">未上市</span></span>
+      <span class="comp-num">近25亿<span class="comp-note">美元融资</span></span>
+    </div>
+  </div>
+  <div class="postcard-footer">
+    数据来源：科创板日报，2026年5月15日 · 信息有出入，以官方披露为准
+  </div>
+</div>
+
+<!-- 贴图3：金句卡 -->
+<div class="quote-card">
+  <blockquote>"不诱于誉，不恐于诽，<br>率道而行，端然正己。"</blockquote>
+  <cite>—— 荀子《非十二子》<br>DeepSeek V4发布稿的自引</cite>
+</div>
+
+<!-- 贴图4：三重压力 -->
+<div class="postcard">
+  <div class="postcard-header" style="background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);">
+    <div class="label">DEEPSEEK 为什么融资</div>
+    <h2>三重现实，<br>撞碎了理想主义</h2>
+  </div>
+  <div class="postcard-body">
+    <div class="stat-row">
+      <span class="stat-label" style="font-weight:700;color:#333;">🧮 算力</span>
+      <span class="stat-value">V4.1下月发 · 多模态+万卡消耗</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label" style="font-weight:700;color:#333;">🧑‍💻 人才</span>
+      <span class="stat-value">5名核心研究员出走 · 需期权留人</span>
+    </div>
+    <div class="stat-row" style="border-bottom:none;">
+      <span class="stat-label" style="font-weight:700;color:#333;">🏭 产品化</span>
+      <span class="stat-value">企业客户推广 · MCP协议接入</span>
+    </div>
+  </div>
+  <div class="postcard-footer">
+    信息来源：36氪、The Information
+  </div>
+</div>
+
+</body>
+</html>

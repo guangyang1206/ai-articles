@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-en="DeepSeek's $7B Pivot" data-zh="DeepSeek 的 500 亿转身">DeepSeek's $7B Pivot · yeranyang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0c0e;
+      --surface: #141416;
+      --surface-hover: #1a1a1f;
+      --border: #222228;
+      --border-hover: #3a3a50;
+      --text: #e8e8ec;
+      --text-muted: #6b6b80;
+      --text-dim: #3a3a4a;
+      --accent: #7c6df2;
+      --accent-soft: rgba(124, 109, 242, 0.1);
+      --green: #4ade80;
+      --green-soft: rgba(74, 222, 128, 0.08);
+      --amber: #fbbf24;
+      --amber-soft: rgba(251, 191, 36, 0.08);
+      --rose: #fb7185;
+      --rose-soft: rgba(251, 113, 133, 0.08);
+      --sky: #38bdf8;
+      --sky-soft: rgba(56, 189, 248, 0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, 'Noto Sans CJK SC', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.3;
+      pointer-events: none; z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 600px;
+      background: radial-gradient(ellipse, rgba(124,109,242,0.08) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+
+    .wrapper {
+      position: relative; z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--text-muted);
+      text-decoration: none; margin-bottom: 40px;
+      transition: color .2s;
+    }
+    .back-link:hover { color: var(--text); }
+
+    /* ── Header block ── */
+    .article-header {
+      margin-bottom: 40px;
+    }
+    .article-header .label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-dim); margin-bottom: 12px;
+    }
+    .article-header h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 32px; font-weight: 400;
+      line-height: 1.25; letter-spacing: -0.5px;
+      margin-bottom: 14px;
+    }
+    .article-header .meta {
+      font-size: 13px; color: var(--text-muted);
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
+    .article-header .meta .tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 11px; font-weight: 500;
+      padding: 3px 9px; border-radius: 6px;
+    }
+    .tag-primary { background: var(--accent-soft); color: var(--accent); }
+    .tag-amber { background: var(--amber-soft); color: var(--amber); }
+    .tag-rose { background: var(--rose-soft); color: var(--rose); }
+    .tag-green { background: var(--green-soft); color: var(--green); }
+    .tag-sky { background: var(--sky-soft); color: var(--sky); }
+
+    /* ── Article body ── */
+    .article-body { line-height: 1.85; font-size: 16px; color: #d4d4dc; }
+
+    .article-body h2 {
+      font-size: 20px; font-weight: 500;
+      margin: 40px 0 16px; color: var(--text);
+      letter-spacing: -0.3px;
+    }
+    .article-body h3 {
+      font-size: 17px; font-weight: 500;
+      margin: 28px 0 12px; color: var(--accent);
+    }
+    .article-body p {
+      margin-bottom: 18px;
+      font-weight: 300;
+    }
+    .article-body strong { color: var(--text); font-weight: 500; }
+
+    .article-body blockquote {
+      margin: 20px 0;
+      padding: 16px 20px;
+      border-left: 3px solid var(--accent);
+      background: rgba(124,109,242,0.04);
+      border-radius: 0 8px 8px 0;
+      font-size: 15px;
+      color: #b8b8c8;
+      line-height: 1.7;
+    }
+
+    .article-body blockquote cite {
+      display: block; margin-top: 8px;
+      font-style: normal; font-size: 13px; color: var(--text-muted);
+    }
+
+    .article-body ul, .article-body ol {
+      margin: 12px 0 18px; padding-left: 22px;
+    }
+    .article-body li {
+      margin-bottom: 8px; font-weight: 300;
+    }
+
+    /* ── Data callout ── */
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 20px 0;
+    }
+    .callout-highlight {
+      border-left: 3px solid var(--accent);
+      background: rgba(124,109,242,0.04);
+    }
+    .callout-amber {
+      border-left: 3px solid var(--amber);
+      background: rgba(251,191,36,0.04);
+    }
+    .callout-rose {
+      border-left: 3px solid var(--rose);
+      background: rgba(251,113,133,0.04);
+    }
+    .callout p { margin-bottom: 6px; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    /* ── Data row ── */
+    .data-row {
+      display: flex; justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .data-row:last-child { border-bottom: none; }
+    .data-row .label { color: var(--text-muted); font-size: 14px; font-weight: 300; }
+    .data-row .value { color: var(--text); font-size: 15px; font-weight: 500; }
+
+    /* ── Timeline ── */
+    .timeline-wrap {
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .tl-row {
+      display: flex;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .tl-row:last-child { border-bottom: none; }
+    .tl-date {
+      width: 90px; min-width: 90px;
+      padding: 10px 14px;
+      font-size: 13px; font-weight: 500;
+      color: var(--accent);
+    }
+    .tl-event {
+      flex: 1; padding: 10px 12px;
+      font-size: 13px; color: #b8b8c8; font-weight: 300;
+    }
+    .tl-valuation {
+      width: 110px; min-width: 110px;
+      padding: 10px 14px;
+      text-align: right; font-size: 13px;
+      font-weight: 600; color: var(--rose);
+    }
+
+    /* ── Source ── */
+    .source-line {
+      font-size: 12px; color: var(--text-dim);
+      margin: 8px 0 20px;
+    }
+
+    /* ── Footnote ── */
+    .footnote {
+      margin-top: 48px; padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 12px; color: var(--text-dim);
+      line-height: 1.7;
+    }
+    .footnote p { margin-bottom: 6px; }
+    .footnote a { color: var(--accent); text-decoration: none; }
+    .footnote a:hover { text-decoration: underline; }
+
+    /* ── Divider ── */
+    .divider {
+      text-align: center; color: var(--text-dim);
+      margin: 36px 0; font-size: 14px; letter-spacing: 6px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .wrapper { padding: 40px 16px 60px; }
+      .article-header h1 { font-size: 24px; }
+      .article-body { font-size: 15px; }
+      .tl-date { width: 70px; min-width: 70px; }
+      .tl-valuation { width: 90px; min-width: 90px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <!-- Language switcher -->
+    <button id="lang-btn" onclick="toggleLang()"
+      style="position:fixed;top:16px;right:20px;z-index:999;
+             background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+             color:#e8e8ec;padding:6px 14px;border-radius:6px;font-size:13px;
+             cursor:pointer;backdrop-filter:blur(8px);transition:all .2s">EN</button>
+
+    <!-- Back -->
+    <a class="back-link" href="/" data-en="← Back to Home" data-zh="← 返回首页">← Back to Home</a>
+
+    <!-- Article Header -->
+    <div class="article-header">
+      <div class="label" data-en="AI Deep Dive · May 2026" data-zh="AI 深度解读 · 2026年5月">AI Deep Dive · May 2026</div>
+      <h1 data-en="DeepSeek Gave Up 'No Funding': $7B, Liang Wenfeng's $2.8B Stake, V4.1 in June" data-zh="不融资的 DeepSeek 终于拿钱了：500亿、梁文锋自掏200亿、V4.1六月见">DeepSeek Gave Up 'No Funding': $7B, Liang Wenfeng's $2.8B Stake, V4.1 in June</h1>
+      <div class="meta">
+        <span data-en="May 18, 2026" data-zh="2026年5月18日">May 18, 2026</span>
+        <span class="tag tag-primary" data-en="DeepSeek" data-zh="DeepSeek">DeepSeek</span>
+        <span class="tag tag-amber" data-en="Funding" data-zh="融资">Funding</span>
+        <span class="tag tag-sky" data-en="AI Industry" data-zh="AI 产业">AI Industry</span>
+        <span class="tag tag-green" data-en="~4,500 words" data-zh="约4500字">~4,500 words</span>
+      </div>
+    </div>
+
+    <div class="article-body" data-en-content="" data-zh-content="">
+
+<!-- ========== ENGLISH VERSION ========== -->
+<div lang="en">
+<p>In May 2026, China's primary market was set ablaze by a single piece of news.</p>
+
+<p>DeepSeek — the AI lab long known for its "no funding, no IPO, no commercialization" stance — has officially launched its first-ever external equity round. According to The Information citing multiple sources, the company is seeking to raise up to 50 billion yuan (~$7.3 billion), valuing it at around 350 billion yuan ($51.5 billion) post-money. <sup>[1][2]</sup></p>
+
+<p>Even more striking: founder Liang Wenfeng plans to personally contribute up to 20 billion yuan ($2.8 billion), accounting for 40% of the total raise. <sup>[1][3]</sup></p>
+
+<p>Just 21 days earlier, market estimates had DeepSeek at roughly $10 billion, with an initial plan to raise only $300 million — primarily for employee option pricing. In three weeks, valuation jumped 4x and the fundraising target ballooned 24x. <sup>[4]</sup></p>
+
+<p>What happened?</p>
+
+<div class="divider">· · ·</div>
+
+<h2>1. The Idealist's "Three No's"</h2>
+
+<p>Liang Wenfeng, born 1985 in Zhanjiang, Guangdong, holds an undergraduate and master's degree from Zhejiang University. He started in quantitative finance: in 2008, his 7-person team used machine learning for quant trading, achieving 500% returns in five months. He founded High-Flyer Quant in 2015, which grew to manage over 100 billion yuan by 2021. In 2025, High-Flyer delivered a 56.6% average return, netting Liang over $700 million that year alone.<sup>[4]</sup> He made the Forbes China Rich List with an $11.5 billion fortune, ranking 34th. <sup>[5]</sup></p>
+
+<p>But Liang's ambition went beyond finance.</p>
+
+<p>As early as 2020, High-Flyer made a highly unconventional decision — plowing profits into building its own GPU cluster. "Firefly一号" carried thousands of high-end GPUs, laying the groundwork for what would become DeepSeek. <sup>[4]</sup></p>
+
+<p>In July 2023, DeepSeek was officially founded. Liang established three iron rules: no outside funding, no IPO, and no commercialization.</p>
+
+<blockquote>"DeepSeek's goal is to build world-class general-purpose AI models — not to make money, not to go public. Capital chases short-term returns; commercialization compromises technical direction." <sup>[4]</sup></blockquote>
+
+<p>In the 2023-2024 AI gold rush, this was a near-rebellious stance. While ByteDance, Alibaba, and Baidu poured billions into AI, and startups like Zhipu, Baichuan, and Moonshot raised rounds after rounds, DeepSeek stayed quiet — funded entirely by High-Flyer, no roadshows, no marketing, no enterprise deals.</p>
+
+<p>Then came the technical payoff.</p>
+
+<div class="callout callout-highlight">
+  <p><strong>May 2024</strong> — DeepSeek-V2 launched with an innovative MoE architecture.</p>
+  <p><strong>Dec 2024</strong> — DeepSeek-V3 open-sourced with a 53-page technical report.</p>
+  <p><strong>Jan 2025</strong> — DeepSeek-R1 matched OpenAI o1 on math, code, and reasoning tasks. Published in Nature, the paper revealed R1's training cost at just $294,000 — a fraction of comparable US models. <sup>[6]</sup></p>
+</div>
+
+<p>DeepSeek became the technical benchmark for Chinese LLMs. The "Three No's" was celebrated as proof that world-class AI could thrive without venture capital.</p>
+
+<div class="divider">· · ·</div>
+
+<h2>2. The 21-Day, 5x Valuation Surge</h2>
+
+<p>From early April to early May, DeepSeek's valuation went through a dramatic triple jump.</p>
+
+<div class="timeline-wrap">
+  <div class="tl-row">
+    <div class="tl-date">Early Apr</div>
+    <div class="tl-event">Launching first funding round, initial plan: $300M for option pricing</div>
+    <div class="tl-valuation">~$10B</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-date">Apr 22</div>
+    <div class="tl-event">Tencent, Alibaba in talks; valuation doubles</div>
+    <div class="tl-valuation">>$20B</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-date">Apr 27</div>
+    <div class="tl-event">Business registration change: Liang's direct stake 1%→34%, total control ~84.29% <sup>[7][8]</sup></div>
+    <div class="tl-valuation">—</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-date">May 6</div>
+    <div class="tl-event">China Integrated Circuit Industry Investment Fund (Big Fund) reported in talks to lead <sup>[9]</sup></div>
+    <div class="tl-valuation">~$45B</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-date">May 8-9</div>
+    <div class="tl-event">Liang's personal $2.8B investment revealed; total target: $7.3B <sup>[1][3]</sup></div>
+    <div class="tl-valuation">~$51.5B</div>
+  </div>
+</div>
+<div class="source-line">Sources: The Information, 36Kr, Sina Finance, Tianyancha. DeepSeek has not officially commented.</div>
+
+<div class="divider">· · ·</div>
+
+<h2>3. Why Take the Money? Three Pressures</h2>
+
+<h3>Compute: From Algorithmic Brilliance to a War of Attrition</h3>
+
+<p>Two years ago, LLM contests could be won with clever algorithms. Today, it's a raw compute war.</p>
+
+<p>On April 24, DeepSeek-V4 launched in two versions: V4-Pro (1.6T params, 49B active) and V4-Flash (284B, 13B active), both with 1M context. <sup>[10]</sup> V4.1, slated for June, adds image and audio understanding plus enterprise-ready MCP support. <sup>[11][12]</sup></p>
+
+<p>All of this demands massive compute. As 36Kr put it bluntly: <strong>"High-Flyer has deep pockets, but not deep enough for a compute arms race against global giants."</strong> <sup>[4]</sup></p>
+
+<h3>Talent: Star Researchers Are Leaving</h3>
+
+<p>DeepSeek has long run a lean, high-density team — mostly fresh graduates and interns, minimal lateral hiring. But this model means every departure hurts.</p>
+
+<p>Since H2 2025, at least five core researchers have left. Guo Daya joined ByteDance as an Agent lead. Luo Fuli was poached by Lei Jun for Xiaomi. Wang Bingxuan and Wei Haoran also departed. <sup>[4]</sup></p>
+
+<p>Industry observers believe this funding round is partly about creating option pools to retain talent.</p>
+
+<h3>Productization: The Lab Must Go to Market</h3>
+
+<p>According to The Information, DeepSeek employees have begun pitching models to enterprise clients. V4.1's MCP protocol support is explicitly designed for enterprise integration. The company also plans to accelerate its release cadence to closer match industry norms. <sup>[1]</sup></p>
+
+<p>A lab can focus on benchmarks. A serious AI company must focus on customers, revenue, delivery, and cost structure.</p>
+
+<div class="divider">· · ·</div>
+
+<h2>4. A Carefully Orchestrated Capital Play</h2>
+
+<h3>$2.8 Billion for What? Control.</h3>
+
+<p>A founder personally investing $2.8 billion in their own company's funding round is virtually unprecedented in global AI. This isn't impulse — it's a meticulously planned control defense.</p>
+
+<p>Liang plans to contribute 40% of the total raise, making himself the largest investor. Industry insiders told <em>KCB</em> that the capital likely involves bank credit lines. <sup>[13]</sup></p>
+
+<p>Had he participated only as a minority co-investor, external investors would have gained far more pricing power over the company's direction. The $2.8 billion buys the right to dominate conversation at this valuation.</p>
+
+<h3>Only Two Kinds of Money Accepted</h3>
+
+<ul>
+  <li><strong>National Big Fund</strong> (China IC Fund) in talks to lead — strategic capital that won't interfere with technical direction, and brings compute and policy resources <sup>[9]</sup></li>
+  <li><strong>Tencent</strong> reportedly investing ~$850M for ~2% equity — industrial capital for ecosystem synergy <sup>[4]</sup></li>
+  <li>Traditional VCs (Sequoia, Hillhouse, etc.) reportedly all turned away <sup>[4]</sup></li>
+</ul>
+
+<p>Alibaba and DeepSeek reportedly failed to reach agreement on terms. <sup>[4]</sup> (Note: single-source report, not independently confirmed.)</p>
+
+<h3>Lock Down Ownership First, Then Open the Door</h3>
+
+<p>Before opening the funding round, DeepSeek executed a crucial structural move. On April 27, registered capital increased from 10M to 15M yuan. Liang's direct stake jumped from 1% to 34%, giving him total effective control of approximately 84.29%. <sup>[7][8]</sup></p>
+
+<p>No matter how much external capital enters, Liang's control is locked in.</p>
+
+<div class="divider">· · ·</div>
+
+<h2>5. The Big Picture: China's "Big Five" LLM Landscape</h2>
+
+<p>DeepSeek's funding wasn't an isolated event. Between May 7-14, Chinese LLM companies rewrote valuation records in a single week. <sup>[13]</sup></p>
+
+<div class="callout callout-amber">
+  <p><strong>May 7</strong> — Moonshot AI (Kimi) closed ~$2B Series D, topping $20B valuation. Lead investor: Meituan Longzhu.</p>
+  <p><strong>May 8</strong> — Stepfun reported ~$2.5B funding with supply-chain investors (Huaqin, Longcheer, OV) joining, fast-tracking HK IPO.</p>
+  <p><strong>May 13</strong> — Zhipu AI jumped 36.9% in HK trading, market cap exceeding HK$500B; MiniMax rose 18.46% to HK$256.6B.</p>
+</div>
+<div class="source-line">Source: KCB Daily, "Big Five Take Shape, China's LLM Valuations Explode," May 15, 2026.</div>
+
+<p>A revealing comparison: Zhipu AI's 2025 revenue was under RMB 800M, yet its market cap surpassed HK$500B. Compare with iFlytek, the veteran AI company, with RMB 27.1B in revenue — its market cap that day was roughly RMB 118.7B. A loss-making Zhipu was valued at nearly 4x profitable iFlytek. <sup>[13]</sup></p>
+
+<div class="divider">· · ·</div>
+
+<h2>6. V4.1 in June, DeepSeek Is Accelerating</h2>
+
+<p>Beyond the funding, DeepSeek's product pace is visibly quickening.</p>
+
+<p>According to The Information, V4.1 is scheduled for <strong>June 2026</strong>, bringing three upgrades:</p>
+
+<ul>
+  <li><strong>Full multimodal support</strong> — image and audio understanding (text output only)</li>
+  <li><strong>Native MCP protocol</strong> — easier enterprise integration</li>
+  <li><strong>Enterprise toolchain</strong> — launched alongside</li>
+</ul>
+
+<p>Also confirmed at V4 launch: <strong>Huawei Ascend compute support in H2 2026</strong> — the shift from NVIDIA to domestic chips has begun. <sup>[10]</sup></p>
+
+<p>Legacy model names (deepseek-chat, deepseek-reasoner) will be deprecated on July 24. <sup>[10]</sup></p>
+
+<div class="divider">· · ·</div>
+
+<h2>The Idealist's Next Chapter</h2>
+
+<p>When V4 launched in April, DeepSeek ended its release note with an ancient Chinese proverb:</p>
+
+<blockquote>"Not seduced by praise, not intimidated by slander — follow the Way and stand upright." — Xunzi, "Against the Twelve Masters" <sup>[10]</sup>
+<cite>— DeepSeek V4 launch postscript</cite></blockquote>
+
+<p>But "following the Way" requires ammunition.</p>
+
+<p>$7.3 billion is ammunition. $2.8 billion is a stance. V4.1 is the next step.</p>
+
+<p>DeepSeek — the lab that once rejected venture capital — is learning to operate as a company. Whether it can complete this transformation without losing its soul may be the most compelling story in Chinese AI for 2026.</p>
+
+<p>Idealism isn't wrong. But idealism needs to be fed.</p>
+
+<!-- Footnotes -->
+<div class="footnote">
+  <p><strong>Sources</strong></p>
+  <p>[1] The Information, "DeepSeek to Raise $7 Billion, Startup Plots Revenue Efforts," May 2026</p>
+  <p>[2] Sina Finance, "DeepSeek's $7.3B Funding: A Watershed for Chinese AI," May 11, 2026</p>
+  <p>[3] Phoenix Tech/QBitAI, "Liang Wenfeng Puts in $2.8B, DeepSeek Record $7.3B Round, V4.1 in June," May 9, 2026</p>
+  <p>[4] 36Kr, "DeepSeek Raises $7.3B, Liang Wenfeng Caught in the Capital Game," May 13, 2026</p>
+  <p>[5] Forbes China Rich List, 2025</p>
+  <p>[6] Nature, DeepSeek team paper, January 2025</p>
+  <p>[7] Tianyancha business registry, April 27, 2026</p>
+  <p>[8] Sohu Finance, "DeepSeek Capital Increase to 15M Yuan, Liang Holds Over 84%," April 28, 2026</p>
+  <p>[9] Shanghai Securities News, citing channel sources</p>
+  <p>[10] QBitAI/36Kr, DeepSeek-V4 launch coverage, April 24, 2026</p>
+  <p>[11] Baidu Baike, "DeepSeek-V4.1" entry</p>
+  <p>[12] ChooseAI, "DeepSeek V4.1 Locked for June," May 9, 2026</p>
+  <p>[13] KCB Daily, "Five-Headed Pattern Forms," May 15, 2026</p>
+</div>
+
+</div>
+<!-- ========== END ENGLISH ========== -->
+
+<!-- ========== CHINESE VERSION ========== -->
+<div lang="zh" style="display:none;">
+<p>2026年5月的中国一级市场，被一则消息彻底点燃。</p>
+
+<p>长期坚持"不融资、不商业化、不路演"的DeepSeek，正式启动成立以来的首轮外部股权融资。据The Information援引知情人士消息，本轮计划募资规模高达500亿元人民币（约合73.5亿美元），投后估值直指3500亿元人民币（约515亿美元）。<sup>[1][2]</sup></p>
+
+<p>更令人意外的是——创始人梁文锋个人计划出资最高达200亿元，占本轮募资总额的40%。<sup>[1][3]</sup></p>
+
+<p>21天前，市场对DeepSeek的估值还停留在100亿美元左右，初始融资计划仅为3亿美元，主要用于期权定价。21天后，估值暴涨超4倍，融资规模翻了24倍。<sup>[4]</sup></p>
+
+<p>发生了什么？</p>
+
+<div class="divider">· · ·</div>
+
+<h2>一、一个理想主义者的"三不铁律"</h2>
+
+<p>梁文锋，1985年生于广东湛江，浙江大学本硕毕业。他的故事从金融圈开始：2008年，刚毕业的他带着7人团队，用机器学习模型做量化交易，五个月实现500%收益。2015年正式创立幻方量化，2021年管理规模突破千亿。2025年，幻方量化平均收益率达56.6%，仅当年就为梁文锋带来超7亿美元收入。<sup>[4]</sup>同年，他登上福布斯中国内地富豪榜，以115亿美元身家位列第34位。<sup>[5]</sup></p>
+
+<p>但梁文锋的野心不止于金融。早在2020年，幻方量化就将大量利润投入自建GPU计算集群。"萤火一号"搭载上千张高端GPU，为后来布局AGI埋下了伏笔。<sup>[4]</sup></p>
+
+<p>2023年7月，杭州深度求索注册成立，DeepSeek正式亮相。梁文锋立下三条铁律：不融资、不上市、不商业化。</p>
+
+<blockquote>"DeepSeek的目标是做世界顶级的通用大模型，不是为了赚钱，也不是为了上市。资本会追求短期回报，商业化会妥协技术路线。"<sup>[4]</sup></blockquote>
+
+<p>在资本疯狂涌入AI赛道的2023-2024年，这是一个近乎"叛逆"的选择。但DeepSeek用技术回报证明了这条路走得通。</p>
+
+<div class="callout callout-highlight">
+  <p><strong>2024年5月</strong> — DeepSeek-V2发布，创新的MoE架构引发行业热议。</p>
+  <p><strong>2024年12月</strong> — DeepSeek-V3开源，公布53页技术细节。</p>
+  <p><strong>2025年1月</strong> — DeepSeek-R1发布，在数学、代码、推理上比肩OpenAI o1。据《自然》杂志论文，R1训练成本仅29.4万美元。<sup>[6]</sup></p>
+</div>
+
+<div class="divider">· · ·</div>
+
+<h2>二、21天估值翻5倍：融资时间线</h2>
+
+<div class="timeline-wrap">
+  <div class="tl-row">
+    <div class="tl-date">4月初</div>
+    <div class="tl-event">启动首轮融资，初始计划3亿美元（期权定价）</div>
+    <div class="tl-valuation">≈100亿美元</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-date">4月22日</div>
+    <div class="tl-event">腾讯、阿里洽谈，估值翻倍</div>
+    <div class="tl-valuation">>200亿美元</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-date">4月27日</div>
+    <div class="tl-event">工商变更：梁文锋直接持股1%→34%，合计控制约84.29%<sup>[7][8]</sup></div>
+    <div class="tl-valuation">—</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-date">5月6日</div>
+    <div class="tl-event">国家大基金洽谈领投<sup>[9]</sup></div>
+    <div class="tl-valuation">≈450亿美元</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-date">5月8-9日</div>
+    <div class="tl-event">梁文锋自掏200亿；计划募资500亿元<sup>[1][3]</sup></div>
+    <div class="tl-valuation">≈515亿美元</div>
+  </div>
+</div>
+<div class="source-line">数据来源：The Information、36氪、新浪财经、天眼查等。融资仍在洽谈中，DeepSeek官方尚未置评。</div>
+
+<div class="divider">· · ·</div>
+
+<h2>三、为什么要拿钱？三重现实压力</h2>
+
+<h3>算力：从"算法巧胜"到"消耗战"</h3>
+<p>V4系列1.6T参数、V4.1即将多模态——36氪说得很直接："幻方量化再有钱，也撑不住一场与全球巨头正面交锋的算力军备竞赛。"<sup>[4]</sup></p>
+
+<h3>人才：明星研究员接连出走</h3>
+<p>自2025年下半年以来，至少5名核心研发人员出走：郭达雅加入字节跳动，罗福莉被雷军挖至小米。<sup>[4]</sup>此轮融资的重要目的之一，就是给员工做期权定价。</p>
+
+<h3>产品化：实验室必须走向市场</h3>
+<p>据The Information报道，DeepSeek员工已开始向企业推广模型。V4.1的MCP协议支持，正是为了方便企业接入。<sup>[1]</sup></p>
+
+<div class="divider">· · ·</div>
+
+<h2>四、一场精心设计的"资本局"</h2>
+
+<p>梁文锋自掏200亿占40%，成为最大投资方。这不是冲动——200亿买的是控制权。</p>
+
+<p>从投资方结构看，DeepSeek只收"两种钱"：国家大基金（战略资本）+ 腾讯（产业资本）。传统财务VC据称全部被拒。阿里巴巴与DeepSeek未能在融资条款上达成一致。<sup>[4]</sup></p>
+
+<p>而在开门融资前，梁文锋已经通过工商变更把控制权锁死在84.29%。<sup>[7][8]</sup></p>
+
+<div class="divider">· · ·</div>
+
+<h2>五、更大的背景：国产大模型"五强"格局</h2>
+
+<p>一周之内：月之暗面D轮20亿美元→阶跃星辰近25亿美元→智谱大涨36.9%→MiniMax涨18.46%。<sup>[13]</sup></p>
+
+<p>一组值得细品的对比：智谱2025年营收不足8亿元，市值已超5000亿港元；科大讯飞年营收271亿元，市值仅1187亿。尚处于亏损的智谱，市值是盈利稳健的科大讯飞的近四倍。</p>
+
+<div class="divider">· · ·</div>
+
+<h2>六、V4.1六月见</h2>
+
+<p>全模态覆盖、原生MCP协议、企业级工具链。下半年支持华为昇腾算力。旧模型名7月24日停用。<sup>[10][11]</sup></p>
+
+<div class="divider">· · ·</div>
+
+<h2>理想主义者的下一站</h2>
+
+<blockquote>"不诱于誉，不恐于诽，率道而行，端然正己。"——荀子《非十二子》<sup>[10]</sup></blockquote>
+
+<p>500亿是弹药。200亿是姿态。V4.1是下一步。DeepSeek能否在"不丢失灵魂"的前提下，完成从实验室到商业公司的蜕变——这或许是2026年中国AI最值得关注的故事。</p>
+
+<div class="footnote">
+  <p><strong>声明与参考资料</strong></p>
+  <p>本文所引用的融资信息均来自The Information、36氪、新浪财经、科创板日报等媒体的公开报道。截至发稿，DeepSeek官方尚未对融资事宜作出正式置评。</p>
+  <p>[1]-[13] 同上英文版</p>
+</div>
+</div>
+<!-- ========== END CHINESE ========== -->
+
+    </div><!-- /article-body -->
+  </div><!-- /wrapper -->
+
+  <script>
+  // ── Bilingual i18n ──
+  function applyLang(lang) {
+    const show = lang === 'zh' ? 'zh' : 'en';
+    const hide = lang === 'zh' ? 'en' : 'zh';
+    document.querySelectorAll('[lang="' + show + '"]').forEach(el => el.style.display = '');
+    document.querySelectorAll('[lang="' + hide + '"]').forEach(el => el.style.display = 'none');
+    // Update text nodes with data-en/data-zh (for header/tags/etc)
+    document.querySelectorAll('[data-en]').forEach(el => {
+      if (el.hasAttribute('data-zh')) {
+        el.textContent = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+      }
+    });
+    const btn = document.getElementById('lang-btn');
+    if (btn) btn.textContent = lang === 'zh' ? '中文' : 'EN';
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    localStorage.setItem('lang', lang);
+  }
+  function toggleLang() {
+    const current = localStorage.getItem('lang') || 'en';
+    applyLang(current === 'en' ? 'zh' : 'en');
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    applyLang(localStorage.getItem('lang') || 'en');
+  });
+  </script>
+</body>
+</html>
