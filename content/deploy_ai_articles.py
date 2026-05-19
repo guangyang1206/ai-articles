@@ -74,7 +74,7 @@ articles = [
      ['wechat-article-mp.html', 'article-full.html', 'cover-assets.html', 'share-cards.html']),
     ('2026-05-17_ai-coding-agent-war', '2026-05-17_ai-coding-agent-war',
      ['wechat-article-mp.html', 'article-full.html', 'cover-assets.html', 'share-cards.html']),
-    ('deepseek-funding', 'deepseek-funding',
+    ('2026-05-18_deepseek-funding', '2026-05-18_deepseek-funding',
      ['wechat-article-mp.html', 'wechat-article-mp-en.html', 'article-full.html', 'share-cards.html', 'cover-assets.html']),
 ]
 
@@ -110,7 +110,7 @@ if status == 200:
     print(f"   📱 部署踩坑: https://{CNAME}/2026-05-03_deploy-static-site-lessons/wechat-article-mp.html")
     print(f"   📱 Anthropic 估值: https://{CNAME}/2026-05-17_anthropic-900b-valuation/wechat-article-mp.html")
     print(f"   📱 AI 编码 Agent: https://{CNAME}/2026-05-17_ai-coding-agent-war/wechat-article-mp.html")
-    print(f"   📱 DeepSeek 融资: https://{CNAME}/deepseek-funding/article-full.html")
+    print(f"   📱 DeepSeek 融资: https://{CNAME}/2026-05-18_deepseek-funding/article-full.html")
 else:
     print(f"\n❌ 部署失败:")
     print(json.dumps(resp, ensure_ascii=False, indent=2))
