@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=800">
+<title>DeepSeek 融资 - 手绘贴图</title>
+<style>
+/* ── 手绘风格竖向贴图 ── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #faf7f2;
+  font-family: 'Noto Sans CJK SC', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 24px;
+}
+
+/* 通用 */
+.card {
+  width: 540px;
+  background: #ffffff;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  position: relative;
+}
+
+/* ── 手绘装饰元素 ── */
+.hand-doodle {
+  position: absolute;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* ── 卡片1：封面 ── */
+.card-cover {
+  padding: 50px 36px 44px;
+  background: linear-gradient(160deg, #fff9f0 0%, #f0f4ff 100%);
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.card-cover .tag {
+  display: inline-block;
+  background: #ffedd5;
+  color: #c2410c;
+  font-size: 12px;
+  padding: 6px 18px;
+  border-radius: 100px;
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+.card-cover h1 {
+  font-size: 34px;
+  font-weight: 900;
+  color: #1c1917;
+  line-height: 1.3;
+  letter-spacing: -1px;
+  margin-bottom: 6px;
+}
+.card-cover .highlight-text {
+  background: linear-gradient(120deg, #fde68a 0%, #fde68a 40%, transparent 80%);
+  display: inline-block;
+  padding: 0 8px;
+}
+.card-cover .subtitle {
+  font-size: 15px;
+  color: #78716c;
+  line-height: 1.7;
+  margin-top: 10px;
+  margin-bottom: 32px;
+}
+.card-cover .big-number {
+  font-size: 56px;
+  font-weight: 900;
+  color: #2563eb;
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-top: 8px;
+}
+.card-cover .big-number-sub {
+  font-size: 13px;
+  color: #a8a29e;
+  margin-top: 6px;
+  letter-spacing: 0px;
+}
+
+/* 手绘图标区 */
+.cover-illustration {
+  width: 200px;
+  height: 120px;
+  margin: 20px auto 10px;
+  position: relative;
+}
+.cover-illustration .circle1 {
+  position: absolute;
+  width: 80px; height: 80px;
+  border: 3px solid #3b82f6;
+  border-radius: 50%;
+  top: 20px; left: 10px;
+  opacity: 0.3;
+}
+.cover-illustration .circle2 {
+  position: absolute;
+  width: 100px; height: 100px;
+  border: 3px dashed #f59e0b;
+  border-radius: 50%;
+  top: 10px; right: 20px;
+  opacity: 0.3;
+}
+.cover-illustration .line1 {
+  position: absolute;
+  width: 140px; height: 2px;
+  background: #a78bfa;
+  top: 50px; left: 30px;
+  transform: rotate(-15deg);
+  opacity: 0.2;
+}
+.cover-illustration .line2 {
+  position: absolute;
+  width: 100px; height: 2px;
+  background: #34d399;
+  top: 70px; left: 50px;
+  transform: rotate(10deg);
+  opacity: 0.2;
+}
+.cover-illustration .dot1, .cover-illustration .dot2, .cover-illustration .dot3 {
+  position: absolute;
+  border-radius: 50%;
+}
+.cover-illustration .dot1 { width: 10px; height: 10px; background: #3b82f6; top: 15px; left: 120px; opacity: 0.4; }
+.cover-illustration .dot2 { width: 6px; height: 6px; background: #f59e0b; top: 90px; left: 40px; opacity: 0.4; }
+.cover-illustration .dot3 { width: 8px; height: 8px; background: #a78bfa; top: 60px; left: 160px; opacity: 0.4; }
+
+.card-cover .footnote {
+  margin-top: 24px;
+  font-size: 12px;
+  color: #d6d3d1;
+}
+
+/* ── 卡片2：21天 ── */
+.card-timeline {
+  padding: 40px 32px 36px;
+  min-height: 700px;
+}
+.card-timeline .section-icon {
+  font-size: 14px;
+  color: #2563eb;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.card-timeline h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1c1917;
+  margin-bottom: 4px;
+}
+.card-timeline .sub-h {
+  font-size: 14px;
+  color: #a8a29e;
+  margin-bottom: 28px;
+}
+
+.tl-list-wrap {
+  position: relative;
+  padding-left: 6px;
+}
+.tl-line {
+  position: absolute;
+  left: 23px;
+  top: 28px;
+  bottom: 16px;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #bfdbfe 0px,
+    #bfdbfe 5px,
+    transparent 5px,
+    transparent 9px
+  );
+  z-index: 0;
+}
+.tl-node {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  position: relative;
+  align-items: flex-start;
+}
+.tl-dot {
+  width: 14px; height: 14px;
+  border: 3px solid #2563eb;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 3px;
+  background: #fff;
+  position: relative;
+  z-index: 1;
+}
+.tl-node:last-child .tl-dot { background: #2563eb; border-color: #2563eb; }
+.tl-content { flex: 1; }
+.tl-content .tl-date { font-size: 13px; color: #2563eb; font-weight: 700; margin-bottom: 2px; letter-spacing: 0.5px; }
+.tl-content .tl-event { font-size: 15px; color: #44403c; line-height: 1.5; font-weight: 600; }
+.tl-content .tl-detail { font-size: 13px; color: #a8a29e; margin-top: 2px; line-height: 1.5; }
+.tl-content .tl-amount-wrapper { margin-top: 6px; }
+.tl-content .tl-amount {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 3px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #dbeafe;
+}
+
+/* ── 卡片3：三重压力（手绘卡片式）── */
+.card-pressure {
+  padding: 40px 32px 36px;
+  min-height: 700px;
+  background: linear-gradient(170deg, #fff 0%, #faf5ff 100%);
+}
+.card-pressure .section-icon {
+  font-size: 14px;
+  color: #7c3aed;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.card-pressure h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1c1917;
+  margin-bottom: 24px;
+}
+.p-item {
+  background: #fff;
+  border: 2px solid #e7e5e4;
+  border-radius: 20px;
+  padding: 22px 20px;
+  margin-bottom: 14px;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.p-item::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 8px; right: 8px;
+  height: 4px;
+  background: #e7e5e4;
+  border-radius: 0 0 20px 20px;
+  opacity: 0.4;
+}
+.p-item .p-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+.p-item h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #292524;
+  margin-bottom: 6px;
+}
+.p-item p {
+  font-size: 14px;
+  color: #78716c;
+  line-height: 1.7;
+}
+.p-item .p-tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 10px;
+  border-radius: 100px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+.p-item .p-tag.blue { background: #eff6ff; color: #2563eb; }
+.p-item .p-tag.yellow { background: #fffbeb; color: #d97706; }
+.p-item .p-tag.green { background: #f0fdf4; color: #16a34a; }
+
+/* ── 卡片4：200亿 ── */
+.card-200b {
+  min-height: 680px;
+  padding: 50px 36px;
+  background: linear-gradient(150deg, #fff 0%, #fafafa 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.card-200b .label {
+  font-size: 14px;
+  color: #a8a29e;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.card-200b .big-num {
+  font-size: 64px;
+  font-weight: 900;
+  color: #2563eb;
+  letter-spacing: -3px;
+  line-height: 1;
+  margin-bottom: 12px;
+  position: relative;
+}
+.card-200b .big-num em {
+  font-style: normal;
+  position: relative;
+}
+.card-200b .big-num em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px; left: 0; right: 0;
+  height: 6px;
+  background: #fde68a;
+  z-index: -1;
+}
+.card-200b .desc {
+  font-size: 15px;
+  color: #44403c;
+  line-height: 1.7;
+  max-width: 400px;
+}
+.card-200b .highlight-chip {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 8px 22px;
+  background: #fef2f2;
+  border: 1.5px solid #fca5a5;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #dc2626;
+  font-weight: 600;
+}
+/* 手绘箭头装饰 */
+.arrow-doodle {
+  margin: 4px auto 14px;
+  position: relative;
+  text-align: center;
+}
+.arrow-doodle span {
+  font-size: 28px;
+  opacity: 0.25;
+  display: inline-block;
+  animation: none;
+}
+
+/* ── 卡片5：五强格局 ── */
+.card-five {
+  padding: 40px 32px 36px;
+  min-height: 700px;
+  background: linear-gradient(170deg, #f8fafc 0%, #f0f9ff 100%);
+}
+.card-five .section-icon {
+  font-size: 14px;
+  color: #0891b2;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.card-five h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1c1917;
+  margin-bottom: 24px;
+}
+.five-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 16px;
+  background: #fff;
+  border: 1.5px solid #e7e5e4;
+  border-radius: 14px;
+  margin-bottom: 10px;
+}
+.five-item .f-rank {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+  color: #fff;
+}
+.five-item:nth-child(1) .f-rank { background: #2563eb; }
+.five-item:nth-child(2) .f-rank { background: #7c3aed; }
+.five-item:nth-child(3) .f-rank { background: #f59e0b; color: #1c1917; }
+.five-item:nth-child(4) .f-rank { background: #10b981; }
+.five-item:nth-child(5) .f-rank { background: #ef4444; }
+.five-item .f-info { flex: 1; }
+.five-item .f-name { font-size: 15px; font-weight: 600; color: #292524; }
+.five-item .f-desc { font-size: 12px; color: #a8a29e; margin-top: 2px; }
+.five-item .f-val { font-size: 14px; font-weight: 700; color: #2563eb; }
+
+/* ── 卡片6：结语 ── */
+.card-end {
+  min-height: 680px;
+  padding: 50px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background: linear-gradient(150deg, #fff7ed 0%, #f0fdf4 100%);
+}
+.card-end .quote-icon {
+  font-size: 40px; opacity: 0.15;
+  margin-bottom: 8px;
+}
+.card-end .quote-text {
+  font-size: 20px;
+  color: #44403c;
+  line-height: 1.8;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+.card-end .quote-text em {
+  font-style: normal;
+  color: #2563eb;
+  font-weight: 700;
+}
+.card-end .end-line {
+  font-size: 26px;
+  font-weight: 900;
+  color: #1c1917;
+  line-height: 1.4;
+  letter-spacing: -0.5px;
+}
+.card-end .end-line span {
+  color: #78716c;
+  font-weight: 400;
+  font-size: 22px;
+}
+/* 手绘签名 */
+.signature {
+  margin-top: 30px;
+  font-size: 12px;
+  color: #d6d3d1;
+  letter-spacing: 1px;
+}
+
+/* 序号标注 */
+.card-num {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 12px;
+  color: #d6d3d1;
+  font-weight: 500;
+}
+
+/* ── 封面底部水印 ── */
+.brand-watermark {
+  font-size: 11px;
+  color: #d6d3d1;
+  margin-top: 20px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 560px) {
+  .card { width: 100%; border-radius: 20px; }
+  .card-cover { padding: 36px 24px; }
+  .card-cover h1 { font-size: 28px; }
+  .card-cover .big-number { font-size: 42px; }
+  .card-timeline, .card-pressure, .card-five { padding: 30px 24px; }
+  .card-200b { padding: 36px 24px; }
+  .card-200b .big-num { font-size: 48px; }
+  .card-end .end-line { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ 卡片 1/6：封面 ═══ -->
+<div class="card card-cover">
+  <div class="card-num">1/6</div>
+  <div class="tag">📡 AI 深度解读</div>
+
+  <div class="cover-illustration">
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="dot1"></div>
+    <div class="dot2"></div>
+    <div class="dot3"></div>
+  </div>
+
+  <h1>
+    不融资的 DeepSeek，<br>
+    <span class="highlight-text">终于拿钱了</span>
+  </h1>
+  <p class="subtitle">
+    从"技术乌托邦"到"资本局"<br>
+    一场 21 天估值翻 5 倍的故事
+  </p>
+
+  <div class="big-number">¥500 亿</div>
+  <p class="big-number-sub">梁文锋自掏 200 亿 · V4.1 六月见</p>
+</div>
+
+<!-- ═══ 卡片 2/6：21 天 ═══ -->
+<div class="card card-timeline">
+  <div class="card-num">2/6</div>
+  <div class="section-icon">⏳ 快进</div>
+  <h2>21 天，估值翻 5 倍</h2>
+  <p class="sub-h">一家"不融资"公司的融资闪电战</p>
+
+  <div style="position:relative; padding-left:12px;">
+    <div class="tl-line"></div>
+
+    <div class="tl-node">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-date">4 月初</div>
+        <div class="tl-event">启动首轮，计划募资 $3 亿</div>
+        <div class="tl-detail">期权定价，谨慎试探</div>
+        <div class="tl-amount-wrapper"><div class="tl-amount">≈ $10B 估值</div></div>
+      </div>
+    </div>
+
+    <div class="tl-node">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-date">4 月 22 日</div>
+        <div class="tl-event">腾讯、阿里加入谈判</div>
+        <div class="tl-detail">估值直接翻倍</div>
+        <div class="tl-amount-wrapper"><div class="tl-amount">> $20B 估值</div></div>
+      </div>
+    </div>
+
+    <div class="tl-node">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-date">4 月 27 日</div>
+        <div class="tl-event">工商变更：控制权落定</div>
+        <div class="tl-detail">梁文锋持股 1% → 34%，控制 84.29%</div>
+      </div>
+    </div>
+
+    <div class="tl-node">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-date">5 月 6 日</div>
+        <div class="tl-event">国家大基金洽谈领投</div>
+        <div class="tl-detail">国资首次入场，战略意义重大</div>
+        <div class="tl-amount-wrapper"><div class="tl-amount">≈ $45B 估值</div></div>
+      </div>
+    </div>
+
+    <div class="tl-node">
+      <div class="tl-dot" style="background:#2563eb;"></div>
+      <div class="tl-content">
+        <div class="tl-date" style="color:#dc2626; font-weight:700;">5 月 8-9 日</div>
+        <div class="tl-event">梁文锋自掏 200 亿</div>
+        <div class="tl-detail">创始人史上最大额领投，计划募资 500 亿</div>
+        <div class="tl-amount-wrapper"><div class="tl-amount" style="background:#fef2f2; color:#dc2626;">≈ $51.5B 估值</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px; text-align:right; font-size:11px; color:#d6d3d1;">
+    数据来源：The Information、36氪、澎湃新闻等
+  </div>
+</div>
+
+<!-- ═══ 卡片 3/6：三重压力 ═══ -->
+<div class="card card-pressure">
+  <div class="card-num">3/6</div>
+  <div class="section-icon">⚡ 现实</div>
+  <h2>为什么要拿钱？<br>三重现实压力</h2>
+
+  <div class="p-item">
+    <div class="p-icon">🖥️</div>
+    <h3>算力消耗战</h3>
+    <p>V4 系列 1.6T 参数，V4.1 多模态在即。从"巧胜"到"烧钱"——幻方再有家底，也撑不住全球军备竞赛。</p>
+    <span class="p-tag blue">算力成本</span>
+  </div>
+
+  <div class="p-item">
+    <div class="p-icon">🧑‍💻</div>
+    <h3>人才出走潮</h3>
+    <p>至少 5 名核心研究员出走：郭达雅→字节、罗福莉→小米。Meta 开出 4 年 2-3 亿美元天价合同挖人。</p>
+    <span class="p-tag yellow">人才流失</span>
+  </div>
+
+  <div class="p-item">
+    <div class="p-icon">🏢</div>
+    <h3>必须商业化</h3>
+    <p>实验室可以只关心 benchmark，AI 公司必须关心客户、收入、交付和成本。V4.1 的 MCP 协议专为企业接入设计。</p>
+    <span class="p-tag green">商业化</span>
+  </div>
+</div>
+
+<!-- ═══ 卡片 4/6：200 亿 ═══ -->
+<div class="card card-200b">
+  <div class="card-num">4/6</div>
+  <div class="label">创始人的"控制权保卫战"</div>
+
+  <div class="arrow-doodle"><span>↓</span></div>
+
+  <div class="big-num"><em>¥200 亿</em></div>
+
+  <p class="desc">
+    梁文锋自掏腰包，占募资总额 40%<br>
+    让自己成为最大投资方
+  </p>
+
+  <div class="highlight-chip">
+    🤯 全球 AI 史上前所未有的"创始人大额领投"
+  </div>
+</div>
+
+<!-- ═══ 卡片 5/6：五强格局 ═══ -->
+<div class="card card-five">
+  <div class="card-num">5/6</div>
+  <div class="section-icon">🏛️ 格局</div>
+  <h2>国产大模型"五强"<br>座次初定</h2>
+
+  <div class="five-item">
+    <div class="f-rank">1</div>
+    <div class="f-info">
+      <div class="f-name">DeepSeek</div>
+      <div class="f-desc">融资 $73 亿</div>
+    </div>
+    <div class="f-val">$51.5B</div>
+  </div>
+
+  <div class="five-item">
+    <div class="f-rank">2</div>
+    <div class="f-info">
+      <div class="f-name">智谱 AI</div>
+      <div class="f-desc">港股市值超 5000 亿港元</div>
+    </div>
+    <div class="f-val">$48.5B</div>
+  </div>
+
+  <div class="five-item">
+    <div class="f-rank">3</div>
+    <div class="f-info">
+      <div class="f-name">MiniMax</div>
+      <div class="f-desc">港股市值 2566 亿港元</div>
+    </div>
+    <div class="f-val">$28B</div>
+  </div>
+
+  <div class="five-item">
+    <div class="f-rank">4</div>
+    <div class="f-info">
+      <div class="f-name">月之暗面 (Kimi)</div>
+      <div class="f-desc">D 轮融资 $20 亿</div>
+    </div>
+    <div class="f-val">$20B</div>
+  </div>
+
+  <div class="five-item">
+    <div class="f-rank">5</div>
+    <div class="f-info">
+      <div class="f-name">阶跃星辰</div>
+      <div class="f-desc">融资 $25 亿 · 加快赴港 IPO</div>
+    </div>
+    <div class="f-val" style="color:#a8a29e;">—</div>
+  </div>
+
+  <div style="margin-top:16px; text-align:right; font-size:11px; color:#d6d3d1;">
+    数据来源：澎湃新闻、科创板日报、各公司公开信息
+  </div>
+</div>
+
+<!-- ═══ 卡片 6/6：结语 ═══ -->
+<div class="card card-end">
+  <div class="card-num">6/6</div>
+  <div class="quote-icon">❝</div>
+
+  <div class="quote-text">
+    "不诱于誉，不恐于诽，<br>
+    率道而行，端然正己。"
+  </div>
+
+  <div class="end-line">
+    理想主义没有错<br>
+    <span>但理想主义也需要被喂养</span>
+  </div>
+
+  <div class="signature">—— 荀子《非十二子》</div>
+</div>
+
+<div style="text-align:center; color:#d6d3d1; font-size:11px; padding:12px 0 30px; width:540px; line-height:1.8;">
+  关注<b style="color:#78716c;">「AI 深度解读」</b> · 把复杂的事情讲清楚<br>
+  不标题党 · 不蹭热度 · 不制造焦虑
+</div>
+
+</body>
+</html>
