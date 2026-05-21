@@ -76,6 +76,8 @@ articles = [
      ['wechat-article-mp.html', 'article-full.html', 'cover-assets.html', 'share-cards.html']),
     ('2026-05-18_deepseek-funding', '2026-05-18_deepseek-funding',
      ['wechat-article-mp.html', 'wechat-article-mp-en.html', 'article-full.html', 'share-cards.html', 'cover-assets.html']),
+    ('2026-05-21_deepseek-harness-funding', '2026-05-21_deepseek-harness-funding',
+     ['wechat-article-mp.html', 'article-full.html']),
 ]
 
 # 收集所有文章文件
