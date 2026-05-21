@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 部署 AI 文章到独立站点
-域名: https://yeranyang.iai.pages.woa.com/
+域名: https://yeranyang-iai.pages.woa.com/
 
 使用方式:
   export WOA_PAGES_API_KEY='your-api-key'
@@ -14,7 +14,7 @@ import urllib.error
 import sys
 
 API_KEY = os.environ.get('WOA_PAGES_API_KEY', os.environ.get('OA_PAGES_API_KEY', '')).split('\n')[0].strip()
-CNAME = 'yeranyang.iai.pages.woa.com'
+CNAME = 'yeranyang-iai.pages.woa.com'
 BASE_URL = 'http://pages.woa.com'
 
 if not API_KEY:
