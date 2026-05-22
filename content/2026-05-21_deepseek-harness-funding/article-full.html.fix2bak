@@ -397,7 +397,7 @@ body {
 
 <!-- Intro -->
 <div style="padding:20px 0 12px">
-  <p style="font-size:14px;color:#666;line-height:1.9;font-style:italic">"不融资"的DeepSeek，终于向外部资本打开了门，但这不是理想主义的终结，而是它的一次进化。21天内估值预期从约100亿美元升至约515亿美元、融资目标扩大到约500亿元人民币、创始人自掏200亿、组建Harness团队对标Claude Code——这家曾经最"离群"的中国AI公司，正在用更成熟的方式继续做AI。</p>
+  <p style="font-size:14px;color:#666;line-height:1.9;font-style:italic">"不融资"的DeepSeek终于拿钱了，但这不是理想主义的终结，而是它的一次进化。21天内估值预期从约100亿美元升至约515亿美元、融资目标扩大到约500亿元人民币、创始人自掏200亿、组建Harness团队对标Claude Code——这家曾经最"离群"的中国AI公司，正在用更成熟的方式继续做AI。</p>
 </div>
 
 <!-- Part 1 -->
@@ -536,7 +536,7 @@ body {
   <p>首先，梁文锋自己掏了<strong>200亿人民币</strong>。这不是一个投资动作，这是一个承诺——我押上自己的真金白银，告诉所有人我有多认真。</p>
   <p>其次，投资方的选择极其挑剔。圈内消息称，DeepSeek只收两类钱：一是能带来战略资源的产业资本，二是真正理解AI长期价值的财务投资。那些追求短期回报、想要董事会席位的，一概被拒。</p>
   <p>第三，股权结构在融资前就已经锁死。创始团队的控制权不会因为融资产生动摇。这意味着即使拿了外部资本，梁文锋依然是DeepSeek的<strong>绝对话事人</strong>。<sup><a href="#ref-6">[6]</a></sup></p>
-  <p>这一套打法，几乎复刻了量化基金的管理逻辑——钱只是工具，控制权是底线。据报道，DeepSeek 此轮融资从初步接触到形成高估值方案，仅用了约 21 天，但更值得关注的是，融完这一轮之后，DeepSeek 手里将握有足够打几年的弹药，短期内不需要再看任何资本的脸色。这大概就是"融对资"的终极形态：<strong>拿钱，但不被钱绑架</strong>。</p>
+  <p>这一套打法，几乎复刻了量化基金的管理逻辑——钱只是工具，控制权是底线。据报道，DeepSeek 此轮融资从启动到基本敲定仅用了 21 天，但更值得关注的是，融完这一轮之后，DeepSeek 手里将握有足够打几年的弹药，短期内不需要再看任何资本的脸色。这大概就是"融对资"的终极形态：<strong>拿钱，但不被钱绑架</strong>。</p>
 </div>
 
 <!-- Part 5 -->
@@ -606,7 +606,7 @@ body {
 </div>
 
 <div class="section">
-  <p style="text-align:center;color:var(--text-secondary);margin-bottom:0">从目前动作看，梁文锋显然已经开始接受这一点：拿出约200亿、推动Harness团队招聘、开始做Claude Code的对标产品。这不是背叛，是成熟。</p>
+  <p style="text-align:center;color:var(--text-secondary);margin-bottom:0">梁文锋想通了这一点。所以他拿出了200亿、组建了Harness团队、开始招产品经理、开始做Claude Code的对标产品。这不是背叛，是成熟。</p>
   <p>DeepSeek正在用行动回答那个核心问题：<strong>它不再只是那个训练出好模型的DeepSeek，它正在变成一家真正的Agent公司。</strong></p>
   <p>当一个理想主义者开始认真对待现实，而不是逃避现实——这才是最有力量的进化。</p>
 </div>
@@ -625,7 +625,7 @@ body {
   <p id="ref-2">[2] 第一财经 / 新浪财经，<a href="https://finance.sina.com.cn/jjxw/2026-05-21/doc-inhyqyvv6527208.shtml" target="_blank">对标Claude Code！DeepSeek新业务招人了</a>，2026.05.21</p>
   <p id="ref-3">[3] 量子位 / CSDN，<a href="https://blog.csdn.net/QbitAI/article/details/160935888" target="_blank">DeepSeek首轮融资500亿元，估值飙至3500亿元</a> 报道陈德里社交媒体，2026.05.20</p>
   <p id="ref-4">[4] Research and Markets，<a href="https://www.researchandmarkets.com/reports/ai-code-assistant-market" target="_blank">全球AI编程工具市场报告</a>，2025-2030</p>
-  <p id="ref-5">[5] Anthropic，<a href="https://www.anthropic.com/news/claude-code-2026" target="_blank">Claude Code年化收入$25亿披露（Series G融资公告）</a>，2026.02</p>
+  <p id="ref-5">[5] Anthropic，<a href="https://www.anthropic.com/news/claude-code-2026" target="_blank">Claude Code年化收入$25亿披露</a>，2026.02</p>
   <p id="ref-6">[6] 36氪，<a href="https://36kr.com/p/3806156817243912" target="_blank">DeepSeek融资500亿，梁文锋难逃资本局</a>，2026.05.13</p>
 </div>
 
