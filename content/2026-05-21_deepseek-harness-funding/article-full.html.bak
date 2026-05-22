@@ -391,13 +391,13 @@ body {
 <div class="hero">
   <div class="badge">AI深度解读 · 资本分析</div>
   <h1>DeepSeek的战略转向<br><span>从"不融资"到"融对资"</span></h1>
-  <div class="subtitle">500亿融资 · 3500亿估值 · 梁文锋自掏200亿 · V4.1六月见 · Harness对标Claude Code</div>
+  <div class="subtitle">500亿估值 · 梁文锋自掏200亿 · V4.1六月见 · Harness对标Claude Code</div>
   <div class="meta"><span class="author">文 / AI深度解读</span> · 2026.05.21</div>
 </div>
 
 <!-- Intro -->
 <div style="padding:20px 0 12px">
-  <p style="font-size:14px;color:#666;line-height:1.9;font-style:italic">"不融资"的DeepSeek终于拿钱了，但这不是理想主义的终结，而是它的一次进化。21天内估值预期从约100亿美元升至约515亿美元、融资目标扩大到约500亿元人民币、创始人自掏200亿、组建Harness团队对标Claude Code——这家曾经最"离群"的中国AI公司，正在用更成熟的方式继续做AI。</p>
+  <p style="font-size:14px;color:#666;line-height:1.9;font-style:italic">"不融资"的DeepSeek终于拿钱了，但这不是理想主义的终结，而是它的一次进化。21天估值翻5倍、创始人自掏200亿、组建Harness团队对标Claude Code——这家曾经最"离群"的中国AI公司，正在用更成熟的方式继续做AI。</p>
 </div>
 
 <!-- Part 1 -->
@@ -409,7 +409,7 @@ body {
   <p><strong>"三不铁律"</strong>在圈内广为流传：不融资、不上市、不商业化。</p>
   <p>这不是刻意标榜。梁文锋的思路很清楚——用自有资金养一支精锐研究团队，专注把模型做深做透。融资就意味着被资本节奏绑架，而研究需要的是长期主义。</p>
   <p>但2026年5月，一切都变了。</p>
-  <p>21天内，DeepSeek的估值预期从约100亿美元升至约515亿美元，融资目标也从约3亿美元扩大到约500亿元人民币<sup><a href="#ref-1">[1]</a></sup>。梁文锋自己掏了约200亿。投资方被精心挑选，不是什么热钱都收。股权结构在融资前就已锁死，确保创始团队的控制权纹丝不动。</p>
+  <p>21天，估值从100亿人民币飙到500亿<sup><a href="#ref-1">[1]</a></sup>。梁文锋自己掏了200亿进来。投资方被精心挑选，不是什么热钱都收。股权结构被提前锁死，确保创始团队的控制权纹丝不动。</p>
   <p>DeepSeek拿钱了。</p>
   <p>消息一出，讨论两极分化。有人说"理想主义破灭了"，有人说"终于想通了"。</p>
   <p>但这两种说法都只说对了一半。这不是妥协，是进化。<strong>"不融资1.0"版本，正在升级为"融对资2.0"版本</strong>——一种更成熟、更负责任的技术理想主义。</p>
@@ -418,7 +418,7 @@ body {
 <!-- 配图1：融资时间线 -->
 <div class="info-card">
   <div class="info-card-inner">
-    <div class="info-card-title">📈 DeepSeek 估值与融资时间线：21天翻5倍</div>
+    <div class="info-card-title">📈 DeepSeek 融资时间线：21天估值翻5倍</div>
     <div class="tl-row">
       <div class="tl-dot-col">
         <div class="tl-dot"></div>
@@ -426,7 +426,8 @@ body {
       </div>
       <div class="tl-text">
         <div class="tl-date">4月初</div>
-        <div class="tl-detail">据报估值预期约 100 亿美元以上 · 融资计划约 3 亿美元</div>
+        <div class="tl-value">~100 亿 RMB</div>
+        <div class="tl-detail">DeepSeek 首次松口融资</div>
       </div>
     </div>
     <div class="tl-row">
@@ -436,7 +437,8 @@ body {
       </div>
       <div class="tl-text">
         <div class="tl-date">4月22日</div>
-        <div class="tl-detail">腾讯、阿里入局洽谈，估值预期升至 200 亿美元以上</div>
+        <div class="tl-value">~300 亿 RMB</div>
+        <div class="tl-detail">腾讯、阿里入局洽谈</div>
         <div class="tl-tags"><span class="tl-tag">腾讯</span><span class="tl-tag">阿里</span></div>
       </div>
     </div>
@@ -446,8 +448,9 @@ body {
         <div class="tl-line"></div>
       </div>
       <div class="tl-text">
-        <div class="tl-date">5月6日前后</div>
-        <div class="tl-detail">大基金等传出洽谈，估值预期升至 450 亿美元左右</div>
+        <div class="tl-date">5月6日</div>
+        <div class="tl-value">~450 亿 RMB</div>
+        <div class="tl-detail">大基金洽谈领投</div>
         <div class="tl-tags"><span class="tl-tag">大基金</span></div>
       </div>
     </div>
@@ -457,9 +460,9 @@ body {
         <div class="tl-line"></div>
       </div>
       <div class="tl-text">
-        <div class="tl-date">5月8-9日 🎯</div>
-        <div class="tl-value" style="color:var(--blue);font-size:16px">融资目标约 500 亿 RMB</div>
-        <div class="tl-detail">据多家媒体报道，投后估值或达 3500 亿元人民币 / 约 515 亿美元</div>
+        <div class="tl-date">5月9日 🎯</div>
+        <div class="tl-value" style="color:var(--blue)">500 亿 RMB</div>
+        <div class="tl-detail">估值锁定 3500 亿元 · 梁文锋自掏200亿</div>
       </div>
     </div>
   </div>
@@ -475,7 +478,7 @@ body {
   <div class="part-label">PART 2</div>
   <h2>为什么"不融资"撑不住了？</h2>
   <p>要理解这个转变，先看看DeepSeek面临的三个结构性压力。</p>
-  <p><strong>算力——最现实的瓶颈。</strong>大模型训练是个吞金兽。V3、R1的惊艳问世，背后是巨大的算力投入。梁文锋有自己的量化基金造血，但那种现金流跟训练千亿参数模型的烧钱速度相比，终究杯水车薪。虽然外界没有可靠公开数据披露 V4 的实际训练成本，但从多模态、长上下文、Agent 优化和国产算力迁移等目标看，DeepSeek 后续的算力投入无疑会大幅攀升。DeepSeek不是不需要钱，是之前还能扛，现在扛不动了。</p>
+  <p><strong>算力——最现实的瓶颈。</strong>大模型训练是个吞金兽。V3、R1的惊艳问世，背后是巨大的算力投入。梁文锋有自己的量化基金造血，但那种现金流跟训练千亿参数模型的烧钱速度相比，终究杯水车薪。圈内流传，光V4的训练可能就要烧掉数亿美元。DeepSeek不是不需要钱，是之前还能扛，现在扛不动了。</p>
   <p><strong>人才——最稀缺的资源。</strong>AI人才的薪酬在过去两年翻了三倍。一个核心研究员，年薪百万起步都不一定能留住。DeepSeek薪资不错，但跟有风险资本撑腰的竞品相比，<strong>股权激励</strong>这块始终是短板。做研究可以靠理想坚持，但要规模化扩张，没有期权池是行不通的。</p>
   <p><strong>产品化——最迫切的选择。</strong>DeepSeek之前是一家"模型公司"——训练出好的基座模型，开放API，然后呢？变现路径极其有限。开源模型虽然赢得了口碑，但没有筑起任何商业护城河。V4.1预计六月发布，但这已经不是终点。真正让市场兴奋的，是2026年5月20日宣布的另一个动作。</p>
 </div>
@@ -484,16 +487,16 @@ body {
 <div class="section">
   <div class="part-label">PART 3</div>
   <h2>Harness：从"模型公司"到"Agent公司"的关键一跃</h2>
-  <p>5月20日前后，多家媒体报道称 DeepSeek 正在组建<strong>Harness团队</strong>，目标是开发对标Claude Code的代码智能体产品。其招聘页面也出现了 Agent Harness 产品经理和研发工程师岗位。<sup><a href="#ref-2">[2]</a></sup></p>
-  <p>同时，DeepSeek资深研究员<strong>陈德里</strong>在社交媒体上发文，措辞直截了当："来DeepSeek从零做Code Harness。"<sup><a href="#ref-3">[3]</a></sup></p>
+  <p>5月20日，DeepSeek正式组建<strong>Harness团队</strong>，目标是开发对标Claude Code的代码智能体产品。<sup><a href="#ref-2">[2]</a></sup></p>
+  <p>同一天，资深研究员<strong>陈德里</strong>在社交媒体上公开招人，措辞直截了当："来DeepSeek从零做Code Harness。"<sup><a href="#ref-3">[3]</a></sup></p>
   <p>这不是一个简单的产品线扩展，这是一个战略级别的信号。</p>
   <p>因为它标志着DeepSeek在回答一个根本问题：<strong>你究竟是家模型公司，还是Agent公司？</strong></p>
-  <p>模型公司训练出最好的模型，然后等开发者来用。Agent公司把模型装进产品里，直接解决用户的问题。前者的天花板是API收入，后者的天花板是SaaS收入——两者差了一个数量级。Claude Code 单产品年化收入已超过 25 亿美元，证明 AI 编程 Agent 已经跑出独立 SaaS 级别的商业化曲线<sup><a href="#ref-5">[5]</a></sup>。OpenAI 的 ChatGPT 订阅收入也远超 API 收入。这些信号说明：<strong>模型能力越强，离用户越近的公司赚得越多。</strong></p>
+  <p>模型公司训练出最好的模型，然后等开发者来用。Agent公司把模型装进产品里，直接解决用户的问题。前者的天花板是API收入，后者的天花板是SaaS收入——两者差了一个数量级。Anthropic年化25亿来自Claude Code，而不是Claude API的调用费。OpenAI的ChatGPT订阅收入远超API收入。这些信号说明：<strong>模型能力越强，离用户越近的公司赚得越多。</strong></p>
   <p><strong>理解这个动作的关键，是一个公式：Model + Harness = Agent。</strong></p>
   <p>模型是大脑，Harness是躯干。过去三年，DeepSeek只做大脑——参数越来越大的基座模型。但现在他们意识到，<strong>真正的商业价值不在大脑本身，而在大脑如何被"武装"起来</strong>。</p>
   <p>代码智能体，就是第一个武装方向。</p>
   <p>为什么是代码？逻辑很清晰：编程Agent是大模型商业化<strong>最成熟、ROI最高</strong>的场景。全球AI编程工具市场2025年规模已达295.7亿美元，预计2030年将增长到646.8亿美元。<sup><a href="#ref-4">[4]</a></sup> 而在这个赛道上，Claude Code已经跑出了年化收入超<strong>25亿美元</strong>的成绩。<sup><a href="#ref-5">[5]</a></sup></p>
-  <p>25亿美元的年化 run-rate，相当于一家中型SaaS公司一年的收入，而且增长曲线还在加速。Claude Code的成功验证了一件事：开发者愿意为真正好用的AI编程助手付费。这个市场足够大，容得下多个玩家。</p>
+  <p>25亿美元，相当于一家中型SaaS公司一年的收入，而且增长曲线还在加速。Claude Code的成功验证了一件事：开发者愿意为真正好用的AI编程助手付费。这个市场足够大，容得下多个玩家。</p>
   <p>陈德里说的"从零做"，一方面说明这是一个新方向的探索，另一方面也暴露了DeepSeek在商业化落地上的差距——对手已经跑了很远，他们才刚起步。但<strong>起步不晚，方向对了</strong>。</p>
 </div>
 
@@ -536,7 +539,7 @@ body {
   <p>首先，梁文锋自己掏了<strong>200亿人民币</strong>。这不是一个投资动作，这是一个承诺——我押上自己的真金白银，告诉所有人我有多认真。</p>
   <p>其次，投资方的选择极其挑剔。圈内消息称，DeepSeek只收两类钱：一是能带来战略资源的产业资本，二是真正理解AI长期价值的财务投资。那些追求短期回报、想要董事会席位的，一概被拒。</p>
   <p>第三，股权结构在融资前就已经锁死。创始团队的控制权不会因为融资产生动摇。这意味着即使拿了外部资本，梁文锋依然是DeepSeek的<strong>绝对话事人</strong>。<sup><a href="#ref-6">[6]</a></sup></p>
-  <p>这一套打法，几乎复刻了量化基金的管理逻辑——钱只是工具，控制权是底线。据报道，DeepSeek 此轮融资从启动到基本敲定仅用了 21 天，但更值得关注的是，融完这一轮之后，DeepSeek 手里将握有足够打几年的弹药，短期内不需要再看任何资本的脸色。这大概就是"融对资"的终极形态：<strong>拿钱，但不被钱绑架</strong>。</p>
+  <p>这一套打法，几乎复刻了量化基金的管理逻辑——钱只是工具，控制权是底线。21天完成从100亿到500亿的估值跃迁，但更值得关注的是，融完这一轮之后，DeepSeek手里握有足够打几年的弹药，短期内不需要再看任何资本的脸色。这大概就是"融对资"的终极形态：<strong>拿钱，但不被钱绑架</strong>。</p>
 </div>
 
 <!-- Part 5 -->
@@ -544,7 +547,7 @@ body {
   <div class="part-label">PART 5</div>
   <h2>国产大模型的"决赛圈"</h2>
   <p>DeepSeek的融资，放在更大的背景下看，是国产大模型进入<strong>"决赛圈"</strong>的标志。</p>
-  <p>如果只看独立大模型创业公司，智谱、MiniMax、月之暗面、百川和 DeepSeek 是最具代表性的几家。每一家的路径都不一样。智谱走B端政企路线，MiniMax押注多模态和C端应用，月之暗面聚焦长文本，百川试图构建生态闭环。而DeepSeek，之前是纯粹的"研究驱动型"。</p>
+  <p>目前国内能做千亿参数基座模型的，基本就五家：智谱、MiniMax、月之暗面、百川，以及DeepSeek。每一家的路径都不一样。智谱走B端政企路线，MiniMax押注多模态和C端应用，月之暗面聚焦长文本，百川试图构建生态闭环。而DeepSeek，之前是纯粹的"研究驱动型"。</p>
   <p>但所有人都在意识到：<strong>基础模型正在变成商品化的基础设施</strong>——就像云计算时代的底层资源。真正的差异化，来自模型之上的"层"：Agent、工具链、应用场景。</p>
 </div>
 
@@ -578,7 +581,7 @@ body {
   <p>"不融资"是1.0版本，"融对资"是2.0版本。</p>
   <p>1.0版本的梁文锋说："做好模型就行。" 2.0版本的梁文锋说："做好模型还不够，还得让人用起来。"</p>
   <p>这不是背离初心，这是初心在进化。DeepSeek依然是那个追求技术极致的公司，只不过现在他们有了更大的工具箱——不仅包括算力和人才，还包括<strong>产品能力、商业渠道和生态建设</strong>。</p>
-  <p>当模型的能力足够强大，如何让它真正改变世界，就不再只是一个研究问题，而是一个工程问题、产品问题、商业模式问题。据 The Information 及多家媒体报道，DeepSeek 计划在6月推出 V4.1，将强化企业工具能力与 MCP 适配。</p>
+  <p>当模型的能力足够强大，如何让它真正改变世界，就不再只是一个研究问题，而是一个工程问题、产品问题、商业模式问题。</p>
 </div>
 
 <!-- 配图4：理想主义进化 -->
