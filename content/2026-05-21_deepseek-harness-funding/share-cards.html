@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeepSeek战略转向 - 贴图分享卡片</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+.section-title {
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+  max-width: 800px;
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+/* === 卡片通用 === */
+.card {
+  width: 375px;
+  min-height: 500px;
+  background: #0d1117;
+  border-radius: 16px;
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.card-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card .card-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border: 1px solid #30363d;
+  border-radius: 100px;
+  font-size: 10px;
+  color: #8b949e;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+.card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f0f0f0;
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+.card .hl-blue { color: #58a6ff; }
+.card .hl-purple { color: #bc8cff; }
+.card .hl-green { color: #3fb950; }
+.card .hl-amber { color: #d29922; }
+.card .card-body {
+  font-size: 13px;
+  color: #8b949e;
+  line-height: 1.7;
+  flex: 1;
+}
+.card .card-footer {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #21262d;
+  font-size: 11px;
+  color: #484f58;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card .card-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.card .tag {
+  padding: 3px 10px;
+  border: 1px solid #30363d;
+  border-radius: 100px;
+  font-size: 10px;
+  color: #8b949e;
+}
+
+/* 卡片1：时间线 - 估值跃迁 */
+.card-1::before {
+  top: -30%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(88,166,255,0.1) 0%, transparent 70%);
+}
+.timeline-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+  align-items: flex-start;
+}
+.timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.timeline-dot.dot-blue { background: #58a6ff; }
+.timeline-dot.dot-purple { background: #bc8cff; }
+.timeline-dot.dot-amber { background: #d29922; }
+.timeline-dot.dot-green { background: #3fb950; }
+.timeline-line {
+  width: 2px;
+  height: 100%;
+  position: absolute;
+  left: 4px;
+  top: 0;
+}
+.timeline-text { flex: 1; }
+.timeline-text .date { font-size: 11px; color: #484f58; margin-bottom: 2px; }
+.timeline-text .event { font-size: 14px; color: #e0e0e0; font-weight: 600; }
+.timeline-text .detail { font-size: 12px; color: #8b949e; }
+
+/* 卡片2：Model + Harness = Agent */
+.card-2::before {
+  bottom: -30%;
+  left: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(188,140,255,0.1) 0%, transparent 70%);
+}
+.formula-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0;
+  padding: 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid #30363d;
+  border-radius: 12px;
+}
+.formula-term {
+  text-align: center;
+}
+.formula-term .label { font-size: 11px; color: #8b949e; margin-bottom: 4px; }
+.formula-term .value { font-size: 18px; color: #e0e0e0; font-weight: 700; }
+.formula-term .value.v-blue { color: #58a6ff; }
+.formula-term .value.v-purple { color: #bc8cff; }
+.formula-op { font-size: 24px; color: #484f58; font-weight: 300; }
+.formula-eq { font-size: 24px; color: #3fb950; font-weight: 700; }
+
+/* 卡片3：融资结构 */
+.card-3::before {
+  top: -20%;
+  left: -20%;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(211,153,34,0.08) 0%, transparent 70%);
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+.stat-box {
+  padding: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid #21262d;
+  border-radius: 10px;
+  text-align: center;
+}
+.stat-box .number {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.stat-box .stat-label {
+  font-size: 11px;
+  color: #8b949e;
+  margin-top: 4px;
+}
+.stat-box.box-blue .number { color: #58a6ff; }
+.stat-box.box-purple .number { color: #bc8cff; }
+.stat-box.box-amber .number { color: #d29922; }
+.stat-box.box-green .number { color: #3fb950; }
+
+/* 卡片4：理想主义进化 */
+.card-4::before {
+  bottom: -30%;
+  right: -30%;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(63,185,80,0.08) 0%, transparent 70%);
+}
+.evo-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 12px 0;
+  padding: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid #21262d;
+  border-radius: 10px;
+}
+.evo-row .version {
+  font-size: 13px;
+  font-weight: 700;
+  color: #8b949e;
+  white-space: nowrap;
+  min-width: 60px;
+}
+.evo-row .idea {
+  font-size: 14px;
+  color: #e0e0e0;
+  flex: 1;
+}
+.evo-row .arrow { color: #484f58; font-size: 18px; }
+</style>
+</head>
+<body>
+
+<p class="section-title">📸 DeepSeek战略转向 — 分享卡片（截图即可分享到朋友圈/群聊）</p>
+
+<div class="card-container">
+
+  <!-- 卡片 1：时间线 -->
+  <div class="card card-1">
+    <div class="card-content">
+      <div class="card-badge">📈 资本跃迁</div>
+      <h2>21天，估值<span class="hl-blue">翻5倍</span></h2>
+      <div class="card-body">
+        <div class="timeline-item">
+          <div class="timeline-dot dot-blue"></div>
+          <div class="timeline-text">
+            <div class="date">4 月初</div>
+            <div class="event">100 亿</div>
+            <div class="detail">DeepSeek 首次松口融资</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot dot-amber"></div>
+          <div class="timeline-text">
+            <div class="date">4 月 22 日</div>
+            <div class="event">~300 亿</div>
+            <div class="detail">腾讯、阿里入局洽谈</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot dot-purple"></div>
+          <div class="timeline-text">
+            <div class="date">5 月 6 日</div>
+            <div class="event">~450 亿</div>
+            <div class="detail">大基金洽谈领投</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot dot-green"></div>
+          <div class="timeline-text">
+            <div class="date">5 月 9 日</div>
+            <div class="event" style="font-size:16px">500 亿 🎯</div>
+            <div class="detail">估值锁定 3500 亿元 RMB</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span>📡 AI深度解读</span>
+        <div class="card-tags">
+          <span class="tag">21天</span>
+          <span class="tag">5倍</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 卡片 2：Model + Harness = Agent -->
+  <div class="card card-2">
+    <div class="card-content">
+      <div class="card-badge">🤖 战略转型</div>
+      <h2>从「模型公司」<br>到「<span class="hl-purple">Agent 公司</span>」</h2>
+      <div class="card-body">
+        <div class="formula-box">
+          <div class="formula-term">
+            <div class="label">大脑</div>
+            <div class="value v-blue">Model</div>
+          </div>
+          <div class="formula-op">+</div>
+          <div class="formula-term">
+            <div class="label">躯干</div>
+            <div class="value v-purple">Harness</div>
+          </div>
+          <div class="formula-eq">=</div>
+          <div class="formula-term">
+            <div class="label">产品</div>
+            <div class="value" style="color:#3fb950;font-size:20px">Agent</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:#8b949e;line-height:1.7;margin-top:8px">
+          过去三年只做"大脑"（基座模型）。现在开始做"躯干"—把模型装进产品，直接解决用户问题。Claude Code 已验证：年化 25 亿美元。
+        </p>
+      </div>
+      <div class="card-footer">
+        <span>📡 AI深度解读</span>
+        <div class="card-tags">
+          <span class="tag">Harness</span>
+          <span class="tag">Claude Code</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 卡片 3：融资结构 -->
+  <div class="card card-3">
+    <div class="card-content">
+      <div class="card-badge">💰 资本局</div>
+      <h2><span class="hl-amber">拿钱</span>，但不被钱绑架</h2>
+      <div class="card-body">
+        <div class="stats-grid">
+          <div class="stat-box box-blue">
+            <div class="number">200亿</div>
+            <div class="stat-label">梁文锋自掏腰包</div>
+          </div>
+          <div class="stat-box box-purple">
+            <div class="number">40%</div>
+            <div class="stat-label">个人出资占比</div>
+          </div>
+          <div class="stat-box box-amber">
+            <div class="number">500亿</div>
+            <div class="stat-label">总融资规模</div>
+          </div>
+          <div class="stat-box box-green">
+            <div class="number">2%</div>
+            <div class="stat-label">腾讯占股极低</div>
+          </div>
+        </div>
+        <p style="font-size:12px;color:#8b949e;line-height:1.7">
+          ⚡ 只收两种钱：战略产业资本 + 长期财务投资。<br>
+          ⚡ 股权结构提前锁死，创始团队绝对控盘。<br>
+          ⚡ "21 天完成，融完不用再看资本脸色。"
+        </p>
+      </div>
+      <div class="card-footer">
+        <span>📡 AI深度解读</span>
+        <div class="card-tags">
+          <span class="tag">梁文锋</span>
+          <span class="tag">控制权</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 卡片 4：理想主义进化 -->
+  <div class="card card-4">
+    <div class="card-content">
+      <div class="card-badge">🌱 理想主义</div>
+      <h2>理想主义的 <span class="hl-green">2.0 版本</span></h2>
+      <div class="card-body">
+        <div class="evo-row">
+          <div class="version" style="color:#484f58">v1.0</div>
+          <div class="idea">"做好模型就行"</div>
+          <div class="arrow">→</div>
+        </div>
+        <div class="evo-row" style="border-color:#30363d">
+          <div class="version" style="color:#58a6ff">v2.0</div>
+          <div class="idea" style="color:#58a6ff">"做好模型还不够，<br>还得让人用起来"</div>
+          <div class="arrow" style="color:#58a6ff">✓</div>
+        </div>
+        <p style="font-size:12px;color:#8b949e;line-height:1.7;margin-top:14px">
+          这不是妥协，是成熟。<br>
+          技术理想主义，不是不碰钱，而是用正确的方式触碰钱。
+        </p>
+      </div>
+      <div class="card-footer">
+        <span>📡 AI深度解读</span>
+        <div class="card-tags">
+          <span class="tag">理想主义</span>
+          <span class="tag">进化</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="max-width:800px;text-align:center;padding:16px;background:#fff;border-radius:12px;border:1px solid #e5e7eb">
+  <p style="font-size:14px;color:#333;margin-bottom:8px">📋 使用说明</p>
+  <p style="font-size:12px;color:#666;line-height:1.7">
+    1. 在浏览器中打开此文件<br>
+    2. 右键点击任意卡片 → "另存为图片" 或 截图保存<br>
+    3. 每张卡片 375×500px，适合朋友圈/群聊分享<br>
+    4. 设计风格：GitHub 深色风 + 彩色标签点缀
+  </p>
+</div>
+
+</body>
+</html>

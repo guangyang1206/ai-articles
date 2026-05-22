@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>封面素材 - DeepSeek的战略转向</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+.label {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* === 公众号头图 900×383 === */
+.cover-main {
+  width: 900px;
+  height: 383px;
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.cover-main::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(88,166,255,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.cover-main::after {
+  content: '';
+  position: absolute;
+  bottom: -40%;
+  left: -10%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(201,134,214,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.cover-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  padding: 0 60px;
+}
+.cover-content .tag {
+  display: inline-block;
+  padding: 4px 14px;
+  border: 1px solid #30363d;
+  border-radius: 100px;
+  font-size: 12px;
+  color: #8b949e;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.cover-content h1 {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+.cover-content h1 .hl-blue { color: #58a6ff; }
+.cover-content h1 .hl-purple { color: #bc8cff; }
+.cover-content .sub {
+  font-size: 15px;
+  color: #8b949e;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+/* === 缩略图 200×200 === */
+.cover-thumb {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, #0d1117, #161b22);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.cover-thumb::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -30%;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(88,166,255,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.cover-thumb h2 {
+  position: relative;
+  z-index: 1;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.cover-thumb h2 .hl-blue { color: #58a6ff; }
+
+/* === 分享图 400×400 === */
+.cover-share {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+}
+.cover-share::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -30%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(201,134,214,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.cover-share .z {
+  position: relative;
+  z-index: 1;
+}
+.cover-share .badge {
+  display: inline-block;
+  padding: 3px 12px;
+  border: 1px solid #30363d;
+  border-radius: 100px;
+  font-size: 11px;
+  color: #8b949e;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+.cover-share h2 {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+.cover-share h2 .hl-blue { color: #58a6ff; }
+.cover-share h2 .hl-purple { color: #bc8cff; }
+.cover-share .desc {
+  font-size: 13px;
+  color: #8b949e;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.cover-share .pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.cover-share .pill {
+  padding: 4px 12px;
+  border: 1px solid #30363d;
+  border-radius: 100px;
+  font-size: 11px;
+  color: #8b949e;
+}
+.cover-share .pill.pill-blue { border-color: rgba(88,166,255,0.3); color: #58a6ff; }
+.cover-share .pill.pill-purple { border-color: rgba(188,140,255,0.3); color: #bc8cff; }
+
+.instructions {
+  max-width: 600px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 24px;
+}
+.instructions h3 { font-size: 16px; margin-bottom: 12px; }
+.instructions p { font-size: 13px; color: #555; line-height: 1.8; }
+</style>
+</head>
+<body>
+
+<p class="label">📐 公众号头图（900×383，截图使用）</p>
+<div class="cover-main">
+  <div class="cover-content">
+    <span class="tag">AI深度解读 · 资本分析</span>
+    <h1>DeepSeek 的战略<span class="hl-blue">转向</span></h1>
+    <div style="font-size:16px;color:#bc8cff;font-weight:600;letter-spacing:1px;margin-top:4px">从「不融资」到「融对资」</div>
+    <p class="sub">500亿估值 · 梁文锋自掏200亿 · Harness对标Claude Code</p>
+  </div>
+</div>
+
+<p class="label">📐 公众号缩略图（200×200，截图使用）</p>
+<div class="cover-thumb">
+  <h2>DeepSeek<br><span class="hl-blue">战略转向</span></h2>
+</div>
+
+<p class="label">📐 朋友圈/社媒分享图（400×400，截图使用）</p>
+<div class="cover-share">
+  <div class="z">
+    <div class="badge">AI深度解读</div>
+    <h2>DeepSeek的<br><span class="hl-blue">战略转向</span></h2>
+    <div style="font-size:15px;color:#bc8cff;font-weight:600;letter-spacing:0.5px;margin-bottom:14px">从「不融资」到「融对资」</div>
+    <p class="desc">500亿估值 · 梁文锋自掏200亿<br>Harness对标Claude Code</p>
+    <div class="pills">
+      <span class="pill pill-blue">500亿</span>
+      <span class="pill pill-purple">Model→Agent</span>
+      <span class="pill">Harness</span>
+      <span class="pill">V4.1</span>
+    </div>
+  </div>
+</div>
+
+<div class="instructions">
+  <h3>📋 使用说明</h3>
+  <p>
+    1. 在浏览器中打开此文件<br>
+    2. 使用浏览器截图工具或系统截图，对准对应尺寸的元素截取<br>
+    3. 公众号头图：900×383px（文章顶部大图，建议上传到公众号素材库）<br>
+    4. 缩略图：200×200px（文章列表小图）<br>
+    5. 分享图：400×400px（朋友圈/社媒分享缩略图）<br>
+    6. 设计风格：GitHub 深色风 + 蓝色(#58a6ff) + 紫色(#bc8cff)点缀
+  </p>
+</div>
+
+</body>
+</html>
