@@ -5,41 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>5月IPO三国杀：SpaceX带着22万张GPU入场，OpenAI和Anthropic的万亿美元博弈</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #f7f8fa; color: #36454f; font-family: 'Inter', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
-  .hero { min-height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 24px 40px; background: #ffffff; }
-  .hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; max-width: 800px; line-height: 1.35; margin-bottom: 16px; color: #1a1a1a; }
-  .hero .subtitle { font-size: 1.05rem; color: #708090; max-width: 650px; margin-bottom: 12px; line-height: 1.65; }
-  .hero .meta { font-size: 0.85rem; color: #a0a8b0; margin-top: 20px; letter-spacing: 1px; }
-  .container { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
-  .container h2 { font-size: 1.45rem; font-weight: 700; margin: 44px 0 18px; color: #1a1a1a; border-bottom: 2px solid #e8eaed; padding-bottom: 10px; }
-  .container h3 { font-size: 1.1rem; font-weight: 600; margin: 28px 0 12px; color: #36454f; }
-  .container p { margin: 16px 0; color: #36454f; font-size: 15px; }
-  .container p strong { color: #1a1a1a; }
-  .highlight-box { background: #f0f2f5; border-left: 4px solid #708090; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; font-size: 0.95rem; color: #36454f; }
+  .hero { min-height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; padding: 72px 48px 56px; background: linear-gradient(160deg, #f0f7ff 0%, #ffffff 60%); border-bottom: 3px solid #4472c4; }
+  .hero h1 { font-size: clamp(1.8rem, 4.5vw, 2.8rem); font-weight: 800; max-width: 800px; line-height: 1.25; margin-bottom: 20px; color: #1a1a1a; }
+  .hero .subtitle { font-size: 1.1rem; color: #4472c4; max-width: 650px; margin-bottom: 16px; line-height: 1.7; font-weight: 500; }
+  .hero .meta { font-size: 0.85rem; color: #a0a8b0; margin-top: 24px; letter-spacing: 1.5px; }
+  .container { max-width: 720px; margin: 0 auto; padding: 0 40px 100px; }
+  .container h2 { font-size: 1.5rem; font-weight: 700; margin: 48px 0 20px; color: #4472c4; padding-bottom: 10px; border-bottom: 3px solid #c8dcf0; }
+  .container h3 { font-size: 1.15rem; font-weight: 600; margin: 28px 0 14px; color: #36454f; }
+  .container p { margin: 18px 0; color: #36454f; font-size: 15.5px; line-height: 1.9; }
+  .container p strong { color: #1a1a1a; font-weight: 700; }
+  .highlight-box { background: #f0f7ff; border-left: 5px solid #4472c4; border-radius: 0 10px 10px 0; padding: 18px 22px; margin: 24px 0; font-size: 0.95rem; color: #36454f; box-shadow: 0 2px 8px rgba(68,114,196,0.06); }
   .highlight-box strong { color: #1a1a1a; }
-  .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0; }
-  .data-card { background: #f9fafb; border: 1px solid #d3d3d3; border-radius: 8px; padding: 14px 12px; text-align: center; }
-  .data-card .number { font-size: 1.5rem; font-weight: 700; color: #36454f; display: block; }
-  .data-card .label { font-size: 0.8rem; color: #708090; margin-top: 4px; }
-  .data-card .desc { font-size: 0.75rem; color: #888888; margin-top: 2px; }
-  .pullquote { font-size: 1.05rem; font-weight: 500; line-height: 1.65; color: #36454f; border-left: 4px solid #708090; padding: 14px 20px; margin: 24px 0; font-style: italic; background: #f0f2f5; border-radius: 0 8px 8px 0; }
-  .refs { margin-top: 60px; padding-top: 24px; border-top: 2px solid #d3d3d3; }
-  .refs h3 { color: #708090; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
-  .refs li { font-size: 0.85rem; color: #555555; margin: 8px 0; line-height: 1.6; }
-  .refs a { color: #4472c4; text-decoration: none; }
-  .refs a:hover { text-decoration: underline; }
-  .timeline-card { background: #f9fafb; border: 1px solid #d3d3d3; border-radius: 10px; padding: 18px; margin: 20px 0; }
-  .timeline-item { display: flex; gap: 14px; margin: 12px 0; align-items: flex-start; }
-  .timeline-item .date { min-width: 100px; font-size: 0.85rem; font-weight: 600; color: #708090; }
-  .timeline-item .event { font-size: 0.95rem; color: #36454f; }
-  .timeline-item .event em { color: #888; font-style: normal; font-size: 0.8rem; }
-  .data-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 0.9rem; }
-  .data-table th { background: #f0f2f5; padding: 10px 12px; text-align: left; font-weight: 600; color: #36454f; border-bottom: 2px solid #d3d3d3; }
-  .data-table td { padding: 9px 12px; border-bottom: 1px solid #e8eaed; color: #555; vertical-align: top; }
-  .data-table tr:nth-child(even) td { background: #f9fafb; }
-  @media (max-width: 600px) { .timeline-item { flex-direction: column; gap: 4px; } .timeline-item .date { min-width: auto; } }
+  .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin: 24px 0; }
+  .data-card { background: #ffffff; border: 2px solid #c8dcf0; border-radius: 10px; padding: 18px 14px; text-align: center; box-shadow: 0 2px 10px rgba(68,114,196,0.08); transition: transform 0.15s; }
+  .data-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(68,114,196,0.12); }
+  .data-card .number { font-size: 1.7rem; font-weight: 800; color: #4472c4; display: block; margin-bottom: 4px; }
+  .data-card .label { font-size: 0.82rem; color: #708090; margin-top: 6px; }
+  .data-card .desc { font-size: 0.75rem; color: #aab; margin-top: 4px; }
+  .pullquote { font-size: 1.08rem; font-weight: 500; line-height: 1.7; color: #1a1a1a; border-left: 5px solid #4472c4; padding: 18px 24px; margin: 28px 0; font-style: italic; background: #f0f7ff; border-radius: 0 10px 10px 0; box-shadow: 0 2px 8px rgba(68,114,196,0.06); }
+  .refs { margin-top: 64px; padding-top: 28px; border-top: 2px solid #d3d3d3; }
+  .refs h3 { color: #4472c4; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; font-weight: 700; }
+  .refs li { font-size: 0.85rem; color: #555; margin: 8px 0; line-height: 1.65; }
+  .refs a { color: #4472c4; text-decoration: none; font-weight: 500; }
+  .refs a:hover { text-decoration: underline; color: #2a5ea8; }
+  .timeline-card { background: #f9fafb; border: 1px solid #d3d3d3; border-left: 5px solid #4472c4; border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 24px 0; }
+  .timeline-item { display: flex; gap: 16px; margin: 14px 0; align-items: flex-start; }
+  .timeline-item .date { min-width: 110px; font-size: 0.85rem; font-weight: 700; color: #4472c4; background: #e8f0fe; padding: 2px 10px; border-radius: 4px; display: inline-block; }
+  .timeline-item .event { font-size: 0.95rem; color: #36454f; padding-top: 2px; }
+  .timeline-item .event em { color: #888; font-style: normal; font-size: 0.82rem; }
+  .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+  .data-table th { background: #4472c4; color: #ffffff; padding: 12px 14px; text-align: left; font-weight: 700; font-size: 0.85rem; }
+  .data-table td { padding: 10px 14px; border-bottom: 1px solid #e8eaed; color: #555; vertical-align: top; }
+  .data-table tr:nth-child(even) td { background: #f0f7ff; }
+  .data-table tr:hover td { background: #e8f0fe; transition: background 0.15s; }
+  @media (max-width: 600px) { .timeline-item { flex-direction: column; gap: 6px; } .timeline-item .date { min-width: auto; } .container { padding: 0 20px 80px; } .hero { padding: 48px 24px 40px; } }
 </style>
 </head>
 <body>
