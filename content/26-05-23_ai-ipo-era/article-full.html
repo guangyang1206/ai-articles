@@ -5,46 +5,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>5月IPO三国杀：SpaceX带着22万张GPU入场，OpenAI和Anthropic的万亿美元博弈</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0a0a0f; color: #e0e0e0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.8; }
-  .hero { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 80px 24px; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.12) 0%, transparent 60%), radial-gradient(ellipse at 80% 80%, rgba(139,92,246,0.08) 0%, transparent 50%); z-index: 0; }
-  .hero > * { position: relative; z-index: 1; }
-  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; max-width: 900px; line-height: 1.2; margin-bottom: 20px; background: linear-gradient(135deg, #f0f0f0 0%, #8888cc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero .subtitle { font-size: 1.1rem; color: #888; max-width: 650px; margin-bottom: 10px; }
-  .hero .meta { font-size: 0.85rem; color: #555; margin-top: 30px; }
+  body { background: #f7f8fa; color: #36454f; font-family: 'Inter', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+  .hero { min-height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 24px 40px; background: #ffffff; }
+  .hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; max-width: 800px; line-height: 1.35; margin-bottom: 16px; color: #1a1a1a; }
+  .hero .subtitle { font-size: 1.05rem; color: #708090; max-width: 650px; margin-bottom: 12px; line-height: 1.65; }
+  .hero .meta { font-size: 0.85rem; color: #a0a8b0; margin-top: 20px; letter-spacing: 1px; }
   .container { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
-  .container h2 { font-size: 1.6rem; font-weight: 700; margin: 50px 0 20px; color: #e8e8f0; }
-  .container h3 { font-size: 1.2rem; font-weight: 600; margin: 30px 0 12px; color: #ccc; }
-  .container p { margin: 18px 0; color: #c0c0c8; }
-  .container p strong { color: #e0e0f0; }
-  .highlight-box { background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.08)); border-left: 3px solid #6366f1; border-radius: 8px; padding: 16px 20px; margin: 24px 0; font-size: 0.95rem; color: #b0b0c8; }
-  .highlight-box strong { color: #d0d0f0; }
-  .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 24px 0; }
-  .data-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 16px; text-align: center; }
-  .data-card .number { font-size: 1.6rem; font-weight: 700; color: #818cf8; display: block; }
-  .data-card .label { font-size: 0.8rem; color: #777; margin-top: 4px; }
-  .data-card .desc { font-size: 0.75rem; color: #666; margin-top: 2px; }
-  .pullquote { font-size: 1.15rem; font-weight: 500; line-height: 1.6; color: #9999cc; border-left: 3px solid #6366f1; padding: 16px 24px; margin: 30px 0; font-style: italic; background: rgba(99,102,241,0.03); border-radius: 0 8px 8px 0; }
-  .refs { margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.06); }
-  .refs h3 { color: #888; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
-  .refs li { font-size: 0.8rem; color: #666; margin: 6px 0; }
-  .refs a { color: #6366f1; text-decoration: none; }
+  .container h2 { font-size: 1.45rem; font-weight: 700; margin: 44px 0 18px; color: #1a1a1a; border-bottom: 2px solid #e8eaed; padding-bottom: 10px; }
+  .container h3 { font-size: 1.1rem; font-weight: 600; margin: 28px 0 12px; color: #36454f; }
+  .container p { margin: 16px 0; color: #36454f; font-size: 15px; }
+  .container p strong { color: #1a1a1a; }
+  .highlight-box { background: #f0f2f5; border-left: 4px solid #708090; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; font-size: 0.95rem; color: #36454f; }
+  .highlight-box strong { color: #1a1a1a; }
+  .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0; }
+  .data-card { background: #f9fafb; border: 1px solid #d3d3d3; border-radius: 8px; padding: 14px 12px; text-align: center; }
+  .data-card .number { font-size: 1.5rem; font-weight: 700; color: #36454f; display: block; }
+  .data-card .label { font-size: 0.8rem; color: #708090; margin-top: 4px; }
+  .data-card .desc { font-size: 0.75rem; color: #888888; margin-top: 2px; }
+  .pullquote { font-size: 1.05rem; font-weight: 500; line-height: 1.65; color: #36454f; border-left: 4px solid #708090; padding: 14px 20px; margin: 24px 0; font-style: italic; background: #f0f2f5; border-radius: 0 8px 8px 0; }
+  .refs { margin-top: 60px; padding-top: 24px; border-top: 2px solid #d3d3d3; }
+  .refs h3 { color: #708090; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+  .refs li { font-size: 0.85rem; color: #555555; margin: 8px 0; line-height: 1.6; }
+  .refs a { color: #4472c4; text-decoration: none; }
   .refs a:hover { text-decoration: underline; }
-  .timeline-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px; margin: 24px 0; }
-  .timeline-item { display: flex; gap: 16px; margin: 14px 0; align-items: flex-start; }
-  .timeline-item .date { min-width: 100px; font-size: 0.85rem; font-weight: 600; color: #818cf8; }
-  .timeline-item .event { font-size: 0.95rem; color: #c0c0c8; }
+  .timeline-card { background: #f9fafb; border: 1px solid #d3d3d3; border-radius: 10px; padding: 18px; margin: 20px 0; }
+  .timeline-item { display: flex; gap: 14px; margin: 12px 0; align-items: flex-start; }
+  .timeline-item .date { min-width: 100px; font-size: 0.85rem; font-weight: 600; color: #708090; }
+  .timeline-item .event { font-size: 0.95rem; color: #36454f; }
   .timeline-item .event em { color: #888; font-style: normal; font-size: 0.8rem; }
+  .data-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 0.9rem; }
+  .data-table th { background: #f0f2f5; padding: 10px 12px; text-align: left; font-weight: 600; color: #36454f; border-bottom: 2px solid #d3d3d3; }
+  .data-table td { padding: 9px 12px; border-bottom: 1px solid #e8eaed; color: #555; vertical-align: top; }
+  .data-table tr:nth-child(even) td { background: #f9fafb; }
   @media (max-width: 600px) { .timeline-item { flex-direction: column; gap: 4px; } .timeline-item .date { min-width: auto; } }
 </style>
 </head>
 <body>
-<div class="hero">
-  <h1>5月IPO三国杀：SpaceX带着22万张GPU入场，OpenAI和Anthropic的万亿美元博弈</h1>
-  <p class="subtitle">这一周，三家改变世界的公司站在了资本市场的门口。它们的故事交织在一起，揭示了一个比任何一款模型发布都更重要的信号。</p>
-  <p class="meta">📡 AI 深度解读 · 2026 年 5 月 23 日</p>
+<div class="hero" style="background: #ffffff; border-bottom: 1px solid #e8eaed;">
+  <h1 style="color: #1a1a1a;">5月IPO三国杀：SpaceX带着22万张GPU入场，OpenAI和Anthropic的万亿美元博弈</h1>
+  <p class="subtitle" style="color: #708090;">这一周，三家改变世界的公司站在了资本市场的门口。它们的故事交织在一起，揭示了一个比任何一款模型发布都更重要的信号。</p>
+  <p class="meta" style="color: #a0a8b0;">📡 AI 深度解读 · 2026 年 5 月 23 日</p>
 </div>
 
 <div class="container">
