@@ -1,6 +1,6 @@
 # 26-05-23_ai-ipo-era
 
-**标题：** OpenAI 要 IPO、Anthropic 反超、SpaceX 也来了：AI 的资本时代正式到来
+**标题：** 5月IPO三国杀：SpaceX带着22万张GPU入场，OpenAI和Anthropic的万亿美元博弈
 **类型：** 头条·时效
 **状态：** 📝 待发布
 **发表日期：** 2026-05-23
