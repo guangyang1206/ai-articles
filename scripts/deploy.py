@@ -51,8 +51,8 @@ def deploy():
             print(f"  📄 首页: {os.path.relpath(p)}")
             break
 
-    # 所有文章的 HTML
-    html_files = glob.glob(f'{CONTENT}/20*/**/*.html', recursive=True)
+    # 所有文章的 HTML（兼容 20xx- 和 2x- 两种前缀）
+    html_files = glob.glob(f'{CONTENT}/2*/**/*.html', recursive=True)
     for fp in sorted(html_files):
         rel = os.path.relpath(fp, CONTENT)
         with open(fp) as f:
