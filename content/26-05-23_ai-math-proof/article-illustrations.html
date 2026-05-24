@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文章配图素材 - AI 解开80年数学谜题</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f0eee8;
+  font-family: 'PingFang SC', 'Noto Sans CJK SC', -apple-system, sans-serif;
+  padding: 48px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+
+.page-label {
+  font-size: 13px;
+  color: #888;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* ===== 通用手绘卡片容器 ===== */
+.sketch-box {
+  background: #fffff7;
+  border: 2.5px solid #2d2d2d;
+  border-radius: 18px;
+  padding: 36px 32px;
+  position: relative;
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.07);
+  width: 680px;
+}
+.sketch-box::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #ccc;
+  border-radius: 18px;
+  z-index: -1;
+}
+
+.sk-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #2d2d2d;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sk-title .dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: #2d2d2d;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ===== FIG.1 埃尔德什猜想示意图 ===== */
+.fig-erdos {
+  display: flex;
+  gap: 36px;
+  align-items: flex-start;
+  margin-top: 8px;
+}
+.fig-erdos .method-col {
+  flex: 1;
+  border: 2px solid #2d2d2d;
+  border-radius: 14px;
+  padding: 18px 14px;
+  text-align: center;
+}
+.fig-erdos .method-col.geometric { background: #eff6ff; }
+.fig-erdos .method-col.algebraic { background: #ecfdf5; }
+.fig-erdos .method-label {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.fig-erdos .method-col.geometric .method-label { color: #1e40af; }
+.fig-erdos .method-col.algebraic .method-label { color: #166534; }
+.fig-erdos .method-desc {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.6;
+  text-align: left;
+}
+.fig-erdos .cross-icon {
+  font-size: 28px;
+  font-weight: 900;
+  color: #2d2d2d;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+/* ===== FIG.2 AI 思路跃迁示意图 ===== */
+.fig-leap {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+}
+.fig-leap .leap-box {
+  border: 2px solid #2d2d2d;
+  border-radius: 12px;
+  padding: 18px 20px;
+  text-align: center;
+  min-width: 180px;
+}
+.fig-leap .leap-box.geo { background: #eff6ff; }
+.fig-leap .leap-box.bridge { background: #fef9c3; }
+.fig-leap .leap-box.alg { background: #ecfdf5; }
+.fig-leap .leap-icon { font-size: 24px; margin-bottom: 8px; }
+.fig-leap .leap-label {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.fig-leap .leap-box.geo .leap-label { color: #1e40af; }
+.fig-leap .leap-box.bridge .leap-label { color: #854d0e; }
+.fig-leap .leap-box.alg .leap-label { color: #166534; }
+.fig-leap .leap-desc {
+  font-size: 11px;
+  color: #666;
+  line-height: 1.5;
+}
+.fig-leap .arrow {
+  font-size: 24px;
+  font-weight: 900;
+  color: #2d2d2d;
+  flex-shrink: 0;
+}
+
+/* ===== FIG.3 数学家接力时间线 ===== */
+.fig-relay .relay-track {
+  position: relative;
+  padding-left: 44px;
+}
+.fig-relay .relay-track::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #2d2d2d 0px,
+    #2d2d2d 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+.fig-relay .relay-node {
+  position: relative;
+  margin-bottom: 22px;
+  padding: 14px 18px;
+  border: 2px solid #2d2d2d;
+  border-radius: 12px;
+}
+.fig-relay .relay-node:last-child { margin-bottom: 0; }
+.fig-relay .relay-node.ai { background: #eff6ff; }
+.fig-relay .relay-node.gowers { background: #f0fdf4; }
+.fig-relay .relay-node.bloom { background: #fef9c3; }
+.fig-relay .relay-node.sawin { background: #fdf4ff; }
+.fig-relay .relay-node::before {
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: 18px;
+  width: 15px;
+  height: 15px;
+  border: 3px solid #2d2d2d;
+  border-radius: 50%;
+  background: #fffff7;
+}
+.fig-relay .relay-role {
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.fig-relay .relay-node.ai .relay-role { color: #1e40af; }
+.fig-relay .relay-node.gowers .relay-role { color: #166534; }
+.fig-relay .relay-node.bloom .relay-role { color: #854d0e; }
+.fig-relay .relay-node.sawin .relay-role { color: #7c3aed; }
+.fig-relay .relay-text {
+  font-size: 13px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ===== FIG.4 人机协作分工图 ===== */
+.fig-divide {
+  display: flex;
+  gap: 18px;
+  margin-top: 8px;
+}
+.fig-divide .divide-col {
+  flex: 1;
+  border: 2px solid #2d2d2d;
+  border-radius: 14px;
+  padding: 18px 14px;
+}
+.fig-divide .divide-col.ai-col { background: #eff6ff; }
+.fig-divide .divide-col.human-col { background: #ecfdf5; }
+.fig-divide .divide-title {
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.fig-divide .divide-col.ai-col .divide-title { color: #1e40af; }
+.fig-divide .divide-col.human-col .divide-title { color: #166534; }
+.fig-divide .divide-item {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.7;
+  padding: 6px 0;
+  border-bottom: 1px dashed #ccc;
+}
+.fig-divide .divide-item:last-child { border-bottom: none; }
+.fig-divide .divide-icon {
+  font-size: 10px;
+  margin-right: 4px;
+}
+
+/* ===== FIG.5 科学发现四阶段 ===== */
+.fig-stages {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+}
+.fig-stages .stage-card {
+  flex: 1;
+  border: 2px solid #2d2d2d;
+  border-radius: 12px;
+  padding: 16px 12px;
+  text-align: center;
+}
+.fig-stages .stage-card.s1 { background: #f0f9ff; }
+.fig-stages .stage-card.s2 { background: #f0fdf4; }
+.fig-stages .stage-card.s3 { background: #fff7ed; }
+.fig-stages .stage-card.s4 { background: #fdf4ff; }
+.fig-stages .stage-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: #888;
+  margin-bottom: 6px;
+}
+.fig-stages .stage-icon { font-size: 22px; margin-bottom: 8px; }
+.fig-stages .stage-name {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.fig-stages .stage-card.s1 .stage-name { color: #1e40af; }
+.fig-stages .stage-card.s2 .stage-name { color: #166534; }
+.fig-stages .stage-card.s3 .stage-name { color: #854d0e; }
+.fig-stages .stage-card.s4 .stage-name { color: #7c3aed; }
+.fig-stages .stage-desc {
+  font-size: 11px;
+  color: #666;
+  line-height: 1.5;
+}
+.fig-stages .stage-arrow {
+  font-size: 20px;
+  font-weight: 900;
+  color: #aaa;
+  align-self: center;
+  flex-shrink: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== FIG.1 PART1 配图：埃尔德什猜想 — 两种思路对比 ===== -->
+<div class="page-label">FIG.1 — PART 1 配图（建议截图尺寸 680 × 约 440）</div>
+<section class="sketch-box">
+  <div class="sk-title"><span class="dot"></span>埃尔德什 1946 年猜想：方形网格 ≈ 最优</div>
+  <div class="fig-erdos">
+    <div class="method-col geometric">
+      <div class="method-label">📐 人类 80 年 — 几何框架</div>
+      <div class="method-desc">
+        • 几代数学家一直在几何框架内思考<br>
+        • 怎样排列点能产生更多单位距离？<br>
+        • 结论：方形网格差不多是最优的<br>
+        • Erdős 本人：设奖 500 美元求突破
+      </div>
+    </div>
+    <div class="cross-icon">✕</div>
+    <div class="method-col algebraic">
+      <div class="method-label">🤖 AI — 跳出框架：代数数论</div>
+      <div class="method-desc">
+        • 不问"怎样排点"，转而问：<br>
+        • <strong>什么样的数域结构</strong>能在平面上映射出更多等距关系？<br>
+        • 完全不同的数学分支 → 全新构造方案<br>
+        • <strong>推翻了 Erdős 猜想</strong>（2026.05.20）
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FIG.2 PART2 配图：AI 思路跃迁 ===== -->
+<div class="page-label" style="margin-top:64px">FIG.2 — PART 2 配图（建议截图尺寸 680 × 约 340）</div>
+<section class="sketch-box">
+  <div class="sk-title"><span class="dot"></span>AI 的突破：从几何到代数数论的跨领域跃迁</div>
+  <div class="fig-leap">
+    <div class="leap-box geo">
+      <div class="leap-icon">📐</div>
+      <div class="leap-label">几何框架</div>
+      <div class="leap-desc">人类 80 年<br>在此打转</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="leap-box bridge">
+      <div class="leap-icon">🤖</div>
+      <div class="leap-label">AI 通用推理模型</div>
+      <div class="leap-desc">未专门训练<br>跨领域跃迁</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="leap-box alg">
+      <div class="leap-icon">🔢</div>
+      <div class="leap-label">代数数论框架</div>
+      <div class="leap-desc">全新构造方案<br>推翻 Erdős 猜想</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FIG.3 PART3 配图：数学家接力时间线 ===== -->
+<div class="page-label" style="margin-top:64px">FIG.3 — PART 3 配图（建议截图尺寸 680 × 约 520）</div>
+<section class="sketch-box">
+  <div class="sk-title"><span class="dot"></span>数学家接力：验证 → 改进 → 放大</div>
+  <div class="fig-relay">
+    <div class="relay-track">
+      <div class="relay-node ai">
+        <div class="relay-role">🤖 AI（OpenAI 通用推理模型）</div>
+        <div class="relay-text">提出全新构造方案 + 完整证明雏形<br>工具来自代数数论，非几何框架</div>
+      </div>
+      <div class="relay-node gowers">
+        <div class="relay-role">✍️ Timothy Gowers（菲尔兹奖得主）</div>
+        <div class="relay-text">"若以人类署名投《数学年鉴》，我会毫不犹豫推荐发表。"</div>
+      </div>
+      <div class="relay-node bloom">
+        <div class="relay-role">✍️ Thomas Bloom（曾公开批评 OpenAI 虚假突破）</div>
+        <div class="relay-text">"AI 在此水平问题上给出解答，既令人惊讶也令人印象深刻。"<br>亲自签字背书此次成果</div>
+      </div>
+      <div class="relay-node sawin">
+        <div class="relay-role">✍️ Will Sawin（普林斯顿大学）</div>
+        <div class="relay-text">精炼结果，给出更精确的指数 <em>c = 0.014</em><br>将 AI 的定性突破推进到定量精确表达</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FIG.4 PART4 配图：人机协作分工 ===== -->
+<div class="page-label" style="margin-top:64px">FIG.4 — PART 4 配图（建议截图尺寸 680 × 约 380）</div>
+<section class="sketch-box">
+  <div class="sk-title"><span class="dot"></span>这不是"AI 取代数学家"——人机协作分工</div>
+  <div class="fig-divide">
+    <div class="divide-col ai-col">
+      <div class="divide-title">🤖 AI 贡献了什么？</div>
+      <div class="divide-item"><span class="divide-icon">→</span>跨领域的思路跃迁（几何 → 代数数论）</div>
+      <div class="divide-item"><span class="divide-icon">→</span>一个完整的构造方案</div>
+      <div class="divide-item"><span class="divide-icon">→</span>一个证明的雏形</div>
+    </div>
+    <div class="divide-col human-col">
+      <div class="divide-title">✍️ 数学家贡献了什么？</div>
+      <div class="divide-item"><span class="divide-icon">✓</span>验证了证明的正确性</div>
+      <div class="divide-item"><span class="divide-icon">✓</span>改进了证明的形式，更清晰、更优雅</div>
+      <div class="divide-item"><span class="divide-icon">✓</span>精炼了结果，给出更精确的指数</div>
+      <div class="divide-item"><span class="divide-icon">✓</span>将成果放在数学全局下，探索其意义</div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:#888;margin-top:14px;text-align:center;">两者缺一不可。AI 负责打开门，数学家负责走进去、看清楚、告诉世界门通往哪里。</p>
+</section>
+
+<!-- ===== FIG.5 PART5 配图：科学发现四阶段 ===== -->
+<div class="page-label" style="margin-top:64px">FIG.5 — PART 5 配图（建议截图尺寸 680 × 约 300）</div>
+<section class="sketch-box">
+  <div class="sk-title"><span class="dot"></span>科学发现的四种方式——AI 带来第四种</div>
+  <div class="fig-stages">
+    <div class="stage-card s1">
+      <div class="stage-num">阶段 1</div>
+      <div class="stage-icon">🧠</div>
+      <div class="stage-name">经验与直觉</div>
+      <div class="stage-desc">古代<br>观察自然<br>归纳规律</div>
+    </div>
+    <div class="stage-arrow">→</div>
+    <div class="stage-card s2">
+      <div class="stage-num">阶段 2</div>
+      <div class="stage-icon">🔬</div>
+      <div class="stage-name">理论与实验</div>
+      <div class="stage-desc">近代科学革命<br>假说-验证<br>闭环</div>
+    </div>
+    <div class="stage-arrow">→</div>
+    <div class="stage-card s3">
+      <div class="stage-num">阶段 3</div>
+      <div class="stage-icon">💻</div>
+      <div class="stage-name">计算与模拟</div>
+      <div class="stage-desc">计算机时代<br>数值仿真<br>大数据</div>
+    </div>
+    <div class="stage-arrow">→</div>
+    <div class="stage-card s4">
+      <div class="stage-num">阶段 4</div>
+      <div class="stage-icon">🤖</div>
+      <div class="stage-name">AI 假设生成</div>
+      <div class="stage-desc">AI 提出原始假设<br>人类验证、理解、拓展<br><strong style="color:#7c3aed;">第四种可能</strong></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
