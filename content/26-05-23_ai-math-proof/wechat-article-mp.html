@@ -41,11 +41,13 @@
   <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">排成一条直线？每个点只和左右两个邻居距离为 1，效率很低。排成一张方格网？好多了——每个点和它上下左右四个邻居距离为 1。</p>
   <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">1946 年，匈牙利数学家保罗·埃尔德什（Paul Erdős）提出了一个猜想：<strong style="color:#111111">方形网格差不多就是最优方案了，你很难做得更好。</strong><sup style="font-size:10px;color:#3b82f6;vertical-align:super">[1]</sup></p>
   <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">这个关于上界的猜想，困扰了数学界整整 80 年。<strong style="color:#111111">直到上周。</strong></p>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">需要说明的是：AI 并没有<strong style="color:#111111">完全求解</strong>单位距离问题（U(n) 的精确渐近仍是开放问题），而是<strong style="color:#111111">反证了 Erdős 关于上界的 n<sup>1+o(1)</sup> 猜想</strong>——即构造出了比此前认为"最优"的方格网格增长更快的点集。</p>
 </section>
 
 <!-- ===== 一句话总结 ===== -->
 <section style="padding:20px 24px;background-color:#fffde7;border-left:4px solid #ffc107;border-radius:0 8px 8px 0;margin:0">
-  <p style="font-size:14px;color:#92400e;line-height:1.8;margin:0"><strong style="color:#e65100;">一句话总结：</strong>OpenAI 的推理模型用代数数论的方法，找到了比人类 80 年来认为"最优"的方案更好的点阵构造。几位世界顶尖数学家随后验证、改进、并扩大了这一成果。这不是 AI 取代数学家，而是一次教科书级的人机协作。</p>
+  <p style="font-size:14px;color:#92400e;line-height:1.8;margin:0"><strong style="color:#e65100;">一句话总结：</strong>OpenAI 的推理模型用代数数论的方法，构造出一族比此前经典格点构造增长更快的点集，从而反证了长期流行的 Erdős 上界猜想。几位世界顶尖数学家随后验证、改进、并扩大了这一成果。这不是 AI 取代数学家，而是一次教科书级的人机协作。</p>
 </section>
 
 <!-- ===== PART 1：一个悬赏了 80 年的问题 ===== -->
@@ -78,7 +80,7 @@
   <p style="font-size:11px;color:#3b82f6;letter-spacing:3px;margin:0 0 6px 0">PART 2</p>
   <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">🤖 AI 的思路：从几何跳到数论</h2>
 
-  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">2026 年 5 月 20 日，OpenAI 宣布其内部的一个通用推理模型，找到了一个全新的构造方案，直接推翻了 Erdős 的猜想。<sup style="font-size:10px;color:#3b82f6;vertical-align:super">[2]</sup></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">2026 年 5 月 20 日，OpenAI 宣布其内部的一个通用推理模型，找到了一个全新的构造方案，从而反证了 Erdős 关于上界的核心猜想。<sup style="font-size:10px;color:#3b82f6;vertical-align:super">[2]</sup></p>
 
   <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">这次突破，让人惊讶的地方有两个：</p>
 
@@ -94,7 +96,7 @@
     <p style="font-size:14px;color:#333333;line-height:1.8;margin:8px 0 0 0">AI 的做法就是这个意思：它没有在"怎样排列点"这个几何框架里打转，而是发现了一种完全不同的数域结构，这种结构天然就能产生更多的单位距离。</p>
   </section>
 
-  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">OpenAI 科学家 Noam Brown（AI 德州扑克的提出者）说，这个模型并不是针对这个问题设计的，而且它也不是一个"辅助工具"。公司现在"想尽快推出它，让每个人都能使用"。<sup style="font-size:10px;color:#3b82f6;vertical-align:super">[6]</sup></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">OpenAI 科学家 Noam Brown（AI 德州扑克的提出者）说，这个模型并非专门数学系统，也未针对该问题进行定制。公司现在"想尽快推出它，让每个人都能使用"。<sup style="font-size:10px;color:#3b82f6;vertical-align:super">[6]</sup></p>
 </section>
 
 <!-- 分隔线 -->
@@ -117,7 +119,7 @@
 
   <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">而现在，同一个布鲁姆，亲手为新成果签字背书。他在评论中说：<strong style="color:#111111">"AI 在这种水平的问题上给出解答，既令人惊讶也令人印象深刻。"</strong></p>
 
-  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">但他同时也指出了一个重要的细节：<strong style="color:#111111">AI 的原始证明虽然完全有效，但被 OpenAI 的人类研究员和参与论文的数学家显著改进了</strong>。人类在讨论、消化和改进这一证明、探索其后果方面，仍然扮演着关键角色。</p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">但他同时也指出了一个重要的细节：<strong style="color:#111111">AI 给出的原始数学构造和证明思路是有效的，但表达形式被 OpenAI 研究员和外部数学家显著改写、简化和推广</strong>。人类在讨论、消化和改进这一证明、探索其后果方面，仍然扮演着关键角色。</p>
 
   <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">普林斯顿大学的数学家威尔·索因（Will Sawin）随后还做了一件事：他精炼了 AI 的成果，给出了一个更精确的指数——<em>c</em> = 0.014。这意味着 AI 的发现不仅在"定性"上是突破，在"定量"上也可以精确表达。</p>
 </section>
@@ -159,6 +161,7 @@
   </table>
 
   <p style="font-size:15px;color:#111111;line-height:1.9;margin:0 0 16px 0;font-weight:700">两者缺一不可。</p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:16px 0 0 0">此前关于下界的最强结果来自缩放方形网格，构造大小约为 n^(1+Ω(1/log log n))，而不是普通方格网的 2n。</p>
 
   <!-- 布鲁姆引语 -->
   <section style="padding:14px 18px;border-radius:8px;background-color:#e3f2fd;border-left:4px solid #1a73e8;margin:0 0 16px 0;font-style:italic">
