@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>英伟达造CPU了：RTX Spark 意味着什么？</title>
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      background: #0a0a0a;
+      color: #e8e8e8;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+    .header {
+      background: linear-gradient(135deg, #0a1a0a, #1a3a1a);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .header .tag { font-size: 14px; color: #76b900; letter-spacing: 2px; margin-bottom: 20px; }
+    .header h1 { font-size: 36px; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 16px; }
+    .header .subtitle { font-size: 18px; color: #8a8; line-height: 1.6; max-width: 600px; margin: 0 auto; }
+    .meta { text-align: center; padding: 20px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 14px; color: #666; }
+    .container { max-width: 720px; margin: 0 auto; padding: 40px 24px 60px; }
+    .container p { margin-bottom: 24px; }
+    .container h2 { font-size: 26px; font-weight: 600; color: #fff; margin: 48px 0 20px; line-height: 1.4; }
+    .container h3 { font-size: 22px; font-weight: 600; color: #fff; margin: 40px 0 16px; line-height: 1.4; }
+    .data-card {
+      background: linear-gradient(135deg, rgba(118,185,0,0.1), rgba(118,185,0,0.03));
+      border: 1px solid rgba(118,185,0,0.2);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 32px 0;
+    }
+    .data-card .flex { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .data-card .num { font-size: 28px; font-weight: 700; color: #76b900; }
+    .data-card .label { font-size: 14px; color: #888; margin-top: 4px; }
+    .quote {
+      background: rgba(255,255,255,0.05);
+      border-left: 3px solid #76b900;
+      padding: 20px 24px;
+      border-radius: 6px;
+      margin: 32px 0;
+      font-size: 16px;
+      color: #aaa;
+      line-height: 1.6;
+    }
+    .quote .source { font-size: 14px; color: #666; margin-top: 8px; }
+    .divider { border-top: 1px solid rgba(255,255,255,0.08); margin: 48px 0 24px; }
+    .refs { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .refs p { font-size: 14px; color: #666; margin-bottom: 4px; }
+    .footer-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    .footer-card p { font-size: 15px; color: #888; margin-bottom: 8px; }
+    .footer-card .small { font-size: 13px; color: #666; }
+    @media (max-width: 480px) {
+      .header { padding: 48px 20px; }
+      .header h1 { font-size: 26px; }
+      .container { padding: 24px 20px 40px; }
+      .container h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="tag">⚡ 英伟达造CPU了</div>
+    <h1>RTX Spark 意味着什么？</h1>
+    <div class="subtitle">40年来x86在Windows PC高端市场首次面临ARM架构的真正挑战</div>
+  </div>
+  <div class="meta">2026年6月7日 · 芯片 · 8分钟阅读</div>
+  <div class="container">
+
+    <p>2026年6月1日，英伟达创始人兼CEO黄仁勋在COMPUTEX 2026主题演讲中发布了名为 <strong>RTX Spark</strong> 的SoC芯片。这不是又一张显卡——这是一颗CPU。准确地说，是一颗基于Arm架构、集成CPU和GPU的统一处理器。</p>
+
+    <p>消息一出，Intel收盘下跌约5%（盘前一度跌超6%），AMD收盘微跌约0.4%—1.2%（盘前一度跌超3%）。高通盘前暴跌近10%——作为此前Windows on ARM的唯一玩家，它感受到了最直接的冲击。而英伟达股价当日上涨约4%，ARM Holdings飙升超16%。市场用脚投票，给出了最清晰的判断。</p>
+
+    <h2>一颗芯片，三个信号</h2>
+
+    <p>RTX Spark 不是一张显卡。它是一颗 SoC（System on Chip），把CPU、GPU、内存控制器、I/O全部集成在一个芯片上。CPU部分（N1X）由英伟达与联发科联合定制设计。黄仁勋与联发科CEO蔡力行同台分享了N1X合作历程。联发科在消费电子和多媒体节能技术方面的优势是这一芯片的关键差异化因素。用台积电3纳米制程，标配128GB统一内存。图形性能对标RTX 5070级别。</p>
+
+    <div class="data-card">
+      <div class="flex">
+        <div><div class="num">3nm</div><div class="label">制程工艺</div></div>
+        <div><div class="num">128GB</div><div class="label">统一内存</div></div>
+        <div><div class="num">RTX 5070</div><div class="label">图形性能对标</div></div>
+      </div>
+    </div>
+
+    <p>但真正重要的不是参数，而是三个信号：</p>
+
+    <p><strong>第一，x86在Windows PC高端市场的垄断被打破了。</strong> 过去40年，x86架构统治了PC市场。Arm在手机领域完成了逆袭，苹果M系列芯片（2020年起）和高通骁龙X Elite已经证明了Arm可以做PC芯片。但RTX Spark是英伟达的第一个——也是Windows高端市场有史以来最强的Arm挑战者。黄仁勋的原话很精准：'过去40年来第一条被彻底重新设计、重新发明的PC产品线。'</p>
+
+    <p><strong>第二，AI推理正在从云端走向本地。</strong> 英伟达的数据中心业务已经占到营收的80%以上，但黄仁勋反复强调：AI的下一波浪潮在终端。RTX Spark就是为本地AI推理设计的——在PC上运行大模型，不需要联网，不需要云端算力。为此，英伟达还与微软合作推出了NVIDIA OpenShell，为Windows上的本地AI Agent提供安全运行环境。这是RTX Spark生态的关键一环。</p>
+
+    <p><strong>第三，英伟达不再只是"显卡公司"。</strong> 从GPU到CPU，从硬件到软件（CUDA生态），从数据中心到PC——英伟达正在成为一家全栈计算公司。RTX Spark的CPU与GPU之间通过NVLink-C2C互连，带宽高达600GB/s，是传统PCIe 5.0 x16（约64GB/s）的近10倍。这种紧耦合架构，才是英伟达真正的护城河。</p>
+
+    <div class="quote">
+      "RTX Spark 是英伟达从'加速器'到'计算平台'的关键一步。"
+      <div class="source">— 行业分析师</div>
+    </div>
+
+    <h2>对PC行业意味着什么？</h2>
+
+    <p>RTX Spark面向PC游戏玩家和创作者。英伟达在PC市场有天然优势：游戏玩家信任它的显卡，创作者依赖它的CUDA生态。现在，它把CPU也做了进来。</p>
+
+    <p>对Intel和AMD来说，这是最坏的消息。过去他们只需要互相竞争，现在多了一个手握AI生态的对手。对消费者来说，这是好消息——竞争带来更好的产品和更低的价格。</p>
+
+    <h2>更大的图景</h2>
+
+    <p>RTX Spark 的意义不止于PC。它展示了英伟达的终极野心：从云到端，从训练到推理，从数据中心到你的桌面——所有计算场景，都用英伟达的芯片。</p>
+
+    <p>这听起来很疯狂。但别忘了，五年前也没人相信一家显卡公司能成为全球市值最高的公司之一。</p>
+
+    <p>RTX Spark 不是概念产品。首批搭载该芯片的笔记本超过30款、台式机超过10款，来自华硕、联想、戴尔、惠普等主流厂商。2026年下半年起陆续上市。</p>
+
+    <div class="divider"></div>
+
+    <p style="color:#888;">40年来，x86架构统治了PC市场。Arm在手机领域完成了逆袭，现在轮到PC了。英伟达的RTX Spark可能只是一个开始——未来几年，你的电脑里装什么芯片，将不再是一个理所当然的答案。</p>
+
+    <div class="refs">
+      <p>参考资料：</p>
+      <p>[1] 黄仁勋 COMPUTEX 2026 主题演讲（2026年6月1日）</p>
+      <p>[2] 英伟达官方博客：NVIDIA RTX Spark 发布公告</p>
+      <p>[3] 台湾真传媒：黄仁勋与联发科CEO蔡力行同台分享N1X合作历程</p>
+      <p>[4] 中国经营报："由英伟达、Arm和联发科共同打造"</p>
+      <p>[5] 钛媒体：RTX Spark CPU部分由英伟达与联发科联合定制设计</p>
+      <p>[6] 联发科官方博客：确认co-design GB10 Grace Blackwell Superchip</p>
+      <p>[7] 新浪财经：Intel/AMD/高通/英伟达/ARM股价数据</p>
+      <p>[8] 经济观察网：AMD收盘数据</p>
+      <p>[9] Proactive Investors：Intel收盘跌幅报道</p>
+    </div>
+
+    <div class="footer-card">
+      <p>💬 你觉得英伟达能撼动Intel和AMD的地位吗？</p>
+      <p class="small">关注「AI深度解读」，每周为你解读最值得关注的AI新闻</p>
+    </div>
+
+  </div>
+</body>
+</html>
