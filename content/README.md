@@ -4,7 +4,7 @@
 
 ## 📋 内容准则（2026-05-18 确立）
 
-> **不为流量写作，为读者负责。** 这是 AI 深度解读的底线。
+> **不为流量写作，为读者负责。** 这是「烨然漫笔」的底线。
 
 ### 信息源标准
 1. **只引用权威一手信源** — 优先使用：The Information、Reuters、Bloomberg、澎湃新闻、界面新闻、36氪深度报道
@@ -31,15 +31,22 @@
 
 | # | 日期 | 标题 | 类型 | 状态 |
 |---|------|------|------|------|
-| 1 | 2026-05-23 | [5月IPO三国杀：SpaceX带着22万张GPU入场，OpenAI和Anthropic的万亿美元博弈](./26-05-23_ai-ipo-era/) | 头条·时效 | ✅ 已完成 |
-| 2 | 2026-05-23 | [AI 和数学家一起，解开了道 80 年的数学谜题](./26-05-23_ai-math-proof/) | 次条·深度 | ✅ 已完成 |
-| 3 | 2026-05-21 | [DeepSeek 战略转向：从"不融资"到"融对资"](./2026-05-21_deepseek-harness-funding/) | 次条·深度 | ✅ 已完成 |
-| 4 | 2026-05-18 | [DeepSeek 融资拆解：500亿背后的战略棋局](./2026-05-18_deepseek-funding/) | 头条·融资 | ✅ 已完成 |
-| 5 | 2026-05-17 | [Anthropic 估值 $9000 亿超越 OpenAI](./2026-05-17_anthropic-900b-valuation/) | 头条·估值 | ✅ 已完成 |
-| 6 | 2026-05-17 | [AI 编码 Agent 终端战争](./2026-05-17_ai-coding-agent-war/) | 分析·行业 | ✅ 已完成 |
-| 7 | 2026-04-29 | [ChatGPT 广告变现拆解](./2026-04-29_chatgpt-ads-breakdown/) | 分析·商业 | ✅ 已完成 |
-| 8 | 2026-04-24 | [DeepSeek V4 深度解读](./2026-04-24_deepseek-v4-deep-dive/) | 头条·技术 | ✅ 已完成 |
-| 9 | 2026-05-03 | [部署静态网站踩坑实录](./2026-05-03_deploy-static-site-lessons/) | 技术·复盘 | ✅ 已完成 |
+| 1 | 2026-05-26 | [AI 时代，互联网增长公式正在失效](./2026-05-26_ai-internet-rules-fail/) | 头条·深度 | 📝 待发布 |
+| 2 | 2026-05-23 | [5月IPO三国杀：SpaceX带着22万张GPU入场](./2026-05-23_ai-ipo-era/) | 头条·时效 | ✅ 已完成 |
+| 3 | 2026-05-23 | [AI 和数学家一起，解开了道 80 年的数学谜题](./2026-05-23_ai-math-proof/) | 次条·深度 | ✅ 已完成 |
+| 4 | 2026-05-21 | [DeepSeek 战略转向：从"不融资"到"融对资"](./2026-05-21_deepseek-harness-funding/) | 次条·深度 | ✅ 已完成 |
+| 5 | 2026-05-18 | [DeepSeek 融资拆解：500亿背后的战略棋局](./2026-05-18_deepseek-funding/) | 头条·融资 | ✅ 已完成 |
+| 6 | 2026-05-17 | [Anthropic 估值 $9000 亿超越 OpenAI](./2026-05-17_anthropic-900b-valuation/) | 头条·估值 | ✅ 已完成 |
+| 7 | 2026-05-17 | [AI 编码 Agent 终端战争](./2026-05-17_ai-coding-agent-war/) | 分析·行业 | ✅ 已完成 |
+| 8 | 2026-04-29 | [ChatGPT 广告变现拆解](./2026-04-29_chatgpt-ads-breakdown/) | 分析·商业 | ✅ 已完成 |
+| 9 | 2026-04-24 | [DeepSeek V4 深度解读](./2026-04-24_deepseek-v4-deep-dive/) | 头条·技术 | ✅ 已完成 |
+| 10 | 2026-05-03 | [部署静态网站踩坑实录](./2026-05-03_deploy-static-site-lessons/) | 技术·复盘 | ✅ 已完成 |
+| 11 | 2026-06-07 | [英伟达造CPU了：RTX Spark 意味着什么？](./2026-06-07_nvidia-rtx-spark/) | 头条·深度 | 📝 待发布 |
+| 12 | 2026-06-07 | [苹果WWDC 2026：Siri的"救赎之战"](./2026-06-07_apple-wwdc-siri/) | 头条·时效 | 📝 待发布 |
+| 13 | 2026-06-07 | [AI安全：科学家们坐不住了——解读《IDAIS伦敦宣言》](./2026-06-07_ai-safety-london-declaration/) | 次条·观点 | 📝 待发布 |
+| 14 | 2026-06-07 | [Anthropic要IPO了：AI公司的"成人礼"](./2026-06-07_anthropic-ipo/) | 次条·商业分析 | 📝 待发布 |
+| 15 | 2026-06-07 | [阿里千问开放第三方Agent，微信AI同日开放开发者接入——AI助手开始"能办事"了](./2026-06-07_alibaba-qwen-agent/) | 头条·生态 | ✅ 已完成 |
+| 16 | 2026-06-07 | [AI军备竞赛到底有多烧钱？——800亿美元能建什么？](./2026-06-07_ai-infra-cost/) | 次条·数据解读 | ✅ 已完成 |
 
 ## 目录规范`
 
@@ -57,7 +64,7 @@ ai-articles/
         ├── README.md           # 选题元数据 & 发布追踪`
         ├── wechat-article-mp.html  # 公众号专用版（内联样式，复制粘贴）
         ├── article-full.html       # 个人网站全文版（深色科技风）
-        ├── share-cards.html        # 贴图分享卡片社媒分享`
+        ├── article-illustrations.html # 文章内文配图素材（手绘风格）
         ├── cover-assets.html       # 公众号封面/缩略图素材`
         ├── prompts/                # AI 生图 prompt（如有）
         └── assets/                 # 参考资料、图片素材`
@@ -78,7 +85,7 @@ ai-articles/
 | `README.md` | 选题元数据 & 发布追踪 | 每次发布后更新状态 |
 | `wechat-article-mp.html` | 微信公众号正文 | 浏览器打开 → Ctrl+A → 粘贴到编辑器 |
 | `article-full.html` | 个人网站全文版 | 部署到个人网站 |
-| `share-cards.html` | 贴图分享卡片 | 浏览器打开 → 逐张截图 |
+| `article-illustrations.html` | 文章内文配图素材 | 浏览器打开 → 逐张截图 |
 | `cover-assets.html` | 公众号封面/缩略图 | 浏览器打开 → 截图对应尺寸 |
 | `prompts/` | AI 生图的 prompt 文本 | 备份用，方便复用和微调 |
 
@@ -91,4 +98,3 @@ ai-articles/
 # 2. 写作完成 → 编辑审核 → 发布`
 # 3. 发布后：更新 README.md 状态标志`
 # 4. 部署到个人网站：python3 content/deploy_ai_articles.py`
-```
