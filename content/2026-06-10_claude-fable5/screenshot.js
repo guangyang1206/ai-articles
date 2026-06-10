@@ -10,12 +10,12 @@ const path = require('path');
 
   const outputDir = __dirname;
 
-  // 图1：首图信息图（第1个 .post-card）
+  // 图1：首图（第1个 .post-card）
   const hero = await page.locator('.post-card').nth(0);
   await hero.screenshot({ path: path.join(outputDir, '01-hero.png') });
   console.log('✅ 01-hero.png');
 
-  // 图2：对比图（第2个 .post-card）
+  // 图2：对比（第2个 .post-card）
   const compare = await page.locator('.post-card').nth(1);
   await compare.screenshot({ path: path.join(outputDir, '02-compare.png') });
   console.log('✅ 02-compare.png');
@@ -30,11 +30,11 @@ const path = require('path');
   await summary.screenshot({ path: path.join(outputDir, '04-summary.png') });
   console.log('✅ 04-summary.png');
 
-  // 图5：朋友圈分享图（.moment-card）
+  // 图5：朋友圈（.moment-card）
   const moment = await page.locator('.moment-card');
   await moment.screenshot({ path: path.join(outputDir, '05-moment.png') });
   console.log('✅ 05-moment.png');
 
   await browser.close();
-  console.log('🎉 All screenshots done!');
+  console.log('🎉 All done!');
 })();
