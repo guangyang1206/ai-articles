@@ -28,4 +28,5 @@ my-space/
 workbuddy-guide.html
 
 # Auto-generated scripts output
-scripts/__pycache__/
+.github-token
+.github-token
