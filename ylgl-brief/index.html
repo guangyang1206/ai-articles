@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《韵乐共流》读谱要点速览 · 企鹅合唱团</title>
+<style>
+  :root{
+    --ink:#25313f; --ink-soft:#4a5766; --muted:#7c8896;
+    --bg:#f6f4ee; --card:#ffffff; --line:#e6e1d6;
+    --accent:#b5462c; --accent-soft:#f2e2dc;
+    --gold:#c69a4c; --blue:#3a6b8a; --green:#4f7d5a;
+    --shadow:0 10px 30px rgba(40,50,60,.08);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;
+    line-height:1.85; font-size:16.5px; letter-spacing:.01em;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:0 22px 90px;}
+  /* ---- Hero ---- */
+  .hero{
+    text-align:center; padding:64px 22px 40px;
+    background:
+      radial-gradient(1200px 320px at 50% -60px, #fff 0%, rgba(255,255,255,0) 70%),
+      linear-gradient(180deg,#faf8f3, var(--bg));
+    border-bottom:1px solid var(--line);
+  }
+  .hero .kicker{color:var(--accent); font-weight:700; letter-spacing:.35em; font-size:13px;}
+  .hero h1{font-size:48px; margin:14px 0 6px; letter-spacing:.06em; font-weight:800;}
+  .hero .sub{color:var(--muted); font-size:16px;}
+  .hero .tags{margin-top:20px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;}
+  .tag{background:#fff; border:1px solid var(--line); border-radius:999px; padding:6px 15px; font-size:13px; color:var(--ink-soft);}
+  .switch{margin-top:18px;font-size:13.5px;color:var(--muted);}
+  .switch a{color:var(--blue);text-decoration:none;border-bottom:1px dashed var(--blue);}
+  /* ---- Sections ---- */
+  h2{
+    font-size:25px; margin:52px 0 6px; letter-spacing:.02em;
+    display:flex; align-items:baseline; gap:12px;
+  }
+  h2 .no{
+    font-size:15px; color:#fff; background:var(--accent); font-weight:700;
+    width:32px; height:32px; border-radius:9px; display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto;
+    transform:translateY(-3px);
+  }
+  h3{font-size:18px; margin:28px 0 4px; color:var(--ink);}
+  .lead{color:var(--ink-soft); font-size:15.5px; margin:2px 0 18px;}
+  p{margin:12px 0;}
+  .em{color:var(--accent); font-weight:600;}
+  strong{color:var(--ink);}
+  a{color:var(--blue);}
+  code{background:#eef0ee;border:1px solid var(--line);border-radius:5px;padding:1px 7px;font-size:14px;color:#54636f;}
+  /* callout */
+  .note{
+    background:var(--accent-soft); border-left:4px solid var(--accent);
+    border-radius:0 12px 12px 0; padding:13px 18px; margin:20px 0; font-size:15px; color:#6a3320;
+  }
+  .note b{color:var(--accent);}
+  .key{background:#eef3ee; border-left-color:var(--green); color:#33513c;}
+  .key b{color:var(--green);}
+  /* figure */
+  figure{margin:24px 0; text-align:center;}
+  figure img{max-width:100%; border-radius:12px; border:1px solid var(--line); box-shadow:var(--shadow); background:#fff;}
+  figcaption{color:var(--muted); font-size:13.5px; margin-top:9px;}
+  .svgbox{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px; box-shadow:var(--shadow);}
+  /* table */
+  .tablewrap{overflow-x:auto; margin:22px 0; border-radius:14px; box-shadow:var(--shadow);}
+  table{width:100%; border-collapse:collapse; background:#fff; font-size:14.5px; min-width:540px;}
+  th,td{padding:11px 14px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{background:#2f3d4c; color:#fff; font-weight:600; letter-spacing:.03em;}
+  tr:nth-child(even) td{background:#faf9f5;}
+  td .sym{font-size:18px; font-weight:700; color:var(--accent);}
+  .pill{display:inline-block; background:var(--accent-soft); color:var(--accent); border-radius:6px; padding:1px 8px; font-size:13px; font-weight:600;}
+  /* spec card */
+  .spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);margin:24px 0;}
+  .spec div{padding:16px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .spec .k{font-size:12px;color:var(--muted);letter-spacing:.08em;}
+  .spec .v{font-size:18px;font-weight:700;color:var(--ink);margin-top:4px;}
+  .spec .v small{font-weight:400;font-size:13px;color:var(--muted);}
+  hr{border:none; border-top:1px dashed var(--line); margin:40px 0;}
+  .footer{text-align:center; color:var(--muted); font-size:13px; margin-top:64px; padding-top:24px; border-top:1px solid var(--line);}
+  @media(max-width:600px){
+    .hero h1{font-size:38px;} body{font-size:15.5px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="kicker">企 鹅 合 唱 团 · 读 谱 要 点</div>
+  <h1>韵乐共流</h1>
+  <div class="sub">粤语混声合唱 SATB + Piano · 何崇志 词曲</div>
+  <div class="tags">
+    <span class="tag">🎼 面向有识谱基础者的要点速览</span>
+    <span class="tag">⏱️ 三分钟抓住全曲脉络</span>
+  </div>
+  <div class="switch">零基础第一次读？请看 <a href="../ylgl/">通俗完整版导读 →</a></div>
+</div>
+
+<div class="wrap">
+
+<p class="lead">这份速览默认你已经能认谱号、拍号、音符时值和常见力度记号，因此不再逐一扫盲，只把《韵乐共流》这首作品<span class="em">值得排练时留意的信息与技术要点</span>拎出来，方便快速进谱、心里有数。</p>
+
+<!-- ============ 1 · 一图看懂全曲参数 ============ -->
+<h2><span class="no">1</span>全曲基本参数</h2>
+
+<div class="spec">
+  <div><div class="k">编制</div><div class="v">SATB + Piano</div></div>
+  <div><div class="k">语言</div><div class="v">粤语 <small>（含英文衬句）</small></div></div>
+  <div><div class="k">拍号</div><div class="v">4/4</div></div>
+  <div><div class="k">起始调</div><div class="v">C 大调 <small>无升降</small></div></div>
+  <div><div class="k">后段转调</div><div class="v">♭E 大调 <small>三个降号</small></div></div>
+  <div><div class="k">起始速度</div><div class="v">♩=96 <small>自由地</small></div></div>
+  <div><div class="k">主体速度</div><div class="v">♩=100 <small>优雅地</small></div></div>
+  <div><div class="k">力度幅度</div><div class="v">p → ff</div></div>
+</div>
+
+<p>结构上是一首典型的<strong>渐进式抒情合唱</strong>：从散板独白起，进入稳定的抒情主体，中段引入人声打击（响指）并<strong>向上小三度转调</strong>（C → ♭E），最后在四部齐唱中冲到 <code>ff</code> 收束。全曲的抒情质感主要靠<strong>大量三连音</strong>与钢琴踏板铺底的流动织体撑起来。</p>
+
+<figure>
+  <img src="article_assets/shot_first_system.png" alt="首行谱例">
+  <figcaption>▲ 首行即给全信息：谱号 + 4/4 + "自由地 ♩=96"，并标 <i>legato / a tempo</i>；男高音谱号右下角有 <code>8</code>（低八度记谱）。</figcaption>
+</figure>
+
+<!-- ============ 2 · 结构脉络 ============ -->
+<h2><span class="no">2</span>结构与情绪脉络</h2>
+<p>按速度、调性、织体的变化，全曲大致分四段。排练时可按此分段抠：</p>
+
+<div class="tablewrap">
+<table>
+  <tr><th>段落</th><th>大致小节</th><th>速度 / 表情</th><th>调性</th><th>力度</th><th>要点</th></tr>
+  <tr><td><b>Ⅰ 引入</b></td><td>1 起</td><td>自由地 ♩=96<br><i>molto rubato</i></td><td>C 大调</td><td>p</td><td>散板独白，节奏可伸缩；重呼吸与 <i>legato</i></td></tr>
+  <tr><td><b>Ⅱ 主体</b></td><td>15 起</td><td>优雅地 ♩=100</td><td>C 大调</td><td>mp–mf</td><td>钢琴"节奏流畅而稳定"+带踏板进入；三连音织体铺开</td></tr>
+  <tr><td><b>Ⅲ 过渡</b></td><td>约 37 / 55</td><td>—</td><td>C → ♭E</td><td>fp · <i>cresc.</i></td><td>哼鸣（mm）+ 响指（×符头）；约 55–58 小节间完成转调</td></tr>
+  <tr><td><b>Ⅳ 高潮</b></td><td>58 起</td><td>—</td><td>♭E 大调</td><td>f → <b>ff</b></td><td>四部齐奏，密集三连音 + 重音；结尾再现响指收束</td></tr>
+</table>
+</div>
+
+<div class="svgbox">
+<svg viewBox="0 0 680 300" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,PingFang SC,sans-serif">
+  <path d="M40 250 C 180 245, 220 195, 340 185 S 520 105, 640 55" fill="none" stroke="#c69a4c" stroke-width="3"/>
+  <circle cx="70" cy="248" r="7" fill="#b5462c"/>
+  <text x="70" y="278" text-anchor="middle" font-size="13" fill="#25313f" font-weight="700">Ⅰ 引入</text>
+  <text x="70" y="296" text-anchor="middle" font-size="11.5" fill="#7c8896">p · C · 散板</text>
+  <circle cx="255" cy="188" r="7" fill="#b5462c"/>
+  <text x="255" y="160" text-anchor="middle" font-size="13" fill="#25313f" font-weight="700">Ⅱ 主体</text>
+  <text x="255" y="143" text-anchor="middle" font-size="11.5" fill="#7c8896">mp/mf · ♩=100 · 三连音</text>
+  <circle cx="430" cy="150" r="7" fill="#b5462c"/>
+  <text x="430" y="122" text-anchor="middle" font-size="13" fill="#25313f" font-weight="700">Ⅲ 过渡</text>
+  <text x="430" y="105" text-anchor="middle" font-size="11.5" fill="#7c8896">fp · 响指 · C→♭E</text>
+  <circle cx="620" cy="60" r="8" fill="#b5462c"/>
+  <text x="620" y="36" text-anchor="middle" font-size="13" fill="#25313f" font-weight="700">Ⅳ 高潮</text>
+  <text x="600" y="88" text-anchor="middle" font-size="11.5" fill="#7c8896">f→ff · 重音 · 齐唱</text>
+  <text x="40" y="26" font-size="13.5" fill="#c69a4c" font-weight="700">情绪 / 音量 ↑</text>
+</svg>
+</div>
+
+<!-- ============ 3 · 关键技术点 ============ -->
+<h2><span class="no">3</span>需要留意的技术点</h2>
+
+<h3>① 转调：C → ♭E（上行小三度）</h3>
+<p>约在<strong>第 55–58 小节之间</strong>完成，调号从无升降变为三个降号。之前的 C 大调段落<strong>不要提前带 ♭ 色彩</strong>；转调后整体音区、和声亮度都上一个台阶，正是为高潮蓄力。此处也常伴随 <code>cresc.</code>，注意力度是"顶上去"而非突然跳强。</p>
+
+<figure>
+  <img src="article_assets/shot_flats.png" alt="转调后的三个降号">
+  <figcaption>▲ 后段每行谱号后固定三个降号 = ♭E 大调；转调点前后请核对各自的临时记号。</figcaption>
+</figure>
+
+<h3>② 三连音是全曲主要节奏语汇</h3>
+<p>人声与钢琴都大量使用三连音（钢琴间奏处还出现<strong>六连音</strong>）。演唱时三个音要<span class="em">均匀、不赶</span>，尤其在 ♩=100 的主体段，避免把三连音唱成"附点+短音"的惯性节奏，否则流动感尽失。</p>
+
+<h3>③ 响指（×符头）＝人声打击</h3>
+<p>标注"响指"的段落用 <strong>× 符头</strong>记谱，只做节奏、不发音高。出现在<strong>过渡段（约 37 小节起）与结尾</strong>两处。排练要点：响指要<strong>整齐、卡在拍点上</strong>，把它当独立的打击声部对待；音量需与当下人声力度相称，别喧宾夺主也别怯场。</p>
+
+<figure>
+  <img src="article_assets/shot_xiangzhi.png" alt="响指与 fp 记号">
+  <figcaption>▲ 过渡段：× 符头 + "响指"，同页可见 <i>fp</i>、<i>f</i> 与渐强夹号；哼鸣声部（mm）长音上带朝下开口的楔形 marcato。</figcaption>
+</figure>
+
+<h3>④ 力度与表情：幅度大，注意层次</h3>
+<p>全曲力度跨度 <code>p → ff</code>，并用到 <code>fp</code>（先强后即弱）这一较"戏剧化"的记号，多落在哼鸣长音上——需要瞬间的强起再收，控制力要求较高。表情术语层面注意区分：<i>molto rubato</i>（引入段可自由伸缩）与 <i>a tempo</i>（回原速）的交替，是第一段"呼吸感"的关键。</p>
+
+<div class="tablewrap">
+<table>
+  <tr><th>记号 / 术语</th><th>含义</th><th>本曲用法提示</th></tr>
+  <tr><td><span class="sym">fp</span></td><td>先强后立即弱</td><td>多在 mm 哼鸣长音，需干净的强起→收弱</td></tr>
+  <tr><td><span class="sym">ff</span></td><td>最强</td><td>仅结尾高潮，勿提前用满，留出增长空间</td></tr>
+  <tr><td><i>molto rubato</i> / <i>a tempo</i></td><td>大幅自由伸缩 / 回原速</td><td>引入段交替出现，决定散板的呼吸</td></tr>
+  <tr><td><i>cresc.</i></td><td>渐强</td><td>转调前后推动力度，配合 &lt; 夹号</td></tr>
+  <tr><td>&gt; / 楔形 v</td><td>重音 / marcato</td><td>高潮段密集；marcato 在本谱印为开口朝下的楔形</td></tr>
+  <tr><td>带踏板</td><td>钢琴延音踏板</td><td>主体段起铺流动织体，随和声换踏板</td></tr>
+</table>
+</div>
+
+<h3>⑤ 声部与文本</h3>
+<p>男高音行用<strong>带 8 的高音谱号</strong>（实际低八度），对男声音区判断别看错。文本为<strong>粤语</strong>，另有 <i>ah / mm / ooh</i> 衬词与英文点题句 "<i>Let music flow</i>"（呼应曲名）交织；主题句"造韵乐流 / 韵乐共流"分见于第 6、15 小节附近。粤语咬字与线条的连贯（<i>legato</i>）是抒情段的完成度关键。</p>
+
+<!-- ============ 4 · 一句话 ============ -->
+<h2><span class="no">4</span>排练一句话备忘</h2>
+<div class="note key"><b>抓四件事就够：</b>① 引入段用 rubato 把"呼吸"做出来；② 主体段三连音务必均匀流动；③ 55–58 小节转调后音色整体提亮、力度顺势 <i>cresc.</i>；④ 响指整齐卡拍、结尾 <code>ff</code> 留足冲量。其余符号按常规处理即可。</div>
+
+<hr>
+
+<div class="footer">
+  《韵乐共流》读谱要点速览 · 何崇志 词曲 · 粤语混声合唱<br>
+  为企鹅合唱团制作 · 配套<a href="../ylgl/">通俗完整版导读</a> · 仅供内部学习使用 🐧
+</div>
+
+</div>
+</body>
+</html>
