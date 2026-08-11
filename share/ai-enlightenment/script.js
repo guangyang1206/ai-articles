@@ -174,6 +174,14 @@ function triggerSlideAnimations(slide) {
     el.offsetHeight;
     el.style.animation = '';
   });
+
+  // Cover 页专属：重置 .cover-anim 让每次进入都重新演出
+  const coverAnims = slide.querySelectorAll('.cover-anim');
+  coverAnims.forEach(el => {
+    el.style.animation = 'none';
+    el.offsetHeight; // force reflow
+    el.style.animation = '';
+  });
 }
 
 // ========================================
@@ -298,6 +306,17 @@ function initHistoryTimeline() {
       }
     });
   });
+
+  // 窗口尺寸变化时，如有活跃节点，让它保持居中
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    if (!activeTimelineDetail) return;
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const active = timeline.querySelector('.timeline-item.is-active');
+      if (active) scrollTimelineItemIntoCenter(active, timeline);
+    }, 150);
+  });
 }
 
 function showTimelineDetail(item) {
@@ -322,6 +341,9 @@ function showTimelineDetail(item) {
   timeline.querySelectorAll('.timeline-item.is-active').forEach(el => el.classList.remove('is-active'));
   item.classList.add('is-active');
 
+  // 如果节点在 timeline 的横向滚动容器里部分溢出，滚到中央
+  scrollTimelineItemIntoCenter(item, timeline);
+
   // 渲染内容
   activeTimelineDetail = idx;
   renderTimelineDetail();
@@ -330,6 +352,25 @@ function showTimelineDetail(item) {
   detailPanel.classList.remove('is-open');
   void detailPanel.offsetHeight;
   detailPanel.classList.add('is-open');
+}
+
+function scrollTimelineItemIntoCenter(item, timeline) {
+  if (!item || !timeline) return;
+  // 判断 timeline 是否真的在横向滚动状态
+  const canScroll = timeline.scrollWidth > timeline.clientWidth + 1;
+  if (!canScroll) return;
+
+  const itemRect = item.getBoundingClientRect();
+  const tlRect = timeline.getBoundingClientRect();
+  // 目标：把 item 中心对齐到 timeline 可视中心
+  const itemCenter = itemRect.left + itemRect.width / 2;
+  const tlCenter = tlRect.left + tlRect.width / 2;
+  const delta = itemCenter - tlCenter;
+  if (Math.abs(delta) < 4) return; // 已经基本居中
+  timeline.scrollTo({
+    left: timeline.scrollLeft + delta,
+    behavior: 'smooth'
+  });
 }
 
 function renderTimelineDetail() {
