@@ -15,6 +15,39 @@
         --slide-max: 1100px;
         --slide-px: 72px;
       }
+      /* Cover QR code */
+      .cover-qr {
+        position: absolute;
+        bottom: 28px;
+        right: 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+      .cover-qr img {
+        width: 100px;
+        height: 100px;
+        border-radius: 6px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      }
+      .cover-qr-label {
+        font-size: 10px;
+        color: var(--gray-400);
+        letter-spacing: 0.5px;
+        text-align: center;
+        line-height: 1.35;
+      }
+      @media (max-width: 768px) {
+        .cover-qr { bottom: 16px; right: 20px; }
+        .cover-qr img { width: 72px; height: 72px; }
+        .cover-qr-label { font-size: 9px; }
+      }
+      @media (max-width: 480px) {
+        .cover-qr { bottom: 10px; right: 12px; }
+        .cover-qr img { width: 60px; height: 60px; }
+        .cover-qr-label { font-size: 8px; }
+      }
       /* Mobile tap highlight & text selection */
       html {
         -webkit-tap-highlight-color: transparent;
@@ -653,6 +686,11 @@
             </blockquote>
             <p class="quote-attribution">&mdash; 阿瑟·克拉克</p>
           </div>
+
+          <div class="cover-qr">
+            <img src="./qr-workbuddy-intro.png" alt="扫码查看 WorkBuddy 介绍" />
+            <span class="cover-qr-label">扫码查看<br/>完整介绍</span>
+          </div>
         </div>
       </section>
 
@@ -899,7 +937,7 @@
             <div class="p4-right">
               <div class="product-shot">
                 <img
-                  src="./screenshot.png"
+                  src="../../../Assets/WorkBuddy%20Screenshots/WorkBuddy%20tutorial.png"
                   alt="WorkBuddy 桌面界面：左侧任务列表，中间对话区，右侧输出区"
                 />
                 <p class="product-caption">一个工作台——任务、上下文、工具和结果都在一个窗口里。</p>
