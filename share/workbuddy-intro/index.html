@@ -38,12 +38,57 @@
         text-align: center;
         line-height: 1.35;
       }
-      .cover-presenter {
-        font-size: 13px;
-        color: var(--gray-400);
-        margin: 0;
-        letter-spacing: 1px;
+      /* Cover block differentiation — 六个功能块各自独立的视觉身份 */
+      .cover-body .tag-pill {
+        background: rgba(20,110,245,0.06);
+        border-color: rgba(20,110,245,0.22);
+        color: var(--blue);
       }
+      .cover-subtitle .hl-blue { color: var(--blue); font-weight: 600; }
+      .cover-subtitle .hl-dark { color: var(--black); font-weight: 600; }
+      /* 分享人元信息条 */
+      .cover-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+      .cover-meta-tag {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        padding: 4px 9px;
+        border-radius: 4px;
+        background: rgba(20,110,245,0.1);
+        color: var(--blue);
+      }
+      .cover-meta-name {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--black);
+        letter-spacing: 0.5px;
+      }
+      .cover-meta-sep {
+        width: 3px; height: 3px;
+        border-radius: 50%;
+        background: var(--gray-300);
+      }
+      .cover-meta-date {
+        font-size: 13px;
+        color: var(--gray-500);
+        letter-spacing: 0.5px;
+      }
+      /* 引用区 — 独立面板，与正文明确分隔 */
+      .cover-body .cover-quote {
+        margin-top: 36px;
+        padding: 16px 20px;
+        border-top: none;
+        border-left: 3px solid var(--blue);
+        background: rgba(20,110,245,0.03);
+        border-radius: 0 8px 8px 0;
+      }
+      .cover-body .quote-attribution { color: var(--gray-400); }
       /* Mobile tap highlight & text selection */
       html {
         -webkit-tap-highlight-color: transparent;
@@ -344,6 +389,10 @@
         .tag-pill { font-size: 10px; }
         .cover-quote { margin-top: 20px; }
         .cover-quote blockquote { font-size: 14px; }
+        .cover-meta { margin-top: 16px; gap: 8px; }
+        .cover-meta-name { font-size: 13px; }
+        .cover-meta-date { font-size: 11.5px; }
+        .cover-body .cover-quote { padding: 12px 16px; }
         /* P02 */
         .evo-subtitle { font-size: 14px; }
         .evo-phase { padding: 14px 16px; }
@@ -448,6 +497,10 @@
         .cover-subtitle { font-size: 13px; }
         .tag-pill { font-size: 9px; padding: 5px 10px; }
         .cover-quote { margin-top: 16px; }
+        .cover-meta-tag { font-size: 9px; padding: 3px 7px; }
+        .cover-meta-name { font-size: 12px; }
+        .cover-meta-date { font-size: 10.5px; }
+        .cover-body .cover-quote { padding: 10px 14px; }
         /* P02 */
         .evo-subtitle { font-size: 13px; }
         .evo-phase { padding: 12px 14px; gap: 8px; }
@@ -545,11 +598,16 @@
             AI 专家团办公新范式 &middot; 2026
           </div>
           <h1 class="cover-title">你的 AI 专家团，<br /><span class="accent">已经来了。</span></h1>
-          <p class="cover-subtitle" style="white-space:normal; margin-top:16px;">
-            认识 WorkBuddy — 一人指挥，140+ 专业 AI 角色协作，从策略到交付一站搞定。
+          <div class="cover-rule" style="margin-top:18px; margin-bottom:18px;"></div>
+          <p class="cover-subtitle" style="white-space:normal;">
+            认识 <span class="hl-blue">WorkBuddy</span> — 一人指挥，<span class="hl-dark">140+ 专业 AI 角色</span>协作，从策略到交付一站搞定。
           </p>
-          <p class="cover-presenter">腾讯 · 杨光</p>
-          <div class="cover-rule" style="margin-top:20px;"></div>
+          <div class="cover-meta">
+            <span class="cover-meta-tag">分享人</span>
+            <span class="cover-meta-name">腾讯 · 杨光</span>
+            <span class="cover-meta-sep"></span>
+            <span class="cover-meta-date">2026年8月</span>
+          </div>
           <div class="cover-quote" style="white-space:normal;">
             <blockquote>
               &ldquo;任何足够先进的技术，初看都与魔法无异。&rdquo;
