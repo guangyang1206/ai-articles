@@ -25,7 +25,7 @@
     <div class="nav-dots" id="navDots"></div>
     <div class="nav-controls">
       <button class="nav-btn" id="prevBtn" onclick="prevSlide()">←</button>
-      <span class="slide-counter" id="slideCounter">1 / 17</span>
+      <span class="slide-counter" id="slideCounter">1 / 16</span>
       <button class="nav-btn" id="nextBtn" onclick="nextSlide()">→</button>
     </div>
   </nav>
@@ -56,6 +56,16 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </button>
     </div>
+
+    <!-- QR 码浮标 · 仅电脑端显示 -->
+    <a class="qr-badge qr-badge-dark" href="https://yeranyang.cn/share/ai-enlightenment/" target="_blank" rel="noopener" title="扫码 · 手机随身阅读">
+      <img src="./assets/qr-deck.svg" alt="扫码阅读本 deck" width="72" height="72" />
+      <div class="qr-badge-copy">
+        <span class="qr-tag" data-i18n="qrTag">SCAN &amp; READ</span>
+        <span class="qr-title" data-i18n="qrTitleCover">Read on your phone</span>
+        <span class="qr-sub" data-i18n="qrSubCover">Take this deck with you</span>
+      </div>
+    </a>
   </section>
 
   <!-- ==================== SLIDE 1: 什么是AI ==================== -->
@@ -124,18 +134,22 @@
       <div class="slide-label">02</div>
       <h2 class="slide-title" data-i18n="s2Title">The Story of AI</h2>
       <p class="slide-subtitle-text" data-i18n="s2Subtitle">From Turing's dream to the birth of ChatGPT</p>
-      <div class="timeline">
+      <div class="timeline" id="historyTimeline">
         <div class="timeline-line"></div>
-        <div class="timeline-item"><div class="timeline-year">1950</div><div class="timeline-card"><h4 data-i18n="s2T1Title">Turing Test</h4><p data-i18n="s2T1Desc">Alan Turing posed "Can machines think?", sparking AI philosophy</p></div></div>
-        <div class="timeline-item"><div class="timeline-year">1956</div><div class="timeline-card"><h4 data-i18n="s2T2Title">AI is Born</h4><p data-i18n="s2T2Desc">The Dartmouth Conference formally coined "Artificial Intelligence"</p></div></div>
-        <div class="timeline-item"><div class="timeline-year">1974</div><div class="timeline-card"><h4 data-i18n="s2T3Title">First AI Winter</h4><p data-i18n="s2T3Desc">Symbolic AI hit a wall. The Lighthill report triggered a decade of funding cuts.</p></div></div>
-        <div class="timeline-item"><div class="timeline-year">1987</div><div class="timeline-card"><h4 data-i18n="s2T4Title">Second AI Winter</h4><p data-i18n="s2T4Desc">Expert systems failed to scale. The dedicated LISP-machine market collapsed.</p></div></div>
-        <div class="timeline-item"><div class="timeline-year">1997</div><div class="timeline-card"><h4 data-i18n="s2T5Title">Deep Blue Wins</h4><p data-i18n="s2T5Desc">IBM's Deep Blue defeats chess champion Kasparov</p></div></div>
-        <div class="timeline-item"><div class="timeline-year">2012</div><div class="timeline-card highlight"><h4 data-i18n="s2T6Title">AlexNet</h4><p data-i18n="s2T6Desc">Deep learning + GPU breakthrough on ImageNet. This wave truly begins here.</p></div></div>
-        <div class="timeline-item"><div class="timeline-year">2016</div><div class="timeline-card"><h4 data-i18n="s2T7Title">AlphaGo</h4><p data-i18n="s2T7Desc">DeepMind's AlphaGo defeats Go champion Lee Sedol</p></div></div>
-        <div class="timeline-item"><div class="timeline-year">2017</div><div class="timeline-card highlight"><h4 data-i18n="s2T8Title">Transformer</h4><p data-i18n="s2T8Desc">"Attention is All You Need" — the architecture behind every modern LLM.</p></div></div>
-        <div class="timeline-item"><div class="timeline-year">2022</div><div class="timeline-card highlight"><h4 data-i18n="s2T9Title">ChatGPT Era</h4><p data-i18n="s2T9Desc">Large Language Models enter everyday life, AI goes mainstream</p></div></div>
-        <div class="timeline-item"><div class="timeline-year">2024+</div><div class="timeline-card highlight"><h4 data-i18n="s2T10Title">AI Agent</h4><p data-i18n="s2T10Desc">AI can not only chat, but autonomously complete complex tasks</p></div></div>
+        <div class="timeline-item" data-detail="1"><div class="timeline-year">1950</div><div class="timeline-card"><h4 data-i18n="s2T1Title">Turing Test</h4><p data-i18n="s2T1Desc">Alan Turing posed "Can machines think?", sparking AI philosophy</p></div></div>
+        <div class="timeline-item" data-detail="2"><div class="timeline-year">1956</div><div class="timeline-card"><h4 data-i18n="s2T2Title">AI is Born</h4><p data-i18n="s2T2Desc">The Dartmouth Conference formally coined "Artificial Intelligence"</p></div></div>
+        <div class="timeline-item" data-detail="3"><div class="timeline-year">1974</div><div class="timeline-card"><h4 data-i18n="s2T3Title">First AI Winter</h4><p data-i18n="s2T3Desc">Symbolic AI hit a wall. The Lighthill report triggered a decade of funding cuts.</p></div></div>
+        <div class="timeline-item" data-detail="4"><div class="timeline-year">1987</div><div class="timeline-card"><h4 data-i18n="s2T4Title">Second AI Winter</h4><p data-i18n="s2T4Desc">Expert systems failed to scale. The dedicated LISP-machine market collapsed.</p></div></div>
+        <div class="timeline-item" data-detail="5"><div class="timeline-year">1997</div><div class="timeline-card"><h4 data-i18n="s2T5Title">Deep Blue Wins</h4><p data-i18n="s2T5Desc">IBM's Deep Blue defeats chess champion Kasparov</p></div></div>
+        <div class="timeline-item" data-detail="6"><div class="timeline-year">2012</div><div class="timeline-card highlight"><h4 data-i18n="s2T6Title">AlexNet</h4><p data-i18n="s2T6Desc">Deep learning + GPU breakthrough on ImageNet. This wave truly begins here.</p></div></div>
+        <div class="timeline-item" data-detail="7"><div class="timeline-year">2016</div><div class="timeline-card"><h4 data-i18n="s2T7Title">AlphaGo</h4><p data-i18n="s2T7Desc">DeepMind's AlphaGo defeats Go champion Lee Sedol</p></div></div>
+        <div class="timeline-item" data-detail="8"><div class="timeline-year">2017</div><div class="timeline-card highlight"><h4 data-i18n="s2T8Title">Transformer</h4><p data-i18n="s2T8Desc">"Attention is All You Need" — the architecture behind every modern LLM.</p></div></div>
+        <div class="timeline-item" data-detail="9"><div class="timeline-year">2022</div><div class="timeline-card highlight"><h4 data-i18n="s2T9Title">ChatGPT Era</h4><p data-i18n="s2T9Desc">Large Language Models enter everyday life, AI goes mainstream</p></div></div>
+        <div class="timeline-item" data-detail="10"><div class="timeline-year">2024+</div><div class="timeline-card highlight"><h4 data-i18n="s2T10Title">AI Agent</h4><p data-i18n="s2T10Desc">AI can not only chat, but autonomously complete complex tasks</p></div></div>
+      </div>
+      <div class="timeline-detail" id="historyDetail" hidden>
+        <p class="timeline-detail-hint" data-i18n="s2DetailHint">💡 Click any node above to read more</p>
+        <div class="timeline-detail-body" id="historyDetailBody"></div>
       </div>
     </div>
   </section>
@@ -184,6 +198,17 @@
               <div class="feature-card"><div class="feature-icon">🌐</div><h4 data-i18n="s3F4Title">Translation</h4><p data-i18n="s3F4Desc">Break through language barriers</p></div>
             </div>
             <div class="tip-box" data-i18n-html="s3Tip"><strong>💡 Notable Models:</strong> GPT-4, Claude, Hunyuan, DeepSeek, Llama, etc.</div>
+            <details class="reveal-card">
+              <summary>
+                <span class="reveal-icon">🎭</span>
+                <span class="reveal-title" data-i18n="s3RevealTitle">Why does AI "hallucinate"?</span>
+                <span class="reveal-arrow" aria-hidden="true">›</span>
+              </summary>
+              <div class="reveal-body">
+                <p data-i18n-html="s3RevealP1">LLMs don't "know" facts — they <strong>predict the next word</strong> based on statistical patterns from training data. When the answer isn't in the patterns, the model fills in what <em>looks</em> plausible.</p>
+                <p data-i18n-html="s3RevealP2">This is a feature, not a bug. The same mechanism that lets AI write a poem also makes it fabricate a citation. That's why <strong>verification is essential</strong> — dates, numbers, references, legal / medical content — always double-check.</p>
+              </div>
+            </details>
           </div>
         </div>
       </div>
@@ -575,6 +600,16 @@
       </div>
       <div class="ending-particles" id="endingParticles"></div>
     </div>
+
+    <!-- QR 码浮标 · 仅电脑端显示 -->
+    <a class="qr-badge qr-badge-dark" href="https://yeranyang.cn/share/ai-enlightenment/" target="_blank" rel="noopener" title="扫码 · 带走这份 deck">
+      <img src="./assets/qr-deck.svg" alt="扫码带走本 deck" width="72" height="72" />
+      <div class="qr-badge-copy">
+        <span class="qr-tag" data-i18n="qrTag">SCAN &amp; READ</span>
+        <span class="qr-title" data-i18n="qrTitleEnding">Take it with you</span>
+        <span class="qr-sub" data-i18n="qrSubEnding">Revisit anytime, share freely</span>
+      </div>
+    </a>
   </section>
 
   <!-- 键盘提示 -->

@@ -40,7 +40,12 @@ function switchLang(lang) {
   
   // 应用翻译
   applyTranslations(lang);
-  
+
+  // 时间线如有展开的详细面板，随语言切换重渲染
+  if (typeof activeTimelineDetail !== 'undefined' && activeTimelineDetail) {
+    renderTimelineDetail();
+  }
+
   // 保存偏好
   try { localStorage.setItem('ai-slides-lang', lang); } catch(e) {}
 }
@@ -270,16 +275,95 @@ function autoHideKeyboardHint() {
 }
 
 // ========================================
+//  History 时间线交互（点击节点展开详细简介）
+// ========================================
+
+let activeTimelineDetail = null;
+
+function initHistoryTimeline() {
+  const timeline = document.getElementById('historyTimeline');
+  const detailPanel = document.getElementById('historyDetail');
+  const detailBody = document.getElementById('historyDetailBody');
+  if (!timeline || !detailPanel || !detailBody) return;
+
+  const items = timeline.querySelectorAll('.timeline-item');
+  items.forEach(item => {
+    item.setAttribute('role', 'button');
+    item.setAttribute('tabindex', '0');
+    item.addEventListener('click', () => showTimelineDetail(item));
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        showTimelineDetail(item);
+      }
+    });
+  });
+}
+
+function showTimelineDetail(item) {
+  const idx = item.getAttribute('data-detail');
+  if (!idx) return;
+
+  const timeline = document.getElementById('historyTimeline');
+  const detailPanel = document.getElementById('historyDetail');
+  const detailBody = document.getElementById('historyDetailBody');
+  if (!detailPanel || !detailBody) return;
+
+  // 同一个节点二次点击 = 收起
+  if (activeTimelineDetail === idx) {
+    detailPanel.hidden = true;
+    detailPanel.classList.remove('is-open');
+    timeline.querySelectorAll('.timeline-item.is-active').forEach(el => el.classList.remove('is-active'));
+    activeTimelineDetail = null;
+    return;
+  }
+
+  // 高亮当前节点
+  timeline.querySelectorAll('.timeline-item.is-active').forEach(el => el.classList.remove('is-active'));
+  item.classList.add('is-active');
+
+  // 渲染内容
+  activeTimelineDetail = idx;
+  renderTimelineDetail();
+  detailPanel.hidden = false;
+  // 重触发动画
+  detailPanel.classList.remove('is-open');
+  void detailPanel.offsetHeight;
+  detailPanel.classList.add('is-open');
+}
+
+function renderTimelineDetail() {
+  const detailBody = document.getElementById('historyDetailBody');
+  if (!detailBody || !activeTimelineDetail) return;
+  const texts = i18n[currentLang] || {};
+  const titleKey = `s2T${activeTimelineDetail}Title`;
+  const yearKey = null; // 年份直接从 DOM 拿
+  const detailKey = `s2T${activeTimelineDetail}Detail`;
+  const item = document.querySelector(`.timeline-item[data-detail="${activeTimelineDetail}"]`);
+  const year = item ? item.querySelector('.timeline-year').textContent : '';
+  const title = texts[titleKey] || '';
+  const detail = texts[detailKey] || '';
+  detailBody.innerHTML = `
+    <div class="td-head">
+      <span class="td-year">${year}</span>
+      <h4 class="td-title">${title}</h4>
+    </div>
+    <p class="td-body">${detail}</p>
+  `;
+}
+
+// ========================================
 //  初始化
 // ========================================
 
 function init() {
   initNavDots();
-  updateProgress();
+  updateNav();
   createEndingParticles();
   addHoverEffects();
   autoHideKeyboardHint();
   initLang();
+  initHistoryTimeline();
   triggerSlideAnimations(slides[0]);
 }
 

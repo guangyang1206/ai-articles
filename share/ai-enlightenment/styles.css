@@ -582,9 +582,9 @@ body::before {
 .timeline-item {
   position: relative;
   flex: 1;
-  min-width: 150px;
+  min-width: 108px;
   text-align: center;
-  padding: 0 0.5rem;
+  padding: 0 0.35rem;
 }
 
 .timeline-year {
@@ -613,7 +613,7 @@ body::before {
   background: var(--bg-card);
   border: 1px solid rgba(91, 74, 138, 0.2);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.7rem 0.6rem;
   margin-top: 1.5rem;
   transition: all 0.3s ease;
 }
@@ -625,13 +625,14 @@ body::before {
 }
 
 .timeline-card h4 {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: var(--text);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.25;
 }
 
 .timeline-card p {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   color: var(--text-dim);
   line-height: 1.5;
 }
@@ -2269,4 +2270,211 @@ body::before {
   .ending-title {
     font-size: 2.5rem;
   }
+}
+
+/* ==================== QR 码浮标 ==================== */
+.qr-badge {
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem 0.75rem 0.75rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #F5F5F7;
+  text-decoration: none;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  z-index: 100;
+  animation: fade-up-in 0.8s ease-out 1.2s both;
+}
+.qr-badge:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.qr-badge img {
+  display: block;
+  background: #fff;
+  border-radius: 6px;
+  padding: 4px;
+  width: 72px;
+  height: 72px;
+}
+.qr-badge-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.qr-tag {
+  font-family: 'Playfair Display', 'Noto Serif SC', serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent, #E8A87C);
+  text-transform: uppercase;
+}
+.qr-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.3;
+}
+.qr-sub {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.35;
+}
+
+/* 手机上隐藏浮标（观众自己就在手机上看，不需要 QR） */
+@media (max-width: 900px) {
+  .qr-badge {
+    display: none;
+  }
+}
+
+@keyframes fade-up-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== 可展开卡（LLM 页幻觉机制 + 通用） ==================== */
+.reveal-card {
+  margin-top: 0.8rem;
+  border: 1px solid rgba(91, 74, 138, 0.28);
+  border-radius: 12px;
+  background: rgba(91, 74, 138, 0.06);
+  overflow: hidden;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.reveal-card[open] {
+  background: rgba(91, 74, 138, 0.10);
+  border-color: rgba(91, 74, 138, 0.42);
+}
+.reveal-card summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--primary-light, #7B6AAA);
+  user-select: none;
+}
+.reveal-card summary::-webkit-details-marker { display: none; }
+.reveal-icon { font-size: 1.1rem; }
+.reveal-title { flex: 1; }
+.reveal-arrow {
+  font-size: 1.3rem;
+  color: var(--text-dim, #A7A9BE);
+  transition: transform 0.25s ease;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+}
+.reveal-card[open] .reveal-arrow { transform: rotate(90deg); }
+.reveal-body {
+  padding: 0.25rem 1rem 1rem;
+  border-top: 1px dashed rgba(91, 74, 138, 0.22);
+  margin-top: 0.25rem;
+  animation: reveal-in 0.35s ease-out both;
+}
+.reveal-body p {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--text-dim, #A7A9BE);
+  margin-top: 0.6rem;
+}
+.reveal-body p strong { color: #F5F5F7; font-weight: 600; }
+.reveal-body p em { color: var(--accent, #E8A87C); font-style: normal; }
+@keyframes reveal-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== History 时间线交互 ==================== */
+.timeline-item {
+  cursor: pointer;
+}
+.timeline-item:hover .timeline-card,
+.timeline-item:focus-visible .timeline-card {
+  border-color: rgba(91, 74, 138, 0.6);
+  transform: translateY(-2px);
+}
+.timeline-item.is-active .timeline-card {
+  border-color: var(--primary-light, #7B6AAA);
+  background: rgba(91, 74, 138, 0.14);
+  box-shadow: 0 0 0 1px var(--primary-light, #7B6AAA), 0 6px 24px rgba(91, 74, 138, 0.25);
+}
+.timeline-item.is-active .timeline-year {
+  color: var(--accent-warm, #F5C28A);
+  transform: scale(1.05);
+}
+.timeline-item.is-active .timeline-year::after {
+  background: var(--accent-warm, #F5C28A);
+  box-shadow: 0 0 0 4px rgba(245, 194, 138, 0.22);
+}
+
+.timeline-detail {
+  margin-top: 1.2rem;
+  padding: 1.1rem 1.4rem;
+  border: 1px solid rgba(91, 74, 138, 0.34);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(91, 74, 138, 0.10), rgba(91, 74, 138, 0.04));
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.timeline-detail.is-open {
+  animation: reveal-in 0.32s ease-out both;
+}
+.timeline-detail-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted, #72738C);
+  margin: 0 0 0.6rem;
+  font-style: italic;
+}
+.timeline-detail-body .td-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin-bottom: 0.55rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+}
+.td-year {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent-warm, #F5C28A);
+  letter-spacing: 0.02em;
+}
+.td-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #F5F5F7;
+  margin: 0;
+}
+.td-body {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text-dim, #A7A9BE);
+  margin: 0;
+}
+.td-body strong { color: #FFFFFF; font-weight: 600; }
+.td-body em { color: var(--accent, #E8A87C); font-style: italic; }
+.td-body sup { font-size: 0.6em; vertical-align: super; }
+
+@media (max-width: 768px) {
+  .timeline-detail {
+    padding: 0.9rem 1rem;
+  }
+  .td-year { font-size: 1.1rem; }
+  .td-title { font-size: 0.95rem; }
+  .td-body { font-size: 0.85rem; }
 }
