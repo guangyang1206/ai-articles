@@ -1,0 +1,1404 @@
+/* ============================================================
+   custom.css — 当人工智能开始涌现，人往何处
+   在 Webflow 参考设计（styles.css）基础上，新增本次分享专属组件。
+   复用同一套 design tokens：--blue #146ef5 / --border / --gray-* 等
+   ============================================================ */
+
+/* 中文标题微调：正文 Inter，标题混排更稳 */
+h1, h2 { letter-spacing: -0.5px; }
+.cover-title { max-width: 760px; line-height: 1.1; }
+
+/* ===== 封面引言：用 Karpathy 真实引言做视觉重心 ===== */
+.cover-body { padding: 56px var(--slide-px) 40px; gap: 8px; }
+.cover-body .tag-pill { margin-bottom: 24px; }
+.cover-body .cover-rule { margin-top: 24px; margin-bottom: 8px; max-width: 640px; }
+.cover-quote { max-width: 720px; white-space: normal; border-top: none; padding-top: 0; margin-top: 12px; }
+.cover-quote blockquote {
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--black);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.1px;
+  position: relative;
+  padding-left: 22px;
+  border-left: 3px solid var(--blue);
+  font-family: "Noto Serif SC", "Inter", serif;
+}
+.cover-quote blockquote em { color: var(--blue); font-style: normal; font-weight: 600; }
+.cover-quote .quote-attribution {
+  margin-top: 14px; padding-left: 22px;
+  font-size: 12.5px; font-weight: 500;
+  color: var(--gray-500); letter-spacing: 0.4px;
+}
+
+/* 分享人信息行 — 标题与引言之间 */
+.cover-speaker {
+  margin: 6px 0 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--gray-500);
+  letter-spacing: 0.2px;
+}
+.cover-speaker .cs-role {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--blue);
+  padding: 3px 8px;
+  border: 1px solid var(--blue);
+  border-radius: 3px;
+  align-self: center;
+}
+.cover-speaker .cs-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--black);
+  letter-spacing: 4px;
+}
+.cover-speaker .cs-sep { color: var(--gray-300); font-weight: 300; }
+.cover-speaker .cs-aff { color: var(--gray-700); font-size: 13.5px; }
+
+/* 双语引言 — 中文在上、英文在下 */
+.cover-quote-bilingual { max-width: 780px; }
+.cover-quote-bilingual .quote-zh {
+  font-size: 19px;
+  line-height: 1.65;
+  font-family: "Noto Serif SC", "Inter", serif;
+}
+.cover-quote-bilingual .quote-en {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--gray-700);
+  font-family: "Inter", -apple-system, "Helvetica Neue", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  padding-left: 22px;
+  border-left: 3px solid var(--blue);
+  position: relative;
+}
+.cover-quote-bilingual .quote-en em {
+  color: var(--blue);
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* 宽版通用 body（大部分内容页用） */
+.slide-wide {
+  max-width: 1200px;
+  padding: 44px var(--slide-px) 36px;
+}
+.slide-wide h2 { font-size: 38px; max-width: 940px; }
+.slide-wide .cover-rule { margin-top: 12px; margin-bottom: 20px; }
+
+/* ========== PAGE 02 — 自我介绍 ========== */
+.intro-body { max-width: 1160px; padding: 34px var(--slide-px) 32px; display: flex; flex-direction: column; gap: 16px; }
+.intro-body h2 { font-size: 34px; }
+.intro-body .cover-rule { margin-top: 6px; margin-bottom: 2px; }
+
+/* 两张照片并排（个人合影 + 班级合影）：完整展示人物，不做硬裁剪 */
+.intro-photos {
+  display: flex;
+  gap: 14px;
+  align-items: stretch;
+}
+.ipc {
+  margin: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 356px;
+}
+.ipc img {
+  height: 300px;
+  display: block;
+  background: #f6f6f6;
+}
+/* 左：肖像照 —— 卡片固定 360px，图片撑满并按顶部裁剪 */
+.ipc-portrait { width: 360px; }
+.ipc-portrait img {
+  width: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+/* 右：毕业照 —— 卡片宽度自适应图片自身宽度，两侧没有空白边框 */
+.ipc-class {
+  width: auto;
+}
+.ipc-class img {
+  width: auto;
+  max-width: none;
+  object-fit: cover;
+}
+.ipc figcaption {
+  padding: 10px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border-top: 1px solid var(--border);
+}
+.ipc figcaption strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--black);
+  letter-spacing: 0.1px;
+}
+.ipc figcaption span {
+  font-size: 11.5px;
+  color: var(--gray-500);
+  line-height: 1.55;
+}
+
+/* 自我介绍：一个事实框 + 一句回母校的谦逊表达 */
+.if-kicker {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--blue);
+}
+.intro-role-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  background: var(--bg);
+}
+.intro-role-card p {
+  margin-top: 5px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--gray-700);
+}
+.intro-role-card strong { color: var(--black); font-weight: 600; }
+.intro-humble-quote {
+  border-left: 3px solid var(--blue);
+  background: rgba(20,110,245,0.045);
+  border-radius: 8px;
+  padding: 16px 20px 16px 22px;
+}
+.intro-humble-quote p {
+  font-family: "Noto Serif SC", "Inter", serif;
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--black);
+  letter-spacing: 0.1px;
+}
+.if-value { font-size: 14.5px; font-weight: 600; color: var(--black); line-height: 1.35; }
+.if-note { font-size: 12px; color: var(--gray-500); line-height: 1.55; }
+
+/* ========== PAGE 03 — 今天聊什么 ========== */
+.agenda-lede { font-size: 15px; color: var(--gray-500); line-height: 1.6; max-width: 820px; margin-bottom: 22px; }
+.agenda-lede strong { color: var(--black); font-weight: 600; }
+
+/* 视觉串联：技术 → 产业 → 趋势 → 人 */
+.agenda-flow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 26px;
+  flex-wrap: wrap;
+}
+.af-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-800);
+  letter-spacing: 0.3px;
+  transition: border-color 160ms, transform 160ms, background 160ms;
+}
+.af-node .af-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--gray-500);
+}
+.af-node .af-label { line-height: 1; }
+.af-arrow {
+  display: inline-flex; align-items: center;
+  color: var(--gray-300);
+}
+.af-node.af-people {
+  background: rgba(20,110,245,0.06);
+  border-color: rgba(20,110,245,0.35);
+  color: var(--blue);
+}
+.af-node.af-people .af-icon { color: var(--blue); }
+
+.agenda-list { display: flex; flex-direction: column; gap: 12px; max-width: 940px; }
+.agenda-item {
+  display: flex; align-items: flex-start; gap: 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 22px;
+  background: var(--bg);
+  transition: border-color 160ms, transform 160ms;
+}
+.agenda-item:hover { border-color: #b9b9b9; transform: translateX(2px); }
+.agenda-item.accent-item {
+  background: rgba(20,110,245,0.04);
+  border-color: rgba(20,110,245,0.22);
+}
+.ag-num {
+  font-size: 26px; font-weight: 700; color: var(--gray-300);
+  line-height: 1; flex-shrink: 0; letter-spacing: -1px; min-width: 36px;
+}
+.accent-item .ag-num { color: var(--blue); }
+.ag-copy h3 { font-size: 16px; font-weight: 600; color: var(--black); }
+.ag-copy p { margin-top: 4px; font-size: 13px; color: var(--gray-500); line-height: 1.55; }
+
+/* ========== PAGE 04 — 三波浪潮 + 时间线 ========== */
+.waves { display: flex; align-items: stretch; gap: 8px; margin-top: 4px; }
+.waves-compact .wave-card { padding: 12px 14px; gap: 3px; }
+.waves-compact .wave-card h3 { font-size: 16px; }
+.waves-compact .wave-body { font-size: 11.5px; line-height: 1.5; }
+.wave-card {
+  flex: 1; border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px 20px; background: var(--bg);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.wave-now { background: rgba(20,110,245,0.04); border-color: rgba(20,110,245,0.22); }
+.wave-tag {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; color: var(--gray-300);
+}
+.wave-now .wave-tag { color: var(--blue); }
+.wave-card h3 { font-size: 20px; font-weight: 600; color: var(--black); }
+.wave-sub { font-size: 12px; color: var(--blue); font-weight: 500; }
+.wave-body { font-size: 12.5px; color: var(--gray-500); line-height: 1.6; margin-top: 2px; }
+.wave-arrow { align-self: center; color: var(--gray-300); font-size: 20px; flex-shrink: 0; }
+
+/* — 时间线 — */
+.ai-timeline {
+  margin-top: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fafafa;
+  padding: 12px 18px 10px;
+}
+.ait-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 4px;
+}
+.ait-title {
+  font-size: 12px; font-weight: 600; color: var(--black);
+  letter-spacing: 0.3px;
+}
+.ait-legend { display: flex; gap: 12px; align-items: center; }
+.ait-lg {
+  font-size: 10px; color: var(--gray-500); display: inline-flex; align-items: center; gap: 5px;
+}
+.ait-lg::before {
+  content: ""; width: 10px; height: 10px; border-radius: 2px;
+  background: rgba(90,90,90,0.15);
+}
+.ait-lg-conn::before { background: rgba(20,110,245,0.2); }
+.ait-lg-fm::before   { background: rgba(20,110,245,0.4); }
+.ait-svg {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 1000 / 240;
+  font-family: var(--font);
+}
+.ait-source {
+  font-size: 9.5px; color: var(--gray-300); text-align: right;
+  margin-top: 2px; font-style: italic;
+}
+
+/* ========== PAGE 05 — 大模型本质 · 神经网络 ========== */
+.nn-lede {
+  font-size: 13.5px; color: var(--gray-700); line-height: 1.65;
+  max-width: 1000px; margin-bottom: 12px;
+}
+.nn-lede strong { color: var(--black); font-weight: 600; }
+.nn-main {
+  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 20px;
+  align-items: stretch;
+}
+.nn-diagram {
+  border: 1px solid var(--border); border-radius: 12px;
+  background: #fafafa; padding: 14px 16px 10px;
+  display: flex; flex-direction: column;
+}
+.nn-svg {
+  width: 100%; height: auto; max-height: 240px;
+  display: block;
+}
+.nn-caption {
+  font-size: 11.5px; color: var(--gray-500); line-height: 1.55;
+  margin-top: 6px; padding-top: 8px; border-top: 1px dashed var(--border);
+}
+.nn-caption strong { color: var(--black); font-weight: 600; }
+.nn-hl {
+  display: inline-block; padding: 1px 6px;
+  background: rgba(20,110,245,0.1); color: var(--blue);
+  border-radius: 3px; font-weight: 600;
+}
+.nn-side { display: flex; flex-direction: column; gap: 12px; }
+.ilya-quote {
+  border-left: 3px solid var(--blue);
+  padding: 18px 22px; border-radius: 0 10px 10px 0;
+  background: linear-gradient(180deg, rgba(20,110,245,0.06), rgba(20,110,245,0.02));
+  font-family: "Noto Serif SC", serif;
+  color: var(--black);
+}
+.ilya-quote-v2 { font-size: 13.5px; line-height: 1.7; }
+.ilya-quote-v2 .iq-body { color: var(--black); }
+.ilya-quote cite {
+  display: block; margin-top: 10px; font-style: normal; font-family: var(--font);
+  font-size: 11px; color: var(--gray-500); font-weight: 500;
+}
+/* — P5 右侧小型 insight 条（替代原三 pillar） — */
+.nn-insight {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 14px; border: 1px solid var(--border);
+  border-left: 3px solid var(--blue);
+  border-radius: 8px; background: rgba(20,110,245,0.03);
+}
+.ni-icon { font-size: 18px; line-height: 1.2; flex-shrink: 0; }
+.nn-insight p {
+  font-size: 12.5px; color: var(--gray-700); line-height: 1.55;
+}
+.nn-insight strong { color: var(--black); font-weight: 600; }
+.nn-insight em { color: var(--blue); font-style: normal; font-weight: 600; }
+
+/* — P5 底部两个终极问题 — */
+.nn-questions {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px; margin-top: 14px;
+}
+.nn-q {
+  border: 1px solid var(--border); border-radius: 10px;
+  background: #fafafa;
+  padding: 14px 16px 14px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.nq-head {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding-bottom: 8px; border-bottom: 1px dashed var(--border);
+}
+.nq-tag {
+  font-size: 10.5px; font-weight: 700; color: #fff;
+  background: var(--blue); padding: 2px 8px;
+  border-radius: 4px; letter-spacing: 0.5px; flex-shrink: 0;
+  line-height: 1.5;
+}
+.nq-title {
+  font-size: 13px; font-weight: 600; color: var(--black);
+  line-height: 1.5;
+}
+.nq-title em { color: var(--blue); font-style: normal; font-weight: 700; }
+.nq-body {
+  font-size: 11.5px; color: var(--gray-700); line-height: 1.65;
+}
+.nq-body strong { color: var(--black); font-weight: 600; }
+.nq-body .accent { color: var(--blue); font-weight: 600; }
+
+/* ========== PAGE 06 — 三次跃迁 v2 ========== */
+.leaps-lede { font-size: 14px; color: var(--gray-500); line-height: 1.6; max-width: 1000px; margin-bottom: 14px; }
+.leaps-lede strong { color: var(--black); font-weight: 600; }
+#slide-06 .era-cards { margin-top: 0; }
+.era-cards-v2 .era-card {
+  min-height: 260px; padding: 18px 18px 16px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.era-cards-v2 .era-card h3 { font-size: 15.5px; margin-top: 2px; }
+.era-h-en {
+  display: block; font-size: 10.5px; font-weight: 500;
+  color: var(--gray-300); letter-spacing: 0.4px; margin-top: 1px;
+  font-family: var(--font);
+}
+.era-body { font-size: 12px; color: var(--gray-500); line-height: 1.55; margin: 4px 0 8px; }
+.era-body strong { color: var(--black); font-weight: 600; }
+.era-stat {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 4px 8px; border-radius: 5px;
+  background: rgba(20,110,245,0.04);
+  margin-bottom: 4px;
+}
+.era-past .era-stat  { background: rgba(90,90,90,0.05); }
+.es-key { font-size: 10.5px; color: var(--gray-500); font-weight: 500; }
+.es-val { font-size: 11.5px; color: var(--blue); font-weight: 600; font-family: var(--font); }
+.era-past .es-val { color: var(--gray-700); }
+.era-cards-v2 .era-example {
+  margin-top: auto; font-size: 10.5px; color: var(--gray-300);
+  border-top: 1px dashed var(--border); padding-top: 6px;
+}
+
+/* — P6 过渡钩子 — */
+.era-transition {
+  margin-top: 16px; padding: 12px 18px;
+  background: linear-gradient(90deg, rgba(20,110,245,0.06), rgba(20,110,245,0.02));
+  border-radius: 10px; border-left: 3px solid var(--blue);
+  display: flex; align-items: center; gap: 14px;
+}
+.et-line {
+  width: 3px; height: 30px; background: var(--blue); border-radius: 2px; flex-shrink: 0;
+  display: none;
+}
+.et-text {
+  font-size: 13px; color: var(--gray-700); line-height: 1.55; flex: 1;
+}
+.et-text strong { color: var(--black); font-weight: 600; }
+.et-tag {
+  display: inline-block; padding: 2px 8px;
+  background: var(--blue); color: #fff;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+  border-radius: 4px; margin-right: 8px; vertical-align: middle;
+}
+
+/* — v3 · 三卡片加代表产品行 — */
+.era-cards-v3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 0; align-items: stretch; }
+.era-cards-v3 .era-card {
+  min-height: 320px; padding: 16px 16px 14px;
+  display: flex; flex-direction: column; gap: 4px;
+  border: 1px solid var(--border); border-radius: 10px; background: var(--bg);
+}
+.era-cards-v3 .era-now { background: rgba(20,110,245,0.04); border-color: rgba(20,110,245,0.22); }
+.era-cards-v3 .era-card h3 { font-size: 15px; margin-top: 2px; color: var(--black); font-weight: 600; }
+.era-cards-v3 .era-label {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.6px;
+  text-transform: uppercase; color: var(--gray-300);
+}
+.era-cards-v3 .era-now .era-label { color: var(--blue); }
+.era-products {
+  margin-top: auto; padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.ep-think {
+  font-size: 10.5px; color: var(--gray-500); font-weight: 500;
+  font-style: italic; letter-spacing: 0.2px;
+}
+.ep-tags { display: flex; flex-direction: column; gap: 4px; }
+.ep-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; color: var(--gray-700); font-weight: 500;
+  padding: 3px 8px; border-radius: 5px;
+  background: rgba(90,90,90,0.05);
+}
+.ep-tag-cn { color: var(--black); }
+.ep-tag-en { color: var(--gray-500); }
+.ep-flag {
+  display: inline-block; font-size: 9px; font-weight: 700;
+  padding: 1px 4px; border-radius: 3px; letter-spacing: 0.5px;
+  background: var(--gray-500); color: #fff;
+  line-height: 1.3;
+}
+.ep-tag-cn .ep-flag { background: #d33a3a; }
+.ep-tag-en .ep-flag { background: #5a5a5a; }
+.era-now .ep-tag { background: rgba(20,110,245,0.08); }
+.era-now .ep-tag-cn .ep-flag { background: #d33a3a; }
+.era-now .ep-tag-en .ep-flag { background: #146ef5; }
+
+/* ========== PAGE 06b — Agent 感知-行动闭环 ========== */
+.agent-oneline {
+  border: 1px solid var(--border); border-radius: 10px;
+  background: linear-gradient(180deg, rgba(20,110,245,0.05), rgba(20,110,245,0.02));
+  padding: 12px 18px 14px; margin-top: 0; margin-bottom: 14px;
+}
+.ao-kicker {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; color: var(--blue);
+  margin-bottom: 4px;
+}
+.ao-body {
+  font-size: 13.5px; color: var(--black); line-height: 1.65;
+}
+.ao-body strong { color: var(--blue); font-weight: 600; }
+
+.agent-loop-wrap {
+  border: 1px solid var(--border); border-radius: 12px;
+  background: #fafafa; padding: 16px 22px 18px;
+  margin-bottom: 12px;
+}
+.al-title {
+  font-size: 13px; font-weight: 600; color: var(--black);
+  letter-spacing: 0.2px;
+}
+.al-sub {
+  font-size: 11.5px; color: var(--gray-500); line-height: 1.55;
+  margin-top: 2px; margin-bottom: 12px;
+}
+.agent-loop {
+  display: grid;
+  grid-template-columns: 1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr;
+  gap: 6px; align-items: start; margin-top: 4px;
+}
+.al-node {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 6px; padding: 0 4px;
+}
+.al-icon {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--blue);
+}
+.al-icon-perc { background: #e6f0ff; color: #146ef5; }
+.al-icon-reas { background: #fde8ec; color: #d33a6d; }
+.al-icon-plan { background: #fff2d6; color: #c78a13; }
+.al-icon-act  { background: #ede6ff; color: #7a3ff5; }
+.al-icon-refl { background: #daf1ee; color: #0a9a8a; }
+.al-name {
+  font-size: 12.5px; font-weight: 600; color: var(--black);
+  line-height: 1.3;
+}
+.al-name span {
+  display: block; font-size: 10px; font-weight: 500;
+  color: var(--gray-300); letter-spacing: 0.4px; margin-top: 1px;
+}
+.al-desc {
+  font-size: 10.5px; color: var(--gray-500); line-height: 1.5;
+  max-width: 150px;
+}
+.al-desc strong { color: var(--black); font-weight: 600; }
+.al-desc em { color: var(--blue); font-style: normal; font-weight: 600; }
+.al-arrow {
+  align-self: center; color: var(--gray-300);
+  font-size: 16px; padding-top: 22px;
+}
+
+.al-loop-back {
+  position: relative; margin-top: 12px; padding-top: 4px;
+  height: 44px;
+}
+.al-loop-back svg {
+  width: 100%; height: 40px; display: block;
+}
+.al-loop-text {
+  position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+  background: #fafafa; padding: 0 10px;
+  font-size: 10.5px; color: var(--blue); font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.agent-insight {
+  border: 1px solid rgba(20,110,245,0.25);
+  border-left: 3px solid var(--blue);
+  background: linear-gradient(90deg, rgba(20,110,245,0.06), rgba(20,110,245,0.02));
+  border-radius: 10px; padding: 12px 16px;
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.ai-icon { font-size: 22px; line-height: 1.1; flex-shrink: 0; padding-top: 2px; }
+.ai-copy { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.ai-en {
+  font-size: 12.5px; color: var(--gray-700); line-height: 1.6;
+  font-family: var(--font); font-style: italic;
+}
+.ai-en strong { color: var(--black); font-weight: 700; font-style: normal; }
+.ai-en .accent { color: var(--blue); font-weight: 600; font-style: normal; }
+.ai-zh {
+  font-size: 13px; color: var(--black); line-height: 1.65;
+}
+.ai-zh strong { color: var(--black); font-weight: 700; }
+.ai-zh em { color: var(--blue); font-style: normal; font-weight: 600; }
+.ai-zh .accent { color: var(--blue); font-weight: 600; }
+
+/* ========== PAGE 07 — Token 经济学 ========== */
+.token-lede { font-size: 14.5px; color: var(--gray-500); line-height: 1.6; max-width: 980px; margin-bottom: 18px; }
+.token-lede strong { color: var(--black); font-weight: 600; }
+.token-main { display: grid; grid-template-columns: 1.05fr 1fr; gap: 24px; align-items: start; }
+.token-chart-wrap {
+  border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px 16px; background: #fafafa;
+}
+.tc-title { font-size: 12px; font-weight: 600; color: var(--gray-700); margin-bottom: 16px; }
+.token-chart {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 10px;
+  height: 220px; padding-top: 10px;
+}
+.tc-bar {
+  flex: 1; height: calc(var(--h)); min-height: 6px;
+  background: linear-gradient(180deg, #7ba9f5, #146ef5);
+  border-radius: 6px 6px 0 0; position: relative;
+  display: flex; align-items: flex-start; justify-content: center;
+  transition: filter 160ms;
+}
+.tc-bar-now { background: linear-gradient(180deg, #146ef5, #0055d4); box-shadow: 0 4px 14px rgba(20,110,245,0.3); }
+.tc-val {
+  position: absolute; top: -20px; font-size: 11px; font-weight: 700; color: var(--black); white-space: nowrap;
+}
+.tc-bar-now .tc-val { color: var(--blue); font-size: 13px; }
+.tc-x {
+  position: absolute; bottom: -20px; font-size: 10px; color: var(--gray-500); white-space: nowrap;
+}
+.tc-note { margin-top: 30px; font-size: 12.5px; color: var(--gray-500); text-align: center; }
+.tc-note strong { color: var(--blue); font-weight: 700; }
+.tc-source { display: block; margin-top: 6px; font-size: 10.5px; color: var(--gray-500); opacity: 0.85; letter-spacing: 0.1px; }
+.fact-src { display: block; margin-top: 6px; font-size: 10px; color: var(--gray-500); opacity: 0.85; letter-spacing: 0.1px; font-style: normal; }
+.token-facts { display: flex; flex-direction: column; gap: 12px; }
+.token-facts .p7-fact-value { font-size: 15px; }
+
+/* ========== PAGE 07 (new) — 国家意志 ========== */
+.np-lede {
+  font-size: 13.5px; color: var(--gray-700); line-height: 1.6;
+  max-width: 1000px; margin-bottom: 12px;
+}
+.np-lede strong { color: var(--black); font-weight: 600; }
+
+/* 三张政策卡（横向时间轴） */
+.np-policy {
+  display: grid; grid-template-columns: 1fr 20px 1fr 20px 1fr;
+  gap: 6px; align-items: stretch; margin-bottom: 14px;
+}
+.npc {
+  border: 1px solid var(--border); border-radius: 10px;
+  background: var(--bg); padding: 12px 14px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.npc-now { background: rgba(20,110,245,0.05); border-color: rgba(20,110,245,0.28); }
+.npc-date {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.6px;
+  color: var(--gray-500);
+}
+.npc-now .npc-date { color: var(--blue); }
+.npc-title {
+  font-size: 13.5px; font-weight: 600; color: var(--black);
+  line-height: 1.35; margin-top: 2px; margin-bottom: 6px;
+}
+.npc-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.npc-list li {
+  font-size: 11px; color: var(--gray-700); line-height: 1.5;
+  padding-left: 10px; position: relative;
+}
+.npc-list li::before {
+  content: ""; position: absolute; left: 0; top: 8px;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--blue); opacity: 0.6;
+}
+.npc-list li strong { color: var(--black); font-weight: 600; }
+.npc-arrow {
+  align-self: center; color: var(--gray-300);
+  font-size: 18px; line-height: 1;
+}
+
+/* 中部：词频图 + 三级目标 · 两列布局 */
+.np-main {
+  display: grid; grid-template-columns: 1.15fr 1fr;
+  gap: 14px; align-items: stretch;
+}
+.np-freq-wrap, .np-goal-wrap {
+  border: 1px solid var(--border); border-radius: 12px;
+  background: #fafafa; padding: 12px 16px 12px;
+  display: flex; flex-direction: column;
+}
+.npf-title, .npg-title {
+  font-size: 12px; font-weight: 600; color: var(--black);
+  letter-spacing: 0.3px; margin-bottom: 10px;
+}
+.np-freq {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 12px; height: 130px; padding: 20px 4px 24px;
+  flex: 1;
+}
+.npf-bar {
+  flex: 1; height: var(--h); min-height: 12px;
+  background: linear-gradient(180deg, #7ba9f5, #146ef5);
+  border-radius: 5px 5px 0 0; position: relative;
+  display: flex; align-items: flex-start; justify-content: center;
+}
+.npf-bar:first-child {
+  background: linear-gradient(180deg, #146ef5, #0055d4);
+  box-shadow: 0 4px 14px rgba(20,110,245,0.25);
+}
+.npf-v {
+  position: absolute; top: -18px; font-size: 12px; font-weight: 700;
+  color: var(--black); white-space: nowrap;
+}
+.npf-bar:first-child .npf-v { color: var(--blue); font-size: 14px; }
+.npf-l {
+  position: absolute; bottom: -18px; font-size: 10.5px; color: var(--gray-700);
+  white-space: nowrap; font-weight: 500;
+}
+.npf-note {
+  font-size: 11px; color: var(--gray-500); line-height: 1.55;
+  margin-top: 6px; padding-top: 8px; border-top: 1px dashed var(--border);
+}
+.npf-note strong { color: var(--blue); font-weight: 600; }
+
+/* 三级目标 */
+.np-goal {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 4px 2px 6px; flex: 1;
+}
+.npg-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 6px 8px; border-radius: 6px;
+}
+.npg-final { background: rgba(20,110,245,0.06); }
+.npg-year {
+  font-size: 18px; font-weight: 700; color: var(--gray-500);
+  font-family: var(--font); letter-spacing: -0.5px;
+  min-width: 52px;
+}
+.npg-final .npg-year { color: var(--blue); }
+.npg-body { display: flex; flex-direction: column; gap: 1px; flex: 1; }
+.npg-hd { font-size: 11.5px; color: var(--black); font-weight: 600; }
+.npg-val { font-size: 11px; color: var(--gray-500); }
+.npg-val strong { color: var(--blue); font-weight: 700; font-size: 12.5px; }
+.npg-line {
+  height: 1px; background: var(--border); margin: 2px 8px 2px 60px;
+}
+.npg-note {
+  font-size: 10px; color: var(--gray-300); line-height: 1.5;
+  margin-top: 6px; padding-top: 8px; border-top: 1px dashed var(--border);
+  font-style: italic;
+}
+
+/* ========== PAGE 09b (new) — 应用层产业动态 ========== */
+.app-lede {
+  font-size: 13px; color: var(--gray-700); line-height: 1.55;
+  max-width: 1050px; margin-bottom: 10px;
+}
+.app-lede strong { color: var(--black); font-weight: 600; }
+
+.app-block {
+  border: 1px solid var(--border); border-radius: 10px;
+  background: #fafafa; padding: 10px 14px 12px;
+  margin-bottom: 10px;
+}
+.app-block-highlight {
+  background: rgba(20,110,245,0.04);
+  border-color: rgba(20,110,245,0.25);
+}
+.app-block-title {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; color: var(--black);
+  margin-bottom: 8px;
+}
+.app-flag {
+  display: inline-block; font-size: 9.5px; font-weight: 700;
+  padding: 1px 5px; border-radius: 3px; letter-spacing: 0.6px;
+  color: #fff; line-height: 1.4;
+}
+.app-flag-en { background: #5a5a5a; }
+.app-flag-cn { background: #d33a3a; }
+.app-flag-tx { background: #146ef5; }
+.app-block-src {
+  font-size: 9.5px; color: var(--gray-300);
+  margin-top: 6px; font-style: italic; letter-spacing: 0.1px;
+}
+
+/* 海外双雄两张卡 */
+.app-cards-2 {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.app-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 12px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.app-card-head {
+  display: flex; align-items: baseline; gap: 10px;
+  padding-bottom: 4px; border-bottom: 1px dashed var(--border);
+}
+.app-card-head strong {
+  font-size: 15px; font-weight: 700; color: var(--black);
+}
+.app-card-sub {
+  font-size: 10.5px; color: var(--gray-500);
+}
+.app-anthropic .app-card-head strong { color: #c78a13; }
+.app-openai .app-card-head strong { color: #0a9a8a; }
+
+.app-stat-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+}
+.app-stat {
+  padding: 4px 8px; border-radius: 5px;
+  background: rgba(20,110,245,0.04);
+  display: flex; flex-direction: column; gap: 1px;
+}
+.as-v {
+  font-size: 18px; font-weight: 700; color: var(--blue);
+  font-family: var(--font); letter-spacing: -0.4px;
+  line-height: 1.15;
+}
+.as-k {
+  font-size: 10px; color: var(--gray-500); line-height: 1.35;
+}
+.as-k small { font-size: 9.5px; color: var(--gray-300); }
+.app-note {
+  font-size: 11px; color: var(--gray-700); line-height: 1.55;
+}
+.app-note strong { color: var(--black); font-weight: 600; }
+
+/* 国内三强三卡 */
+.app-cards-3 {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+}
+.app-mini {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 12px;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.am-name {
+  font-size: 12.5px; font-weight: 600; color: var(--black);
+  display: flex; align-items: baseline; gap: 6px;
+}
+.am-name span {
+  font-size: 10px; color: var(--gray-300); font-weight: 400;
+}
+.am-val {
+  font-size: 17px; font-weight: 700; color: #d33a3a;
+  font-family: var(--font); letter-spacing: -0.3px;
+}
+.am-note {
+  font-size: 10.5px; color: var(--gray-500);
+}
+
+/* 腾讯三卡 */
+.app-tx-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+}
+.app-tx {
+  background: var(--bg); border: 1px solid rgba(20,110,245,0.18);
+  border-radius: 8px; padding: 8px 12px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.tx-role {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.6px;
+  color: var(--blue); text-transform: uppercase;
+}
+.tx-name {
+  font-size: 14px; font-weight: 700; color: var(--black);
+  line-height: 1.3;
+}
+.tx-desc {
+  font-size: 10.5px; color: var(--gray-700); line-height: 1.55;
+}
+.tx-desc strong { color: var(--blue); font-weight: 600; }
+.tx-desc em { color: var(--black); font-style: italic; font-weight: 500; }
+
+/* ========== PAGE 08 — 四道门槛 ========== */
+.quad-lede { font-size: 13.5px; color: var(--gray-700); line-height: 1.6; max-width: 1050px; margin-bottom: 14px; }
+.quad-lede strong { color: var(--black); font-weight: 600; }
+.quad-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.quad-card {
+  border: 1px solid var(--border); border-radius: 10px; padding: 20px 18px; background: var(--bg);
+  display: flex; flex-direction: column; gap: 8px; position: relative;
+}
+.quad-card:nth-child(4) { background: rgba(20,110,245,0.04); border-color: rgba(20,110,245,0.22); }
+.quad-idx { font-size: 22px; font-weight: 700; color: var(--blue); line-height: 1; letter-spacing: -1px; }
+.quad-card h3 { font-size: 18px; font-weight: 700; color: var(--black); }
+.quad-card p { font-size: 12.5px; color: var(--gray-500); line-height: 1.6; }
+
+/* — v2：case/data 卡片强化 — */
+.quad-grid-v2 .quad-card {
+  padding: 14px 14px 12px; gap: 6px; min-height: 300px;
+}
+.qc-head { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 2px; }
+.quad-grid-v2 .quad-idx { font-size: 20px; flex-shrink: 0; padding-top: 2px; }
+.qc-title { display: flex; flex-direction: column; gap: 1px; }
+.quad-grid-v2 .qc-title h3 { font-size: 16px; line-height: 1.25; }
+.qc-en {
+  display: inline-block; font-size: 10px; font-weight: 500;
+  color: var(--gray-300); letter-spacing: 0.4px; margin-left: 4px;
+  font-family: var(--font);
+}
+.qc-sub {
+  font-size: 10.5px; color: var(--blue); font-weight: 500;
+  letter-spacing: 0.2px;
+}
+.quad-grid-v2 .qc-body {
+  font-size: 11.5px; color: var(--gray-700); line-height: 1.6;
+  margin-top: 2px;
+}
+.qc-body strong { color: var(--black); font-weight: 600; }
+.qc-fact {
+  margin-top: auto; padding: 6px 8px 7px;
+  background: rgba(20,110,245,0.05);
+  border-radius: 5px; border-left: 2px solid var(--blue);
+  display: flex; flex-direction: column; gap: 1px;
+}
+.quad-grid-v2 .quad-card:nth-child(4) .qc-fact {
+  background: rgba(20,110,245,0.08);
+}
+.qf-key {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.6px;
+  color: var(--blue); text-transform: uppercase;
+}
+.qf-val {
+  font-size: 11px; color: var(--gray-700); line-height: 1.5;
+}
+.qf-val strong { color: var(--black); font-weight: 700; }
+
+/* ========== PAGE 09 — 五层蛋糕 ========== */
+.cake-lede { font-size: 14.5px; color: var(--gray-500); line-height: 1.6; max-width: 940px; margin-bottom: 16px; }
+.cake-lede strong { color: var(--black); font-weight: 600; }
+
+/* 左侧五层 + 右侧黄仁勋照片与原话 */
+.cake-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 24px;
+  align-items: stretch;
+}
+.cake { display: flex; flex-direction: column; gap: 6px; }
+.cake-detailed .cake-layer { padding: 14px 22px; }
+.cake-layer {
+  display: flex; align-items: center; gap: 18px;
+  border-radius: 8px; padding: 12px 22px; color: #fff;
+  transition: transform 160ms;
+}
+.cake-layer:hover { transform: translateX(4px); }
+.cake-layer .cl-idx { font-size: 15px; font-weight: 700; opacity: 0.7; min-width: 26px; }
+.cl-copy { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.cl-copy strong { font-size: 15px; font-weight: 700; }
+.cl-copy .cl-mid { font-size: 12.5px; opacity: 0.95; line-height: 1.4; font-weight: 500; }
+.cl-copy .cl-note { font-size: 11px; opacity: 0.75; line-height: 1.4; }
+.cl-copy > span { font-size: 11.5px; opacity: 0.85; line-height: 1.4; }
+/* 上暖下冷：应用层最亮蓝，能源层最深 */
+.cl-1 { background: #4a90f7; }
+.cl-2 { background: #2f7cf6; }
+.cl-3 { background: #146ef5; }
+.cl-4 { background: #0f57c9; }
+.cl-5 { background: #0a3f94; }
+.cake-detailed .cl-1,
+.cake-detailed .cl-2,
+.cake-detailed .cl-3,
+.cake-detailed .cl-4,
+.cake-detailed .cl-5 { margin: 0; }
+.cake-foot { margin-top: 18px; font-size: 14px; color: var(--gray-700); line-height: 1.6; max-width: 1000px; }
+
+/* 黄仁勋照片与中英原话 */
+.cake-side {
+  display: flex; flex-direction: column; gap: 14px;
+  min-width: 0;
+}
+.jensen-fig {
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0a0a0a;
+  display: flex;
+  flex-direction: column;
+}
+.jensen-fig img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  object-position: center 22%;
+  display: block;
+}
+.jensen-fig figcaption {
+  padding: 8px 12px 10px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 1px;
+}
+.jensen-fig figcaption strong { font-size: 13px; font-weight: 600; color: var(--black); }
+.jensen-fig figcaption span { font-size: 11px; color: var(--gray-500); }
+
+.jensen-quote {
+  margin: 0;
+  padding: 12px 14px 12px 16px;
+  border-left: 3px solid var(--blue);
+  background: #fafcff;
+  border-radius: 0 8px 8px 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.jensen-quote .jq-en {
+  font-family: "Inter", -apple-system, "Helvetica Neue", sans-serif;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--gray-800);
+  font-style: italic;
+}
+.jensen-quote .jq-en em {
+  color: var(--blue);
+  font-style: italic;
+  font-weight: 600;
+}
+.jensen-quote .jq-zh {
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--black);
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+}
+.jensen-quote .jq-zh em {
+  color: var(--blue);
+  font-style: normal;
+  font-weight: 600;
+}
+.jensen-quote cite {
+  font-size: 10.5px;
+  color: var(--gray-500);
+  letter-spacing: 0.4px;
+  font-style: normal;
+}
+
+/* ========== PAGE 10 — 三个正在发生的趋势 ========== */
+.trends-lede {
+  font-size: 13.5px; color: var(--gray-700); line-height: 1.6;
+  max-width: 1050px; margin-bottom: 14px;
+}
+.trends-lede strong { color: var(--black); font-weight: 600; }
+
+.trends-facts { margin-top: 4px; margin-bottom: 16px; }
+
+/* 每个 fact 卡的 kicker 上加一个小 tag */
+.trends-facts .p7-fact-kicker {
+  display: flex; align-items: center; gap: 8px;
+}
+.tf-tag {
+  display: inline-block; font-size: 9.5px; font-weight: 700;
+  padding: 2px 6px; border-radius: 3px; letter-spacing: 0.5px;
+  line-height: 1.35; color: #fff;
+}
+.tf-tag-fact     { background: #5a5a5a; }
+.tf-tag-struct   { background: #0a9a8a; }
+.tf-tag-emerging { background: #146ef5; }
+
+.trends-story {
+  border: 1px solid rgba(20,110,245,0.18); border-radius: 10px;
+  padding: 16px 22px; background: #fafcff; margin-bottom: 16px;
+}
+.ts-title { font-size: 13px; font-weight: 700; color: var(--blue); margin-bottom: 6px; }
+.ts-body { font-size: 13.5px; color: var(--gray-700); line-height: 1.7; }
+.ts-body strong { color: var(--black); font-weight: 600; }
+
+/* ========== PAGE 11 — 人类的智能优势 ========== */
+.human-lede { font-size: 15px; color: var(--gray-500); line-height: 1.6; max-width: 940px; margin-bottom: 18px; }
+.human-lede strong { color: var(--black); font-weight: 600; }
+.human-era { display: flex; align-items: stretch; gap: 8px; margin-bottom: 18px; }
+.he-item {
+  flex: 1; border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px;
+  background: var(--bg); display: flex; flex-direction: column; gap: 3px;
+}
+.he-now { background: rgba(20,110,245,0.05); border-color: rgba(20,110,245,0.22); }
+.he-c { font-size: 10.5px; color: var(--gray-300); font-weight: 600; letter-spacing: 0.3px; }
+.he-now .he-c { color: var(--blue); }
+.he-b { font-size: 17px; font-weight: 700; color: var(--black); }
+.he-n { font-size: 12px; color: var(--gray-500); }
+.he-arrow { align-self: center; color: var(--gray-300); font-size: 18px; }
+.human-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.hc-card {
+  border: 1px solid var(--border); border-radius: 10px; padding: 20px; background: var(--bg);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.hc-card:nth-child(3) { background: rgba(20,110,245,0.04); border-color: rgba(20,110,245,0.2); }
+.hc-icon { font-size: 26px; }
+.hc-card h3 { font-size: 16px; font-weight: 600; color: var(--black); }
+.hc-card p { font-size: 12.5px; color: var(--gray-500); line-height: 1.6; }
+
+/* — 三种新定位（role-cards） — */
+.role-cards .hc-card { padding: 16px 18px 14px; gap: 4px; }
+.role-cards .hc-icon { font-size: 22px; margin-bottom: 2px; }
+.rc-role {
+  font-size: 15px; font-weight: 700; color: var(--black);
+  line-height: 1.3; margin-top: 2px;
+}
+.role-cards .hc-card:nth-child(3) .rc-role { color: var(--blue); }
+.role-cards .hc-card h3 {
+  font-size: 10.5px; font-weight: 500; color: var(--gray-300);
+  letter-spacing: 0.4px; font-family: var(--font);
+}
+.rc-body {
+  font-size: 12px; color: var(--gray-700); line-height: 1.6;
+  margin-top: 4px;
+}
+.rc-body strong { color: var(--black); font-weight: 600; }
+.role-cards .hc-card:nth-child(3) .rc-body strong { color: var(--blue); }
+
+/* — 底部彭凯平理论小卡（human-theory） — */
+.human-theory {
+  margin-top: 12px; padding: 10px 14px;
+  border: 1px dashed var(--border); border-radius: 8px;
+  background: #fafafa;
+}
+.ht-tag {
+  display: inline-block; font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.6px; text-transform: uppercase;
+  color: var(--gray-500); margin-bottom: 4px;
+}
+.ht-body {
+  font-size: 11.5px; color: var(--gray-500); line-height: 1.65;
+}
+.ht-body strong { color: var(--gray-700); font-weight: 600; }
+.ht-src {
+  display: block; margin-top: 4px;
+  font-size: 9.5px; color: var(--gray-300); font-style: italic;
+  letter-spacing: 0.1px;
+}
+
+/* ========== PAGE 12 — 人往何处（思考页） ========== */
+.reflect-body { max-width: 1000px; }
+.reflect-body .epitaph blockquote {
+  font-family: "Noto Serif SC", serif;
+  font-size: 48px; line-height: 1.15; letter-spacing: 0;
+}
+.reflect-loop { margin-top: 14px; }
+
+/* — 工科生核心竞争力迁移（skill-shift） — */
+.skill-shift {
+  margin-top: 14px; padding: 12px 18px 14px;
+  border: 1px solid rgba(20,110,245,0.22);
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(20,110,245,0.05), rgba(20,110,245,0.02));
+}
+.ss-title {
+  font-size: 14px; font-weight: 600; color: var(--black);
+  margin-bottom: 8px; letter-spacing: 0.2px;
+}
+.ss-flow {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--gray-700);
+  padding: 6px 0 8px; border-bottom: 1px dashed var(--border);
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.ss-from { color: var(--gray-500); }
+.ss-from strong { color: var(--gray-700); font-weight: 600; }
+.ss-to { color: var(--black); }
+.ss-to strong { color: var(--blue); font-weight: 700; }
+.ss-arrow { color: var(--blue); font-size: 15px; font-weight: 600; }
+.ss-tips {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.ss-tip {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 6px 10px; border-radius: 6px;
+  background: var(--bg);
+}
+.st-icon { font-size: 16px; line-height: 1.3; flex-shrink: 0; }
+.ss-tip p {
+  font-size: 11.5px; color: var(--gray-700); line-height: 1.55;
+}
+.ss-tip strong { color: var(--black); font-weight: 600; }
+.ss-tip em { color: var(--gray-700); font-style: italic; font-weight: 500; }
+.ss-tip .accent { color: var(--blue); font-weight: 700; }
+
+/* 致谢页强调语 */
+.thanks-cta strong { color: var(--black); }
+.qa-block {
+  margin-top: 22px; display: flex; align-items: center; gap: 16px;
+  padding: 16px 22px; border: 1px solid rgba(20,110,245,0.2); border-radius: 10px;
+  background: rgba(20,110,245,0.04); max-width: 820px;
+}
+.qa-tag {
+  font-size: 15px; font-weight: 700; color: var(--blue); letter-spacing: 2px; flex-shrink: 0;
+}
+.qa-block p { font-size: 14px; color: var(--gray-700); line-height: 1.6; }
+.closing-body .epitaph blockquote { font-family: "Noto Serif SC", serif; }
+
+/* ========== 响应式收紧 ========== */
+@media (max-width: 992px) {
+  .intro-grid, .model-grid, .token-main { grid-template-columns: 1fr; }
+  .waves, .human-era { flex-direction: column; }
+  .wave-arrow, .he-arrow { transform: rotate(90deg); }
+  .quad-grid, .human-cards { grid-template-columns: repeat(2, 1fr); }
+  .cake-layer { margin: 0 !important; }
+}
+@media (max-height: 820px) {
+  .slide-wide { padding-top: 34px; padding-bottom: 28px; }
+  .slide-wide h2 { font-size: 32px; }
+  .token-chart { height: 170px; }
+  .reflect-body .epitaph blockquote { font-size: 42px; }
+  .era-cards .era-card, #slide-06 .era-card { min-height: 0; }
+}
+
+/* ========== 手机专用（< 768px）========== */
+@media (max-width: 768px) {
+  :root {
+    --slide-px: 18px;
+    --bar-h: 52px;
+  }
+
+  /* 基础：手机上所有幻灯片改为「纵向文档阅读」模式，全部可见 + 滚动浏览 */
+  html, body { overflow-x: hidden; }
+  .deck { padding-bottom: 60px; }
+  .slide {
+    display: block !important;
+    min-height: auto;
+    padding: 24px 0 32px;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--border);
+  }
+  .slide:last-child { border-bottom: none; }
+  .slide.active { display: block; }
+  .slide-body, .slide-wide { padding: 20px 18px 24px; max-width: 100%; }
+  h1 { font-size: 34px !important; line-height: 1.12; }
+  h2 { font-size: 24px !important; line-height: 1.2; letter-spacing: -0.2px; }
+  .slide-wide h2 { font-size: 22px !important; }
+  h3 { font-size: 15px !important; }
+  p { line-height: 1.65; }
+  .section-eyebrow { font-size: 10px !important; }
+
+  /* 封面 */
+  .cover-title { font-size: 38px !important; line-height: 1.1; }
+  .cover-author { font-size: 13px; }
+  .cover-quote-bilingual .quote-en { font-size: 12.5px; line-height: 1.55; }
+  .cover-quote-bilingual .quote-zh { font-size: 13.5px; line-height: 1.6; }
+  .cover-speaker { flex-wrap: wrap; gap: 6px; font-size: 12px; }
+
+  /* P2 自我介绍：两张合影纵向堆叠 */
+  .intro-photos { flex-direction: column; gap: 12px; }
+  .intro-photos .ipc-portrait,
+  .intro-photos .ipc-class { width: 100% !important; max-width: 100%; }
+  .intro-photos img { width: 100% !important; height: auto !important; }
+  .intro-role-card, .intro-humble-quote { padding: 12px 14px; font-size: 13px; }
+
+  /* P3 目录 */
+  .agenda-flow { flex-wrap: wrap; gap: 4px; justify-content: flex-start; }
+  .af-node { padding: 4px 8px; font-size: 11px; }
+  .af-arrow svg { width: 20px; height: 8px; }
+  .agenda-list { gap: 10px; }
+  .agenda-item { padding: 10px 12px; }
+  .ag-num { font-size: 20px; }
+  .ag-copy h3 { font-size: 14px !important; }
+  .ag-copy p { font-size: 12px; }
+
+  /* P4 三波浪潮 + 时间线 */
+  .waves-compact { gap: 8px; }
+  .waves-compact .wave-card { padding: 10px 12px; }
+  .waves-compact .wave-card h3 { font-size: 15px !important; }
+  .ai-timeline { padding: 10px 8px 8px; }
+  .ait-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .ait-svg { min-height: 200px; }
+
+  /* P5 神经网络 */
+  .nn-main { grid-template-columns: 1fr !important; gap: 12px; }
+  .nn-diagram { padding: 10px; }
+  .nn-questions { grid-template-columns: 1fr !important; gap: 10px; }
+  .nq-title { font-size: 12.5px; }
+  .nq-body { font-size: 11.5px; }
+
+  /* P6 三次跃迁 */
+  .era-cards-v3 { grid-template-columns: 1fr !important; gap: 10px; }
+  .era-cards-v3 .era-card { min-height: auto; padding: 12px 14px; }
+
+  /* P6b Agent 闭环：五阶段改为纵向 */
+  .agent-loop { grid-template-columns: 1fr !important; gap: 8px; }
+  .agent-loop .al-arrow { display: none; }
+  .al-node { flex-direction: row; text-align: left; gap: 10px; align-items: flex-start; padding: 6px; }
+  .al-icon { width: 40px; height: 40px; flex-shrink: 0; }
+  .al-desc { max-width: none; }
+  .al-loop-back { display: none; }
+  .agent-insight { flex-direction: column; gap: 6px; }
+  .ai-en, .ai-zh { font-size: 12px; }
+
+  /* P7 国家意志：政策卡纵向、词频柱状矮化 */
+  .np-policy { grid-template-columns: 1fr !important; gap: 8px; }
+  .np-policy .npc-arrow { display: none; }
+  .np-main { grid-template-columns: 1fr !important; gap: 10px; }
+  .np-freq { height: 100px; gap: 6px; }
+  .npf-v { font-size: 11px; top: -14px; }
+  .npf-l { font-size: 9.5px; bottom: -14px; }
+
+  /* P8 五层蛋糕 */
+  .cake-wrap { grid-template-columns: 1fr !important; }
+  .cake-side { padding: 12px 0 0; }
+  .jensen-fig img { max-width: 200px; }
+
+  /* P9 应用层 */
+  .app-cards-2, .app-cards-3, .app-tx-grid { grid-template-columns: 1fr !important; gap: 8px; }
+  .app-stat-row { grid-template-columns: 1fr 1fr; }
+  .as-v { font-size: 15px; }
+
+  /* P10 四门槛 */
+  .quad-grid { grid-template-columns: 1fr !important; gap: 10px; }
+  .quad-grid-v2 .quad-card { min-height: auto; padding: 12px 14px; }
+
+  /* P11 Token 经济学 */
+  .token-chart { height: 160px; }
+
+  /* P12 三个趋势 */
+  .trends-facts { grid-template-columns: 1fr !important; }
+  .p7-facts .p7-fact { padding: 12px 14px; }
+
+  /* P13 三种新定位 */
+  .human-cards { grid-template-columns: 1fr !important; gap: 10px; }
+  .role-cards .hc-card { padding: 12px 14px; }
+
+  /* P14 工科生迁移 */
+  .ss-tips { grid-template-columns: 1fr !important; gap: 8px; }
+  .ss-flow { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .reflect-body .epitaph blockquote { font-size: 32px !important; line-height: 1.15; }
+
+  /* P15 致谢 */
+  .closing-body .epitaph blockquote { font-size: 32px !important; }
+  .qa-block { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 14px; }
+
+  /* 底部导航：手机上大幅收紧 */
+  .bottom-bar { padding: 0 8px; height: var(--bar-h); }
+  .bar-brand { font-size: 11px; }
+  .bar-dash { display: none; }
+  .bar-page { font-size: 11px; }
+  .bar-timeline .btm-labels { display: none !important; }  /* 手机隐藏 label */
+  .bar-timeline { padding: 0 8px; max-width: none; }
+  .btm-track { height: 3px; }
+  .bar-right { gap: 4px; }
+  .bar-btn { padding: 6px 10px; font-size: 11px; }
+  #btnIndex { display: none; }  /* 目录按钮在手机上隐藏（信息已够）*/
+
+  /* key-insight-bar / era-transition */
+  .key-insight-bar, .era-transition {
+    padding: 10px 12px; gap: 8px;
+  }
+  .key-insight-bar p, .et-text { font-size: 12.5px; line-height: 1.55; }
+}
+
+/* ========== 更小屏 iPhone SE 等（< 400px）========== */
+@media (max-width: 400px) {
+  .cover-title { font-size: 30px !important; }
+  h2 { font-size: 20px !important; }
+  .slide-wide h2 { font-size: 20px !important; }
+}
+
+/* ========== QR 码浮标（首页 & 致谢页）========== */
+.qr-badge {
+  position: fixed;
+  right: 20px;
+  bottom: calc(var(--bar-h) + 16px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  z-index: 90;
+  transition: transform 160ms;
+}
+.qr-badge:hover { transform: translateY(-2px); }
+.qr-badge img {
+  width: 84px; height: 84px; display: block;
+  border-radius: 4px;
+}
+.qr-badge-copy {
+  display: flex; flex-direction: column; gap: 2px;
+  padding-right: 4px;
+}
+.qr-badge-copy .qr-tag {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.6px;
+  color: var(--blue); text-transform: uppercase;
+}
+.qr-badge-copy .qr-title {
+  font-size: 12px; font-weight: 600; color: var(--black);
+  line-height: 1.3;
+}
+.qr-badge-copy .qr-sub {
+  font-size: 10.5px; color: var(--gray-500);
+  line-height: 1.35;
+}
+
+/* 手机上：QR 码隐藏（自己就在手机上看，不需要扫码） */
+@media (max-width: 768px) {
+  .qr-badge { display: none; }
+}
