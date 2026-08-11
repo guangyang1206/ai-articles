@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Enlightenment — Understanding AI from Scratch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Noto+Serif+SC:wght@400;600;700;900&family=Caveat:wght@400;500;600;700&family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 进度条 -->
+  <div class="progress-bar" id="progressBar"></div>
+  
+  <!-- 语言切换 -->
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-btn" data-lang="zh" onclick="switchLang('zh')">中</button>
+  </div>
+
+  <!-- 导航 -->
+  <nav class="slide-nav" id="slideNav">
+    <div class="nav-logo" data-i18n="navLogo">AI Enlightenment</div>
+    <div class="nav-dots" id="navDots"></div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prevBtn" onclick="prevSlide()">←</button>
+      <span class="slide-counter" id="slideCounter">1 / 17</span>
+      <button class="nav-btn" id="nextBtn" onclick="nextSlide()">→</button>
+    </div>
+  </nav>
+
+  <!-- ==================== SLIDE 0: 封面 ==================== -->
+  <section class="slide slide-cover active" data-index="0">
+    <div class="cover-bg-art">
+      <svg class="cover-circuit" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50,300 Q200,100 400,300 Q600,500 750,300" stroke="rgba(255,255,255,0.08)" fill="none" stroke-width="2" class="draw-path"/>
+        <path d="M100,500 Q300,200 500,400 Q700,100 780,350" stroke="rgba(255,255,255,0.06)" fill="none" stroke-width="1.5" class="draw-path delay-1"/>
+        <circle cx="400" cy="300" r="80" stroke="rgba(255,255,255,0.05)" fill="none" stroke-width="1" class="pulse-circle"/>
+        <circle cx="400" cy="300" r="150" stroke="rgba(255,255,255,0.03)" fill="none" stroke-width="1" class="pulse-circle delay-2"/>
+      </svg>
+    </div>
+    <div class="cover-content">
+      <p class="cover-subtitle fade-up" data-i18n="coverSubtitle">A Gentle Conversation About Intelligence</p>
+      <h1 class="cover-title fade-up delay-1">
+        <span class="title-line">AI</span>
+        <span class="title-line accent" data-i18n="coverTitleLine2">Enlightenment</span>
+      </h1>
+      <p class="cover-desc fade-up delay-2" data-i18n="coverDesc">Understanding how AI is transforming our work and life, from the ground up</p>
+      <div class="cover-quote fade-up delay-3">
+        <p data-i18n="coverQuote">"Any sufficiently advanced technology is indistinguishable from magic."</p>
+        <cite data-i18n="coverQuoteCite">— Arthur C. Clarke</cite>
+      </div>
+      <button class="start-btn fade-up delay-4" onclick="nextSlide()">
+        <span data-i18n="startBtn">Start Exploring</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 1: 什么是AI ==================== -->
+  <section class="slide slide-what-is-ai" data-index="1">
+    <div class="slide-inner">
+      <div class="slide-label">01</div>
+      <h2 class="slide-title" data-i18n="s1Title">What is Artificial Intelligence?</h2>
+      <div class="two-col">
+        <div class="col-left">
+          <div class="sketch-box">
+            <svg viewBox="0 0 400 300" class="sketch-svg">
+              <path d="M200,40 C120,40 60,90 60,160 C60,220 100,260 160,270 C170,272 180,275 190,280 L200,285 L210,280 C220,275 230,272 240,270 C300,260 340,220 340,160 C340,90 280,40 200,40Z" fill="none" stroke="#5B4A8A" stroke-width="2.5" stroke-linecap="round" class="hand-draw"/>
+              <path d="M200,60 L200,250" stroke="#5B4A8A" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5"/>
+              <path d="M120,100 Q160,130 200,100 Q240,70 280,100" stroke="#E8A87C" stroke-width="2" fill="none" class="hand-draw delay-1"/>
+              <path d="M100,150 Q150,180 200,150 Q250,120 300,150" stroke="#85C7DE" stroke-width="2" fill="none" class="hand-draw delay-2"/>
+              <path d="M120,200 Q160,230 200,200 Q240,170 280,200" stroke="#C38EC7" stroke-width="2" fill="none" class="hand-draw delay-3"/>
+              <circle cx="150" cy="100" r="4" fill="#E8A87C" class="blink"/>
+              <circle cx="250" cy="100" r="4" fill="#E8A87C" class="blink delay-1"/>
+              <circle cx="130" cy="150" r="4" fill="#85C7DE" class="blink delay-2"/>
+              <circle cx="270" cy="150" r="4" fill="#85C7DE" class="blink"/>
+              <circle cx="160" cy="200" r="4" fill="#C38EC7" class="blink delay-3"/>
+              <circle cx="240" cy="200" r="4" fill="#C38EC7" class="blink delay-1"/>
+              <text x="60" y="30" class="sketch-label" fill="#5B4A8A" data-i18n="s1SketchLabel">🧠 Artificial Intelligence</text>
+              <text x="30" y="110" class="sketch-label-sm" fill="#E8A87C" data-i18n="s1SketchLearn">Learn</text>
+              <text x="30" y="160" class="sketch-label-sm" fill="#85C7DE" data-i18n="s1SketchReason">Reason</text>
+              <text x="30" y="210" class="sketch-label-sm" fill="#C38EC7" data-i18n="s1SketchCreate">Create</text>
+            </svg>
+          </div>
+        </div>
+        <div class="col-right">
+          <div class="content-block fade-in-right">
+            <p class="lead-text" data-i18n="s1Lead">Artificial Intelligence (AI) is the technology that enables computers to simulate human intelligence.</p>
+            <p data-i18n="s1Desc">Just like teaching a child to understand the world, we "train" computers with massive amounts of data so they can learn to recognize images, understand language, and make decisions.</p>
+            <div class="key-points">
+              <div class="key-point">
+                <span class="point-icon">👁️</span>
+                <div>
+                  <strong data-i18n="s1Point1Title">Perception</strong>
+                  <p data-i18n="s1Point1Desc">Understand images, comprehend speech</p>
+                </div>
+              </div>
+              <div class="key-point">
+                <span class="point-icon">🧩</span>
+                <div>
+                  <strong data-i18n="s1Point2Title">Reasoning</strong>
+                  <p data-i18n="s1Point2Desc">Analyze information, solve problems</p>
+                </div>
+              </div>
+              <div class="key-point">
+                <span class="point-icon">✍️</span>
+                <div>
+                  <strong data-i18n="s1Point3Title">Generation</strong>
+                  <p data-i18n="s1Point3Desc">Write articles, create images, code</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 2: AI发展简史 ==================== -->
+  <section class="slide slide-history" data-index="2">
+    <div class="slide-inner">
+      <div class="slide-label">02</div>
+      <h2 class="slide-title" data-i18n="s2Title">The Story of AI</h2>
+      <p class="slide-subtitle-text" data-i18n="s2Subtitle">From Turing's dream to the birth of ChatGPT</p>
+      <div class="timeline">
+        <div class="timeline-line"></div>
+        <div class="timeline-item"><div class="timeline-year">1950</div><div class="timeline-card"><h4 data-i18n="s2T1Title">Turing Test</h4><p data-i18n="s2T1Desc">Alan Turing posed "Can machines think?", sparking AI philosophy</p></div></div>
+        <div class="timeline-item"><div class="timeline-year">1956</div><div class="timeline-card"><h4 data-i18n="s2T2Title">AI is Born</h4><p data-i18n="s2T2Desc">The Dartmouth Conference formally coined "Artificial Intelligence"</p></div></div>
+        <div class="timeline-item"><div class="timeline-year">1974</div><div class="timeline-card"><h4 data-i18n="s2T3Title">First AI Winter</h4><p data-i18n="s2T3Desc">Symbolic AI hit a wall. The Lighthill report triggered a decade of funding cuts.</p></div></div>
+        <div class="timeline-item"><div class="timeline-year">1987</div><div class="timeline-card"><h4 data-i18n="s2T4Title">Second AI Winter</h4><p data-i18n="s2T4Desc">Expert systems failed to scale. The dedicated LISP-machine market collapsed.</p></div></div>
+        <div class="timeline-item"><div class="timeline-year">1997</div><div class="timeline-card"><h4 data-i18n="s2T5Title">Deep Blue Wins</h4><p data-i18n="s2T5Desc">IBM's Deep Blue defeats chess champion Kasparov</p></div></div>
+        <div class="timeline-item"><div class="timeline-year">2012</div><div class="timeline-card highlight"><h4 data-i18n="s2T6Title">AlexNet</h4><p data-i18n="s2T6Desc">Deep learning + GPU breakthrough on ImageNet. This wave truly begins here.</p></div></div>
+        <div class="timeline-item"><div class="timeline-year">2016</div><div class="timeline-card"><h4 data-i18n="s2T7Title">AlphaGo</h4><p data-i18n="s2T7Desc">DeepMind's AlphaGo defeats Go champion Lee Sedol</p></div></div>
+        <div class="timeline-item"><div class="timeline-year">2017</div><div class="timeline-card highlight"><h4 data-i18n="s2T8Title">Transformer</h4><p data-i18n="s2T8Desc">"Attention is All You Need" — the architecture behind every modern LLM.</p></div></div>
+        <div class="timeline-item"><div class="timeline-year">2022</div><div class="timeline-card highlight"><h4 data-i18n="s2T9Title">ChatGPT Era</h4><p data-i18n="s2T9Desc">Large Language Models enter everyday life, AI goes mainstream</p></div></div>
+        <div class="timeline-item"><div class="timeline-year">2024+</div><div class="timeline-card highlight"><h4 data-i18n="s2T10Title">AI Agent</h4><p data-i18n="s2T10Desc">AI can not only chat, but autonomously complete complex tasks</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 3: LLM ==================== -->
+  <section class="slide slide-llm" data-index="3">
+    <div class="slide-inner">
+      <div class="slide-label">03</div>
+      <h2 class="slide-title" data-i18n="s3Title">Large Language Models (LLM)</h2>
+      <div class="quote-banner">
+        <p data-i18n="s3Quote">"The limits of my language mean the limits of my world."</p>
+        <cite data-i18n="s3QuoteCite">— Ludwig Wittgenstein</cite>
+      </div>
+      <div class="two-col">
+        <div class="col-left">
+          <div class="sketch-box llm-sketch">
+            <svg viewBox="0 0 400 350" class="sketch-svg">
+              <rect x="40" y="220" width="320" height="30" rx="3" fill="#F5E6D3" stroke="#8B7355" stroke-width="1.5" class="hand-draw"/>
+              <rect x="50" y="195" width="300" height="25" rx="3" fill="#E8D5C4" stroke="#8B7355" stroke-width="1.5" class="hand-draw delay-1"/>
+              <rect x="45" y="170" width="310" height="25" rx="3" fill="#F0DCC8" stroke="#8B7355" stroke-width="1.5" class="hand-draw delay-1"/>
+              <text x="120" y="240" class="sketch-label-sm" fill="#8B7355" data-i18n="s3SketchData">📚 Massive Text Data</text>
+              <path d="M200,170 L200,130" stroke="#5B4A8A" stroke-width="2" marker-end="url(#arrowhead)" class="hand-draw delay-2"/>
+              <rect x="120" y="60" width="160" height="70" rx="15" fill="rgba(91,74,138,0.1)" stroke="#5B4A8A" stroke-width="2" class="hand-draw delay-2"/>
+              <text x="145" y="100" class="sketch-label-sm" fill="#5B4A8A" data-i18n="s3SketchModel">🤖 LLM Model</text>
+              <path d="M200,60 L200,30" stroke="#E8A87C" stroke-width="2" marker-end="url(#arrowhead2)" class="hand-draw delay-3"/>
+              <text x="130" y="20" class="sketch-label-sm" fill="#E8A87C" data-i18n="s3SketchOutput">✨ Understand &amp; Generate</text>
+              <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#5B4A8A"/></marker>
+                <marker id="arrowhead2" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#E8A87C"/></marker>
+              </defs>
+              <text x="20" y="90" font-size="8" fill="rgba(91,74,138,0.3)" transform="rotate(-15,20,90)">hello</text>
+              <text x="330" y="80" font-size="8" fill="rgba(91,74,138,0.3)" transform="rotate(10,330,80)">你好</text>
+              <text x="350" y="110" font-size="7" fill="rgba(91,74,138,0.3)" transform="rotate(-5,350,110)">bonjour</text>
+              <text x="10" y="130" font-size="7" fill="rgba(91,74,138,0.3)" transform="rotate(8,10,130)">こんにちは</text>
+            </svg>
+          </div>
+        </div>
+        <div class="col-right">
+          <div class="content-block fade-in-right">
+            <p class="lead-text" data-i18n="s3Lead">An LLM is like a "super scholar" who has read every book.</p>
+            <p data-i18n-html="s3Desc">Large Language Models learn the patterns of language by reading massive amounts of text from the internet — books, web pages, code, papers. They don't simply "memorize" answers; they learn the ability to <strong>understand context</strong> and <strong>generate coherent text</strong>.</p>
+            <div class="feature-cards">
+              <div class="feature-card"><div class="feature-icon">💬</div><h4 data-i18n="s3F1Title">Conversation</h4><p data-i18n="s3F1Desc">Chat naturally like a friend</p></div>
+              <div class="feature-card"><div class="feature-icon">📝</div><h4 data-i18n="s3F2Title">Writing</h4><p data-i18n="s3F2Desc">Articles, emails, reports</p></div>
+              <div class="feature-card"><div class="feature-icon">💻</div><h4 data-i18n="s3F3Title">Coding</h4><p data-i18n="s3F3Desc">Write and debug program code</p></div>
+              <div class="feature-card"><div class="feature-icon">🌐</div><h4 data-i18n="s3F4Title">Translation</h4><p data-i18n="s3F4Desc">Break through language barriers</p></div>
+            </div>
+            <div class="tip-box" data-i18n-html="s3Tip"><strong>💡 Notable Models:</strong> GPT-4, Claude, Hunyuan, DeepSeek, Llama, etc.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 4: Prompt ==================== -->
+  <section class="slide slide-prompt" data-index="4">
+    <div class="slide-inner">
+      <div class="slide-label">04</div>
+      <h2 class="slide-title" data-i18n="s4Title">Prompt Engineering</h2>
+      <p class="slide-subtitle-text" data-i18n="s4Subtitle">The art of talking to AI</p>
+      <div class="prompt-demo">
+        <div class="prompt-comparison">
+          <div class="prompt-card bad">
+            <div class="prompt-card-header" data-i18n="s4BadHeader">❌ Vague Prompt</div>
+            <div class="prompt-input" data-i18n="s4BadInput">"Write me something"</div>
+            <div class="prompt-result"><p data-i18n="s4BadResult">AI: What would you like me to write? An article? Email? Code? Please provide more details...</p></div>
+          </div>
+          <div class="prompt-arrow">→</div>
+          <div class="prompt-card good">
+            <div class="prompt-card-header" data-i18n="s4GoodHeader">✅ Precise Prompt</div>
+            <div class="prompt-input" data-i18n="s4GoodInput">"You are a senior technical writer. Please write an email introducing a new project's technical plan to the team. Keep it professional yet friendly, within 300 words."</div>
+            <div class="prompt-result"><p data-i18n="s4GoodResult">AI: [Outputs a well-structured, appropriately-toned professional email] ✨</p></div>
+          </div>
+        </div>
+        <div class="prompt-tips">
+          <h3 class="handwrite" data-i18n="s4TipsTitle">Four Elements of a Great Prompt</h3>
+          <div class="tips-grid">
+            <div class="tip-item"><div class="tip-number">1</div><h4 data-i18n="s4Tip1Title">Role Setting</h4><p data-i18n-html="s4Tip1Desc">Tell AI who it is<br><em>"You are an experienced product manager"</em></p></div>
+            <div class="tip-item"><div class="tip-number">2</div><h4 data-i18n="s4Tip2Title">Clear Task</h4><p data-i18n-html="s4Tip2Desc">Specify what to do<br><em>"Help me analyze this user feedback"</em></p></div>
+            <div class="tip-item"><div class="tip-number">3</div><h4 data-i18n="s4Tip3Title">Provide Context</h4><p data-i18n-html="s4Tip3Desc">Give background info<br><em>"This is a social product targeting young people"</em></p></div>
+            <div class="tip-item"><div class="tip-number">4</div><h4 data-i18n="s4Tip4Title">Output Format</h4><p data-i18n-html="s4Tip4Desc">Specify expected form<br><em>"Present in a table with priority levels"</em></p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 5: RAG ==================== -->
+  <section class="slide slide-rag" data-index="5">
+    <div class="slide-inner">
+      <div class="slide-label">05</div>
+      <h2 class="slide-title" data-i18n="s5Title">RAG — Retrieval-Augmented Generation</h2>
+      <div class="quote-banner">
+        <p data-i18n="s5Quote">"Memory is a form of forgetting."</p>
+        <cite data-i18n="s5QuoteCite">— Jorge Luis Borges</cite>
+      </div>
+      <div class="rag-visual">
+        <div class="rag-flow">
+          <div class="rag-step"><div class="rag-icon">❓</div><div class="rag-label" data-i18n="s5Step0Label">User Question</div><div class="rag-desc" data-i18n="s5Step0Desc">"What is the company's annual leave policy?"</div></div>
+          <div class="rag-connector"><svg width="60" height="30"><path d="M0,15 L50,15" stroke="#5B4A8A" stroke-width="2" stroke-dasharray="4,4"/><polygon points="50,10 60,15 50,20" fill="#5B4A8A"/></svg></div>
+          <div class="rag-step"><div class="rag-icon">🔍</div><div class="rag-label" data-i18n="s5Step1Label">Search Knowledge Base</div><div class="rag-desc" data-i18n="s5Step1Desc">Search relevant content in company documents</div></div>
+          <div class="rag-connector"><svg width="60" height="30"><path d="M0,15 L50,15" stroke="#5B4A8A" stroke-width="2" stroke-dasharray="4,4"/><polygon points="50,10 60,15 50,20" fill="#5B4A8A"/></svg></div>
+          <div class="rag-step"><div class="rag-icon">📄</div><div class="rag-label" data-i18n="s5Step2Label">Retrieve Context</div><div class="rag-desc" data-i18n="s5Step2Desc">Find relevant paragraphs in Employee Handbook Ch.3</div></div>
+          <div class="rag-connector"><svg width="60" height="30"><path d="M0,15 L50,15" stroke="#5B4A8A" stroke-width="2" stroke-dasharray="4,4"/><polygon points="50,10 60,15 50,20" fill="#5B4A8A"/></svg></div>
+          <div class="rag-step"><div class="rag-icon">🤖</div><div class="rag-label" data-i18n="s5Step3Label">LLM Generates Answer</div><div class="rag-desc" data-i18n="s5Step3Desc">Combine retrieved content to generate accurate answer</div></div>
+          <div class="rag-connector"><svg width="60" height="30"><path d="M0,15 L50,15" stroke="#E8A87C" stroke-width="2" stroke-dasharray="4,4"/><polygon points="50,10 60,15 50,20" fill="#E8A87C"/></svg></div>
+          <div class="rag-step highlight-step"><div class="rag-icon">✅</div><div class="rag-label" data-i18n="s5Step4Label">Precise Answer</div><div class="rag-desc" data-i18n="s5Step4Desc">"Per company policy, employees with 1+ year tenure get 5 days annual leave..."</div></div>
+        </div>
+        <div class="rag-why">
+          <h3 data-i18n="s5WhyTitle">Why Do We Need RAG?</h3>
+          <div class="rag-comparison">
+            <div class="rag-comp-item"><div class="comp-header bad-bg" data-i18n="s5NoBadHeader">AI Without RAG</div><p data-i18n="s5NoBadDesc">Can only rely on training data, may give outdated or inaccurate information, and cannot access internal company knowledge</p></div>
+            <div class="rag-comp-item"><div class="comp-header good-bg" data-i18n="s5YesGoodHeader">AI With RAG</div><p data-i18n="s5YesGoodDesc">Retrieves the latest, most relevant information in real-time, answers are verifiable, greatly reducing "hallucinations"</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 6: 知识库 ==================== -->
+  <section class="slide slide-kb" data-index="6">
+    <div class="slide-inner">
+      <div class="slide-label">06</div>
+      <h2 class="slide-title" data-i18n="s6Title">Knowledge Base Applications</h2>
+      <p class="slide-subtitle-text" data-i18n="s6Subtitle">Give AI its own "personal library"</p>
+      <div class="kb-visual">
+        <div class="kb-center">
+          <div class="kb-brain"><span>🧠</span><p data-i18n="s6BrainLabel">AI + Knowledge Base</p></div>
+          <div class="kb-orbits">
+            <div class="kb-orbit-item" style="--angle:0deg; --delay:0s"><span>📋</span><p data-i18n="s6Orbit1">Company Policies</p></div>
+            <div class="kb-orbit-item" style="--angle:60deg; --delay:0.3s"><span>📊</span><p data-i18n="s6Orbit2">Product Docs</p></div>
+            <div class="kb-orbit-item" style="--angle:120deg; --delay:0.6s"><span>💻</span><p data-i18n="s6Orbit3">Tech Wiki</p></div>
+            <div class="kb-orbit-item" style="--angle:180deg; --delay:0.9s"><span>📞</span><p data-i18n="s6Orbit4">Customer FAQ</p></div>
+            <div class="kb-orbit-item" style="--angle:240deg; --delay:1.2s"><span>📈</span><p data-i18n="s6Orbit5">Business Data</p></div>
+            <div class="kb-orbit-item" style="--angle:300deg; --delay:1.5s"><span>📝</span><p data-i18n="s6Orbit6">Meeting Notes</p></div>
+          </div>
+        </div>
+        <div class="kb-scenarios">
+          <h3 data-i18n="s6ScenariosTitle">Typical Use Cases</h3>
+          <div class="scenario-cards">
+            <div class="scenario-card"><div class="scenario-icon">🏢</div><div><h4 data-i18n="s6Sc1Title">Enterprise Smart CS</h4><p data-i18n="s6Sc1Desc">Upload product manuals and FAQs, AI can accurately answer customer questions</p></div></div>
+            <div class="scenario-card"><div class="scenario-icon">👨‍💻</div><div><h4 data-i18n="s6Sc2Title">New Hire Assistant</h4><p data-i18n="s6Sc2Desc">New colleagues can ask about company policies and processes anytime</p></div></div>
+            <div class="scenario-card"><div class="scenario-icon">📚</div><div><h4 data-i18n="s6Sc3Title">Tech Doc Q&A</h4><p data-i18n="s6Sc3Desc">Developers quickly search API docs and technical solutions</p></div></div>
+          </div>
+          <div class="tip-box" data-i18n-html="s6Tip"><strong>🚀 How-to:</strong> On the Knot platform, you can create a knowledge base, upload documents (PDF/Word/web pages), then link it to an agent, enabling AI to answer questions based on your exclusive knowledge.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 7: MCP ==================== -->
+  <section class="slide slide-mcp" data-index="7">
+    <div class="slide-inner">
+      <div class="slide-label">07</div>
+      <h2 class="slide-title" data-i18n="s7Title">MCP — Model Context Protocol</h2>
+      <p class="slide-subtitle-text" data-i18n="s7Subtitle">AI's "Universal Interface"</p>
+      <div class="quote-banner small">
+        <p data-i18n="s7Quote">"The best interface is no interface."</p>
+        <cite data-i18n="s7QuoteCite">— Golden Krishna, The Best Interface is No Interface</cite>
+      </div>
+      <div class="mcp-visual">
+        <div class="mcp-diagram">
+          <div class="mcp-layer mcp-tools">
+            <div class="mcp-tool-item" data-i18n="s7Tool1">📧 Email System</div>
+            <div class="mcp-tool-item" data-i18n="s7Tool2">📅 Calendar</div>
+            <div class="mcp-tool-item" data-i18n="s7Tool3">🗄️ Database</div>
+            <div class="mcp-tool-item" data-i18n="s7Tool4">🔧 Internal Tools</div>
+            <div class="mcp-tool-item" data-i18n="s7Tool5">🌐 Web</div>
+            <div class="mcp-tool-item" data-i18n="s7Tool6">📁 File System</div>
+          </div>
+          <div class="mcp-connector-zone">
+            <div class="mcp-protocol-box"><span data-i18n="s7ProtocolLabel">MCP Protocol</span><p data-i18n="s7ProtocolDesc">Standardized Connection Layer</p></div>
+          </div>
+          <div class="mcp-layer mcp-ai"><div class="mcp-ai-box"><span>🤖</span><p data-i18n="s7AILabel">AI Model</p></div></div>
+        </div>
+        <div class="mcp-explain">
+          <p class="lead-text" data-i18n-html="s7Lead">MCP is like the <strong>"USB port"</strong> of the AI world.</p>
+          <p data-i18n="s7Desc">Just as USB allows all kinds of devices to connect to a computer, MCP (Model Context Protocol) enables AI to connect to various external tools and data sources in a unified way.</p>
+          <div class="mcp-benefits">
+            <div class="benefit-item"><span class="benefit-icon">🔌</span><div><strong data-i18n="s7B1Title">Plug & Play</strong><p data-i18n="s7B1Desc">Standardized interface, no need to develop separately for each tool</p></div></div>
+            <div class="benefit-item"><span class="benefit-icon">🔒</span><div><strong data-i18n="s7B2Title">Secure & Controlled</strong><p data-i18n="s7B2Desc">Every tool call by AI goes through authorization</p></div></div>
+            <div class="benefit-item"><span class="benefit-icon">🔄</span><div><strong data-i18n="s7B3Title">Two-Way Communication</strong><p data-i18n="s7B3Desc">AI can not only read information but also execute actions</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 8: Skills ==================== -->
+  <section class="slide slide-skills" data-index="8">
+    <div class="slide-inner">
+      <div class="slide-label">08</div>
+      <h2 class="slide-title" data-i18n="s8Title">Skills — AI's "Skill Packs"</h2>
+      <div class="skills-visual">
+        <div class="skills-metaphor">
+          <div class="sketch-box skills-sketch">
+            <svg viewBox="0 0 500 280" class="sketch-svg">
+              <rect x="150" y="80" width="200" height="150" rx="10" fill="rgba(232,168,124,0.15)" stroke="#E8A87C" stroke-width="2.5" class="hand-draw"/>
+              <rect x="140" y="65" width="220" height="25" rx="5" fill="rgba(232,168,124,0.25)" stroke="#E8A87C" stroke-width="2" class="hand-draw"/>
+              <rect x="225" y="50" width="50" height="20" rx="8" fill="none" stroke="#E8A87C" stroke-width="2" class="hand-draw"/>
+              <rect x="170" y="100" width="60" height="40" rx="5" fill="#85C7DE" opacity="0.8" class="float-card"/><text x="185" y="125" font-size="18">📝</text>
+              <rect x="250" y="100" width="60" height="40" rx="5" fill="#C38EC7" opacity="0.8" class="float-card delay-1"/><text x="265" y="125" font-size="18">📊</text>
+              <rect x="170" y="155" width="60" height="40" rx="5" fill="#90C695" opacity="0.8" class="float-card delay-2"/><text x="185" y="180" font-size="18">🌐</text>
+              <rect x="250" y="155" width="60" height="40" rx="5" fill="#F5A623" opacity="0.8" class="float-card delay-3"/><text x="265" y="180" font-size="18">💻</text>
+              <text x="165" y="260" class="sketch-label" fill="#E8A87C" data-i18n="s8SketchLabel">🧰 AI Skill Toolbox</text>
+            </svg>
+          </div>
+        </div>
+        <div class="skills-content">
+          <p class="lead-text" data-i18n="s8Lead">A Skill is a set of predefined instructions and resources that instantly give AI professional capabilities in a specific domain.</p>
+          <p data-i18n="s8Desc">Imagine you have a universal assistant — every time you hand it an "operation manual," it immediately masters a new skill. That's how Skills work.</p>
+          <div class="skills-examples">
+            <div class="skill-example-item"><span class="skill-tag">📄 PDF Skill</span><p data-i18n="s8Sk1Desc">Read, create, merge PDF files</p></div>
+            <div class="skill-example-item"><span class="skill-tag">📊 Excel Skill</span><p data-i18n="s8Sk2Desc">Process spreadsheet data, generate charts</p></div>
+            <div class="skill-example-item"><span class="skill-tag">🌐 Web Skill</span><p data-i18n="s8Sk3Desc">Browse web pages, extract information</p></div>
+            <div class="skill-example-item"><span class="skill-tag">🎨 Design Skill</span><p data-i18n="s8Sk4Desc">Create beautiful frontend interfaces</p></div>
+          </div>
+          <div class="tip-box" data-i18n-html="s8Tip"><strong>💡 Skill vs MCP:</strong> Skills focus on injecting "knowledge and processes" into AI, while MCP focuses on letting AI "connect to external tools." They complement each other to enhance AI capabilities.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 9: Agent ==================== -->
+  <section class="slide slide-agent" data-index="9">
+    <div class="slide-inner">
+      <div class="slide-label">09</div>
+      <h2 class="slide-title" data-i18n="s9Title">AI Agent — Intelligent Agents</h2>
+      <p class="slide-subtitle-text" data-i18n="s9Subtitle">The leap from "conversation" to "action"</p>
+      <div class="agent-visual">
+        <div class="agent-comparison">
+          <div class="agent-card">
+            <div class="agent-card-header" data-i18n="s9TraditionalHeader">Traditional AI Assistant</div>
+            <div class="agent-card-body">
+              <div class="chat-bubble user" data-i18n="s9UserMsg">Book a meeting room for tomorrow morning</div>
+              <div class="chat-bubble ai" data-i18n="s9TraditionalReply">Sure, you can log into the meeting room booking system, select a date and time...</div>
+              <p class="agent-verdict" data-i18n="s9TraditionalVerdict">🤷 Can only tell you how to do it</p>
+            </div>
+          </div>
+          <div class="vs-badge">VS</div>
+          <div class="agent-card highlight-card">
+            <div class="agent-card-header" data-i18n="s9AgentHeader">AI Agent</div>
+            <div class="agent-card-body">
+              <div class="chat-bubble user" data-i18n="s9UserMsg">Book a meeting room for tomorrow morning</div>
+              <div class="chat-bubble ai thinking" data-i18n="s9AgentThink1">Searching for available meeting rooms tomorrow morning...</div>
+              <div class="chat-bubble ai thinking" data-i18n="s9AgentThink2">Found 3 available rooms, booking A301...</div>
+              <div class="chat-bubble ai" data-i18n="s9AgentReply">✅ Successfully booked Room A301, tomorrow 9:00-10:00. Calendar invites sent to all attendees.</div>
+              <p class="agent-verdict" data-i18n="s9AgentVerdict">🚀 Can complete tasks autonomously!</p>
+            </div>
+          </div>
+        </div>
+        <div class="agent-features">
+          <div class="agent-feature"><span>🧠</span><h4 data-i18n="s9F1Title">Autonomous Planning</h4><p data-i18n="s9F1Desc">Break complex tasks into steps</p></div>
+          <div class="agent-feature"><span>🔧</span><h4 data-i18n="s9F2Title">Tool Invocation</h4><p data-i18n="s9F2Desc">Use various tools to execute actions</p></div>
+          <div class="agent-feature"><span>🔄</span><h4 data-i18n="s9F3Title">Reflection & Iteration</h4><p data-i18n="s9F3Desc">Adjust strategy based on results</p></div>
+          <div class="agent-feature"><span>🎯</span><h4 data-i18n="s9F4Title">Goal-Oriented</h4><p data-i18n="s9F4Desc">Keep tracking until completion</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 10: Evolution of AI-Assisted Development ==================== -->
+  <section class="slide slide-harness" data-index="10">
+    <div class="slide-inner">
+      <div class="slide-label">10</div>
+      <h2 class="slide-title" data-i18n="s10Title">The Evolution of AI-Assisted Development</h2>
+      <p class="slide-subtitle-text" data-i18n="s10Subtitle">From Vibe Coding to Context Engineering to Harness Engineering</p>
+      <div class="quote-banner small">
+        <p data-i18n="s10Quote">"The future of programming is not writing code, but describing intent."</p>
+        <cite data-i18n="s10QuoteCite">— Andrej Karpathy, Former Tesla AI Director</cite>
+      </div>
+
+      <div class="paradigm-evolution">
+        <!-- Vibe Coding -->
+        <div class="paradigm-card paradigm-vibe">
+          <div class="paradigm-header">
+            <span class="paradigm-icon">🎸</span>
+            <div>
+              <h3 data-i18n="s10VibeName">Vibe Coding</h3>
+              <span class="paradigm-era" data-i18n="s10VibeEra">Early 2025</span>
+            </div>
+          </div>
+          <p class="paradigm-tagline" data-i18n="s10VibeTagline">Intent over syntax — feel your way through the problem</p>
+          <p class="paradigm-desc" data-i18n-html="s10VibeDesc">Coined by Andrej Karpathy: describe what you want in <strong>natural language</strong>, let AI generate code, run it, iterate based on what works. You're not reading every line — you're <strong>feeling</strong> your way through.</p>
+          <div class="paradigm-traits">
+            <span class="trait" data-i18n="s10VibeTrait1">🚀 Rapid prototyping</span>
+            <span class="trait" data-i18n="s10VibeTrait2">💬 Natural language input</span>
+            <span class="trait" data-i18n="s10VibeTrait3">⚠️ Unpredictable at scale</span>
+          </div>
+        </div>
+
+        <div class="paradigm-arrow">→</div>
+
+        <!-- Context Engineering -->
+        <div class="paradigm-card paradigm-context">
+          <div class="paradigm-header">
+            <span class="paradigm-icon">🧠</span>
+            <div>
+              <h3 data-i18n="s10ContextName">Context Engineering</h3>
+              <span class="paradigm-era" data-i18n="s10ContextEra">Mid–Late 2025</span>
+            </div>
+          </div>
+          <p class="paradigm-tagline" data-i18n="s10ContextTagline">Design the AI's entire information environment</p>
+          <p class="paradigm-desc" data-i18n-html="s10ContextDesc">Not just what you ask, but what AI can <strong>see, remember, and act on</strong>. Manage retrieval, memory, tool definitions, and conversation history — architect the AI's working conditions.</p>
+          <div class="paradigm-traits">
+            <span class="trait" data-i18n="s10ContextTrait1">📚 Knowledge retrieval (RAG)</span>
+            <span class="trait" data-i18n="s10ContextTrait2">🧩 Tool & memory design</span>
+            <span class="trait" data-i18n="s10ContextTrait3">🔗 Multi-step workflows</span>
+          </div>
+        </div>
+
+        <div class="paradigm-arrow">→</div>
+
+        <!-- Harness Engineering -->
+        <div class="paradigm-card paradigm-harness">
+          <div class="paradigm-header">
+            <span class="paradigm-icon">⚙️</span>
+            <div>
+              <h3 data-i18n="s10HarnessName">Harness Engineering</h3>
+              <span class="paradigm-era" data-i18n="s10HarnessEra">2026</span>
+            </div>
+          </div>
+          <p class="paradigm-tagline" data-i18n="s10HarnessTagline">Build production-grade structures around AI agents</p>
+          <p class="paradigm-desc" data-i18n-html="s10HarnessDesc">Where context engineering focuses on what AI <strong>knows</strong>, harness engineering focuses on how AI <strong>behaves</strong> — error recovery, observability, guardrails, and architectural constraints for reliable production deployment.</p>
+          <div class="paradigm-traits">
+            <span class="trait" data-i18n="s10HarnessTrait1">🛡️ Error recovery & guardrails</span>
+            <span class="trait" data-i18n="s10HarnessTrait2">👁️ Observability & debugging</span>
+            <span class="trait" data-i18n="s10HarnessTrait3">🏗️ Production reliability</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="paradigm-summary">
+        <p data-i18n-html="s10Summary">Each paradigm <strong>subsumes</strong> the previous one: vibe coding instincts still matter inside a well-designed context, and context engineering becomes one component of the harness. The developer's role shifts from <strong>"the person who writes code"</strong> to <strong>"the person who architects AI collaboration."</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 12: AI 提效实战 ==================== -->
+  <section class="slide slide-practice" data-index="11">
+    <div class="slide-inner">
+      <div class="slide-label">11</div>
+      <h2 class="slide-title" data-i18n="s12Title">AI Productivity in Action</h2>
+      <p class="slide-subtitle-text" data-i18n="s12Subtitle">See how AI transforms daily work</p>
+      <div class="practice-grid">
+        <div class="practice-card"><div class="practice-icon">📧</div><h4 data-i18n="s12C1Title">Email & Communication</h4><div class="practice-before-after"><div class="before" data-i18n-html="s12C1Before"><strong>Before:</strong> Spend 30 min crafting wording</div><div class="after" data-i18n-html="s12C1After"><strong>Now:</strong> Tell AI key points, generated in 1 min</div></div><div class="time-saved" data-i18n="s12C1Saved">Save 90% Time ⚡</div></div>
+        <div class="practice-card"><div class="practice-icon">📊</div><h4 data-i18n="s12C2Title">Data Analysis</h4><div class="practice-before-after"><div class="before" data-i18n-html="s12C2Before"><strong>Before:</strong> Manually organize Excel data</div><div class="after" data-i18n-html="s12C2After"><strong>Now:</strong> Upload file, AI auto-analyzes conclusions</div></div><div class="time-saved" data-i18n="s12C2Saved">Save 80% Time ⚡</div></div>
+        <div class="practice-card"><div class="practice-icon">📝</div><h4 data-i18n="s12C3Title">Document Writing</h4><div class="practice-before-after"><div class="before" data-i18n-html="s12C3Before"><strong>Before:</strong> Write proposals from scratch</div><div class="after" data-i18n-html="s12C3After"><strong>Now:</strong> AI generates draft, you polish</div></div><div class="time-saved" data-i18n="s12C3Saved">Save 70% Time ⚡</div></div>
+        <div class="practice-card"><div class="practice-icon">💻</div><h4 data-i18n="s12C4Title">Code Development</h4><div class="practice-before-after"><div class="before" data-i18n-html="s12C4Before"><strong>Before:</strong> Write and debug line by line</div><div class="after" data-i18n-html="s12C4After"><strong>Now:</strong> Describe needs, AI generates &amp; fixes code</div></div><div class="time-saved" data-i18n="s12C4Saved">Save 60% Time ⚡</div></div>
+        <div class="practice-card"><div class="practice-icon">🎨</div><h4 data-i18n="s12C5Title">Design & Creation</h4><div class="practice-before-after"><div class="before" data-i18n-html="s12C5Before"><strong>Before:</strong> Repeatedly revise design drafts</div><div class="after" data-i18n-html="s12C5After"><strong>Now:</strong> AI quickly generates multiple options to choose from</div></div><div class="time-saved" data-i18n="s12C5Saved">Save 75% Time ⚡</div></div>
+        <div class="practice-card"><div class="practice-icon">🔍</div><h4 data-i18n="s12C6Title">Information Retrieval</h4><div class="practice-before-after"><div class="before" data-i18n-html="s12C6Before"><strong>Before:</strong> Browse through piles of documents</div><div class="after" data-i18n-html="s12C6After"><strong>Now:</strong> Ask AI directly, get answers in seconds</div></div><div class="time-saved" data-i18n="s12C6Saved">Save 95% Time ⚡</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 13: 如何开始 ==================== -->
+  <section class="slide slide-start" data-index="12">
+    <div class="slide-inner">
+      <div class="slide-label">12</div>
+      <h2 class="slide-title" data-i18n="s13Title">How to Start Your AI Journey?</h2>
+      <div class="start-roadmap">
+        <div class="roadmap-path">
+          <div class="roadmap-step"><div class="step-marker">🌱</div><div class="step-content"><h4 data-i18n="s13Step1Title">Step 1: Start a Conversation</h4><p data-i18n="s13Step1Desc">Open ChatGPT, Claude, or the Knot platform and try chatting with AI. Start with simple questions like "Help me summarize this text."</p><div class="step-action" data-i18n="s13Step1Action">💡 Try: Ask AI a question you encounter at work</div></div></div>
+          <div class="roadmap-step"><div class="step-marker">🌿</div><div class="step-content"><h4 data-i18n="s13Step2Title">Step 2: Learn Prompt Engineering</h4><p data-i18n="s13Step2Desc">Master good prompt techniques to make AI output more accurate. Remember: Role + Task + Context + Format.</p><div class="step-action" data-i18n="s13Step2Action">💡 Try: Use a detailed prompt to have AI write an email for you</div></div></div>
+          <div class="roadmap-step"><div class="step-marker">🌳</div><div class="step-content"><h4 data-i18n="s13Step3Title">Step 3: Integrate into Workflow</h4><p data-i18n="s13Step3Desc">Incorporate AI into daily work — use it to write documents, analyze data, brainstorm, review code.</p><div class="step-action" data-i18n="s13Step3Action">💡 Try: Complete at least one work task with AI every day</div></div></div>
+          <div class="roadmap-step"><div class="step-marker">🌲</div><div class="step-content"><h4 data-i18n="s13Step4Title">Step 4: Explore Advanced Features</h4><p data-i18n="s13Step4Desc">Try Knowledge Base, MCP, Skills, and other advanced features. Create your own AI assistant that truly understands your business.</p><div class="step-action" data-i18n="s13Step4Action">💡 Try: Create an agent on the Knot platform</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 14: 常见误区 ==================== -->
+  <section class="slide slide-myths" data-index="13">
+    <div class="slide-inner">
+      <div class="slide-label">13</div>
+      <h2 class="slide-title" data-i18n="s14Title">Common Myths About AI</h2>
+      <div class="myths-grid">
+        <div class="myth-card"><div class="myth-header"><span class="myth-x">✗</span><h4 data-i18n="s14M1Myth">"AI will replace my job"</h4></div><div class="myth-truth"><span class="myth-check">✓</span><p data-i18n-html="s14M1Truth"><strong>Truth:</strong> AI is a tool, not a replacement. People who use AI well will outperform those who don't. Just as calculators didn't replace accountants — they made them more efficient.</p></div></div>
+        <div class="myth-card"><div class="myth-header"><span class="myth-x">✗</span><h4 data-i18n="s14M2Myth">"Everything AI says is correct"</h4></div><div class="myth-truth"><span class="myth-check">✓</span><p data-i18n-html="s14M2Truth"><strong>Truth:</strong> AI can "hallucinate" (fabricate plausible but incorrect content). Always maintain critical thinking; important information needs verification.</p></div></div>
+        <div class="myth-card"><div class="myth-header"><span class="myth-x">✗</span><h4 data-i18n="s14M3Myth">"Using AI is cheating"</h4></div><div class="myth-truth"><span class="myth-check">✓</span><p data-i18n-html="s14M3Truth"><strong>Truth:</strong> AI is a productivity tool, just like a search engine. What matters is how you use it to improve work quality and efficiency.</p></div></div>
+        <div class="myth-card"><div class="myth-header"><span class="myth-x">✗</span><h4 data-i18n="s14M4Myth">"AI is too complex, I can't learn it"</h4></div><div class="myth-truth"><span class="myth-check">✓</span><p data-i18n-html="s14M4Truth"><strong>Truth:</strong> Modern AI tools are designed for everyone to use. You just need to be able to type and describe your needs to get started.</p></div></div>
+      </div>
+      <div class="quote-banner small" style="margin-top:2rem">
+        <p data-i18n="s14Quote">"I do not fear computers. I fear the lack of them."</p>
+        <cite data-i18n="s14QuoteCite">— Isaac Asimov</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 15: 核心概念总览 ==================== -->
+  <section class="slide slide-summary" data-index="14">
+    <div class="slide-inner">
+      <div class="slide-label">14</div>
+      <h2 class="slide-title" data-i18n="s15Title">Core Concepts at a Glance</h2>
+      <div class="summary-table-wrap">
+        <table class="summary-table">
+          <thead><tr>
+            <th data-i18n="s15ThConcept">Concept</th>
+            <th data-i18n="s15ThOneLiner">One-Line Explanation</th>
+            <th data-i18n="s15ThAnalogy">Analogy</th>
+            <th data-i18n="s15ThUseCase">Use Cases</th>
+          </tr></thead>
+          <tbody>
+            <tr><td><strong>LLM</strong></td><td data-i18n="s15R1Desc">A super scholar who read every book</td><td data-i18n="s15R1Analogy">📚 Encyclopedia</td><td data-i18n="s15R1Use">Chat, writing, translation, coding</td></tr>
+            <tr><td><strong>Prompt</strong></td><td data-i18n="s15R2Desc">The skill of communicating with AI</td><td data-i18n="s15R2Analogy">🎯 Precise instructions</td><td data-i18n="s15R2Use">All AI interaction scenarios</td></tr>
+            <tr><td><strong>RAG</strong></td><td data-i18n="s15R3Desc">Look up info before answering</td><td data-i18n="s15R3Analogy">📖 Open-book exam</td><td data-i18n="s15R3Use">Enterprise Q&A, customer service</td></tr>
+            <tr><td><strong data-i18n="s15R4Name">Knowledge Base</strong></td><td data-i18n="s15R4Desc">AI's personal library</td><td data-i18n="s15R4Analogy">🏛️ Library</td><td data-i18n="s15R4Use">Internal knowledge management</td></tr>
+            <tr><td><strong>MCP</strong></td><td data-i18n="s15R5Desc">Standard interface for AI to connect tools</td><td data-i18n="s15R5Analogy">🔌 USB port</td><td data-i18n="s15R5Use">Tool integration, automation</td></tr>
+            <tr><td><strong>Skills</strong></td><td data-i18n="s15R6Desc">Inject professional capabilities into AI</td><td data-i18n="s15R6Analogy">🧰 Skill packs</td><td data-i18n="s15R6Use">Domain-specific tasks</td></tr>
+            <tr><td><strong>Agent</strong></td><td data-i18n="s15R7Desc">AI assistant that acts autonomously</td><td data-i18n="s15R7Analogy">🤖 Smart butler</td><td data-i18n="s15R7Use">Complex task automation</td></tr>
+            <tr><td><strong>Harness</strong></td><td data-i18n="s15R8Desc">Programming with natural language</td><td data-i18n="s15R8Analogy">🏇 Harnessing power</td><td data-i18n="s15R8Use">Software development, automation</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 16: 结尾 ==================== -->
+  <section class="slide slide-ending" data-index="15">
+    <div class="slide-inner ending-inner">
+      <div class="ending-content">
+        <p class="ending-pre fade-up" data-i18n="s16Pre">AI is not the destination, but the starting point</p>
+        <h2 class="ending-title fade-up delay-1">
+          <span data-i18n="s16Title">Explore Infinite Possibilities</span>
+        </h2>
+        <div class="ending-quote fade-up delay-2">
+          <p data-i18n="s16Quote">"Among all possible futures, the best one requires us to create it."</p>
+          <cite data-i18n="s16QuoteCite">— Kevin Kelly, The Inevitable</cite>
+        </div>
+        <div class="ending-cta fade-up delay-3">
+          <p data-i18n="s16Cta">Start now, make AI your most powerful partner</p>
+          <div class="ending-links">
+            <a href="index.html" class="ending-link" data-i18n="s16LinkReview">🏠 返回首页</a>
+            <a href="#" class="ending-link primary" onclick="goToSlide(0);return false;" data-i18n="s16LinkAction">🔄 再看一遍</a>
+          </div>
+        </div>
+      </div>
+      <div class="ending-particles" id="endingParticles"></div>
+    </div>
+  </section>
+
+  <!-- 键盘提示 -->
+  <div class="keyboard-hint" id="keyboardHint">
+    <span data-i18n="keyboardHint">Use ← → keys or scroll wheel to navigate slides</span>
+  </div>
+
+  <!-- 文章入口 -->
+  <div style="position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:200;text-align:center;">
+    <a href="index.html" style="display:inline-block;padding:8px 20px;background:rgba(26,25,41,0.8);backdrop-filter:blur(20px);border:1px solid rgba(91,74,138,0.3);border-radius:10px;color:#A7A9BE;text-decoration:none;font-size:13px;font-family:'Noto Serif SC',Georgia,serif;transition:all 0.3s ease;" onmouseover="this.style.color='#E8A87C';this.style.borderColor='rgba(232,168,124,0.4)'" onmouseout="this.style.color='#A7A9BE';this.style.borderColor='rgba(91,74,138,0.3)'">🏠 返回首页</a>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -6,7 +6,7 @@
 
 ## 🗂️ 目录职责边界
 
-仓库根目录（`guangyang1206/ai-articles`）由多方共同维护（本地手动维护 + OpenClaw 云端实例），为避免相互覆盖，请遵守以下**目录职责分工**：
+仓库根目录（`guangyang1206/yeranyang-cn`，原名 `ai-articles`）由多方共同维护（本地手动维护 + OpenClaw 云端实例），为避免相互覆盖，请遵守以下**目录职责分工**：
 
 | 目录 | 用途 | 谁负责 |
 |-----|-----|-------|
@@ -24,6 +24,7 @@
 | 子目录 | 内容 | 首发日期 | 访问地址 |
 |-------|-----|--------|---------|
 | `xauat-2026/` | 西安建筑科技大学校友分享 · 当人工智能开始涌现·人往何处 | 2026-07 | https://yeranyang.cn/share/xauat-2026/ |
+| `ai-enlightenment/` | AI 启蒙 · 从零理解 AI · 面向非技术观众的双语（EN / 中）科普 slides | 2025 首发 · 2026-08 更新 | https://yeranyang.cn/share/ai-enlightenment/ |
 
 ---
 
