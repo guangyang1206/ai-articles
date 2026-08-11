@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WorkBuddy — 你的 AI 同事，已经来了</title>
+    <link rel="icon" type="image/svg+xml" href="https://codebuddy-1328495429.cos.accelerate.myqcloud.com/web/ide/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      /* ---- Chinese-specific overrides ---- */
+      :root {
+        --slide-max: 1100px;
+        --slide-px: 72px;
+      }
+      /* Mobile tap highlight & text selection */
+      html {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-text-size-adjust: 100%;
+      }
+      /* Minimum touch target for all interactive elements */
+      .bar-btn, .index-item, .cta-btn, .index-close {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+      /* Adjust section eyebrow for Chinese — longer text */
+      .section-eyebrow {
+        letter-spacing: 0.8px;
+        font-weight: 600;
+      }
+      /* Wider definition block for Chinese */
+      .wb-definition {
+        max-width: 900px;
+      }
+      /* Page 07 — Data Privacy (new page) */
+      .slide-body-p7-ext {
+        max-width: 1200px;
+        padding: 40px var(--slide-px) 32px;
+      }
+      .slide-body-p7-ext .section-eyebrow { margin-bottom: 12px; }
+      .slide-body-p7-ext h2 {
+        font-size: 40px;
+        line-height: 1.08;
+        max-width: 900px;
+      }
+      .slide-body-p7-ext .cover-rule {
+        margin-top: 12px;
+        margin-bottom: 20px;
+      }
+      .p7-ext-lede {
+        margin: 0 0 24px;
+        font-size: 15px;
+        line-height: 1.65;
+        color: var(--gray-500);
+        max-width: 880px;
+      }
+      .privacy-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .privacy-card {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 22px 20px;
+        background: var(--bg);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+      .privacy-card::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 3px;
+        opacity: 0.75;
+      }
+      .privacy-card.tone-perception::before { background: #a8c3f4; }
+      .privacy-card.tone-reasoning::before   { background: #a8d3a8; }
+      .privacy-card.tone-action::before      { background: #c4a8f4; }
+      .privacy-icon {
+        font-size: 24px;
+        line-height: 1;
+      }
+      .privacy-card h3 {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--black);
+      }
+      .privacy-card p {
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--gray-500);
+      }
+      .privacy-compare {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .privacy-compare-card {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 18px 20px;
+        background: #fafafa;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .privacy-compare-card h3 {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--black);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .privacy-compare-card h3 .pc-badge {
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        padding: 3px 8px;
+        border-radius: 4px;
+      }
+      .pc-badge-good {
+        background: rgba(47, 133, 90, 0.12);
+        color: #2f855a;
+      }
+      .pc-badge-warn {
+        background: rgba(180, 130, 20, 0.14);
+        color: #b48214;
+      }
+      .privacy-compare-card ul {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .privacy-compare-card li {
+        font-size: 13px;
+        line-height: 1.55;
+        color: var(--gray-700);
+        padding-left: 16px;
+        position: relative;
+      }
+      .privacy-compare-card li::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 7px;
+        width: 4px; height: 4px;
+        border-radius: 50%;
+        background: var(--blue);
+      }
+      .privacy-compare-card.good-side li::before { background: #2f855a; }
+      .privacy-compare-card.warn-side li::before { background: #b48214; }
+      .privacy-tip {
+        margin-top: 4px;
+        padding: 14px 18px;
+        border-radius: 8px;
+        background: rgba(20, 110, 245, 0.06);
+        border-left: 4px solid var(--blue);
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--gray-700);
+      }
+      .privacy-tip strong { color: var(--black); }
+      /* Page 10 — Three Tips (condensed) */
+      .slide-body-p10 {
+        max-width: 1200px;
+        padding: 40px var(--slide-px) 32px;
+      }
+      .slide-body-p10 .section-eyebrow { margin-bottom: 12px; }
+      .slide-body-p10 h2 {
+        font-size: 40px;
+        line-height: 1.08;
+        max-width: 900px;
+      }
+      .slide-body-p10 .cover-rule {
+        margin-top: 12px;
+        margin-bottom: 22px;
+      }
+      .tips-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .tip-full-card {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 22px 20px 18px;
+        background: var(--bg);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        position: relative;
+        overflow: hidden;
+      }
+      .tip-full-card::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 3px;
+        opacity: 0.75;
+      }
+      .tip-full-card.tip-specific::before { background: #a8c3f4; }
+      .tip-full-card.tip-stepwise::before  { background: #a8d3a8; }
+      .tip-full-card.tip-scale::before     { background: #e8cf79; }
+      .tip-full-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .tip-full-num {
+        width: 36px; height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 700;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .tip-full-card.tip-specific .tip-full-num { background: #4a7fd4; }
+      .tip-full-card.tip-stepwise .tip-full-num  { background: #4a9e4a; }
+      .tip-full-card.tip-scale .tip-full-num     { background: #c49b20; }
+      .tip-full-head h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--black);
+      }
+      .tip-full-card p {
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--gray-500);
+      }
+      .tip-full-example {
+        margin-top: auto;
+        padding-top: 10px;
+        border-top: 1px dashed var(--border);
+        font-size: 11.5px;
+        line-height: 1.55;
+        color: var(--gray-500);
+      }
+      .tip-full-example strong { color: var(--black); }
+      /* Page 08 / 09 — Practice Cases condensed */
+      .case-compact {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+      .case-compact-card {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 18px 20px;
+        background: var(--bg);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .case-compact-card .case-label-inline {
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--blue);
+      }
+      .case-compact-card h3 {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--black);
+      }
+      .case-compact-card ul {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .case-compact-card li {
+        font-size: 12.5px;
+        line-height: 1.5;
+        color: var(--gray-700);
+        padding-left: 14px;
+        position: relative;
+      }
+      .case-compact-card li::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 7px;
+        width: 3px; height: 3px;
+        border-radius: 50%;
+        background: var(--blue);
+      }
+      .case-prompt-box {
+        margin-top: auto;
+        padding: 10px 14px;
+        border-radius: 6px;
+        background: rgba(20, 110, 245, 0.05);
+        border: 1px dashed rgba(20, 110, 245, 0.2);
+        font-size: 12px;
+        line-height: 1.55;
+        color: var(--gray-700);
+      }
+      .case-prompt-box strong {
+        display: block;
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--blue);
+        margin-bottom: 4px;
+      }
+      /* ======== SHORT SCREEN COMPRESSION ======== */
+      @media (max-height: 820px) {
+        .slide-body-p7-ext { padding-top: 28px; padding-bottom: 24px; }
+        .slide-body-p7-ext h2 { font-size: 34px; }
+        .p7-ext-lede { font-size: 14px; margin-bottom: 18px; }
+        .privacy-card { padding: 16px 18px; gap: 8px; }
+        .privacy-card h3 { font-size: 14px; }
+        .privacy-card p { font-size: 12px; }
+        .privacy-compare-card { padding: 14px 16px; }
+        .privacy-compare-card li { font-size: 12px; }
+        .slide-body-p10 { padding-top: 28px; padding-bottom: 24px; }
+        .slide-body-p10 h2 { font-size: 34px; }
+        .tip-full-card { padding: 16px 18px 14px; }
+        .tip-full-head h3 { font-size: 15px; }
+        .tip-full-card p { font-size: 12.5px; }
+      }
+
+      /* ======== TABLET — max 992px ======== */
+      @media (max-width: 992px) {
+        :root {
+          --slide-max: 100%;
+          --slide-px: 40px;
+        }
+        .slide-body { padding: 40px var(--slide-px) 32px; align-items: flex-start; padding-top: 32px; }
+        .slide { min-height: auto; padding-bottom: 40px; }
+
+        /* Cover */
+        .cover-body { padding-top: 28px; }
+        .cover-title { font-size: 42px; line-height: 1.1; }
+        .cover-subtitle { font-size: 15px; max-width: 100%; }
+        .cover-quote blockquote { font-size: 15px; }
+
+        /* P02: What is WorkBuddy */
+        .slide-body-p2 { padding-top: 32px; padding-bottom: 32px; }
+        .slide-body-p2 h2 { font-size: 32px; }
+        .wb-definition { font-size: 14px; }
+        .era-cards { grid-template-columns: 1fr; gap: 12px; }
+        .mechanism-flow { flex-direction: column; gap: 8px; }
+        .mechanism-arrow { display: none; }
+        .mechanism-step { min-width: unset; width: 100%; }
+        .key-insight-bar { margin-top: 16px; }
+
+        /* P03: Capabilities */
+        .cap-grid { grid-template-columns: 1fr 1fr; }
+        .vs-block { margin-top: 20px; }
+
+        /* P04: Download */
+        .p4-top { grid-template-columns: 1fr; }
+        .p4-right { order: -1; margin-top: 0; margin-bottom: 16px; }
+        .product-shot img { max-height: 240px; }
+        .safety-grid { grid-template-columns: 1fr 1fr; }
+        .download-cta { flex-direction: column; align-items: flex-start; gap: 12px; }
+
+        /* P05: Memory */
+        .mem-files { grid-template-columns: 1fr 1fr; }
+        .mem-tradeoff { grid-template-columns: 1fr; }
+
+        /* P06: Skills & Experts — matrix becomes compact */
+        .se-grid { grid-template-columns: 1fr; gap: 12px; }
+        .se-side { order: unset; }
+        .se-matrix { order: unset; }
+        .se-wrap-ext { grid-template-columns: 1fr !important; }
+        .p6-foot { grid-template-columns: 1fr; }
+
+        /* P07: Data Privacy */
+        .privacy-grid { grid-template-columns: 1fr; }
+        .privacy-compare { grid-template-columns: 1fr; }
+
+        /* P08/P09: Cases */
+        .case-compact { grid-template-columns: 1fr; }
+        .two-col-content { grid-template-columns: 1fr; }
+
+        /* P10: Tips */
+        .tips-grid { grid-template-columns: 1fr 1fr; }
+        .p7-models-grid { grid-template-columns: 1fr !important; }
+
+        /* P11: Quick start */
+        .p14-flow { grid-template-columns: repeat(4, 1fr); }
+        .p14-flow::before { display: none; }
+        .pt-angles { grid-template-columns: 1fr; }
+        .pt-line { grid-template-columns: 120px 1fr; }
+        .prompt-row { grid-template-columns: 1fr; }
+
+        /* P12: Closing */
+        .epitaph blockquote { font-size: 36px; }
+        .closing-body { padding: 36px var(--slide-px) 32px; }
+
+        /* Bottom bar */
+        .btm-labels span { font-size: 9px; padding: 0 2px; }
+      }
+
+      /* ======== MOBILE LANDSCAPE / LARGE PHONE — max 768px ======== */
+      @media (max-width: 768px) {
+        :root { --slide-px: 28px; }
+
+        .slide-body { padding: 24px var(--slide-px) 24px; }
+        .slide { padding-bottom: 24px; }
+
+        h1, .cover-title { font-size: 36px; }
+        h2 { font-size: 28px; line-height: 1.15; }
+        .section-eyebrow { font-size: 10px; }
+        .block-label { font-size: 10px; }
+        .cover-rule { margin-top: 10px; margin-bottom: 14px; }
+
+        /* Cover */
+        .cover-body { padding-top: 22px; }
+        .cover-subtitle { font-size: 14px; }
+        .tag-pill { font-size: 10px; }
+        .cover-quote { margin-top: 20px; }
+        .cover-quote blockquote { font-size: 14px; }
+
+        /* P02 */
+        .slide-body-p2 h2 { font-size: 28px; }
+        .era-card { padding: 14px 16px; }
+        .era-card h3 { font-size: 15px; }
+        .era-card p { font-size: 13px; }
+        .mechanism-title { font-size: 16px; }
+        .mechanism-step { padding: 12px 14px; }
+        .key-insight-bar p { font-size: 13px; }
+
+        /* P03 */
+        .cap-grid { grid-template-columns: 1fr; }
+        .cap-card { padding: 14px 16px; }
+        .vs-row { grid-template-columns: 1fr 24px 1fr; }
+        .vs-old-cell, .vs-new-cell { font-size: 12px; padding: 8px 10px; }
+
+        /* P04 */
+        .safety-grid { grid-template-columns: 1fr; }
+        .safety-card { padding: 12px 14px; }
+        .download-cta { padding: 14px 16px; }
+        .cta-line { font-size: 14px; }
+        .product-shot img { max-height: 200px; }
+
+        /* P05 */
+        .mem-files { grid-template-columns: 1fr; }
+        .mem-file { padding: 14px 16px; }
+        .tradeoff-row { gap: 10px; }
+        .tradeoff-row p { font-size: 12px; }
+
+        /* P06 */
+        .se-side { padding: 14px 16px; }
+        .se-matrix { display: none; }
+        .se-list div { grid-template-columns: 70px 1fr; }
+        .se-list dt { font-size: 11px; }
+        .se-list dd { font-size: 12px; }
+        .se-bottom { padding: 12px 14px; }
+        .se-bottom-text { font-size: 13px; }
+        .connector-card { padding: 12px 14px; }
+
+        /* P07 */
+        .slide-body-p7-ext h2 { font-size: 28px; }
+        .p7-ext-lede { font-size: 14px; }
+        .privacy-card { padding: 14px 16px; }
+        .privacy-card h3 { font-size: 14px; }
+        .privacy-card p { font-size: 12px; }
+        .privacy-compare-card { padding: 12px 14px; }
+        .privacy-compare-card li { font-size: 12px; }
+        .privacy-tip { padding: 12px 14px; font-size: 12px; }
+
+        /* P08/P09 */
+        .case-header h2 { font-size: 28px; }
+        .case-compact-card { padding: 14px 16px; }
+        .case-compact-card h3 { font-size: 14px; }
+        .case-compact-card li { font-size: 12px; }
+        .prompt-quote p { font-size: 13px; }
+        .flow-mini span { font-size: 10px; }
+
+        /* P10 */
+        .tips-grid { grid-template-columns: 1fr; }
+        .slide-body-p10 h2 { font-size: 28px; }
+        .tip-full-card { padding: 14px 16px; }
+
+        /* P11 */
+        .slide-body-p14 h2 { font-size: 28px; }
+        .p14-flow { grid-template-columns: repeat(4, 1fr); column-gap: 6px; }
+        .p14-num { width: 32px; height: 32px; font-size: 13px; }
+        .p14-step p { font-size: 11px; max-width: 90px; }
+        .pt-line { grid-template-columns: 100px 1fr; }
+        .pt-body { font-size: 11px; padding: 10px 12px; }
+        .pt-angle p:not(.pt-angle-label) { font-size: 11px; }
+
+        /* P12 */
+        .epitaph blockquote { font-size: 30px; }
+        .epitaph figcaption { font-size: 12px; }
+        .closing-cta { font-size: 15px; }
+        .human-loop { flex-direction: column; gap: 10px; padding: 14px 16px; }
+
+        /* Bottom bar — compact */
+        .bottom-bar { padding: 0 16px; height: 56px; }
+        .bar-brand { font-size: 12px; }
+        .bar-dash { display: none; }
+        .bar-page { font-size: 11px; }
+        .bar-btn { padding: 8px 12px; font-size: 12px; }
+        .bar-btn.primary { padding: 8px 14px; }
+        .bar-timeline { display: none; }
+        .bar-left { gap: 4px; }
+        .bar-right { gap: 6px; }
+
+        /* Index panel */
+        .index-drawer { width: 80vw; max-width: 320px; }
+      }
+
+      /* ======== SMALL PHONE — max 480px ======== */
+      @media (max-width: 480px) {
+        :root { --slide-px: 18px; }
+
+        .slide-body { padding: 20px var(--slide-px) 20px; }
+        .slide { padding-bottom: 20px; }
+
+        h1, .cover-title { font-size: 30px; line-height: 1.12; }
+        h2 { font-size: 24px; line-height: 1.18; }
+        .section-eyebrow { font-size: 9.5px; margin-bottom: 6px; }
+        .block-label { font-size: 9.5px; }
+        .cover-rule { width: 36px; height: 2px; margin-top: 8px; margin-bottom: 12px; }
+
+        /* Cover */
+        .cover-body { padding-top: 18px; }
+        .cover-title br { display: none; }
+        .cover-subtitle { font-size: 13px; }
+        .tag-pill { font-size: 9px; padding: 5px 10px; }
+        .cover-quote { margin-top: 16px; }
+
+        /* P02 */
+        .slide-body-p2 h2 { font-size: 24px; }
+        .wb-definition { font-size: 13px; }
+        .era-num { font-size: 18px; right: 12px; top: 10px; }
+        .mechanism-step h4 { font-size: 13px; }
+        .mechanism-step p { font-size: 11px; }
+
+        /* P03 */
+        .p3-lede { font-size: 13px; }
+        .vs-row { grid-template-columns: 1fr; gap: 2px; }
+        .vs-arrow { display: none; }
+        .vs-head { display: none; }
+
+        /* P04 */
+        .cta-btn { width: 100%; justify-content: center; font-size: 13px; }
+        .product-shot img { max-height: 170px; }
+        .safety-card { padding: 10px 12px; }
+        .safety-card h3 { font-size: 13px; }
+        .safety-card p { font-size: 12px; }
+
+        /* P05 */
+        .p5-lede { font-size: 13px; }
+        .mem-file { padding: 12px 14px; }
+
+        /* P06 */
+        .se-side-label { font-size: 14px; }
+        .se-oneliner { font-size: 12px; }
+        .connector-card { padding: 10px 12px; gap: 8px; }
+
+        /* P07 */
+        .slide-body-p7-ext h2 { font-size: 24px; }
+        .p7-ext-lede { font-size: 13px; margin-bottom: 14px; }
+        .privacy-compare-card h3 { font-size: 13px; }
+        .privacy-tip { padding: 10px 12px; font-size: 11px; }
+
+        /* P08/P09 */
+        .case-compact-card { padding: 12px 14px; }
+        .case-compact-card h3 { font-size: 13px; }
+        .prompt-quote { padding: 12px 14px; }
+        .flow-mini { gap: 4px; }
+        .flow-mini span { font-size: 9.5px; padding: 3px 7px; }
+
+        /* P10 */
+        .slide-body-p10 h2 { font-size: 24px; }
+        .tip-full-card { padding: 12px 14px; gap: 8px; }
+        .tip-full-num { width: 30px; height: 30px; font-size: 14px; }
+        .tip-full-head h3 { font-size: 14px; }
+        .tip-full-card p { font-size: 12px; }
+        .tip-full-example { font-size: 11px; }
+
+        /* P11 */
+        .slide-body-p14 h2 { font-size: 24px; }
+        .p14-flow { grid-template-columns: repeat(3, 1fr); row-gap: 12px; }
+        .p14-num { width: 28px; height: 28px; font-size: 12px; }
+        .p14-step p { font-size: 10px; max-width: 80px; }
+        .pt-line { grid-template-columns: 1fr; gap: 1px; }
+        .pt-key { font-size: 11px; }
+        .pt-val { font-size: 11px; }
+        .pt-body { padding: 10px 12px; font-size: 10px; }
+        .pt-angle { padding: 8px 10px; }
+
+        /* P12 */
+        .epitaph blockquote { font-size: 24px; line-height: 1.2; }
+        .epitaph blockquote br { display: none; }
+        .closing-cta { font-size: 14px; }
+        .closing-sign { font-size: 12px; }
+        .hl-body { font-size: 12px; }
+
+        /* Bottom bar — minimal */
+        .bottom-bar { height: 52px; padding: 0 12px; }
+        .bar-brand { font-size: 11px; }
+        .bar-page { font-size: 10px; }
+        .bar-btn { padding: 7px 10px; font-size: 11px; }
+        .bar-btn.primary { padding: 7px 12px; }
+        #btnIndex { display: none; }
+
+        /* Index panel */
+        .index-drawer { width: 90vw; max-width: 280px; }
+        .index-item { padding: 10px 14px; }
+        .index-item-num { font-size: 11px; min-width: 24px; }
+        .index-item-label { font-size: 12px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- ===== SLIDES ===== -->
+    <div class="deck">
+
+      <!-- ===== PAGE 01 — COVER ===== -->
+      <section class="slide active" id="slide-01">
+        <div class="slide-body cover-body">
+          <div class="tag-pill">
+            <span class="tag-dot"></span>
+            AI 专家团办公新范式 &middot; 2026
+          </div>
+
+          <h1 class="cover-title">你的 AI 专家团，<br /><span class="accent">已经来了。</span></h1>
+          <p class="cover-subtitle" style="white-space:normal; margin-top:16px;">
+            认识 WorkBuddy — 一人指挥，140+ 专业 AI 角色协作，从策略到交付一站搞定。
+          </p>
+          <div class="cover-rule" style="margin-top:20px;"></div>
+
+          <div class="cover-quote" style="white-space:normal;">
+            <blockquote>
+              &ldquo;任何足够先进的技术，初看都与魔法无异。&rdquo;
+            </blockquote>
+            <p class="quote-attribution">&mdash; 阿瑟·克拉克</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PAGE 02 — 什么是 WorkBuddy ===== -->
+      <section class="slide" id="slide-02">
+        <div class="slide-body slide-body-p2">
+          <p class="section-eyebrow">02 &mdash; 什么是 WorkBuddy</p>
+
+          <h2>从生成式 AI 到 <span class="accent">自主式 AI</span>。</h2>
+          <div class="cover-rule"></div>
+
+          <p class="wb-definition">
+            <strong>一句话说清楚：</strong>
+            WorkBuddy 是一个 AI 桌面工作台。你用日常语言描述任务，它会自己规划步骤、调用工具，最终给你一个可以直接用的结果，而不是一段需要你再加工的文字。
+          </p>
+
+          <div class="era-cards">
+            <article class="era-card era-past">
+              <p class="era-label">生成式 AI</p>
+              <span class="era-num">01</span>
+              <h3>擅长生成内容</h3>
+              <p>你问，它答。能写文章、做总结、翻译、生成代码——但回答完就结束了。</p>
+              <p class="era-example">比如：写一段文案、总结一份文件、生成一段代码</p>
+            </article>
+            <article class="era-card era-mid">
+              <p class="era-label">AI 智能体</p>
+              <span class="era-num">02</span>
+              <h3>擅长完成单一任务</h3>
+              <p>一个 AI 智能体专注于特定工作。它能调用工具，比纯对话更自主，但范围相对受限。</p>
+              <p class="era-example">比如：搜索、整理文件、排日程、更新数据</p>
+            </article>
+            <article class="era-card era-now">
+              <p class="era-label">自主式 AI</p>
+              <span class="era-num">03</span>
+              <h3>擅长把工作推进到结果</h3>
+              <p>它围绕更大目标自主规划、调用工具、协调多个步骤，直到产出可用的交付物。</p>
+              <p class="era-example">比如：规划 → 协调 → 执行 → 交付</p>
+            </article>
+          </div>
+
+          <div class="agentic-mechanism">
+            <p class="block-label">自主式 AI 怎么工作</p>
+            <h3 class="mechanism-title">感知—行动循环</h3>
+            <p class="mechanism-subtitle">自主式 AI 通过五个连续阶段循环工作——每个阶段都为下一个阶段提供输入。</p>
+
+            <div class="mechanism-flow">
+              <div class="mechanism-step tone-perception">
+                <div class="mechanism-icon">&#128065;</div>
+                <h4>感知</h4>
+                <p>从文件、工具和上下文中收集信息</p>
+              </div>
+              <div class="mechanism-arrow">&#8594;</div>
+              <div class="mechanism-step tone-reasoning">
+                <div class="mechanism-icon">&#129504;</div>
+                <h4>推理</h4>
+                <p>理解当前情况，确定什么最要紧</p>
+              </div>
+              <div class="mechanism-arrow">&#8594;</div>
+              <div class="mechanism-step tone-planning">
+                <div class="mechanism-icon">&#128203;</div>
+                <h4>规划</h4>
+                <p>把目标拆成步骤，选择最优路径</p>
+              </div>
+              <div class="mechanism-arrow">&#8594;</div>
+              <div class="mechanism-step tone-action">
+                <div class="mechanism-icon">&#9889;</div>
+                <h4>行动</h4>
+                <p>调用工具和系统真正做事，不只是描述</p>
+              </div>
+              <div class="mechanism-arrow">&#8594;</div>
+              <div class="mechanism-step tone-reflection">
+                <div class="mechanism-icon">&#128260;</div>
+                <h4>反思</h4>
+                <p>检查结果，从反馈中学习，下一轮更好</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="key-insight-bar">
+            <span class="key-icon">&#128161;</span>
+            <p><strong>关键洞察：</strong>区别不在于智力——智力一直都在。区别在于<em>连续性</em>、<em>上下文</em>和<em>连接能力</em>。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PAGE 03 — 能帮你做什么 ===== -->
+      <section class="slide" id="slide-03">
+        <div class="slide-body slide-body-p3">
+          <p class="section-eyebrow">03 &mdash; 能帮你做什么</p>
+
+          <h2>一句话进去，<span class="accent">能用的结果</span>出来。</h2>
+          <div class="cover-rule"></div>
+
+          <p class="p3-lede">
+            用日常语言说清楚你想干什么。WorkBuddy 会读取需要的文件，规划执行步骤，调用合适的工具，最后把你能直接审阅、修改、使用的东西交到你手上——而不只是一段聊天回复。
+          </p>
+
+          <!-- 五大能力卡片 -->
+          <div class="capability-matrix">
+            <p class="block-label">核心能力 &nbsp;&times;&nbsp; 适用场景</p>
+
+            <div class="cap-grid">
+              <article class="cap-card tone-perception">
+                <div class="cap-head">
+                  <span class="cap-icon">&#129309;</span>
+                  <h3>AI 专家团协作</h3>
+                </div>
+                <p class="cap-desc">一句话召唤 140+ 领域专家——运营、设计、开发、营销角色并行工作，一个人顶一支团队。</p>
+                <div class="cap-tags">
+                  <span>竞品调研</span>
+                  <span>内容创作</span>
+                  <span>软件开发</span>
+                </div>
+              </article>
+
+              <article class="cap-card tone-reasoning">
+                <div class="cap-head">
+                  <span class="cap-icon">&#129504;</span>
+                  <h3>自主规划与执行</h3>
+                </div>
+                <p class="cap-desc">大目标自动拆解成步骤，选择工具和模型，从规划到交付全程自主推进。</p>
+                <div class="cap-tags">
+                  <span>深度调研</span>
+                  <span>报告撰写</span>
+                  <span>数据洞察</span>
+                </div>
+              </article>
+
+              <article class="cap-card tone-planning">
+                <div class="cap-head">
+                  <span class="cap-icon">&#128241;</span>
+                  <h3>手机远程指挥（助理）</h3>
+                </div>
+                <p class="cap-desc">扫码绑定微信/飞书/钉钉，出门在外用手机发消息，电脑端的 AI 照样干活，结果实时回传。</p>
+                <div class="cap-tags">
+                  <span>远程查进度</span>
+                  <span>手机发任务</span>
+                  <span>文件随取</span>
+                </div>
+              </article>
+
+              <article class="cap-card tone-action">
+                <div class="cap-head">
+                  <span class="cap-icon">&#128193;</span>
+                  <h3>本地文件 + 多格式文档</h3>
+                </div>
+                <p class="cap-desc">直接操作你授权文件夹里的 Word、Excel、PPT、PDF、代码——打开、编辑、生成、导出一条龙。</p>
+                <div class="cap-tags">
+                  <span>PPT 生成</span>
+                  <span>表格分析</span>
+                  <span>批量整理</span>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- 传统 AI 对话 vs WorkBuddy -->
+          <div class="vs-block">
+            <div class="vs-head">
+              <div class="vs-col-head vs-old">
+                <span class="vs-tag">传统 AI 对话</span>
+              </div>
+              <div class="vs-col-arrow" aria-hidden="true"></div>
+              <div class="vs-col-head vs-new">
+                <span class="vs-tag vs-tag-new">WorkBuddy</span>
+              </div>
+            </div>
+
+            <div class="vs-row">
+              <div class="vs-old-cell">只给建议</div>
+              <div class="vs-arrow">&rarr;</div>
+              <div class="vs-new-cell"><strong>端到端执行</strong>，直到任务完成</div>
+            </div>
+            <div class="vs-row">
+              <div class="vs-old-cell">你手动操作文件</div>
+              <div class="vs-arrow">&rarr;</div>
+              <div class="vs-new-cell"><strong>在你授权的文件夹内</strong>自动操作文件</div>
+            </div>
+            <div class="vs-row">
+              <div class="vs-old-cell">单步、简单请求</div>
+              <div class="vs-arrow">&rarr;</div>
+              <div class="vs-new-cell"><strong>多步、复杂工作</strong>一次完成</div>
+            </div>
+            <div class="vs-row">
+              <div class="vs-old-cell">返回一段文字</div>
+              <div class="vs-arrow">&rarr;</div>
+              <div class="vs-new-cell"><strong>交付一个可审阅的结果</strong>，能直接用</div>
+            </div>
+            <div class="vs-row">
+              <div class="vs-old-cell">你一个人跟 AI 聊</div>
+              <div class="vs-arrow">&rarr;</div>
+              <div class="vs-new-cell"><strong>一支 AI 专家团</strong>并行协作，各司其职</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PAGE 04 — 怎么开始 ===== -->
+      <section class="slide" id="slide-04">
+        <div class="slide-body slide-body-p4">
+          <p class="section-eyebrow">04 &mdash; 怎么开始</p>
+
+          <h2>准备好了就动手。<span class="accent">今天就能用上。</span></h2>
+          <div class="cover-rule"></div>
+
+          <div class="p4-top">
+            <div class="p4-left">
+              <div class="download-cta" style="margin-bottom:16px;">
+                <div class="cta-copy">
+                  <p class="cta-eyebrow">下载 WorkBuddy</p>
+                  <p class="cta-line">支持 Mac 和 Windows，去官网下载安装包即可。</p>
+                  <p class="cta-note">安装后无需注册账号，打开就能用。</p>
+                </div>
+                <div class="cta-actions">
+                  <a class="cta-btn" href="https://www.codebuddy.cn/work/" target="_blank" rel="noopener">
+                    去官网下载 &#8599;
+                  </a>
+                  <a class="cta-btn" href="https://www.codebuddy.cn/docs/workbuddy/Overview" target="_blank" rel="noopener" style="background:var(--bg);color:var(--blue);border:1px solid rgba(20,110,245,0.25);">
+                    查看官方文档 &#8599;
+                  </a>
+                </div>
+              </div>
+
+              <!-- 三步开始 -->
+              <div class="safety-grid" style="margin-top:8px;">
+                <article class="safety-card tone-perception">
+                  <span class="safety-icon">&#128229;</span>
+                  <h3>1. 下载安装</h3>
+                  <p>去官网下载 Mac 或 Windows 版，安装后打开即可。</p>
+                </article>
+                <article class="safety-card tone-reasoning">
+                  <span class="safety-icon">&#128221;</span>
+                  <h3>2. 打开新任务</h3>
+                  <p>创建一个新任务，用日常语言描述你想做的事情。</p>
+                </article>
+                <article class="safety-card tone-action">
+                  <span class="safety-icon">&#9989;</span>
+                  <h3>3. 审阅结果</h3>
+                  <p>WorkBuddy 会在右侧面板展示结果，你可以直接下载或继续修改。</p>
+                </article>
+              </div>
+            </div>
+
+            <div class="p4-right">
+              <div class="product-shot">
+                <img
+                  src="./screenshot.png"
+                  alt="WorkBuddy 桌面界面：左侧任务列表，中间对话区，右侧输出区"
+                />
+                <p class="product-caption">一个工作台——任务、上下文、工具和结果都在一个窗口里。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 安全说明 -->
+          <div class="safety-block" style="margin-top:8px;">
+            <p class="block-label">安全可控</p>
+            <div class="safety-grid">
+              <article class="safety-card tone-perception">
+                <span class="safety-icon">&#128193;</span>
+                <h3>你的文件你做主</h3>
+                <p>WorkBuddy 只能访问你明确授权的文件夹，电脑上的其他内容它看不到。</p>
+              </article>
+              <article class="safety-card tone-reasoning">
+                <span class="safety-icon">&#128274;</span>
+                <h3>在你的电脑上运行</h3>
+                <p>它在你本地桌面运行，工作文件和上下文都在你自己的电脑上。</p>
+              </article>
+              <article class="safety-card tone-action">
+                <span class="safety-icon">&#9888;&#65039;</span>
+                <h3>高风险操作有保护</h3>
+                <p>删除文件、对外发送等危险操作会要求二次确认，并展示预览。</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PAGE 05 — Memory ===== -->
+      <section class="slide" id="slide-05">
+        <div class="slide-body slide-body-p5">
+          <p class="section-eyebrow">05 &mdash; Memory</p>
+
+          <h2>WorkBuddy 有记忆。<span class="accent">你不用每次都重新解释。</span></h2>
+          <div class="cover-rule"></div>
+
+          <p class="p5-lede">
+            有没有反复跟 AI 说明自己的角色、团队和项目，说了几十遍？WorkBuddy 会在你的电脑上维护一小份人类可读的记忆文件——下次打开，它还记得上次聊到哪了。
+          </p>
+
+          <!-- 四个记忆文件 -->
+          <div class="mem-files">
+            <article class="mem-file">
+              <div class="mem-head">
+                <span class="mem-icon">&#129302;</span>
+                <div class="mem-name">
+                  <code>IDENTITY.md</code>
+                  <span class="mem-role">它是谁</span>
+                </div>
+              </div>
+              <p class="mem-desc">AI 助手的名字、个性和自称方式。</p>
+            </article>
+
+            <article class="mem-file">
+              <div class="mem-head">
+                <span class="mem-icon">&#128154;</span>
+                <div class="mem-name">
+                  <code>SOUL.md</code>
+                  <span class="mem-role">怎么做</span>
+                </div>
+              </div>
+              <p class="mem-desc">它的价值观和工作风格——语气、边界、直接还是谨慎。</p>
+            </article>
+
+            <article class="mem-file">
+              <div class="mem-head">
+                <span class="mem-icon">&#128100;</span>
+                <div class="mem-name">
+                  <code>USER.md</code>
+                  <span class="mem-role">你是谁</span>
+                </div>
+              </div>
+              <p class="mem-desc">关于你——角色、团队、项目和工作偏好。</p>
+            </article>
+
+            <article class="mem-file mem-folder">
+              <div class="mem-head">
+                <span class="mem-icon">&#128214;</span>
+                <div class="mem-name">
+                  <code>memory/</code>
+                  <span class="mem-role">学到了什么</span>
+                </div>
+              </div>
+              <p class="mem-desc">每日日志和精简的 <code>MEMORY.md</code>——决策、偏好、经验，跨会话保留。</p>
+            </article>
+          </div>
+
+          <!-- 优缺点 -->
+          <div class="mem-tradeoff">
+            <div class="mem-col mem-pros">
+              <p class="tradeoff-label tradeoff-pros">优势</p>
+              <div class="tradeoff-row">
+                <span class="tradeoff-mark tradeoff-mark-pos">&#10003;</span>
+                <div>
+                  <strong>越用越好用。</strong>
+                  <p>不用每次重新解释角色、团队和项目。</p>
+                </div>
+              </div>
+              <div class="tradeoff-row">
+                <span class="tradeoff-mark tradeoff-mark-pos">&#10003;</span>
+                <div>
+                  <strong>透明、可编辑。</strong>
+                  <p>所有记忆都是普通的 <code>.md</code> 文件，随时打开查看、修改或删除。</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mem-col mem-cons">
+              <p class="tradeoff-label tradeoff-cons">需要注意</p>
+              <div class="tradeoff-row">
+                <span class="tradeoff-mark tradeoff-mark-warn">!</span>
+                <div>
+                  <strong>需要偶尔维护。</strong>
+                  <p>如果记错了或过时了，可能需要手动修正或删除。</p>
+                </div>
+              </div>
+              <div class="tradeoff-row">
+                <span class="tradeoff-mark tradeoff-mark-warn">!</span>
+                <div>
+                  <strong>注意存什么。</strong>
+                  <p>把记忆文件当笔记本用——不要在里写密码、密钥或敏感个人信息。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="mem-path">
+            在你的电脑上：<code>***REMOVED***.workbuddy/IDENTITY.md</code>, <code>SOUL.md</code>, <code>USER.md</code>, <code>memory/</code>
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== PAGE 06 — 专家团 & SkillHub ===== -->
+      <section class="slide" id="slide-06">
+        <div class="slide-body slide-body-p6">
+          <p class="section-eyebrow">06 &mdash; 专家团 &amp; 技能市场</p>
+
+          <h2>一人指挥，<span class="accent">一支 AI 专家团</span>干活。</h2>
+          <div class="cover-rule"></div>
+
+          <p class="p6-lede">
+            三种方式扩展 WorkBuddy 的能力——
+            <span class="p6-term">专家团</span>让你拥有 140+ 专业角色，
+            <span class="p6-term">技能市场</span>安装 7 万+ 现成工具，
+            <span class="p6-term">连接器</span>打通你的外部系统。
+          </p>
+
+          <!-- Top row: 专家团 + SkillHub side by side -->
+          <div class="se-wrap-ext" style="display:grid; grid-template-columns:1.35fr 0.95fr; gap:16px; margin-bottom:14px;">
+            <!-- LEFT: 专家团 -->
+            <div style="border:1px solid var(--border); border-radius:10px; background:var(--bg); padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-size:22px;">&#129309;</span>
+                <p style="font-size:15px; font-weight:700; color:var(--black);">AI 专家团 &mdash; 140+ 专家，12 大行业</p>
+                <a href="https://www.codebuddy.cn/docs/workbuddy/Overview" target="_blank" rel="noopener" style="margin-left:auto; font-size:10px; color:var(--blue); text-decoration:none; white-space:nowrap; font-weight:600;">文档 &#8599;</a>
+              </div>
+              <p style="font-size:13px; line-height:1.6; color:var(--gray-500);">
+                不是"换个提示词模板"，而是<strong style="color:var(--black);">真正懂行的领域专家</strong>。每位专家背后融入了对应领域的专业知识体系、行业最佳实践和实战方法论。一句话召唤，<em>多专家并行协作</em>，从策略到交付一站搞定。
+              </p>
+              <!-- 12 领域标签 -->
+              <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                <span style="font-size:10px; padding:4px 8px; border-radius:999px; background:rgba(20,110,245,0.08); color:var(--blue); font-weight:600;">设计(8)</span>
+                <span style="font-size:10px; padding:4px 8px; border-radius:999px; background:rgba(47,133,90,0.08); color:#2f855a; font-weight:600;">工程(21)</span>
+                <span style="font-size:10px; padding:4px 8px; border-radius:999px; background:rgba(180,130,20,0.08); color:#b48214; font-weight:600;">营销(26)</span>
+                <span style="font-size:10px; padding:4px 8px; border-radius:999px; background:rgba(120,80,200,0.08); color:#7850c8; font-weight:600;">付费媒体(7)</span>
+                <span style="font-size:10px; padding:4px 8px; border-radius:999px; background:rgba(200,80,120,0.08); color:#c85078; font-weight:600;">销售(8)</span>
+                <span style="font-size:10px; padding:4px 8px; border-radius:999px; background:rgba(20,110,245,0.08); color:var(--blue); font-weight:600;">产品(4)</span>
+                <span style="font-size:10px; padding:4px 8px; border-radius:999px; background:rgba(47,133,90,0.08); color:#2f855a; font-weight:600;">项目管理(6)</span>
+                <span style="font-size:10px; padding:4px 8px; border-radius:999px; background:rgba(180,130,20,0.08); color:#b48214; font-weight:600;">质量(8)</span>
+                <span style="font-size:10px; padding:4px 8px; border-radius:999px; background:rgba(120,80,200,0.08); color:#7850c8; font-weight:600;">运营(6)</span>
+                <span style="font-size:10px; padding:4px 8px; border-radius:999px; background:rgba(200,80,120,0.08); color:#c85078; font-weight:600;">专业服务(22)</span>
+                <span style="font-size:10px; padding:4px 8px; border-radius:999px; background:rgba(20,110,245,0.08); color:var(--blue); font-weight:600;">游戏(19)</span>
+                <span style="font-size:10px; padding:4px 8px; border-radius:999px; background:rgba(47,133,90,0.08); color:#2f855a; font-weight:600;">空间计算(6)</span>
+              </div>
+              <!-- 典型场景 -->
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                <div style="padding:8px 10px; border-radius:6px; background:#f8f9fb; border:1px solid #eef0f4;">
+                  <p style="font-size:10px; font-weight:700; color:var(--blue); letter-spacing:0.8px; text-transform:uppercase; margin-bottom:4px;">OPC 一人公司</p>
+                  <p style="font-size:11.5px; line-height:1.5; color:var(--gray-600);">召唤运营、设计、开发、法务等 AI 角色，并行协作交付完整工作。</p>
+                </div>
+                <div style="padding:8px 10px; border-radius:6px; background:#f8f9fb; border:1px solid #eef0f4;">
+                  <p style="font-size:10px; font-weight:700; color:#2f855a; letter-spacing:0.8px; text-transform:uppercase; margin-bottom:4px;">内容创作团队</p>
+                  <p style="font-size:11.5px; line-height:1.5; color:var(--gray-600);">AI 驱动多模态内容生产，从视频脚本到图文创作端到端交付。</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT: SkillHub -->
+            <div style="border:1px solid var(--border); border-radius:10px; background:var(--bg); padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-size:22px;">&#128736;</span>
+                <p style="font-size:15px; font-weight:700; color:var(--black);">SkillHub 技能市场</p>
+              </div>
+              <div style="display:flex; gap:12px; align-items:center;">
+                <div style="text-align:center;">
+                  <p style="font-size:26px; font-weight:800; color:var(--blue); line-height:1;">7 万+</p>
+                  <p style="font-size:10px; color:var(--gray-500);">已收录技能</p>
+                </div>
+                <div style="width:1px; height:32px; background:var(--border);"></div>
+                <div style="text-align:center;">
+                  <p style="font-size:26px; font-weight:800; color:#2f855a; line-height:1;">3000 万+</p>
+                  <p style="font-size:10px; color:var(--gray-500);">累计下载</p>
+                </div>
+              </div>
+              <p style="font-size:13px; line-height:1.6; color:var(--gray-500);">
+                上百个开箱即用的专业技能——PDF 处理、办公文档四件套、小红书文案、代码审查……在市场里点一下「+」就装上。<strong style="color:var(--black);">先逛市场，别自己造轮子。</strong>
+              </p>
+              <div style="display:flex; flex-wrap:wrap; gap:5px;">
+                <span style="font-size:9.5px; padding:3px 7px; border-radius:999px; background:rgba(20,110,245,0.07); color:var(--blue); font-weight:600;">Excel 自动化</span>
+                <span style="font-size:9.5px; padding:3px 7px; border-radius:999px; background:rgba(47,133,90,0.07); color:#2f855a; font-weight:600;">PPT 生成</span>
+                <span style="font-size:9.5px; padding:3px 7px; border-radius:999px; background:rgba(180,130,20,0.07); color:#b48214; font-weight:600;">会议纪要</span>
+                <span style="font-size:9.5px; padding:3px 7px; border-radius:999px; background:rgba(120,80,200,0.07); color:#7850c8; font-weight:600;">代码审查</span>
+                <span style="font-size:9.5px; padding:3px 7px; border-radius:999px; background:rgba(200,80,120,0.07); color:#c85078; font-weight:600;">小红书文案</span>
+                <span style="font-size:9.5px; padding:3px 7px; border-radius:999px; background:rgba(20,110,245,0.07); color:var(--blue); font-weight:600;">PDF 解析</span>
+                <span style="font-size:9.5px; padding:3px 7px; border-radius:999px; background:rgba(47,133,90,0.07); color:#2f855a; font-weight:600;">周报生成</span>
+                <span style="font-size:9.5px; padding:3px 7px; border-radius:999px; background:rgba(180,130,20,0.07); color:#b48214; font-weight:600;">数据清洗</span>
+              </div>
+              <div style="margin-top:auto; padding:8px 10px; border-radius:6px; background:rgba(20,110,245,0.04); border:1px dashed rgba(20,110,245,0.15); font-size:11px; line-height:1.5; color:var(--gray-600);">
+                支持 <strong style="color:var(--black);">MCP 开放生态</strong>，可自定义技能包、接入各类大模型，能力无限扩展。
+              </div>
+            </div>
+          </div>
+
+          <!-- 连接器 + 文档链接 -->
+          <div class="p6-foot" style="grid-template-columns: 1fr;">
+            <div class="connector-card" style="margin-bottom:6px;">
+              <span class="conn-icon">&#128268;</span>
+              <div class="conn-copy">
+                <p class="conn-label">连接器 &mdash; 打通你的外部系统</p>
+                <p class="conn-text">
+                  让 WorkBuddy 连接到<strong>邮箱、日历、在线文档、项目管理平台</strong>等外部系统。
+                  许多连接器遵循开放的 <strong>MCP</strong> 标准，即插即用。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; justify-content:center; gap:8px; padding-top:4px; align-items:center;">
+            <a href="https://www.codebuddy.cn/docs/workbuddy/Overview" target="_blank" rel="noopener" style="font-size:11px; color:var(--blue); text-decoration:none; font-weight:600;">查看完整功能文档 &#8599;</a>
+            <span style="color:var(--gray-300);">&middot;</span>
+            <a href="https://www.codebuddy.cn/work/" target="_blank" rel="noopener" style="font-size:11px; color:var(--blue); text-decoration:none; font-weight:600;">下载 WorkBuddy &#8599;</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PAGE 07 — 数据隐私（新页面） ===== -->
+      <section class="slide" id="slide-07">
+        <div class="slide-body slide-body-p7-ext">
+          <p class="section-eyebrow">07 &mdash; 数据隐私 &amp; 模型积分</p>
+
+          <h2>你的数据，<span class="accent">你说了算。</span></h2>
+          <div class="cover-rule"></div>
+
+          <p class="p7-ext-lede">
+            用 AI 工具时最担心什么？不外乎"我的文件被传到哪了""它会不会记住不该记的东西""别人能不能看到我的数据"。WorkBuddy 的设计从一开始就考虑到了这些。
+          </p>
+
+          <div class="privacy-grid">
+            <article class="privacy-card tone-perception">
+              <span class="privacy-icon">&#128187;</span>
+              <h3>运行在你的电脑上</h3>
+              <p>WorkBuddy 是桌面应用，核心引擎在你的本地机器上运行。你的工作文件和对话上下文都在你自己的电脑里，不需要上传到某个云端服务器。</p>
+            </article>
+
+            <article class="privacy-card tone-reasoning">
+              <span class="privacy-icon">&#128274;</span>
+              <h3>授权才能访问</h3>
+              <p>WorkBuddy 只能看到你明确授权的文件夹。没授权的地方，它连目录列表都拿不到。每次打开新项目，你决定它能碰哪些文件。</p>
+            </article>
+
+            <article class="privacy-card tone-action">
+              <span class="privacy-icon">&#128214;</span>
+              <h3>记忆可审查</h3>
+              <p>所有记忆都是纯文本 <code>.md</code> 文件，放在 <code>***REMOVED***.workbuddy/</code> 目录下。你可以随时打开查看、编辑或删除——没有黑箱。</p>
+            </article>
+          </div>
+
+          <!-- WorkBuddy 做了什么 vs 没做什么 -->
+          <div class="privacy-compare">
+            <div class="privacy-compare-card good-side">
+              <h3>
+                <span class="pc-badge pc-badge-good">它做了</span>
+                保护隐私的设计
+              </h3>
+              <ul>
+                <li>任务推理只发送最小化片段，不是整个代码库</li>
+                <li>记忆文件在你的本地磁盘，不在云端</li>
+                <li>你可以随时查看、编辑或删除任何记忆</li>
+                <li>高风险操作（删除、对外发送）需要二次确认</li>
+              </ul>
+            </div>
+
+            <div class="privacy-compare-card warn-side">
+              <h3>
+                <span class="pc-badge pc-badge-warn">别做</span>
+                这些事有风险
+              </h3>
+              <ul>
+                <li>不要把密码、API 密钥、SSH 私钥贴到对话里</li>
+                <li>不要把未脱敏的客户数据或合同条款直接粘贴</li>
+                <li>使用远程模型时，确认输入内容不包含不想传出的信息</li>
+                <li>敏感文件用本地模型或先脱敏再操作</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="privacy-tip">
+            <span class="key-icon">&#128161;</span>
+            <p><strong>记住这个原则：</strong>用 AI 工具就跟用邮件一样——你输入了什么，它才能处理什么。养成好习惯：先用本地文件，再让 AI 操作；不确定敏感度时，先脱敏。</p>
+          </div>
+
+          <!-- 模型选择与积分（外部用户专属） -->
+          <div style="margin-top:22px;">
+            <p class="block-label" style="margin-bottom:10px;">模型选择 &amp; 积分 &mdash; 外部用户须知</p>
+            <div class="p7-models-grid" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+              <div style="border:1px solid var(--border); border-radius:8px; padding:14px 16px; background:var(--bg);">
+                <p style="font-size:10px; font-weight:700; color:var(--blue); letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">新用户福利</p>
+                <p style="font-size:18px; font-weight:800; color:var(--black); line-height:1;">5,000 <span style="font-size:12px;font-weight:500;color:var(--gray-500);">免费积分</span></p>
+                <p style="font-size:11px; color:var(--gray-500); margin-top:4px; line-height:1.45;">每日登录再领 100 积分，连登 7 天享 10 倍积分奖励。</p>
+              </div>
+              <div style="border:1px solid var(--border); border-radius:8px; padding:14px 16px; background:var(--bg);">
+                <p style="font-size:10px; font-weight:700; color:#2f855a; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">多模型可选</p>
+                <p style="font-size:13px; font-weight:700; color:var(--black); line-height:1.35;">轻量 / 标准 / 高性能</p>
+                <p style="font-size:11px; color:var(--gray-500); margin-top:4px; line-height:1.45;">简单任务选轻量模型省积分，复杂任务切换高性能模型，按需选择。</p>
+              </div>
+              <div style="border:1px solid var(--border); border-radius:8px; padding:14px 16px; background:var(--bg);">
+                <p style="font-size:10px; font-weight:700; color:#b48214; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">积分不够用？</p>
+                <p style="font-size:13px; font-weight:700; color:var(--black); line-height:1.35;">月套餐 + 加量包</p>
+                <p style="font-size:11px; color:var(--gray-500); margin-top:4px; line-height:1.45;">次月自动刷新免费额度；可购买积分加量包补充；详情见官网定价页。</p>
+              </div>
+            </div>
+            <p style="font-size:11px; color:var(--gray-400); text-align:center; margin-top:10px;">
+              &#9432; 与腾讯内部用户不同，外部用户无法使用混元等内部免费模型。建议日常任务用轻量模型节省积分，重要任务切换高性能模型。
+              <a href="https://www.codebuddy.cn/docs/workbuddy/Overview" target="_blank" rel="noopener" style="color:var(--blue);">了解更多 &#8599;</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PAGE 08 — 上手案例：内容创作 ===== -->
+      <section class="slide" id="slide-08">
+        <div class="slide-body" style="padding: 40px var(--slide-px) 32px;">
+          <p class="section-eyebrow">08 &mdash; 上手案例</p>
+
+          <div class="case-header">
+            <span class="case-label">内容创作</span>
+            <h2>把一个选题变成<span class="accent">能用的初稿</span>。</h2>
+          </div>
+          <div class="cover-rule"></div>
+
+          <div class="two-col-content">
+            <div class="col">
+              <p class="block-label">适合谁</p>
+              <ul class="clean-list">
+                <li>把选题、简报或创意方向变成第一版草稿</li>
+                <li>内容团队需要一个更快的起点，然后再精修</li>
+                <li>文章、社交媒体帖子、文案、短视频脚本创作</li>
+              </ul>
+
+              <p class="block-label" style="margin-top:28px;">操作步骤</p>
+              <ul class="clean-list">
+                <li>说清楚选题、平台、受众和目标</li>
+                <li>补充关键信息、产品卖点或参考资料</li>
+                <li>指定输出格式：大纲 / 帖子 / 文案 / 脚本</li>
+                <li>审阅角度、语气和结构是否合适</li>
+                <li>逐段修改标题、正文或脚本内容</li>
+                <li>需要时把同一份素材改成另一种格式</li>
+              </ul>
+            </div>
+            <div class="col">
+              <div class="prompt-block">
+                <p class="block-label">示例提示词</p>
+                <div class="prompt-quote">
+                  <p>根据这份选题简报，帮我写一篇面向普通读者的产品介绍文章。包含一个吸引人的标题、清晰的结构、以及我可以直接修改的初稿内容。</p>
+                </div>
+              </div>
+              <div class="flow-mini">
+                <span>选题 + 简报</span>
+                <span class="flowmini-arrow">&#8594;</span>
+                <span>初稿</span>
+                <span class="flowmini-arrow">&#8594;</span>
+                <span>精修</span>
+                <span class="flowmini-arrow">&#8594;</span>
+                <span>多格式输出</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PAGE 09 — 上手案例：助理 + 创造技能 + 项目 ===== -->
+      <section class="slide" id="slide-09">
+        <div class="slide-body" style="padding: 40px var(--slide-px) 32px;">
+          <p class="section-eyebrow">09 &mdash; 上手案例</p>
+
+          <h2>不在电脑前也能干活。<span class="accent">还能让它自己定时跑。</span></h2>
+          <div class="cover-rule"></div>
+
+          <div class="case-compact">
+            <!-- 案例 2：助理远程 -->
+            <article class="case-compact-card">
+              <span class="case-label-inline">助理 · 手机远程</span>
+              <h3>扫码绑定微信，手机发消息，电脑替你干活</h3>
+              <ul>
+                <li>在 WorkBuddy 设置中扫码绑定微信（也支持飞书、钉钉、QQ）</li>
+                <li>出门在外用微信发一条消息 → 电脑端的 AI 自动执行</li>
+                <li>查进度、取文件、发新任务——结果实时回传手机</li>
+                <li>支持设置<strong>定时自动化</strong>：「每天早上 9 点整理今日待办」</li>
+              </ul>
+              <div class="case-prompt-box">
+                <strong>示例提示词（手机发送）</strong>
+                帮我把今天上午会议的录音转成文字，整理成会议纪要，发给我。
+              </div>
+            </article>
+
+            <!-- 案例 3：创造技能 -->
+            <article class="case-compact-card">
+              <span class="case-label-inline">创造专属技能</span>
+              <h3>把自己重复做的事变成一键技能</h3>
+              <ul>
+                <li>选一个你经常重复的清晰流程</li>
+                <li>定义触发词、做什么、输出什么</li>
+                <li>让 WorkBuddy 帮你把它变成一个可安装的技能</li>
+                <li>测试、调整，直到顺手为止</li>
+              </ul>
+              <div class="case-prompt-box">
+                <strong>示例提示词</strong>
+                帮我创建一个"捕捉灵感"的自定义技能：当我输入一个想法时，自动整理成结构化记录，保存到指定文件夹，并返回确认信息。
+              </div>
+            </article>
+          </div>
+
+          <!-- 项目预告 -->
+          <div style="margin-top:14px; padding:12px 16px; border:1px dashed rgba(20,110,245,0.25); border-radius:8px; background:rgba(20,110,245,0.03); display:flex; align-items:flex-start; gap:10px;">
+            <span style="font-size:18px; line-height:1;">&#128640;</span>
+            <div>
+              <p style="font-size:11px; font-weight:700; color:var(--blue); letter-spacing:0.8px; text-transform:uppercase; margin-bottom:4px;">项目（Projects）&mdash; v5.0 新功能预告</p>
+              <p style="font-size:12.5px; line-height:1.55; color:var(--gray-600);">
+                让人和多个 AI 共享同一份上下文、技能和文件，协同推进复杂工程。适合团队或需要多 AI 角色协作的大型任务——属于熟练之后再碰的进阶功能。
+                <a href="https://www.codebuddy.cn/docs/workbuddy/Overview" target="_blank" rel="noopener" style="color:var(--blue); font-weight:600;">看文档了解详情 &#8599;</a>
+              </p>
+            </div>
+          </div>
+
+          <p style="font-size:13px; color:var(--gray-500); text-align:center; margin-top:14px;">
+            从小事开始——先做一个只有单一用途的技能，好用再扩展。熟悉后再试试「项目」和「自动化」。
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== PAGE 10 — 三个好习惯 ===== -->
+      <section class="slide" id="slide-10">
+        <div class="slide-body slide-body-p10">
+          <p class="section-eyebrow">10 &mdash; 用好 AI 的习惯</p>
+
+          <h2>三个好习惯，<span class="accent">让 AI 更靠谱。</span></h2>
+          <div class="cover-rule"></div>
+
+          <div class="tips-grid">
+            <!-- Tip 1: Be specific -->
+            <article class="tip-full-card tip-specific">
+              <div class="tip-full-head">
+                <span class="tip-full-num">1</span>
+                <h3>说得越具体，结果越可靠</h3>
+              </div>
+              <p>告诉它任务是什么、用什么输入、好的输出应该长什么样。你越具体，它越不需要猜，输出就越准确。</p>
+              <div class="tip-full-example">
+                <strong>模糊的说：</strong>"帮我总结一下这个文件。"<br/>
+                <strong>具体的说：</strong>"读这个文件，提取出所有决定、负责人和截止日期，用表格输出，不要写前言。"
+              </div>
+            </article>
+
+            <!-- Tip 2: Step by step -->
+            <article class="tip-full-card tip-stepwise">
+              <div class="tip-full-head">
+                <span class="tip-full-num">2</span>
+                <h3>一步一步来，别指望一把梭</h3>
+              </div>
+              <p>WorkBuddy 更适合做执行搭档，而不是一锤子生成器。把大任务拆成小步骤，每一步审阅后再往下走。</p>
+              <div class="tip-full-example">
+                <strong>好的工作流：</strong>提取概要 → 审阅反馈 → 展开某个章节 → 精修细节 → 最终输出。
+              </div>
+            </article>
+
+            <!-- Tip 3: Scale safely -->
+            <article class="tip-full-card tip-scale">
+              <div class="tip-full-head">
+                <span class="tip-full-num">3</span>
+                <h3>先验证，再放大</h3>
+              </div>
+              <p>不要让 AI 自动操作你不确定的东西。先在可见、可控的环境里跑通，再扩大范围。保留备份和版本记录。</p>
+              <div class="tip-full-example">
+                <strong>安全上手指南：</strong>本地先试 → 保留备份 → 预览再确认 → 只自动化已经稳定、有规律的流程。
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PAGE 11 — 快速上手：七步搞定 ===== -->
+      <section class="slide" id="slide-11">
+        <div class="slide-body slide-body-p14">
+          <p class="section-eyebrow">11 &mdash; 快速上手</p>
+
+          <h2>你的第一个任务，<span class="accent">七步搞定。</span></h2>
+          <div class="cover-rule"></div>
+
+          <!-- 七步流程 -->
+          <ol class="p14-flow">
+            <li class="p14-step">
+              <span class="p14-num">1</span>
+              <p>创建新任务</p>
+            </li>
+            <li class="p14-step">
+              <span class="p14-num">2</span>
+              <p>写一句清楚的任务描述</p>
+            </li>
+            <li class="p14-step">
+              <span class="p14-num">3</span>
+              <p>上传文件或贴截图（如果需要）</p>
+            </li>
+            <li class="p14-step">
+              <span class="p14-num">4</span>
+              <p>说明你想要的输出格式</p>
+            </li>
+            <li class="p14-step">
+              <span class="p14-num">5</span>
+              <p>发送任务</p>
+            </li>
+            <li class="p14-step">
+              <span class="p14-num">6</span>
+              <p>在对话区跟踪进展</p>
+            </li>
+            <li class="p14-step">
+              <span class="p14-num">7</span>
+              <p>在结果区审阅输出</p>
+            </li>
+          </ol>
+
+          <!-- 好用的入门提示词 -->
+          <div class="prompt-examples p14-prompts">
+            <p class="block-label">好用的入门提示词</p>
+            <div class="prompt-row">
+              <div class="prompt-card">
+                <p>把这份会议记录整理成 6 页的执行摘要 PPT。</p>
+              </div>
+              <div class="prompt-card">
+                <p>分析这个电子表格，写一份一页纸的洞察总结。</p>
+              </div>
+              <div class="prompt-card">
+                <p>整理这个文件夹里的所有文件，按日期重命名。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 提示词模板 -->
+          <div class="prompt-template">
+            <div class="pt-window">
+              <div class="pt-titlebar">
+                <span class="pt-dot pt-dot-red"></span>
+                <span class="pt-dot pt-dot-yellow"></span>
+                <span class="pt-dot pt-dot-green"></span>
+                <span class="pt-filename">提示词模板 — 复制、修改、每次都用</span>
+              </div>
+              <div class="pt-body">
+                <div class="pt-line"><span class="pt-key">角色：</span><span class="pt-val">[这个任务中 WorkBuddy 应该扮演谁？]</span></div>
+                <div class="pt-line"><span class="pt-key">任务：</span><span class="pt-val">[具体要做什么？]</span></div>
+                <div class="pt-line"><span class="pt-key">受众：</span><span class="pt-val">[这份内容给谁看？]</span></div>
+                <div class="pt-line"><span class="pt-key">背景/素材：</span><span class="pt-val">[相关的背景信息、参考资料、已有草稿]</span></div>
+                <div class="pt-line"><span class="pt-key">约束：</span><span class="pt-val">[字数限制、语气要求、要避免的事、品牌规范]</span></div>
+                <div class="pt-line"><span class="pt-key">输出格式：</span><span class="pt-val">[新闻稿 / 要点 / 问答 / 发言提纲 / 等等]</span></div>
+              </div>
+            </div>
+
+            <div class="pt-angles">
+              <div class="pt-angle">
+                <p class="pt-angle-label">角色 → 视角</p>
+                <p>「扮演危机公关顾问」和「扮演写这篇报道的记者」产出的内容完全不同。用角色来获得正确的视角，而不仅仅是执行力。</p>
+              </div>
+              <div class="pt-angle">
+                <p class="pt-angle-label">受众 → 语气</p>
+                <p>「给 CEO 看」vs「给大众看」vs「给技术记者看」——语气完全不同。不要让 WorkBuddy 自己猜。</p>
+              </div>
+              <div class="pt-angle">
+                <p class="pt-angle-label">约束 → 内置 QA</p>
+                <p>「300 字以内、避免被动语态、中文简体」。把你的检查清单写进提示词里。好的约束能省掉大部分来回修改。</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; justify-content:center; padding-top:12px;">
+            <a href="https://www.codebuddy.cn/docs/workbuddy/Overview" target="_blank" rel="noopener" style="font-size:11px; color:var(--blue); text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:4px;">
+              &#128214; 查看完整官方文档，了解更多功能和最佳实践 &#8599;
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PAGE 12 — 结尾 ===== -->
+      <section class="slide" id="slide-12">
+        <div class="slide-body closing-body">
+
+          <p class="section-eyebrow">12 &mdash; 结尾</p>
+
+          <figure class="epitaph">
+            <blockquote>
+              &ldquo;他从未长大，<br />但也从未停止成长。&rdquo;
+            </blockquote>
+            <figcaption>
+              &mdash; 阿瑟·克拉克，被问及希望墓碑上写什么时的回答
+            </figcaption>
+          </figure>
+
+          <div class="closing-rule"></div>
+
+          <p class="closing-cta">
+            最快学会 WorkBuddy 的方式就是<strong>用它做一件真事</strong>——目标清晰、审阅点明确、习惯安全。
+          </p>
+
+          <div class="human-loop">
+            <span class="hl-icon">&#128075;</span>
+            <div class="hl-copy">
+              <p class="hl-title">让人始终在回路里。</p>
+              <p class="hl-body">
+                WorkBuddy 是一个效率工具，不是判断力的替代品。
+                你设定意图，你审阅输出，你来做最终决定。
+              </p>
+            </div>
+          </div>
+
+          <p class="closing-sign">现在，去找一件真事，试试看。</p>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ===== INDEX PANEL (slide-out) ===== -->
+    <div class="index-panel" id="indexPanel" aria-hidden="true">
+      <div class="index-backdrop" id="indexBackdrop"></div>
+      <div class="index-drawer">
+        <div class="index-header">
+          <span class="index-title">目录</span>
+          <button class="index-close" id="btnIndexClose" aria-label="关闭目录">&#10005;</button>
+        </div>
+        <nav class="index-list" id="indexList">
+          <!-- populated by JS -->
+        </nav>
+      </div>
+    </div>
+
+    <!-- ===== BOTTOM BAR ===== -->
+    <nav class="bottom-bar">
+      <div class="bar-left">
+        <span class="bar-brand">Work<span class="accent">Buddy</span></span>
+        <span class="bar-dash">&mdash;</span>
+        <span class="bar-page" id="barPage">1 / 12</span>
+      </div>
+
+      <div class="bar-timeline" id="barTimeline" aria-label="页面进度">
+        <div class="btm-track">
+          <div class="btm-seg" data-seg="0" style="width:8.33%"></div>
+          <div class="btm-seg" data-seg="1" style="width:8.33%"></div>
+          <div class="btm-seg" data-seg="2" style="width:8.33%"></div>
+          <div class="btm-seg" data-seg="3" style="width:8.33%"></div>
+          <div class="btm-seg" data-seg="4" style="width:8.33%"></div>
+          <div class="btm-seg" data-seg="5" style="width:8.33%"></div>
+          <div class="btm-seg" data-seg="6" style="width:8.33%"></div>
+          <div class="btm-seg" data-seg="7" style="width:8.33%"></div>
+          <div class="btm-seg" data-seg="8" style="width:8.33%"></div>
+          <div class="btm-seg" data-seg="9" style="width:8.33%"></div>
+          <div class="btm-seg" data-seg="10" style="width:8.33%"></div>
+          <div class="btm-seg" data-seg="11" style="width:8.33%"></div>
+        </div>
+        <div class="btm-labels">
+          <span data-seg="0" style="width:8.33%">封面</span>
+          <span data-seg="1" style="width:8.33%">什么是</span>
+          <span data-seg="2" style="width:8.33%">能做什么</span>
+          <span data-seg="3" style="width:8.33%">开始</span>
+          <span data-seg="4" style="width:8.33%">记忆</span>
+          <span data-seg="5" style="width:8.33%">专家团</span>
+          <span data-seg="6" style="width:8.33%">隐私</span>
+          <span data-seg="7" style="width:8.33%">案例</span>
+          <span data-seg="8" style="width:8.33%">更多</span>
+          <span data-seg="9" style="width:8.33%">习惯</span>
+          <span data-seg="10" style="width:8.33%">上手</span>
+          <span data-seg="11" style="width:8.33%">结尾</span>
+        </div>
+      </div>
+
+      <div class="bar-right">
+        <button class="bar-btn" id="btnIndex" title="目录">&#9776; 目录</button>
+        <button class="bar-btn" id="btnPrev">&lsaquo; 上一页</button>
+        <button class="bar-btn primary" id="btnNext">下一页 &rsaquo;</button>
+      </div>
+    </nav>
+
+    <script src="./script.js"></script>
+    <script>
+      /* Touch swipe + trackpad navigation for mobile & Mac */
+      (function() {
+        var deck = document.querySelector('.deck');
+        var btnNext = document.getElementById('btnNext');
+        var btnPrev = document.getElementById('btnPrev');
+        if (!deck || !btnNext || !btnPrev) return;
+
+        var touchStartX = 0;
+        var minSwipe = 50;
+
+        deck.addEventListener('touchstart', function(e) {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        deck.addEventListener('touchend', function(e) {
+          var diff = touchStartX - e.changedTouches[0].screenX;
+          if (Math.abs(diff) < minSwipe) return;
+          /* Click the hidden nav buttons — script.js handles all the logic */
+          if (diff > 0) btnNext.click();
+          else btnPrev.click();
+        }, { passive: true });
+
+        /* Trackpad horizontal swipe (Mac) */
+        var wheelAccum = 0;
+        var wheelTimer = null;
+        deck.addEventListener('wheel', function(e) {
+          if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 30) {
+            e.preventDefault();
+            wheelAccum += e.deltaX;
+            clearTimeout(wheelTimer);
+            wheelTimer = setTimeout(function() {
+              if (wheelAccum > 60) btnNext.click();
+              else if (wheelAccum < -60) btnPrev.click();
+              wheelAccum = 0;
+            }, 100);
+          }
+        }, { passive: false });
+      })();
+    </script>
+  </body>
+</html>

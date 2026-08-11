@@ -25,6 +25,7 @@
 |-------|-----|--------|---------|
 | `xauat-2026/` | 西安建筑科技大学校友分享 · 当人工智能开始涌现·人往何处 | 2026-07 | https://yeranyang.cn/share/xauat-2026/ |
 | `ai-enlightenment/` | AI 启蒙 · 从零理解 AI · 面向非技术观众的双语（EN / 中）科普 slides | 2025 首发 · 2026-08 更新 | https://yeranyang.cn/share/ai-enlightenment/ |
+| `workbuddy-intro/` | WorkBuddy 产品介绍 web slides · 12 页中文版 · 面向外部大众用户 | 2026-08 | https://yeranyang.cn/share/workbuddy-intro/ |
 
 ---
 
