@@ -233,6 +233,365 @@
       }
       .mem-footnote code { color: var(--black); font-size: 11.5px; }
 
+      /* ============ P09 — Privacy Architecture ============ */
+      .slide-body-p9-visual {
+        max-width: 1200px;
+        padding: 40px var(--slide-px) 32px;
+      }
+      .privacy-visual-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.42fr) minmax(250px, 0.78fr);
+        gap: 16px;
+        margin-top: 2px;
+      }
+      .privacy-map {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        background: rgba(255,255,255,0.82);
+        box-shadow: 0 14px 34px rgba(15,23,42,0.045);
+      }
+      .privacy-map-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+      .privacy-map-kicker,
+      .privacy-rail-kicker {
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 1.25px;
+        text-transform: uppercase;
+        color: var(--blue);
+      }
+      .privacy-map-head h3,
+      .privacy-control-rail h3 {
+        margin-top: 5px;
+        font-size: 17px;
+        line-height: 1.25;
+        color: var(--black);
+      }
+      .privacy-map-badge {
+        flex-shrink: 0;
+        padding: 5px 9px;
+        border-radius: 999px;
+        background: rgba(20,110,245,0.08);
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 700;
+      }
+      .privacy-data-flow {
+        display: grid;
+        grid-template-columns: minmax(0,1fr) 34px minmax(0,1fr) 34px minmax(0,1fr);
+        align-items: stretch;
+        gap: 8px;
+      }
+      .privacy-flow-node {
+        min-height: 168px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 16px;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+      }
+      .privacy-flow-node.node-local {
+        border-color: rgba(20,110,245,0.28);
+        background: rgba(20,110,245,0.035);
+      }
+      .privacy-flow-node.node-service {
+        border-style: dashed;
+        background: #fafafa;
+      }
+      .privacy-node-num {
+        width: 26px;
+        height: 26px;
+        border-radius: 7px;
+        display: grid;
+        place-items: center;
+        background: var(--black);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        margin-bottom: 14px;
+      }
+      .node-local .privacy-node-num { background: var(--blue); }
+      .node-service .privacy-node-num { background: var(--gray-500); }
+      .privacy-flow-node h4 {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 7px;
+      }
+      .privacy-flow-node p {
+        font-size: 11.5px;
+        line-height: 1.55;
+        color: var(--gray-500);
+      }
+      .privacy-node-note {
+        margin-top: auto;
+        padding-top: 10px;
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--blue);
+      }
+      .privacy-flow-arrow {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        color: var(--gray-400);
+      }
+      .privacy-flow-arrow span:first-child { font-size: 18px; }
+      .privacy-flow-arrow small {
+        font-size: 8.5px;
+        line-height: 1.25;
+        text-align: center;
+      }
+      .privacy-control-rail {
+        border-radius: 12px;
+        padding: 20px;
+        background: #101828;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 14px 34px rgba(15,23,42,0.12);
+      }
+      .privacy-control-rail h3 { color: #fff; }
+      .privacy-controls {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .privacy-control-item {
+        display: grid;
+        grid-template-columns: 26px 1fr;
+        gap: 10px;
+        padding: 12px 0;
+        border-top: 1px solid rgba(255,255,255,0.11);
+      }
+      .privacy-control-item:first-child { border-top: 0; }
+      .privacy-control-mark {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255,255,255,0.32);
+        font-size: 9px;
+        font-weight: 700;
+        color: #9cc1ff;
+      }
+      .privacy-control-item strong {
+        display: block;
+        font-size: 12.5px;
+        color: #fff;
+        margin-bottom: 3px;
+      }
+      .privacy-control-item p {
+        font-size: 10.5px;
+        line-height: 1.45;
+        color: rgba(255,255,255,0.62);
+      }
+      .privacy-decision {
+        margin-top: auto;
+        padding: 11px 12px;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.08);
+        font-size: 10.5px;
+        line-height: 1.5;
+        color: rgba(255,255,255,0.82);
+      }
+      .privacy-risk-strip {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: 120px repeat(3, 1fr);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        background: #fff;
+      }
+      .privacy-risk-label,
+      .privacy-risk-item {
+        padding: 12px 14px;
+        display: flex;
+        align-items: center;
+      }
+      .privacy-risk-label {
+        background: rgba(20,110,245,0.06);
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: .8px;
+      }
+      .privacy-risk-item {
+        border-left: 1px solid var(--border);
+        font-size: 10.5px;
+        line-height: 1.4;
+        color: var(--gray-600);
+      }
+
+      /* ============ P15 — Habit Journey ============ */
+      .slide-body-p15-visual {
+        max-width: 1200px;
+        padding: 40px var(--slide-px) 32px;
+      }
+      .habit-intro {
+        margin: 0 0 18px;
+        font-size: 14px;
+        line-height: 1.55;
+        color: var(--gray-500);
+      }
+      .habit-journey {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .habit-step {
+        position: relative;
+        display: grid;
+        grid-template-columns: 54px 225px minmax(0,1fr);
+        align-items: center;
+        gap: 16px;
+        min-height: 106px;
+        padding: 14px 18px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: rgba(255,255,255,0.88);
+        box-shadow: 0 10px 28px rgba(15,23,42,0.04);
+        overflow: hidden;
+      }
+      .habit-step::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: rgba(20,110,245,0.22);
+      }
+      .habit-step.step-two {
+        margin-left: 42px;
+        background: rgba(20,110,245,0.025);
+      }
+      .habit-step.step-two::before { background: rgba(20,110,245,0.55); }
+      .habit-step.step-three {
+        margin-left: 84px;
+        border-color: rgba(20,110,245,0.28);
+        background: rgba(20,110,245,0.055);
+      }
+      .habit-step.step-three::before { background: var(--blue); }
+      .habit-step-num {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: #eef2f7;
+        color: var(--gray-700);
+        font-size: 15px;
+        font-weight: 800;
+      }
+      .step-two .habit-step-num { background: rgba(20,110,245,0.12); color: var(--blue); }
+      .step-three .habit-step-num { background: var(--blue); color: #fff; }
+      .habit-step-copy small {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: var(--gray-400);
+      }
+      .habit-step-copy h3 {
+        font-size: 16px;
+        line-height: 1.25;
+        color: var(--black);
+      }
+      .habit-step-copy p {
+        margin-top: 6px;
+        font-size: 11px;
+        line-height: 1.45;
+        color: var(--gray-500);
+      }
+      .habit-example {
+        min-width: 0;
+        padding-left: 16px;
+        border-left: 1px dashed var(--border);
+      }
+      .habit-contrast {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .habit-mini {
+        padding: 9px 11px;
+        border-radius: 8px;
+        background: #f7f8fa;
+        font-size: 10.5px;
+        line-height: 1.4;
+        color: var(--gray-600);
+      }
+      .habit-mini.good {
+        background: rgba(20,110,245,0.07);
+        color: var(--gray-700);
+      }
+      .habit-mini strong {
+        display: block;
+        margin-bottom: 3px;
+        font-size: 8.5px;
+        letter-spacing: .8px;
+        text-transform: uppercase;
+        color: var(--gray-400);
+      }
+      .habit-mini.good strong { color: var(--blue); }
+      .habit-chip-flow {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .habit-chip {
+        padding: 6px 9px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: #fff;
+        font-size: 9.5px;
+        font-weight: 600;
+        color: var(--gray-600);
+      }
+      .habit-chip-arrow { font-size: 11px; color: var(--blue); }
+      .habit-mantra {
+        margin-top: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 12px 16px;
+        border-radius: 10px;
+        background: #101828;
+        color: #fff;
+      }
+      .habit-mantra-label {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: #9cc1ff;
+      }
+      .habit-mantra strong {
+        font-size: 13px;
+        letter-spacing: .2px;
+      }
+      .habit-mantra span:last-child {
+        font-size: 10.5px;
+        color: rgba(255,255,255,.6);
+      }
+
       /* ============ P17 — Starter Tasks ============ */
       .starter-grid {
         display: grid;
@@ -345,6 +704,10 @@
         /* P09: Privacy */
         .privacy-grid { grid-template-columns: 1fr; }
         .privacy-compare { grid-template-columns: 1fr; }
+        .privacy-visual-layout { grid-template-columns: 1fr; }
+        .privacy-control-rail { min-height: 0; }
+        .privacy-risk-strip { grid-template-columns: 1fr; }
+        .privacy-risk-item { border-left: 0; border-top: 1px solid var(--border); }
         /* P10: Experts */
         .se-grid { grid-template-columns: 1fr; gap: 12px; }
         .se-side { order: unset; }
@@ -358,6 +721,9 @@
         .p7-models-grid { grid-template-columns: 1fr !important; }
         /* P15: Tips */
         .tips-grid { grid-template-columns: 1fr 1fr; }
+        .habit-step,
+        .habit-step.step-two,
+        .habit-step.step-three { margin-left: 0; }
         /* P16: Quick start */
         .p14-flow { grid-template-columns: repeat(4, 1fr); }
         .p14-flow::before { display: none; }
@@ -431,6 +797,12 @@
         .privacy-compare-card { padding: 12px 14px; }
         .privacy-compare-card li { font-size: 12px; }
         .privacy-tip { padding: 12px 14px; font-size: 12px; }
+        .privacy-map { padding: 16px; }
+        .privacy-data-flow { grid-template-columns: 1fr; }
+        .privacy-flow-node { min-height: 0; }
+        .privacy-flow-arrow { flex-direction: row; padding: 2px 0; }
+        .privacy-flow-arrow span:first-child { transform: rotate(90deg); }
+        .privacy-flow-arrow small { display: none; }
         /* P10/P11 */
         .se-side { padding: 14px 16px; }
         .se-matrix { display: none; }
@@ -451,6 +823,9 @@
         .tips-grid { grid-template-columns: 1fr; }
         .slide-body-p10 h2 { font-size: 28px; }
         .tip-full-card { padding: 14px 16px; }
+        .habit-step { grid-template-columns: 44px 1fr; gap: 12px; }
+        .habit-example { grid-column: 1 / -1; padding-left: 0; padding-top: 10px; border-left: 0; border-top: 1px dashed var(--border); }
+        .habit-mantra { align-items: flex-start; flex-direction: column; }
         /* P16 */
         .slide-body-p14 h2 { font-size: 28px; }
         .p14-flow { grid-template-columns: repeat(4, 1fr); column-gap: 6px; }
@@ -533,6 +908,11 @@
         .p7-ext-lede { font-size: 13px; margin-bottom: 14px; }
         .privacy-compare-card h3 { font-size: 13px; }
         .privacy-tip { padding: 10px 12px; font-size: 11px; }
+        .privacy-map-head { flex-direction: column; margin-bottom: 12px; }
+        .privacy-map-head h3, .privacy-control-rail h3 { font-size: 15px; }
+        .privacy-flow-node { padding: 12px; }
+        .privacy-control-rail { padding: 16px; }
+        .privacy-risk-label, .privacy-risk-item { padding: 10px 12px; }
         /* P10/P11 */
         .se-side-label { font-size: 14px; }
         .se-oneliner { font-size: 12px; }
@@ -550,6 +930,12 @@
         .tip-full-head h3 { font-size: 14px; }
         .tip-full-card p { font-size: 12px; }
         .tip-full-example { font-size: 11px; }
+        .habit-intro { font-size: 12.5px; }
+        .habit-step { padding: 12px; grid-template-columns: 38px 1fr; }
+        .habit-step-num { width: 34px; height: 34px; border-radius: 9px; font-size: 13px; }
+        .habit-step-copy h3 { font-size: 14px; }
+        .habit-contrast { grid-template-columns: 1fr; }
+        .habit-chip { font-size: 9px; }
         /* P16 */
         .slide-body-p14 h2 { font-size: 24px; }
         .p14-flow { grid-template-columns: repeat(3, 1fr); row-gap: 12px; }
@@ -981,53 +1367,77 @@
 
       <!-- ===== PAGE 09 — 你的数据你做主 ===== -->
       <section class="slide" id="slide-09">
-        <div class="slide-body slide-body-p7-ext">
+        <div class="slide-body slide-body-p9-visual">
           <p class="section-eyebrow">09 &mdash; 数据隐私</p>
-          <h2>你的数据，<span class="accent">你说了算。</span></h2>
+          <h2>先看清数据流向，<span class="accent">再决定怎么用。</span></h2>
           <div class="cover-rule"></div>
-          <p class="p7-ext-lede">
-            用 AI 工具时最担心什么？不外乎"我的文件被传到哪了""它会不会记住不该记的东西""别人能不能看到我的数据"。WorkBuddy 的设计从一开始就考虑到了这些。
-          </p>
-          <div class="privacy-grid">
-            <article class="privacy-card tone-perception">
-              <span class="privacy-icon">&#128187;</span>
-              <h3>本地工作台，本地文件操作</h3>
-              <p>WorkBuddy 桌面端在你的电脑上运行，文件读写默认在本机完成。调用云端或第三方模型时，完成请求所需的输入会按相应服务规则传输与处理。</p>
-            </article>
-            <article class="privacy-card tone-reasoning">
-              <span class="privacy-icon">&#128274;</span>
-              <h3>在授权范围内访问</h3>
-              <p>本地文件操作以你选择或授权的工作目录为边界。开始任务前应确认目录范围，高风险操作仍需查看预览并由人确认。</p>
-            </article>
-            <article class="privacy-card tone-action">
-              <span class="privacy-icon">&#128214;</span>
-              <h3>配置与记忆可管理</h3>
-              <p>个人配置和本地记忆可以查看、维护或删除。不同版本、工作区和同步方式可能不同，具体以客户端设置与官方文档为准。</p>
-            </article>
-          </div>
-          <div class="privacy-compare">
-            <div class="privacy-compare-card good-side">
-              <h3><span class="pc-badge pc-badge-good">它做了</span>保护隐私的设计</h3>
-              <ul>
-                <li>本地文件读写默认在电脑上完成</li>
-                <li>模型配置与 API Key 可保存在本地</li>
-                <li>支持接入 Ollama 等本地模型，满足更高隐私需求</li>
-                <li>高风险操作应先预览，再由人确认</li>
-              </ul>
+
+          <div class="privacy-visual-layout">
+            <div class="privacy-map">
+              <div class="privacy-map-head">
+                <div>
+                  <p class="privacy-map-kicker">Data path</p>
+                  <h3>一次任务，数据会经过哪里？</h3>
+                </div>
+                <span class="privacy-map-badge">边界透明</span>
+              </div>
+
+              <div class="privacy-data-flow">
+                <article class="privacy-flow-node">
+                  <span class="privacy-node-num">01</span>
+                  <h4>你的工作目录</h4>
+                  <p>只选择完成任务所需的文件夹；先确认范围，再开始操作。</p>
+                  <span class="privacy-node-note">范围由你选择</span>
+                </article>
+                <div class="privacy-flow-arrow" aria-hidden="true">
+                  <span>&rarr;</span>
+                  <small>本地<br/>读写</small>
+                </div>
+                <article class="privacy-flow-node node-local">
+                  <span class="privacy-node-num">02</span>
+                  <h4>WorkBuddy 桌面端</h4>
+                  <p>文件处理默认在本机进行；配置、记忆与操作结果可由你管理。</p>
+                  <span class="privacy-node-note">先预览，再确认</span>
+                </article>
+                <div class="privacy-flow-arrow" aria-hidden="true">
+                  <span>&rarr;</span>
+                  <small>必要<br/>输入</small>
+                </div>
+                <article class="privacy-flow-node node-service">
+                  <span class="privacy-node-num">03</span>
+                  <h4>所选模型服务</h4>
+                  <p>调用云端或第三方模型时，完成请求所需内容按对应服务规则处理。</p>
+                  <span class="privacy-node-note">敏感任务可选本地模型</span>
+                </article>
+              </div>
             </div>
-            <div class="privacy-compare-card warn-side">
-              <h3><span class="pc-badge pc-badge-warn">别做</span>这些事有风险</h3>
-              <ul>
-                <li>不要把密码、API 密钥、SSH 私钥贴到对话里</li>
-                <li>不要把未脱敏的客户数据或合同条款直接粘贴</li>
-                <li>使用远程模型时，确认输入内容不包含不想传出的信息</li>
-                <li>敏感文件用本地模型或先脱敏再操作</li>
-              </ul>
-            </div>
+
+            <aside class="privacy-control-rail">
+              <p class="privacy-rail-kicker">Your controls</p>
+              <h3>三道控制权，都在你手里</h3>
+              <div class="privacy-controls">
+                <div class="privacy-control-item">
+                  <span class="privacy-control-mark">A</span>
+                  <div><strong>选范围</strong><p>只授权当前任务真正需要的目录。</p></div>
+                </div>
+                <div class="privacy-control-item">
+                  <span class="privacy-control-mark">B</span>
+                  <div><strong>选模型</strong><p>普通任务用云端；高敏感任务可选 Ollama 本地模型。</p></div>
+                </div>
+                <div class="privacy-control-item">
+                  <span class="privacy-control-mark">C</span>
+                  <div><strong>审操作</strong><p>删除、外发、批量修改等动作，先看预览再确认。</p></div>
+                </div>
+              </div>
+              <div class="privacy-decision">判断不清敏感度时：先脱敏、缩小范围，或暂停操作。</div>
+            </aside>
           </div>
-          <div class="privacy-tip">
-            <span class="key-icon">&#128161;</span>
-            <p><strong>记住这个原则：</strong>用 AI 工具就跟用邮件一样——你输入了什么，它才能处理什么。养成好习惯：先用本地文件，再让 AI 操作；不确定敏感度时，先脱敏。</p>
+
+          <div class="privacy-risk-strip">
+            <div class="privacy-risk-label">不要直接输入</div>
+            <div class="privacy-risk-item">密码、API Key、SSH 私钥</div>
+            <div class="privacy-risk-item">未脱敏的客户或合同数据</div>
+            <div class="privacy-risk-item">无必要的整库、整盘内容</div>
           </div>
         </div>
       </section>
@@ -1283,42 +1693,67 @@
 
       <!-- ===== PAGE 15 — 三个好习惯 ===== -->
       <section class="slide" id="slide-15">
-        <div class="slide-body slide-body-p10">
+        <div class="slide-body slide-body-p15-visual">
           <p class="section-eyebrow">15 &mdash; 用好 AI 的习惯</p>
-          <h2>三个好习惯，<span class="accent">让 AI 更靠谱。</span></h2>
+          <h2>把 AI 从“会回答”，<span class="accent">带到“能交付”。</span></h2>
           <div class="cover-rule"></div>
-          <div class="tips-grid">
-            <article class="tip-full-card tip-specific">
-              <div class="tip-full-head">
-                <span class="tip-full-num">1</span>
-                <h3>说得越具体，结果越可靠</h3>
+          <p class="habit-intro">不是把要求一次塞满，而是沿着一条清晰路径推进：先说清楚，再分步审阅，最后安全放大。</p>
+
+          <div class="habit-journey">
+            <article class="habit-step step-one">
+              <span class="habit-step-num">01</span>
+              <div class="habit-step-copy">
+                <small>Define</small>
+                <h3>先说清楚“什么算好”</h3>
+                <p>任务、素材、受众、约束和输出格式，至少说清三项。</p>
               </div>
-              <p>告诉它任务是什么、用什么输入、好的输出应该长什么样。你越具体，它越不需要猜，输出就越准确。</p>
-              <div class="tip-full-example">
-                <strong>模糊的说：</strong>"帮我总结一下这个文件。"<br/>
-                <strong>具体的说：</strong>"读这个文件，提取出所有决定、负责人和截止日期，用表格输出，不要写前言。"
-              </div>
-            </article>
-            <article class="tip-full-card tip-stepwise">
-              <div class="tip-full-head">
-                <span class="tip-full-num">2</span>
-                <h3>一步一步来，别指望一把梭</h3>
-              </div>
-              <p>WorkBuddy 更适合做执行搭档，而不是一锤子生成器。把大任务拆成小步骤，每一步审阅后再往下走。</p>
-              <div class="tip-full-example">
-                <strong>好的工作流：</strong>提取概要 → 审阅反馈 → 展开某个章节 → 精修细节 → 最终输出。
+              <div class="habit-example">
+                <div class="habit-contrast">
+                  <div class="habit-mini"><strong>模糊</strong>帮我总结这个文件。</div>
+                  <div class="habit-mini good"><strong>清楚</strong>提取决定、负责人和截止日期，用表格输出。</div>
+                </div>
               </div>
             </article>
-            <article class="tip-full-card tip-scale">
-              <div class="tip-full-head">
-                <span class="tip-full-num">3</span>
-                <h3>先验证，再放大</h3>
+
+            <article class="habit-step step-two">
+              <span class="habit-step-num">02</span>
+              <div class="habit-step-copy">
+                <small>Review</small>
+                <h3>把大任务拆成审阅点</h3>
+                <p>每一步都能看、能改、能回退，避免最后才发现方向错了。</p>
               </div>
-              <p>不要让 AI 自动操作你不确定的东西。先在可见、可控的环境里跑通，再扩大范围。保留备份和版本记录。</p>
-              <div class="tip-full-example">
-                <strong>安全上手指南：</strong>本地先试 → 保留备份 → 预览再确认 → 只自动化已经稳定、有规律的流程。
+              <div class="habit-example">
+                <div class="habit-chip-flow" aria-label="分步审阅流程">
+                  <span class="habit-chip">提取概要</span><span class="habit-chip-arrow">&rarr;</span>
+                  <span class="habit-chip">确认方向</span><span class="habit-chip-arrow">&rarr;</span>
+                  <span class="habit-chip">展开内容</span><span class="habit-chip-arrow">&rarr;</span>
+                  <span class="habit-chip">最终交付</span>
+                </div>
               </div>
             </article>
+
+            <article class="habit-step step-three">
+              <span class="habit-step-num">03</span>
+              <div class="habit-step-copy">
+                <small>Scale</small>
+                <h3>先小范围验证，再自动化</h3>
+                <p>先在测试目录跑通；确认稳定后，再扩大文件范围与执行频率。</p>
+              </div>
+              <div class="habit-example">
+                <div class="habit-chip-flow" aria-label="安全放大流程">
+                  <span class="habit-chip">测试目录</span><span class="habit-chip-arrow">&rarr;</span>
+                  <span class="habit-chip">保留备份</span><span class="habit-chip-arrow">&rarr;</span>
+                  <span class="habit-chip">预览确认</span><span class="habit-chip-arrow">&rarr;</span>
+                  <span class="habit-chip">稳定后放大</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="habit-mantra">
+            <span class="habit-mantra-label">记住这条路径</span>
+            <strong>定义标准 → 分步审阅 → 安全放大</strong>
+            <span>你负责判断，AI 负责推进。</span>
           </div>
         </div>
       </section>
