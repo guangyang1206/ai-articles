@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>封面素材 - 5月IPO三国杀</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.label {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 10px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ===== 公众号头图 900x383 ===== */
+.cover-main {
+  width: 900px;
+  height: 383px;
+  background: #0a0a0a;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 背景装饰：三个色块 */
+.cover-main::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -8%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.cover-main::after {
+  content: '';
+  position: absolute;
+  bottom: -25%;
+  left: -5%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cover-main .bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.cover-main .content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 40px;
+}
+
+.cover-main .tag {
+  display: inline-block;
+  padding: 5px 16px;
+  border: 1px solid #333;
+  border-radius: 100px;
+  font-size: 11px;
+  color: #777;
+  letter-spacing: 1.5px;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+
+.cover-main h1 {
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.cover-main h1 .highlight {
+  color: #10b981;
+  display: block;
+  font-size: 42px;
+}
+
+.cover-main .sub {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.6;
+}
+
+/* ===== 缩略图 200x200 ===== */
+.cover-thumb {
+  width: 200px;
+  height: 200px;
+  background: #0a0a0a;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-thumb::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -30%;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(16,185,129,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cover-thumb .content {
+  position: relative;
+  z-index: 1;
+  padding: 0 12px;
+}
+
+.cover-thumb h2 {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.cover-thumb h2 span {
+  color: #10b981;
+  font-size: 18px;
+  font-weight: 900;
+  display: block;
+}
+
+.cover-thumb .sub {
+  font-size: 10px;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* ===== 朋友圈分享图 400x400 ===== */
+.cover-share {
+  width: 400px;
+  height: 400px;
+  background: #0a0a0a;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 32px;
+}
+
+.cover-share::before {
+  content: '';
+  position: absolute;
+  top: -25%;
+  left: -15%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cover-share .content {
+  position: relative;
+  z-index: 1;
+}
+
+.cover-share .icon {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.cover-share h2 {
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.cover-share h2 .highlight {
+  color: #10b981;
+  display: block;
+}
+
+.cover-share .divider {
+  width: 40px;
+  height: 2px;
+  background: #333;
+  margin: 16px auto;
+}
+
+.cover-share .meta {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* ===== 信息卡片：三公司对比 680x340 ===== */
+.info-card {
+  width: 680px;
+  background: #111111;
+  border-radius: 12px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.info-card .card-label {
+  font-size: 11px;
+  color: #666;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.info-card .card-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 24px;
+  line-height: 1.35;
+}
+
+.info-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.info-card td {
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #aaa;
+  border-bottom: 1px solid #222;
+  vertical-align: top;
+}
+
+.info-card td:first-child {
+  font-weight: 700;
+  color: #10b981;
+  width: 90px;
+  font-size: 12px;
+}
+
+.info-card td:last-child {
+  color: #ccc;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 1. 公众号头图 900x383 ===== -->
+<div class="label">① 公众号头图（建议尺寸 900 × 383）</div>
+<section class="cover-main">
+  <div class="bg-grid"></div>
+  <div class="content">
+    <div class="tag">AI · 资本观察 · 2026.05</div>
+    <h1>5月 IPO 三国杀：<span class="highlight">SpaceX · OpenAI · Anthropic</span></h1>
+    <p class="sub">人类史上最大规模 AI 资本博弈，同一周拉开帷幕</p>
+  </div>
+</section>
+
+<!-- ===== 2. 缩略图 200x200 ===== -->
+<div class="label" style="margin-top:40px">② 缩略图（200 × 200，用于历史消息列表）</div>
+<section class="cover-thumb">
+  <div class="content">
+    <h2>IPO<span>三国杀</span></h2>
+    <p class="sub">SpaceX · OpenAI<br>Anthropic</p>
+  </div>
+</section>
+
+<!-- ===== 3. 朋友圈分享图 400x400 ===== -->
+<div class="label" style="margin-top:40px">③ 朋友圈分享图（400 × 400 或 1:1）</div>
+<section class="cover-share">
+  <div class="content">
+    <div class="icon">📡</div>
+    <h2>AI 资本时代<span class="highlight">正式到来</span></h2>
+    <div class="divider"></div>
+    <p class="meta">OpenAI · Anthropic · SpaceX<br>同一周冲向公开市场</p>
+  </div>
+</section>
+
+<!-- ===== 4. 信息卡片：三公司对比 ===== -->
+<div class="label" style="margin-top:40px">④ 文章内文贴图 — 三家公司对比卡片（680 × 约340）</div>
+<section class="info-card">
+  <div class="card-label">📊 三家公司 IPO 核心数据对比</div>
+  <div class="card-title">同一周，三份招股书</div>
+  <table>
+    <tr><td>🚀 SpaceX</td><td>估值 1.75~2 万亿美元 · 融资 750 亿 · 全球最大 GPU 集群（22 万张）</td></tr>
+    <tr><td>🤖 OpenAI</td><td>估值 ~8500 亿 · 目标 9 月上市 · Q1 单季营收 57 亿 · 每收入 1 美元亏 1.22 美元</td></tr>
+    <tr><td>🧠 Anthropic</td><td>估值 ~9000 亿（反超 OpenAI）· 年化收入 440 亿 · Q2 有望首盈利</td></tr>
+  </table>
+</section>
+
+</body>
+</html>

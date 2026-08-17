@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeepSeek V4 深度解读 - 贴图分享卡片</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+.card {
+  width: 375px;
+  min-height: 520px;
+  border-radius: 16px;
+  padding: 40px 32px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Card 1: 封面 ===== */
+.card-1 {
+  background: #000000;
+  color: #ffffff;
+}
+
+.card-1 .tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid #333;
+  border-radius: 100px;
+  font-size: 11px;
+  color: #888;
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+}
+
+.card-1 h1 {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.card-1 h1 span {
+  color: #10b981;
+}
+
+.card-1 .subtitle {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.7;
+  margin-bottom: auto;
+}
+
+.card-1 .footer-info {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #222;
+}
+
+.card-1 .footer-info p {
+  font-size: 11px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ===== Card 2-7: 内容卡片 ===== */
+.card-light {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #111;
+}
+
+.card-light .card-number {
+  font-size: 11px;
+  font-weight: 600;
+  color: #10b981;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.card-light h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+}
+
+.card-light .content {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.9;
+  flex: 1;
+}
+
+.card-light .content strong {
+  color: #111;
+}
+
+.card-light .highlight-box {
+  background: #f9fafb;
+  border-left: 3px solid #10b981;
+  padding: 14px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.card-light .code-block {
+  background: #111827;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  font-family: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
+  font-size: 12px;
+  color: #e5e7eb;
+  line-height: 1.8;
+}
+
+.card-light .card-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-light .card-footer .page-num {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.card-light .card-footer .author {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* ===== Card Dark variant ===== */
+.card-dark {
+  background: #0a0a0a;
+  border: 1px solid #1f1f1f;
+  color: #fafafa;
+}
+
+.card-dark .card-number {
+  font-size: 11px;
+  font-weight: 600;
+  color: #10b981;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.card-dark h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+  color: #fafafa;
+}
+
+.card-dark .content {
+  font-size: 14px;
+  color: #a1a1aa;
+  line-height: 1.9;
+  flex: 1;
+}
+
+.card-dark .content strong {
+  color: #fafafa;
+}
+
+.card-dark .highlight-box {
+  background: #18181b;
+  border-left: 3px solid #10b981;
+  padding: 14px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #d4d4d8;
+}
+
+.card-dark .code-block {
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  font-family: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
+  font-size: 12px;
+  color: #a1a1aa;
+  line-height: 1.8;
+}
+
+.card-dark .card-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #27272a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-dark .card-footer .page-num {
+  font-size: 11px;
+  color: #52525b;
+}
+
+.card-dark .card-footer .author {
+  font-size: 11px;
+  color: #52525b;
+}
+
+/* Table styling */
+.mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 12px;
+}
+
+.mini-table th {
+  text-align: left;
+  padding: 8px 10px;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+  color: #374151;
+}
+
+.mini-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #555;
+}
+
+.mini-table-dark th {
+  background: #18181b;
+  border-bottom: 1px solid #27272a;
+  color: #d4d4d8;
+}
+
+.mini-table-dark td {
+  border-bottom: 1px solid #1f1f1f;
+  color: #a1a1aa;
+}
+
+/* Metric pills */
+.metric-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+
+.metric-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.metric-pill-green {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+}
+
+.metric-pill-blue {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+}
+
+.metric-pill-red {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+/* Tips section */
+.tips-section {
+  margin-top: 16px;
+}
+
+.tips-section p {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+/* Print/Screenshot helper */
+@media print {
+  body { background: white; }
+  .card { break-inside: avoid; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="card-container">
+
+<!-- ===== CARD 1: 封面 ===== -->
+<div class="card card-1">
+  <span class="tag">深度解读 · 2026.04.24</span>
+  <h1><span>DeepSeek V4</span><br>参数效率革命</h1>
+  <p class="subtitle">
+    1.6T 总参数 · 49B 激活<br><br>
+    MIT 开源 · 三项架构创新<br>
+    编码能力全面超越所有模型<br><br>
+    58 页技术报告完整拆解<br>
+    这可能改变了开源大模型的游戏规则。
+  </p>
+  <div class="footer-info">
+    <p>DeepSeek V4-Pro / V4-Flash 正式发布</p>
+    <p>LiveCodeBench 93.5% · Codeforces 3206</p>
+  </div>
+</div>
+
+<!-- ===== CARD 2: 核心数据 ===== -->
+<div class="card card-light">
+  <span class="card-number">01 / 06</span>
+  <h2>📊 核心数据：恐怖如斯</h2>
+  <div class="content">
+    <p><strong>DeepSeek V4-Pro 参数效率堪称断崖式领先：</strong></p>
+    <br>
+    <table class="mini-table">
+      <tr><th>指标</th><th>数据</th><th>对比</th></tr>
+      <tr><td>总参数</td><td><strong>1.6T</strong></td><td>—</td></tr>
+      <tr><td>激活参数</td><td><strong>49B</strong></td><td>仅 3% 总参数</td></tr>
+      <tr><td>推理 FLOPs</td><td>V3.2 的 <strong>27%</strong></td><td>↓ 73%</td></tr>
+      <tr><td>KV 缓存</td><td>V3.2 的 <strong>10%</strong></td><td>↓ 90%</td></tr>
+      <tr><td>上下文窗口</td><td><strong>1M tokens</strong></td><td>CorpusQA 62.0%</td></tr>
+    </table>
+
+    <div class="metric-row">
+      <span class="metric-pill metric-pill-green">⚡ FLOPs -73%</span>
+      <span class="metric-pill metric-pill-blue">🧠 KV 缓存 -90%</span>
+      <span class="metric-pill metric-pill-green">📐 1.6T 参数</span>
+    </div>
+
+    <div class="highlight-box">
+      💡 不是更大的模型，而是更聪明的模型——用 27% 的算力实现更高性能。
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">1/6</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 3: 三大架构创新 ===== -->
+<div class="card card-dark">
+  <span class="card-number">02 / 06</span>
+  <h2>🏗️ 三大架构创新</h2>
+  <div class="content">
+    <p>V4 的三项核心架构突破：</p>
+    <br>
+    <p><strong style="color:#10b981">① CSA</strong> — Cross Sequence Attention</p>
+    <p style="font-size:13px;color:#a1a1aa;margin-left:16px">跨序列注意力机制，让不同请求间共享 KV 缓存，极大降低推理开销。</p>
+    <br>
+    <p><strong style="color:#10b981">② HCA</strong> — Hybrid Chunk Attention</p>
+    <p style="font-size:13px;color:#a1a1aa;margin-left:16px">混合分块注意力，在长文本场景下精准定位关键信息。</p>
+    <br>
+    <p><strong style="color:#10b981">③ mHC</strong> — m-超连接 (m-HyperConnection)</p>
+    <p style="font-size:13px;color:#a1a1aa;margin-left:16px">超连接机制，增强深层网络中的梯度流动与特征复用。</p>
+    <br>
+    <p style="font-size:13px;color:#d4d4d8">三项创新协同作用，让 1.6T 参数的模型仅需 49B 激活参数即可运行。</p>
+
+    <div class="highlight-box">
+      🎯 不是暴力堆参数，而是让每一分算力都花在刀刃上。
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">2/6</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 4: 开源双雄对比 ===== -->
+<div class="card card-light">
+  <span class="card-number">03 / 06</span>
+  <h2>⚔️ 开源双雄：V4 vs Hy3 Preview</h2>
+  <div class="content">
+    <p><strong>DeepSeek V4 vs Hy3 Preview — 开源大模型的新格局：</strong></p>
+    <br>
+    <table class="mini-table">
+      <tr><th>维度</th><th>DeepSeek V4</th><th>Hy3 Preview</th></tr>
+      <tr><td>开源协议</td><td><strong style="color:#10b981">MIT</strong></td><td>Apache 2.0</td></tr>
+      <tr><td>总参数</td><td>1.6T</td><td>—</td></tr>
+      <tr><td>上下文</td><td><strong>1M tokens</strong></td><td>128K tokens</td></tr>
+      <tr><td>创新架构</td><td>CSA+HCA+mHC</td><td>MoE 改进</td></tr>
+      <tr><td>推理效率</td><td>FLOPs 降 73%</td><td>—</td></tr>
+    </table>
+
+    <p style="margin-top:16px;font-size:13px">V4 以 MIT 许可提供了最宽松的商业使用条件，1M 上下文窗口和颠覆性的推理效率使其在工程落地层面具有显著优势。</p>
+
+    <div class="highlight-box">
+      🌐 MIT 开源意味着企业可以自由商用、修改、分发，零限制。
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">3/6</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 5: 六大旗舰横评 ===== -->
+<div class="card card-dark">
+  <span class="card-number">04 / 06</span>
+  <h2>🏆 六大旗舰横评：编码称王</h2>
+  <div class="content">
+    <p><strong>V4 在编码任务上全面问鼎：</strong></p>
+    <br>
+    <table class="mini-table-dark">
+      <tr><th>基准测试</th><th>V4</th><th>最佳竞品</th></tr>
+      <tr><td><strong>LiveCodeBench</strong></td><td style="color:#10b981;font-weight:700">93.5%</td><td>— 超越所有模型</td></tr>
+      <tr><td><strong>Codeforces</strong></td><td style="color:#10b981;font-weight:700">3206</td><td>竞赛级排名</td></tr>
+      <tr><td><strong>CorpusQA (1M ctx)</strong></td><td style="color:#10b981;font-weight:700">62.0%</td><td>Gemini 53.2%</td></tr>
+      <tr><td>MMLU-Pro</td><td>81.4%</td><td>—</td></tr>
+      <tr><td>AIME 2025</td><td>78.0%</td><td>—</td></tr>
+    </table>
+
+    <div class="metric-row" style="margin-top:16px">
+      <span class="metric-pill metric-pill-green">🥇 LiveCodeBench 冠军</span>
+      <span class="metric-pill metric-pill-blue">🥇 Codeforces 3206</span>
+      <span class="metric-pill metric-pill-green">🥇 CorpusQA 62.0%</span>
+    </div>
+
+    <div class="highlight-box">
+      Codeforces 3206 是什么水平？全球顶尖程序员前 0.1% 的竞赛评级。
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">4/6</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 6: 三种推理模式 & 效率革命 ===== -->
+<div class="card card-light">
+  <span class="card-number">05 / 06</span>
+  <h2>🧠 三种推理模式 &amp; 效率革命</h2>
+  <div class="content">
+    <p><strong>V4 提供三种推理模式，按需平衡速度与深度：</strong></p>
+    <br>
+    <table class="mini-table">
+      <tr><th>模式</th><th>特点</th><th>适用场景</th></tr>
+      <tr><td>⚡ Non-Think</td><td>极速响应</td><td>日常对话、信息查询</td></tr>
+      <tr><td>🤔 Standard Think</td><td>平衡模式</td><td>编程、分析、推理</td></tr>
+      <tr><td>🧠 Deep Think</td><td>深度思考</td><td>竞赛难度、复杂数学</td></tr>
+    </table>
+
+    <br>
+    <p><strong>效率革命的关键数据：</strong></p>
+    <br>
+    <p>• 推理 FLOPs 仅为 V3.2 的 <strong>27%</strong></p>
+    <p>• KV 缓存占用降至 <strong>10%</strong></p>
+    <p>• 多请求场景下通过 CSA 实现 KV <strong>共享复用</strong></p>
+    <p>• 更大吞吐量 × 更低延迟 × 更低成本</p>
+
+    <div class="highlight-box">
+      🚀 同等的算力，V4 能服务 3 倍以上的用户请求。
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">5/6</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 7: 总结 ===== -->
+<div class="card card-1" style="min-height:480px">
+  <span class="tag">总结 · TAKEAWAY</span>
+  <h1 style="font-size:24px"><span>开源模型</span>的新纪元</h1>
+  <div class="subtitle" style="margin-top:20px;line-height:2.2;font-size:14px">
+    <p>1. 1.6T 参数，仅 49B 激活 → <span style="color:#10b981">参数效率革命</span></p>
+    <br>
+    <p>2. FLOPs 降至 27%，KV 降至 10% → <span style="color:#10b981">推理成本骤降</span></p>
+    <br>
+    <p>3. CSA + HCA + mHC → <span style="color:#10b981">架构代际领先</span></p>
+    <br>
+    <p>4. LiveCodeBench 93.5% / Codeforces 3206 → <span style="color:#10b981">编码能力超越所有模型</span></p>
+    <br>
+    <p>5. MIT 开源 + 1M 上下文 → <span style="color:#10b981">企业级落地的最佳选择</span></p>
+  </div>
+  <div class="footer-info" style="margin-top:auto">
+    <p style="color:#10b981;font-size:12px">深度 · 不水 · 只分享真正有价值的</p>
+    <p>「AI 深度解读」 · 2026.04.24</p>
+  </div>
+</div>
+
+</div>
+
+<!-- 使用说明 -->
+<div style="max-width:600px;margin-top:40px;padding:24px;background:#fff;border-radius:12px;border:1px solid #e5e7eb">
+  <h3 style="font-size:16px;margin-bottom:12px;color:#111">📋 使用说明</h3>
+  <p style="font-size:13px;color:#555;line-height:1.8">
+    1. 每张卡片尺寸 375×520px+，适合手机屏幕截图分享<br>
+    2. 可直接对每张卡片截图，用于小红书 / 即刻 / 朋友圈分享<br>
+    3. 浅色卡片 + 深色卡片交替使用，视觉节奏感更好<br>
+    4. 设计风格：极简黑白灰 + 绿色 #10b981 点缀
+  </p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文章配图素材 - 阿里 Qwen3.8 发布</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f0eee8;
+  font-family: 'PingFang SC', 'Noto Sans CJK SC', -apple-system, sans-serif;
+  padding: 48px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+
+.page-label {
+  font-size: 13px;
+  color: #888;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* ===== 通用手绘卡片容器 ===== */
+.sketch-box {
+  background: #fffff7;
+  border: 2.5px solid #2d2d2d;
+  border-radius: 18px;
+  padding: 36px 32px;
+  position: relative;
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.07);
+  width: 680px;
+}
+.sketch-box::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #ccc;
+  border-radius: 18px;
+  z-index: -1;
+}
+
+.sk-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #2d2d2d;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sk-title .dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: #2d2d2d;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ===== FIG.1 Benchmark 柱状图 ===== */
+.fig-bench .chart-area {
+  position: relative;
+  padding: 12px 0;
+}
+.fig-bench .chart-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.fig-bench .chart-label {
+  width: 150px;
+  font-size: 12px;
+  color: #444;
+  text-align: right;
+  padding-right: 14px;
+  flex-shrink: 0;
+  line-height: 1.3;
+}
+.fig-bench .chart-bar-wrap {
+  flex: 1;
+  position: relative;
+  height: 28px;
+}
+.fig-bench .chart-bar {
+  height: 100%;
+  border: 2px solid #2d2d2d;
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+.fig-bench .chart-bar.win { background: #dbeafe; border-color: #1e40af; }
+.fig-bench .chart-bar.lose { background: #fef3c7; border-color: #b45309; }
+.fig-bench .chart-bar.qwen { background: #dcfce7; border-color: #166534; }
+.fig-bench .chart-val {
+  font-size: 13px;
+  font-weight: 700;
+  position: absolute;
+  right: -48px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.fig-bench .chart-val.win { color: #1e40af; }
+.fig-bench .chart-val.lose { color: #b45309; }
+.fig-bench .chart-val.qwen { color: #166534; }
+
+.fig-bench .legend {
+  display: flex;
+  gap: 24px;
+  margin-top: 18px;
+  font-size: 12px;
+  color: #666;
+  justify-content: center;
+}
+.fig-bench .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.fig-bench .legend-dot {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #2d2d2d;
+  border-radius: 2px;
+  display: inline-block;
+}
+.fig-bench .legend-dot.ld-win { background: #dbeafe; border-color: #1e40af; }
+.fig-bench .legend-dot.ld-lose { background: #fef3c7; border-color: #b45309; }
+.fig-bench .legend-dot.ld-qwen { background: #dcfce7; border-color: #166534; }
+
+/* ===== FIG.2 16天时间线 ===== */
+.fig-timeline .tl-track {
+  position: relative;
+  padding-left: 52px;
+}
+.fig-timeline .tl-track::before {
+  content: '';
+  position: absolute;
+  left: 22px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #2d2d2d 0px,
+    #2d2d2d 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+.fig-timeline .tl-node {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  border: 2px solid #2d2d2d;
+  border-radius: 12px;
+}
+.fig-timeline .tl-node:last-child { margin-bottom: 0; }
+.fig-timeline .tl-node.day0 { background: #fef9c3; }
+.fig-timeline .tl-node.days { background: #eff6ff; }
+.fig-timeline .tl-node.day16 { background: #dcfce7; }
+.fig-timeline .tl-node::before {
+  content: '';
+  position: absolute;
+  left: -34px;
+  top: 16px;
+  width: 14px;
+  height: 14px;
+  border: 2.5px solid #2d2d2d;
+  border-radius: 50%;
+  background: #fffff7;
+}
+.fig-timeline .tl-day-title {
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.fig-timeline .tl-node.day0 .tl-day-title { color: #854d0e; }
+.fig-timeline .tl-node.days .tl-day-title { color: #1e40af; }
+.fig-timeline .tl-node.day16 .tl-day-title { color: #166534; }
+.fig-timeline .tl-text {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.6;
+}
+.fig-timeline .tl-metric {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 8px;
+  border: 1.5px solid #2d2d2d;
+  border-radius: 10px;
+  margin: 2px 4px 2px 0;
+  background: #fffff7;
+}
+
+/* Flow arrow */
+.fig-timeline .flow-row {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+  align-items: stretch;
+}
+.fig-timeline .flow-box {
+  flex: 1;
+  border: 2px solid #2d2d2d;
+  border-radius: 10px;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #555;
+}
+.fig-timeline .flow-box.f1 { background: #eff6ff; }
+.fig-timeline .flow-box.f2 { background: #f0fdf4; }
+.fig-timeline .flow-box.f3 { background: #fef9c3; }
+.fig-timeline .flow-box.f4 { background: #fdf4ff; }
+.fig-timeline .flow-icon { font-size: 16px; display: block; margin-bottom: 2px; }
+
+/* ===== FIG.3 冷静五件事 ===== */
+.fig-cool .cool-list {
+  list-style: none;
+  padding: 0;
+}
+.fig-cool .cool-item {
+  padding: 16px 18px;
+  margin-bottom: 10px;
+  border: 2px solid #2d2d2d;
+  border-radius: 12px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.fig-cool .cool-item:last-child { margin-bottom: 0; }
+.fig-cool .cool-num {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #2d2d2d;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 26px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #2d2d2d;
+}
+.fig-cool .cool-item.c1 { background: #eff6ff; }
+.fig-cool .cool-item.c2 { background: #f0fdf4; }
+.fig-cool .cool-item.c3 { background: #fef9c3; }
+.fig-cool .cool-item.c4 { background: #fff7ed; }
+.fig-cool .cool-item.c5 { background: #fdf4ff; }
+.fig-cool .cool-item.c1 .cool-num { color: #1e40af; border-color: #1e40af; }
+.fig-cool .cool-item.c2 .cool-num { color: #166534; border-color: #166534; }
+.fig-cool .cool-item.c3 .cool-num { color: #854d0e; border-color: #854d0e; }
+.fig-cool .cool-item.c4 .cool-num { color: #9a3412; border-color: #9a3412; }
+.fig-cool .cool-item.c5 .cool-num { color: #7c3aed; border-color: #7c3aed; }
+.fig-cool .cool-title {
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 4px;
+  color: #2d2d2d;
+}
+.fig-cool .cool-desc {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== FIG.1 "赢的" Benchmark 柱状图 ===== -->
+<div class="page-label">FIG.1 — PART 3 配图（建议截图尺寸 680 × 约 440）</div>
+<section class="sketch-box fig-bench">
+  <div class="sk-title"><span class="dot"></span>Qwen3.8-Max Benchmark：赢 5 项，输 3 项（诚实地全列出来）</div>
+
+  <div style="font-size:13px;font-weight:700;color:#166534;margin-bottom:8px;">✅ 赢的</div>
+  <div class="chart-area">
+    <!-- PaperBench -->
+    <div class="chart-row">
+      <div class="chart-label">PaperBench<br><span style="font-size:10px;color:#888;">科研复现</span></div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar qwen" style="width:93%;">
+          <span style="font-size:12px;font-weight:700;color:#166534;">93.0</span>
+          <div class="chart-val qwen">93.0</div>
+        </div>
+      </div>
+    </div>
+    <!-- IFBench -->
+    <div class="chart-row">
+      <div class="chart-label">IFBench<br><span style="font-size:10px;color:#888;">指令遵循</span></div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar win" style="width:82.8%;">
+          <span style="font-size:12px;font-weight:700;color:#1e40af;">82.8</span>
+          <div class="chart-val win">82.8</div>
+        </div>
+      </div>
+    </div>
+    <!-- OSWorld -->
+    <div class="chart-row">
+      <div class="chart-label">OSWorld<br><span style="font-size:10px;color:#888;">电脑操作</span></div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar qwen" style="width:86.1%;">
+          <span style="font-size:12px;font-weight:700;color:#166534;">86.1</span>
+          <div class="chart-val qwen">86.1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size:13px;font-weight:700;color:#b45309;margin-bottom:8px;margin-top:6px;">⚠️ 输的</div>
+  <div class="chart-area">
+    <!-- SWE-bench -->
+    <div class="chart-row">
+      <div class="chart-label">SWE-bench Pro<br><span style="font-size:10px;color:#888;">仓库修复</span></div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar lose" style="width:67.7%;">
+          <span style="font-size:12px;font-weight:700;color:#b45309;">67.7</span>
+          <div class="chart-val lose">67.7</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="legend-dot ld-win"></span> 赢（vs Fable 5/GPT-5.6）</div>
+    <div class="legend-item"><span class="legend-dot ld-qwen"></span> 首位/接近</div>
+    <div class="legend-item"><span class="legend-dot ld-lose"></span> 输（差距点名）</div>
+  </div>
+
+  <p style="font-size:11px;color:#888;margin-top:12px;text-align:center;">赢的：PaperBench 93.0 · IFBench 82.8（差距近20分）· OSWorld-Verified 86.1 首位 · Arena Frontend 仅差1分<br>输的：SWE-bench Pro 67.7（vs Fable 5 80.0，差距 12.3）· Terminal-Bench 86.6 · TextArena 第五名</p>
+</section>
+
+<!-- ===== FIG.2 16天自主编程流水线 ===== -->
+<div class="page-label" style="margin-top:64px">FIG.2 — PART 2 配图（建议截图尺寸 680 × 约 500）</div>
+<section class="sketch-box fig-timeline">
+  <div class="sk-title"><span class="dot"></span>16 天自主编程流水线：从空文件夹到可运行项目</div>
+
+  <!-- Flow diagram -->
+  <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:8px;">闭环流水线</div>
+  <div class="flow-row">
+    <div class="flow-box f1">
+      <span class="flow-icon">📋</span>
+      建 Issue<br>拆解任务
+    </div>
+    <div class="flow-box f2">
+      <span class="flow-icon">🤖</span>
+      自动领取<br>写代码
+    </div>
+    <div class="flow-box f3">
+      <span class="flow-icon">🧪</span>
+      E2E 测试<br>CI 验证
+    </div>
+    <div class="flow-box f4">
+      <span class="flow-icon">🔁</span>
+      通过→合 PR<br>失败→回 Issue
+    </div>
+  </div>
+  <div style="text-align:center;font-size:11px;color:#888;margin-bottom:6px;">👁️ Watchdog 状态机全程监控，防止静默挂死</div>
+
+  <!-- Timeline -->
+  <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:8px;margin-top:6px;">16 天时间线</div>
+  <div class="tl-track">
+    <div class="tl-node day0">
+      <div class="tl-day-title">📦 Day 0 — 起点</div>
+      <div class="tl-text">空文件夹 · 一句话任务："创建一个自进化的智能体 Harness"</div>
+    </div>
+    <div class="tl-node days">
+      <div class="tl-day-title">🔨 Day 1–7 — 框架搭建</div>
+      <div class="tl-text">
+        建立任务状态机 · 自动领取机制 · CI 闭环 · 异常重入<br>
+        <span class="tl-metric">~120 commits</span>
+        <span class="tl-metric">~60 PRs</span>
+      </div>
+    </div>
+    <div class="tl-node days">
+      <div class="tl-day-title">⚡ Day 8–14 — 快速迭代</div>
+      <div class="tl-text">
+        日更模式持续迭代 · E2E 测试通过率稳步提升 · 前代接口保持兼容<br>
+        <span class="tl-metric">~120 commits</span>
+        <span class="tl-metric">~55 PRs</span>
+      </div>
+    </div>
+    <div class="tl-node day16">
+      <div class="tl-day-title">🚀 Day 15–16 — 收尾交付</div>
+      <div class="tl-text">
+        终版发布 · 可运行的自进化 Agent 框架 · 全场零人类编码<br>
+        <span class="tl-metric">265 commits</span>
+        <span class="tl-metric">127 PRs</span>
+        <span class="tl-metric">151 issues</span>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size:11px;color:#888;margin-top:14px;text-align:center;">关键门槛：长程一致性 — 成千上万次交互中不推翻昨天的设计、不在第200次提交改崩第10次接口</p>
+</section>
+
+<!-- ===== FIG.3 冷静五件事 ===== -->
+<div class="page-label" style="margin-top:64px">FIG.3 — PART 6 配图（建议截图尺寸 680 × 约 520）</div>
+<section class="sketch-box fig-cool">
+  <div class="sk-title"><span class="dot"></span>冷静一下：五个必须说清楚的边界</div>
+
+  <div class="cool-list">
+    <div class="cool-item c1">
+      <div class="cool-num">1</div>
+      <div>
+        <div class="cool-title">⛳ Benchmark 数字来自阿里自己的运行</div>
+        <div class="cool-desc">截止 8 月 3 日无独立第三方复测。oh-my-cli 仓库公开可审计是加分项，但科研复现和竞赛在阿里自家平台。下周权重开源后第三方跑出的数字才是真正验收点。</div>
+      </div>
+    </div>
+
+    <div class="cool-item c2">
+      <div class="cool-num">2</div>
+      <div>
+        <div class="cool-title">🎯 跑分领先 ≠ 日常体感领先</div>
+        <div class="cool-desc">PaperBench 93.0、IFBench 82.8 对应特定基准。真实工作中的模糊指令、脏数据、多轮纠偏，任何榜单测不出来。Fable 5 在某些主观维度上仍被认为更"懂人话"。</div>
+      </div>
+    </div>
+
+    <div class="cool-item c3">
+      <div class="cool-num">3</div>
+      <div>
+        <div class="cool-title">💾 "开源"和"用得起的开源"是两回事</div>
+        <div class="cool-desc">2.4T 参数对绝大多数团队门槛太高。真正的落地选项是 27B 版本。历史经验：小尺寸版本通常只能继承旗舰 60-75% 综合能力。</div>
+      </div>
+    </div>
+
+    <div class="cool-item c4">
+      <div class="cool-num">4</div>
+      <div>
+        <div class="cool-title">⚠️ Preview 时期的争议不可回避</div>
+        <div class="cool-desc">Preview 版被称"裸奔式发布"——有参数没数据、有口号没证据。部分用户反馈后劲不足、稳定性差口气。阿里用"日更+一折"策略换反馈，此策略是否适用于旗舰模型仍有争议。</div>
+      </div>
+    </div>
+
+    <div class="cool-item c5">
+      <div class="cool-num">5</div>
+      <div>
+        <div class="cool-title">👤 团队变动不容忽视</div>
+        <div class="cool-desc">前技术负责人林俊旸已于今年 3 月离开阿里。Qwen3.8 是他离职 140 天后重回开源路线的第一款旗舰。Max 级开源某种程度上也是对外部疑虑的回应。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

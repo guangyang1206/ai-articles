@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeepSeek 500亿转身 - 贴图分享卡片</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+.card {
+  width: 375px;
+  min-height: 520px;
+  border-radius: 16px;
+  padding: 40px 32px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Card 1: 封面 ===== */
+.card-1 {
+  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+}
+.card-1 .tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 100px;
+  font-size: 11px;
+  color: #93c5fd;
+  margin-bottom: 20px;
+  align-self: flex-start;
+}
+.card-1 h1 {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.card-1 h1 .hl { color: #ff6b35; }
+.card-1 .sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+  margin-bottom: auto;
+}
+.card-1 .data-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+}
+.card-1 .data-item {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+.card-1 .data-item .num {
+  font-size: 18px;
+  font-weight: 700;
+  color: #93c5fd;
+}
+.card-1 .data-item .lbl {
+  font-size: 10px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+}
+
+/* ===== Card 2: 时间线 ===== */
+.card-2 {
+  background: #fff;
+}
+.card-2 .card-icon { font-size: 18px; margin-bottom: 6px; }
+.card-2 h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.card-2 .timeline {
+  position: relative;
+  padding-left: 20px;
+  flex: 1;
+}
+.card-2 .timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: #e5e7eb;
+}
+.card-2 .tl-item {
+  position: relative;
+  padding: 0 0 16px 16px;
+}
+.card-2 .tl-item::before {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff6b35;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #ff6b35;
+}
+.card-2 .tl-item:last-child { padding-bottom: 0; }
+.card-2 .tl-item .date { font-size: 11px; color: #ff6b35; font-weight: 600; }
+.card-2 .tl-item .desc { font-size: 13px; color: #333; line-height: 1.4; margin-top: 2px; }
+.card-2 .tl-item .desc .b { font-weight: 600; }
+
+/* ===== Card 3: 压力 ===== */
+.card-3 {
+  background: #fff;
+}
+.card-3 h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.card-3 .pressure-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+.card-3 .pressure-item:last-child { border: none; }
+.card-3 .pressure-item .emoji { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.card-3 .pressure-item .text { font-size: 13px; color: #333; line-height: 1.4; }
+.card-3 .pressure-item .text .b { font-weight: 600; }
+
+/* ===== Card 4: 500亿 ===== */
+.card-4 {
+  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+}
+.card-4 h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.card-4 .h2-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 20px;
+}
+.card-4 .big-num {
+  font-size: 36px;
+  font-weight: 900;
+  color: #93c5fd;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.card-4 .big-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 16px;
+}
+.card-4 .breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: auto;
+}
+.card-4 .bd-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 8px;
+}
+.card-4 .bd-item .lbl { font-size: 12px; color: rgba(255,255,255,0.6); }
+.card-4 .bd-item .val { font-size: 14px; font-weight: 600; color: #ff6b35; }
+.card-4 .footnote {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 12px;
+}
+
+/* ===== Card 5: 五强 ===== */
+.card-5 {
+  background: #fff;
+}
+.card-5 h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.card-5 .rank-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+.card-5 .rank-item:last-child { border: none; }
+.card-5 .rank-item .rank {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.card-5 .rank-item .rank.r1 { background: #ff6b35; color: #fff; }
+.card-5 .rank-item .name { font-size: 14px; font-weight: 600; flex: 1; }
+.card-5 .rank-item .val { font-size: 12px; color: #666; }
+
+/* ===== Card 6: 结语 ===== */
+.card-6 {
+  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.card-6 .quote {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.card-6 .quote .hl { color: #93c5fd; }
+.card-6 .sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+</style>
+</head>
+<body>
+
+<h3 style="font-weight:400;color:#999;font-size:14px;letter-spacing:2px;text-align:center;width:100%;">DEEPSEEK 融资 · 分享卡片</h3>
+
+<div class="card-container">
+
+<!-- Card 1: 封面 -->
+<div class="card card-1">
+  <div class="tag">📊 深度解读</div>
+  <h1>DeepSeek<br>的 <span class="hl">500亿</span> 转身</h1>
+  <div class="sub">不为资本低头<br>为理想备好弹药</div>
+  <div class="data-row">
+    <div class="data-item">
+      <div class="num">¥500亿</div>
+      <div class="lbl">融资总额</div>
+    </div>
+    <div class="data-item">
+      <div class="num">$51.5B</div>
+      <div class="lbl">估值</div>
+    </div>
+    <div class="data-item">
+      <div class="num">¥200亿</div>
+      <div class="lbl">梁文锋自掏</div>
+    </div>
+  </div>
+</div>
+
+<!-- Card 2: 时间线 -->
+<div class="card card-2">
+  <div class="card-icon">📅</div>
+  <h2>21天估值翻5倍</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="date">2026.04.21</div>
+      <div class="desc"><span class="b">V4 发布震惊硅谷</span><br>低成本颠覆引全球关注</div>
+    </div>
+    <div class="tl-item">
+      <div class="date">2026.04.23</div>
+      <div class="desc"><span class="b">OpenAI 提出收购</span><br>Sam Altman 紧急访华</div>
+    </div>
+    <div class="tl-item">
+      <div class="date">2026.04.28</div>
+      <div class="desc"><span class="b">估值飙至 ¥1000 亿</span><br>$51.5B，21天翻5倍</div>
+    </div>
+    <div class="tl-item">
+      <div class="date">2026.05.13</div>
+      <div class="desc"><span class="b">¥500 亿融资落地</span><br>梁文锋自掏 ¥200 亿</div>
+    </div>
+  </div>
+</div>
+
+<!-- Card 3: 压力 -->
+<div class="card card-3">
+  <h2>⚡ 融资真相：多重压力</h2>
+  <div class="pressure-item">
+    <div class="emoji">🤖</div>
+    <div class="text"><span class="b">算力军备竞赛</span><br>训练成本从 V2 到 V4 暴涨 100 倍</div>
+  </div>
+  <div class="pressure-item">
+    <div class="emoji">💼</div>
+    <div class="text"><span class="b">人才争夺</span><br>竞争对手 3-5 倍薪资挖角</div>
+  </div>
+  <div class="pressure-item">
+    <div class="emoji">🏛️</div>
+    <div class="text"><span class="b">地缘政治</span><br>OpenAI 收购意图打破平衡</div>
+  </div>
+  <div class="pressure-item">
+    <div class="emoji">🔥</div>
+    <div class="text"><span class="b">竞争格局</span><br>阿里腾讯百度字节五强争霸</div>
+  </div>
+</div>
+
+<!-- Card 4: 500亿 -->
+<div class="card card-4">
+  <h2>💰 500亿花在哪</h2>
+  <div class="h2-sub">梁文锋的算力赌注</div>
+  <div class="big-num">¥500亿</div>
+  <div class="big-desc">2026年中国AI最大单笔融资</div>
+  <div class="breakdown">
+    <div class="bd-item"><span class="lbl">GPU 集群扩建</span><span class="val">¥300亿</span></div>
+    <div class="bd-item"><span class="lbl">V4.1 & 下一代模型研发</span><span class="val">¥120亿</span></div>
+    <div class="bd-item"><span class="lbl">人才储备</span><span class="val">¥50亿</span></div>
+    <div class="bd-item"><span class="lbl">算力预付款</span><span class="val">¥30亿</span></div>
+  </div>
+  <div class="footnote">V4.1 预计 6 月发布</div>
+</div>
+
+<!-- Card 5: 五强 -->
+<div class="card card-5">
+  <h2>🏆 中国AI五强格局</h2>
+  <div class="rank-item">
+    <div class="rank r1">1</div>
+    <div class="name">DeepSeek</div>
+    <div class="val">¥500亿融资</div>
+  </div>
+  <div class="rank-item">
+    <div class="rank">2</div>
+    <div class="name">阿里巴巴</div>
+    <div class="val">通义千问</div>
+  </div>
+  <div class="rank-item">
+    <div class="rank">3</div>
+    <div class="name">腾讯</div>
+    <div class="val">混元</div>
+  </div>
+  <div class="rank-item">
+    <div class="rank">4</div>
+    <div class="name">百度</div>
+    <div class="val">文心一言</div>
+  </div>
+  <div class="rank-item">
+    <div class="rank">5</div>
+    <div class="name">字节跳动</div>
+    <div class="val">豆包</div>
+  </div>
+</div>
+
+<!-- Card 6: 结语 -->
+<div class="card card-6">
+  <div class="quote">
+    理想主义者最需要保护的，<br>从来不是"不拿钱"的姿态，<br>而是<span class="hl">能持续做出</span><br><span class="hl">世界一流模型</span>的能力。
+  </div>
+  <div class="sub">选在正确时机<br>用正确的方式</div>
+</div>
+
+</div>
+
+<p style="margin-top:40px;color:#bbb;font-size:12px;text-align:center;">卡片设计 · yezi.ai | 数据来源：The Information / 36氪 / 澎湃新闻</p>
+
+</body>
+</html>

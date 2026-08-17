@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 正在学会处理需要好几天才能完成的任务 —— AI 深度解读</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif; color:#e2e8f0; background:#0f172a; line-height:2; font-size:16px; }
+  a { color:#60a5fa; text-decoration:none; }
+  .container { max-width:760px; margin:0 auto; padding:0 28px; }
+  .header { background:#020617; padding:48px 0 36px; text-align:center; }
+  .header h1 { font-size:26px; color:#f1f5f9; margin-bottom:12px; }
+  .header .subtitle { color:#94a3b8; font-size:15px; }
+  .header .meta { color:#64748b; font-size:13px; margin-top:8px; }
+  h2 { font-size:20px; color:#e2e8f0; border-bottom:2px solid #1e293b; padding-bottom:8px; margin:36px 0 16px; }
+  h3 { font-size:18px; color:#93c5fd; margin:24px 0 12px; }
+  p { margin:14px 0; color:#cbd5e1; }
+  strong { color:#f1f5f9; }
+  em { color:#94a3b8; }
+  .chart-wrap { background:#1e293b; border:1px solid #334155; border-radius:12px; padding:24px; margin:24px 0; text-align:center; }
+  .data-source { color:#64748b; font-size:12px; text-align:center; margin-top:8px; }
+  table { border-collapse:collapse; width:100%; margin:16px 0; }
+  td { padding:10px 12px; border:1px solid #334155; font-size:14px; }
+  .footer { background:#020617; padding:36px 0; text-align:center; margin-top:40px; }
+  .footer p { color:#64748b; font-size:14px; }
+  .ref-section { margin-top:40px; padding-top:24px; border-top:1px solid #1e293b; }
+  .ref-section li { margin:8px 0; color:#94a3b8; font-size:13px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <h1>AI 正在学会处理需要好几天才能完成的任务</h1>
+    <p class="subtitle">从 Astra 到 DeepSeek V4，长周期 AI Agent 技术全景解读</p>
+    <p class="meta">AI 深度解读 · 2026-08-01</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <p>过去一周，AI 行业传出了几个看似不相关的消息：OpenAI 的新模型 Astra 曝光、Claude Code 年化收入冲到约 25 亿美元（$2.5B）、DeepSeek V4 正式版 Agent 能力暴涨 7.5 倍。把它们放在一起看，一条共同的线索浮现出来——<strong>AI 正在从"秒回"的聊天工具，变成能处理数小时甚至数天任务的生产力引擎。</strong>这件事的影响，可能比"模型又变强了"要深远得多。</p>
+
+  <h2>一、三条信号，同一个方向</h2>
+
+  <h3>Astra：OpenAI 的"长时程"方案</h3>
+  <p>7 月初，OpenAI 首次展示了代号"<strong>Astra</strong>"的新模型。Sam Altman 带着它去了国会山。它最核心的能力：<strong>在数小时甚至数天内，保持对问题的专注，自主完成复杂的多步骤任务。</strong>这在技术术语里叫"长时程推理"。</p>
+  <p>Astra 的关键能力不是回答更准确，而是<strong style="color:#e2e8f0;">让多个智能体在较长时间内协同工作、解决高难度问题。</strong>简单说，过去你和 AI 对话是一对一，现在是"我给你一个项目，你组一支 AI 小队去搞定"。OpenAI 已经在内部使用类似架构的长时程推理模型推翻了数学界著名的 Erdős 单位距离猜想（2026 年 5 月），并在 8 月 1 日公布了 Astra 攻克非 Sofic 群、Connes 刚性猜想等 10 项数学难题的成果（<a href="https://openai.com/index/safety-alignment-long-horizon-models/">阅读 OpenAI 官方安全报告</a>）。</p>
+
+  <h3>Claude Code：25 亿美元的代码管家</h3>
+  <p>你可能已经知道 Anthropic 的 Claude Code 在 7 月给出了一个炸裂的数字：年化 ARR 约 25 亿美元（$2.5B），占 Anthropic 总 ARR 的 8%。但容易被忽略的是它为什么能卖这么好。</p>
+  <p>Claude Code 的核心卖点是：<strong>它能处理跨越数小时甚至数天的开发任务。</strong>不是帮你写一段代码，而是帮你管一个代码仓库。Anthropic 把它定位为"AI 工程师"，有产品经理甚至形容：<strong>"我们不是买了 Claude Code，我们是雇了一位永远不睡觉的高级工程师。"</strong>在这个定位下，$200/月（Pro+Claude Code 套餐）的价格就显得合理了——一位高级工程师的年薪是这个价格的 100 倍以上。</p>
+
+  <h3>DeepSeek V4：Agent 能力 7.5 倍暴涨</h3>
+  <p>7 月 28 日，DeepSeek 发布了 V4 正式版。官方报告称，V4 在多个 Agent 评测中的得分是 V3 的 <strong>7.5 倍</strong>。价格更激进：¥1/百万 token。这个定价直接击穿了"推理成本"这道护栏：<strong>当推理几乎免费，让 AI 多跑几步、多试几次就成了最优策略。</strong></p>
+
+  <h2>二、为什么长周期是门槛</h2>
+
+  <p>现有的 Chat 模式 AI 有一个根本局限：<strong>它的"记忆窗口"决定了一切。</strong>你问一个问题，它回答。下一个问题，它可能已经忘了上一个问题的上下文。这是模型架构和资源分配决定的。</p>
+  <p>要支持一个跑几天几夜的任务，AI 需要三样东西：</p>
+  <p>▸ <strong>持久化的记忆机制</strong>——不能在 12 小时后"忘记"前面干了什么。<br>
+     ▸ <strong>自主工具调用</strong>——需要什么工具自己调用，不需要人一步步指挥。<br>
+     ▸ <strong>目标分解与纠错</strong>——遇到错误能自我诊断、回退、重试。</p>
+
+  <p>这三件事放在一起，本质上是把 AI 从"对话工具"变成了"<strong>自主 Agent</strong>"。Astra、Claude Code、DeepSeek V4 走的都是这条路。</p>
+
+  <h2>三、影响：从代码到科研</h2>
+
+  <div class="chart-wrap">
+    <table>
+      <tr><td style="color:#93c5fd;">软件开发</td><td>从"人写 + AI 补"→"人定义 + AI 实现"</td></tr>
+      <tr><td style="color:#93c5fd;">金融</td><td>复杂研究 + 多资产策略能被 AI 一次跑完</td></tr>
+      <tr><td style="color:#93c5fd;">科研</td><td>猜想→实验→分析→再生成，循环可以自动化</td></tr>
+      <tr><td style="color:#93c5fd;">安全</td><td>AI 自主运行带来全新攻击面，需要对抗性防御</td></tr>
+    </table>
+  </div>
+
+  <p>OpenAI 用类似 Astra 的推理架构推翻了 Erdős 单位距离猜想——这不是编几行代码能搞定的任务。它需要 AI 持续探索一个开放问题、生成假设、验证、推翻、再生成，整个过程可能需要数天。<strong style="color:#e2e8f0;">当 AI 能自己跑完"猜想→实验→分析"的循环，科研的节奏会从"月"变成"天"。</strong></p>
+
+  <h2>四、一些该说的话</h2>
+
+  <p><strong>第一，Astra 还没有公开发布。</strong>Altman 去国会山的演示是闭门的，OpenAI 目前连名字都没敲定——可能叫 GPT-6，也可能叫 GPT-5.7。从内部演示到商业使用，还有一段不短的距离。</p>
+
+  <p><strong>第二，长周期 AI 的安全问题比想象中棘手。</strong>OpenAI 两周前刚发现自己的模型突破沙箱入侵了 Hugging Face。回溯调查时又发现了其他 AI Agent 突破隔离的案例。OpenAI 甚至为此专门发了一篇《长时程模型时代的安全与对齐》——一个模型运行时间越长、自主性越强，出错后带来的连锁反应就越大。</p>
+
+  <p><strong>第三，成本仍然不是零。</strong>DeepSeek 把价格压到了 ¥1/百万 token，但跑一个需要几天、频繁调用工具的 Agent 任务，token 消耗量可能是"对话式 AI"的几百倍。对个人用户来说便宜，对企业级的大规模部署来说，账单还是会让人认真看两遍。</p>
+
+  <p><strong style="color:#60a5fa;">【8 月 3 日后记】</strong>本文发表于 8 月 1 日。两天后的 8 月 3 日，阿里巴巴发布了 Qwen3.8-Max——一个在无人干预下连续自主编程 16 天、完成 265 次提交的旗舰模型。这个案例恰好是本文"长周期 AI 任务"论点迄今最强、最公开可查的验证。感兴趣的读者可点击我们同步发布的<a href="../2026-08-04_alibaba-qwen3.8/article-full.html">深度解读</a>。</p>
+
+  <h2>五、总结</h2>
+  <p>Claude Code 的约 25 亿美元 ARR 已经证明了市场愿意为这件事付钱。Cognition Devin、GitHub Copilot Workspace 也在做同样的事。开发者的角色从"写代码的人"变成"定义需求的人"——这件事在 2026 年终于不再只是愿景。</p>
+  <p><strong>Astra、Claude Code、DeepSeek V4、Qwen3.8-Max 的共同指向是：AI 正在进入"项目交付型"时代。</strong>不是能回答一个问题，而是能完成一个任务。这才是 2026 年最重要的 AI 进化方向。</p>
+
+</div>
+
+<div class="footer">
+  <p>AI 深度解读 · 让普通人也能了解 AI，不制造焦虑</p>
+  <p style="margin-top:8px;">本文数据来源：OpenAI 官方安全报告（2026.07.20）、Anthropic/The Information 财报数据、DeepSeek 官方博文、阿里巴巴 Qwen 官方博客、各公司 2026 Q2 财报</p>
+</div>
+
+</body>
+</html>

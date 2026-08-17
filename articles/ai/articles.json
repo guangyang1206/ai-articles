@@ -1,0 +1,178 @@
+[
+  {
+    "id": "2026-08-14_google-gemini-crisis",
+    "date": "2026-08-14",
+    "title": "谷歌AI危机延烧：布林亲自接管，Gemini 3.5 Pro被曝取消",
+    "desc": "SemiAnalysis判断谷歌旗舰模型已悄悄取消，创始人罕见重返一线，背后是算力分配的深层矛盾。",
+    "tags": ["scope", "business"],
+    "status": "draft"
+  },
+  {
+    "id": "2026-08-07_google-deepmind-shakeup",
+    "date": "2026-08-07",
+    "title": "谷歌AI一日双震：哈萨比斯退居幕后，Jeff Dean 27年后离职创业",
+    "desc": "Google DeepMind 重组、Hassabis 转任首席科学家、Jeff Dean 带团队出走创业，一天之内谷歌 AI 权力格局巨变。",
+    "tags": ["scope", "business"],
+    "status": "draft"
+  },
+  {
+    "id": "2026-08-04_alibaba-qwen3.8",
+    "date": "2026-08-04",
+    "title": "阿里 Qwen3.8 发布：16 天，265 次提交，零人类干预",
+    "desc": "2.4T 参数的 Qwen3.8-Max 在 oh-my-cli 仓库完成了国产旗舰首次可公开验证的长程自主交付。",
+    "tags": ["tech", "scope"],
+    "status": "draft"
+  },
+  {
+    "id": "2026-08-01_ai-long-horizon",
+    "date": "2026-08-01",
+    "title": "AI 正在学会处理需要好几天才能完成的任务",
+    "desc": "从秒回到干活：OpenAI Astra、Claude Code、DeepSeek V4 三路并发，长周期智能体时代来了。",
+    "tags": ["tech", "scope"],
+    "status": "draft"
+  },
+  {
+    "id": "2026-08-01_ai-capex-bill",
+    "date": "2026-08-01",
+    "title": "7450 亿美元的账单：科技巨头 AI 投入到底花在哪了",
+    "desc": "芯片、数据中心、电力、人才——四大巨头 2026 年投入超 7450 亿，逐项拆解。",
+    "tags": ["data", "business"],
+    "status": "draft"
+  },
+  {
+    "id": "2026-07-20_waic-2026-aftermath",
+    "date": "2026-07-20",
+    "title": "WAIC 散场了，真正的问题才开始",
+    "desc": "一场10万平米展会背后，开源与闭源、机器人打工、治理竞争力三条暗线正在定义 AI 的下半场。",
+    "tags": ["scope"],
+    "status": "draft"
+  },
+  {
+    "id": "2026-06-07_ai-infra-cost",
+    "date": "2026-06-07",
+    "title": "AI军备竞赛到底有多烧钱？——800亿美元能建什么？",
+    "desc": "一面是巨头疯狂砸钱，一面是城市开始说「不」。全球AI基础设施投资全景图。",
+    "tags": ["data", "business"],
+    "status": "published"
+  },
+  {
+    "id": "2026-06-07_ai-safety-london-declaration",
+    "date": "2026-06-07",
+    "title": "AI安全：科学家们坐不住了——解读《IDAIS伦敦宣言》",
+    "desc": "姚期智、Bengio联署，全球最懂AI的人到底在担心什么？",
+    "tags": ["policy"],
+    "status": "draft"
+  },
+  {
+    "id": "2026-06-07_anthropic-ipo",
+    "date": "2026-06-07",
+    "title": "Anthropic 要 IPO 了：AI公司的「成人礼」",
+    "desc": "从「理想主义」到「上市公司」——当AI公司开始谈财报。",
+    "tags": ["company", "business"],
+    "status": "draft"
+  },
+  {
+    "id": "2026-06-07_apple-wwdc-siri",
+    "date": "2026-06-07",
+    "title": "苹果 WWDC 2026：Siri 的「救赎之战」",
+    "desc": "全球最有钱的公司，为什么做不好AI？从Siri十年困局看苹果的AI战略。",
+    "tags": ["company", "tech"],
+    "status": "draft"
+  },
+  {
+    "id": "2026-06-07_nvidia-rtx-spark",
+    "date": "2026-06-07",
+    "title": "英伟达造CPU了：RTX Spark 意味着什么？",
+    "desc": "40年来，你的电脑第一次可能不再用Intel或AMD的芯片。ARM+GPU路线图全解析。",
+    "tags": ["tech", "company"],
+    "status": "draft"
+  },
+  {
+    "id": "2026-06-07_alibaba-qwen-agent",
+    "date": "2026-06-07",
+    "title": "阿里千问开放第三方Agent，微信AI同日开放开发者接入——AI助手开始「能办事」了",
+    "desc": "两大平台同日开放Agent生态，AI助手从「会聊天」到「能办事」的转折点。",
+    "tags": ["scope", "tech"],
+    "status": "published"
+  },
+  {
+    "id": "2026-05-26_ai-internet-rules-fail",
+    "date": "2026-05-26",
+    "title": "AI 时代，互联网增长公式正在失效",
+    "desc": "从腾讯财报会5个反共识出发，提炼出5条适用于所有AI产品、创业、投资的通用判断。",
+    "tags": ["scope"],
+    "status": "draft"
+  },
+  {
+    "id": "2026-05-23_ai-ipo-era",
+    "date": "2026-05-23",
+    "title": "5月IPO三国杀：SpaceX带着22万张GPU入场",
+    "desc": "SpaceX、OpenAI、Anthropic三家公司几乎同时启动IPO——AI产业从技术叙事切换到算力成本倒逼上市。",
+    "tags": ["scope", "company"],
+    "status": "published"
+  },
+  {
+    "id": "2026-05-23_ai-math-proof",
+    "date": "2026-05-23",
+    "title": "AI 和数学家一起，解开了一道 80 年的数学谜题",
+    "desc": "OpenAI 通用推理模型推翻了埃尔德什1946年的猜想。一次教科书级的人机协作。",
+    "tags": ["tech"],
+    "status": "published"
+  },
+  {
+    "id": "2026-05-21_deepseek-harness-funding",
+    "date": "2026-05-21",
+    "title": "DeepSeek 战略转向：从「不融资」到「融对资」",
+    "desc": "500亿融资拆解、Harness团队对标Claude Code、创始人200亿自掏，国产大模型格局巨变。",
+    "tags": ["company"],
+    "status": "published"
+  },
+  {
+    "id": "2026-05-18_deepseek-funding",
+    "date": "2026-05-18",
+    "title": "DeepSeek 融资拆解：500亿背后的战略棋局",
+    "desc": "从「不融资」到「500亿」，DeepSeek的进化之路。创始人200亿自掏、国产大模型格局深度分析。",
+    "tags": ["company", "business"],
+    "status": "published"
+  },
+  {
+    "id": "2026-05-17_anthropic-900b-valuation",
+    "date": "2026-05-17",
+    "title": "Anthropic 估值 $9000 亿超越 OpenAI",
+    "desc": "4 个月翻近 3 倍的估值飞轮、$300 亿融资内幕、Claude Code 收入引擎、两条路线之争。",
+    "tags": ["company", "business"],
+    "status": "published"
+  },
+  {
+    "id": "2026-05-17_ai-coding-agent-war",
+    "date": "2026-05-17",
+    "title": "AI 编码 Agent 终端战争",
+    "desc": "Claude Code / Cursor / Copilot / Windsurf / Grok Build 五强争霸。从补全到对话到Agent的范式变迁。",
+    "tags": ["tech", "business"],
+    "status": "published"
+  },
+  {
+    "id": "2026-05-03_deploy-static-site-lessons",
+    "date": "2026-05-03",
+    "title": "部署静态网站踩坑实录",
+    "desc": "WOA Pages 部署、Nginx 反代、EdgeOne CDN、SSH 安全加固全流程踩坑记录。",
+    "tags": ["tech"],
+    "status": "published"
+  },
+  {
+    "id": "2026-04-29_chatgpt-ads-breakdown",
+    "date": "2026-04-29",
+    "title": "ChatGPT 开始投放广告了",
+    "desc": "完整技术链路拆解：SSE 注入机制、4层 Fernet 加密归因、OAIQ SDK 追踪闭环。",
+    "tags": ["business", "tech"],
+    "status": "published"
+  },
+  {
+    "id": "2026-04-24_deepseek-v4-deep-dive",
+    "date": "2026-04-24",
+    "title": "DeepSeek V4 深度解读",
+    "desc": "58页技术报告拆解 × 六大旗舰横评。Pro版1.6T参数，推理成本仅V3.2的27%，MIT开源。",
+    "tags": ["tech"],
+    "status": "published"
+  }
+]

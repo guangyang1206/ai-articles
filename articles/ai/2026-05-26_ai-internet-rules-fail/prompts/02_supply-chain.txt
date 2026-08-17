@@ -1,0 +1,30 @@
+请生成一张手绘风格的信息图，对应"反共识二：AI 竞争是供应链竞争"。
+
+图片规格：
+- 比例 16:9，宽 800px
+- 背景色：米黄色 #fffff7，模拟牛皮纸质感
+- 整体风格：手绘线框、手绘阴影、钢笔画风格
+
+图片内容结构（分上下两部分）：
+
+【上半部分：比赛赛道图】
+- 标题："AI Race: It's Not Just About the Model"（手写风格）
+- 画一条赛道，有两个选手：
+  - 选手A（左边，领先）：标签 "Model Leaderboard"，身上写 "GPT-5, Claude 4..."，表情自信
+  - 选手B（右边，实际先到终点）：标签 "Supply Chain"，身上写 "GPU / HBM / Power / Cooling"，手握奖杯
+- 终点线写："Commercial Deployment"（商业部署）
+- 箭头从选手B指向终点，标注："Actually wins"
+
+【下半部分：供应链四要素】
+- 四个手绘方框，横向排列，每个框有图标：
+  - 框1：GPU 图标，文字 "Compute Access"（算力获取）
+  - 框2：温度计图标，文字 "Inference Cost"（推理成本）
+  - 框3：服务器图标，文字 "Supply Stability"（供给稳定性）
+  - 框4：齿轮图标，文字 "Business Integration"（业务嵌入）
+- 四个框用箭头串联，箭头标注："all required"
+
+【底部金句】
+- 手写字："AI 上半场看模型，下半场看供给"
+- 英文小字："Model capability is table stakes. Supply chain is the moat."
+
+所有中英文文字必须清晰可读。手绘风格，有铅笔草图感。

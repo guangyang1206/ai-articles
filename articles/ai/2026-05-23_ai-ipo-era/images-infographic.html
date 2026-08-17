@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 资本时代 · 配图集</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #f5f2eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: 'Ma Shan Zheng', 'ZCOOL XiaoWei', 'PingFang SC', cursive;
+}
+
+/* ============ 三张卡片共用壳 ============ */
+.chart-card {
+  width: 780px;
+  background: #fcf9f5;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  padding: 24px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.chart-card canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+/* ============ 图1：SpaceX GPU 数据中心 ============ */
+#canvas1 {
+  background: linear-gradient(180deg, #0d1b2a 0%, #1b2838 40%, #243447 100%);
+}
+
+/* ============ 图2：OpenAI 压力漏斗 ============ */
+#canvas2 {
+  background: linear-gradient(180deg, #f5f0eb 0%, #fcf9f5 100%);
+}
+
+/* ============ 图3：Anthropic 增长曲线 ============ */
+#canvas3 {
+  background: linear-gradient(180deg, #f5f0eb 0%, #fcf9f5 100%);
+}
+
+/* ============ 水印 ============ */
+.card-footer {
+  text-align: right;
+  padding: 8px 4px 0;
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: 13px;
+  color: #bbb;
+  letter-spacing: 2px;
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== 图1：SpaceX ==================== -->
+<div class="chart-card">
+  <canvas id="canvas1" width="732" height="420"></canvas>
+  <div class="card-footer">AI 深度解读 · 手绘</div>
+</div>
+
+<!-- ==================== 图2：OpenAI ==================== -->
+<div class="chart-card">
+  <canvas id="canvas2" width="732" height="420"></canvas>
+  <div class="card-footer">AI 深度解读 · 手绘</div>
+</div>
+
+<!-- ==================== 图3：Anthropic ==================== -->
+<div class="chart-card">
+  <canvas id="canvas3" width="732" height="420"></canvas>
+  <div class="card-footer">AI 深度解读 · 手绘</div>
+</div>
+
+<script>
+// ==================== 手写体字体加载等待 ====================
+document.fonts.ready.then(() => {
+  drawAll();
+});
+
+function drawAll() {
+  drawSpaceX();
+  drawOpenAI();
+  drawAnthropic();
+}
+
+// ==================== 共用手绘辅助 ====================
+function sk(ctx, x1, y1, x2, y2, color, w, a) {
+  ctx.save();
+  ctx.globalAlpha = a || 0.25;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = w || 1.5;
+  ctx.beginPath();
+  for (let i = 0; i <= 10; i++) {
+    const t = i / 10;
+    const x = x1 + (x2 - x1) * t + (Math.random() - 0.5) * 1.8;
+    const y = y1 + (y2 - y1) * t + (Math.random() - 0.5) * 1.8;
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  ctx.restore();
+}
+
+function hc(ctx, cx, cy, r, color, w, a) {
+  ctx.save();
+  ctx.globalAlpha = a || 0.2;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = w || 1.5;
+  ctx.beginPath();
+  for (let i = 0; i <= 36; i++) {
+    const ang = (i / 36) * Math.PI * 2;
+    const rr = r + (Math.random() - 0.5) * 2.5;
+    const x = cx + Math.cos(ang) * rr;
+    const y = cy + Math.sin(ang) * rr;
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  ctx.stroke();
+  ctx.restore();
+}
+
+function hfill(ctx, x, y, w, h, color, a) {
+  ctx.save();
+  ctx.globalAlpha = a || 0.06;
+  ctx.fillStyle = color;
+  for (let i = 0; i < h; i += 2.5) {
+    ctx.fillRect(x + (Math.random() - 0.5) * 1.5, y + i - (Math.random() * 0.5), w + (Math.random() - 0.5) * 2, 1.5);
+  }
+  ctx.restore();
+}
+
+function hrect(ctx, x, y, w, h, color, a, lw) {
+  sk(ctx, x, y, x + w, y, color, lw || 1.5, a);
+  sk(ctx, x + w, y, x + w, y + h, color, lw || 1.5, a);
+  sk(ctx, x + w, y + h, x, y + h, color, lw || 1.5, a);
+  sk(ctx, x, y + h, x, y, color, lw || 1.5, a);
+}
+
+// 手写体文字
+function ht(ctx, text, x, y, size, color, align) {
+  ctx.save();
+  ctx.font = size + 'px "Ma Shan Zheng", "ZCOOL XiaoWei", cursive';
+  ctx.fillStyle = color || '#333';
+  ctx.textAlign = align || 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(text, x, y);
+  ctx.restore();
+}
+
+function htb(ctx, text, x, y, size, color, align) {
+  ctx.save();
+  ctx.font = 'bold ' + size + 'px "Ma Shan Zheng", "ZCOOL XiaoWei", cursive';
+  ctx.fillStyle = color || '#333';
+  ctx.textAlign = align || 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(text, x, y);
+  ctx.restore();
+}
+
+// ==================== 图1：SpaceX ====================
+function drawSpaceX() {
+  const c = document.getElementById('canvas1');
+  const ctx = c.getContext('2d');
+  const W = 732, H = 420;
+
+  // 深色星空背景已经由 CSS 提供
+
+  // ---- 星星 ----
+  for (let i = 0; i < 40; i++) {
+    const x = Math.random() * W;
+    const y = Math.random() * (H * 0.6);
+    const r = Math.random() * 1.5 + 0.5;
+    ctx.save();
+    ctx.globalAlpha = Math.random() * 0.5 + 0.2;
+    ctx.fillStyle = '#fff';
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // ---- 卫星天线 ----
+  // 抛物线（左上方）
+  ctx.save();
+  ctx.strokeStyle = '#4a9eff';
+  ctx.lineWidth = 2;
+  ctx.globalAlpha = 0.7;
+  ctx.beginPath();
+  const dishCx = 170, dishCy = 165;
+  for (let a = -0.85; a <= 0.85; a += 0.03) {
+    const x = dishCx + a * 100;
+    const y = dishCy + a * a * 65;
+    const jx = x + (Math.random() - 0.5) * 1.5;
+    const jy = y + (Math.random() - 0.5) * 1.5;
+    a === -0.85 ? ctx.moveTo(jx, jy) : ctx.lineTo(jx, jy);
+  }
+  ctx.stroke();
+
+  // 天线支柱
+  sk(ctx, dishCx, dishCy + 58, dishCx, dishCy + 130, '#4a9eff', 3, 0.5);
+  sk(ctx, dishCx - 28, dishCy + 130, dishCx + 28, dishCy + 130, '#4a9eff', 2, 0.4);
+
+  // 信号波纹
+  for (let i = 0; i < 3; i++) {
+    hc(ctx, dishCx + 65, dishCy - 15, 35 + i * 30, '#4a9eff', 1.2, 0.12 - i * 0.02);
+  }
+  ctx.restore();
+
+  // ---- GPU 芯片组（半透明发光方块）----
+  const chipColors = ['#2a6aff', '#3a7aff', '#4a8aff', '#1a5aee'];
+  for (let row = 0; row < 4; row++) {
+    for (let col = 0; col < 6; col++) {
+      const cx = 335 + col * 58 + (Math.random() - 0.5) * 2;
+      const cy = 80 + row * 50 + (Math.random() - 0.5) * 2;
+      const color = chipColors[(row + col) % 4];
+
+      // 发光
+      ctx.save();
+      ctx.globalAlpha = 0.06;
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.roundRect(cx - 4, cy - 4, 48, 38, 6);
+      ctx.fill();
+      ctx.restore();
+
+      hrect(ctx, cx, cy, 42, 32, color, 0.35, 1.8);
+      hfill(ctx, cx + 1, cy + 1, 40, 30, color, 0.08);
+
+      // 芯片内部小方块
+      ctx.save();
+      ctx.globalAlpha = 0.12;
+      ctx.fillStyle = '#aaccff';
+      for (let i = 0; i < 4; i++) {
+        const px = cx + 6 + (i % 2) * 18 + (Math.random() - 0.5) * 1.5;
+        const py = cy + 6 + Math.floor(i / 2) * 14 + (Math.random() - 0.5) * 1.5;
+        ctx.fillRect(px, py, 7, 5);
+      }
+      ctx.restore();
+    }
+  }
+
+  // ---- 数据流线（天线 → GPU）----
+  for (let i = 0; i < 6; i++) {
+    const sx = dishCx + 90 + (Math.random() - 0.5) * 20;
+    const sy = dishCy - 10 + (Math.random() - 0.5) * 20;
+    const ex = 340 + Math.random() * 300;
+    const ey = 90 + Math.random() * 180;
+    ctx.save();
+    ctx.globalAlpha = 0.08;
+    ctx.strokeStyle = '#4a9eff';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 6]);
+    ctx.beginPath();
+    ctx.moveTo(sx, sy);
+    ctx.quadraticCurveTo((sx + ex) / 2, sy - 30, ex, ey);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // ---- 文字标注 ----
+  htb(ctx, 'SpaceX 的算力核武', 30, 30, 26, '#ffffff');
+  ht(ctx, 'Colossus 1 数据中心 · 22万张 GPU · 300 MW', 30, 62, 16, 'rgba(255,255,255,0.6)');
+
+  // 关键数据区
+  ctx.save();
+  // 底部半透明黑条
+  ctx.globalAlpha = 0.3;
+  ctx.fillStyle = '#000';
+  ctx.beginPath();
+  ctx.roundRect(20, 350, 690, 52, 8);
+  ctx.fill();
+  ctx.restore();
+
+  ht(ctx, '22 万张 GPU', 40, 375, 20, '#4a9eff');
+  ht(ctx, '出租给 Anthropic → 可用性 82% → 99.7%', 220, 375, 15, 'rgba(255,255,255,0.7)');
+  ht(ctx, '↑ 马斯克一边做 AI，一边卖算力', 40, 345, 14, 'rgba(255,255,255,0.5)');
+
+  // 右上角小标签
+  ctx.save();
+  ctx.globalAlpha = 0.5;
+  ctx.strokeStyle = '#4a9eff';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.roundRect(580, 22, 130, 32, 6);
+  ctx.stroke();
+  ctx.restore();
+  ht(ctx, '估值 1.25 万亿', 595, 38, 14, '#4a9eff');
+}
+
+// ==================== 图2：OpenAI ====================
+function drawOpenAI() {
+  const c = document.getElementById('canvas2');
+  const ctx = c.getContext('2d');
+  const W = 732, H = 420;
+
+  // 浅色背景（CSS 已提供）
+
+  // 标题
+  htb(ctx, 'OpenAI 的三重压力', 30, 30, 26, '#1a1a2e');
+  ht(ctx, '每一层都在倒逼 IPO 加速', 30, 62, 16, '#999');
+
+  // ---- 三层漏斗 ----
+  const layers = [
+    {
+      y: 95, w: 520, label: '利润之困', sub: '亏损 80 亿 · 每赚 1 美元花 2 美元 · 五年开支 6000 亿',
+      color: '#e74c3c', icon: '💸', fillA: 0.06
+    },
+    {
+      y: 175, w: 420, label: '对手反超', sub: 'Anthropic ARR 440 亿 vs 250 亿 · 企业占比首超',
+      color: '#e67e22', icon: '🔄', fillA: 0.05
+    },
+    {
+      y: 255, w: 320, label: '内部隐忧', sub: 'CEO 抢跑 vs CFO 推迟 · 零持股 · 人才 8 倍流失',
+      color: '#8e44ad', icon: '⚠️', fillA: 0.05
+    },
+  ];
+
+  layers.forEach((l, i) => {
+    const x = (W - l.w) / 2;
+
+    // 阴影
+    ctx.save();
+    ctx.shadowColor = 'rgba(0,0,0,0.04)';
+    ctx.shadowBlur = 12;
+    ctx.shadowOffsetY = 4;
+    ctx.fillStyle = '#fff';
+    ctx.beginPath();
+    ctx.roundRect(x, l.y, l.w, 62, 10);
+    ctx.fill();
+    ctx.restore();
+
+    // 外框
+    hrect(ctx, x, l.y, l.w, 62, l.color, 0.4, 2);
+    hfill(ctx, x + 2, l.y + 2, l.w - 4, 58, l.color, l.fillA);
+
+    // 图标+标签
+    const iconSize = 28;
+    ctx.save();
+    ctx.font = `${iconSize}px sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(l.icon, x + 36, l.y + 31);
+    ctx.restore();
+
+    htb(ctx, l.label, x + 60, l.y + 24, 20, '#1a1a2e');
+    ht(ctx, l.sub, x + 60, l.y + 48, 13, '#888');
+
+    // 层间箭头
+    if (i < layers.length - 1) {
+      const arrowY = l.y + 62;
+      const nextY = layers[i + 1].y;
+      const cx = W / 2;
+      sk(ctx, cx, arrowY, cx, nextY, l.color, 2, 0.25);
+      ctx.save();
+      ctx.fillStyle = l.color;
+      ctx.globalAlpha = 0.2;
+      ctx.beginPath();
+      ctx.moveTo(cx - 7, nextY);
+      ctx.lineTo(cx + 7, nextY);
+      ctx.lineTo(cx, nextY + 10);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+  });
+
+  // ---- 底部结论 ----
+  htb(ctx, '不是选择上市，是被迫上市', W / 2, 370, 22, '#c0392b', 'center');
+
+  // ---- 右侧数据标注 ----
+  // 用一条垂直线 + 数据点增强信息感
+  ctx.save();
+  ctx.globalAlpha = 0.1;
+  ctx.strokeStyle = '#1a1a2e';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([3, 4]);
+  sk(ctx, 620, 95, 620, 320, '#1a1a2e', 1, 0.15);
+  ctx.restore();
+
+  // 右侧三个小数据卡片
+  const rightData = [
+    { y: 100, label: '估值', val: '8520 亿', color: '#e74c3c' },
+    { y: 180, label: 'ChatGPT 周活', val: '9 亿', color: '#e67e22' },
+    { y: 260, label: '2025 营收', val: '131 亿', color: '#8e44ad' },
+  ];
+  rightData.forEach(d => {
+    htb(ctx, d.label, 635, d.y + 12, 13, '#999');
+    htb(ctx, d.val, 635, d.y + 36, 18, d.color);
+  });
+}
+
+// ==================== 图3：Anthropic ====================
+function drawAnthropic() {
+  const c = document.getElementById('canvas3');
+  const ctx = c.getContext('2d');
+  const W = 732, H = 420;
+
+  // 标题
+  htb(ctx, 'Anthropic 的 15 个月奇迹', 30, 30, 26, '#1a1a2e');
+  ht(ctx, 'ARR（年化收入，亿美元）  |  2025.02 → 2026.05', 30, 62, 15, '#999');
+
+  // ---- 坐标轴 ----
+  const l = 70, r = 680, t = 90, b = 350;
+  const cw = r - l, ch = b - t;
+  const yMax = 500;
+
+  sk(ctx, l, t, l, b, '#ccc', 1.5, 0.5);
+  sk(ctx, l, b, r, b, '#ccc', 1.5, 0.5);
+
+  // Y 轴刻度 + 网格线
+  const yTicks = [0, 100, 200, 300, 400, 500];
+  yTicks.forEach(val => {
+    const y = b - (val / yMax) * ch;
+    sk(ctx, l, y, r, y, '#ddd', 1, 0.2);
+    ht(ctx, val.toString(), l - 22, y, 12, '#aaa', 'right');
+  });
+
+  // X 轴标签
+  const xLabels = ['25.02', '25.05', '25.08', '25.11', '26.02', '26.05'];
+  xLabels.forEach((label, i) => {
+    const x = l + (i / (xLabels.length - 1)) * cw;
+    ht(ctx, label, x, b + 18, 12, '#aaa', 'center');
+  });
+
+  // ---- Anthropic 曲线 ----
+  const anthroPts = [
+    { xr: 0.00, yv: 8 },
+    { xr: 0.12, yv: 18 },
+    { xr: 0.25, yv: 35 },
+    { xr: 0.38, yv: 60 },
+    { xr: 0.50, yv: 90 },    // 2025.12
+    { xr: 0.60, yv: 140 },   // 2026.02
+    { xr: 0.72, yv: 220 },
+    { xr: 0.82, yv: 300 },   // 2026.04
+    { xr: 0.92, yv: 380 },
+    { xr: 1.00, yv: 440 },   // 2026.05
+  ];
+
+  // 渐变填充（曲线下方）
+  ctx.save();
+  ctx.beginPath();
+  anthroPts.forEach((p, i) => {
+    const px = l + p.xr * cw;
+    const py = b - (p.yv / yMax) * ch;
+    i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px + (Math.random() - 0.5) * 2, py + (Math.random() - 0.5) * 2);
+  });
+  ctx.lineTo(l + anthroPts[anthroPts.length - 1].xr * cw, b);
+  ctx.lineTo(l + anthroPts[0].xr * cw, b);
+  ctx.closePath();
+  const grad = ctx.createLinearGradient(l, t, l, b);
+  grad.addColorStop(0, 'rgba(41, 128, 185, 0.08)');
+  grad.addColorStop(1, 'rgba(41, 128, 185, 0.01)');
+  ctx.fillStyle = grad;
+  ctx.fill();
+  ctx.restore();
+
+  // 手绘曲线
+  ctx.save();
+  ctx.strokeStyle = '#2980b9';
+  ctx.lineWidth = 3;
+  ctx.globalAlpha = 0.85;
+  ctx.beginPath();
+  anthroPts.forEach((p, i) => {
+    const px = l + p.xr * cw;
+    const py = b - (p.yv / yMax) * ch;
+    if (i === 0) ctx.moveTo(px, py);
+    else {
+      const prev = anthroPts[i - 1];
+      const ppx = l + prev.xr * cw;
+      const ppy = b - (prev.yv / yMax) * ch;
+      const cp1x = ppx + (px - ppx) * 0.35;
+      const cp1y = ppy;
+      const cp2x = px - (px - ppx) * 0.35;
+      const cp2y = py;
+      ctx.bezierCurveTo(
+        cp1x + (Math.random() - 0.5) * 2, cp1y + (Math.random() - 0.5) * 2,
+        cp2x + (Math.random() - 0.5) * 2, cp2y + (Math.random() - 0.5) * 2,
+        px + (Math.random() - 0.5) * 1.5, py + (Math.random() - 0.5) * 1.5
+      );
+    }
+  });
+  ctx.stroke();
+  ctx.restore();
+
+  // 数据点圆
+  anthroPts.forEach((p) => {
+    const px = l + p.xr * cw;
+    const py = b - (p.yv / yMax) * ch;
+    hc(ctx, px, py, 5, '#2980b9', 2.5, 0.7);
+    ctx.save();
+    ctx.fillStyle = '#2980b9';
+    ctx.globalAlpha = 0.25;
+    ctx.beginPath();
+    ctx.arc(px, py, 9, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  });
+
+  // ---- OpenAI 参考线 ----
+  const openaiPts = [
+    { xr: 0.00, yv: 30 },
+    { xr: 0.25, yv: 55 },
+    { xr: 0.50, yv: 130 },
+    { xr: 0.65, yv: 180 },
+    { xr: 0.78, yv: 220 },
+    { xr: 0.90, yv: 240 },
+    { xr: 1.00, yv: 250 },
+  ];
+  ctx.save();
+  ctx.strokeStyle = '#e74c3c';
+  ctx.lineWidth = 2;
+  ctx.globalAlpha = 0.45;
+  ctx.setLineDash([5, 5]);
+  ctx.beginPath();
+  openaiPts.forEach((p, i) => {
+    const px = l + p.xr * cw;
+    const py = b - (p.yv / yMax) * ch;
+    i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+  });
+  ctx.stroke();
+  ctx.restore();
+
+  // ---- 标注 ----
+  // Claude Code 发布
+  const ccX = l + 0.03 * cw;
+  const ccY = b - (8 / yMax) * ch - 25;
+  ht(ctx, 'Claude Code 发布', ccX, ccY, 14, '#2980b9');
+  sk(ctx, ccX + 55, ccY + 2, l + 0.03 * cw + 20, b - (15 / yMax) * ch, '#2980b9', 1, 0.3);
+
+  // 反超标注
+  const ovX = l + 0.70 * cw;
+  const ovY = b - (200 / yMax) * ch - 10;
+  htb(ctx, '↑ ARR 反超', ovX, ovY, 16, '#e67e22', 'center');
+
+  // 最终值标注
+  const fX = l + 0.97 * cw;
+  const fY = b - (440 / yMax) * ch - 18;
+  htb(ctx, '440亿', fX, fY, 20, '#2980b9', 'center');
+
+  // AWS 类比
+  ht(ctx, 'AWS 100→440亿 用了 13 年', 550, 290, 13, '#bbb');
+  htb(ctx, 'Anthropic 只用了 12 个月', 550, 310, 14, '#2980b9');
+
+  // ---- 图例 ----
+  ctx.save();
+  ctx.strokeStyle = '#2980b9';
+  ctx.lineWidth = 3;
+  ctx.globalAlpha = 0.85;
+  ctx.beginPath();
+  ctx.moveTo(555, 82);
+  ctx.lineTo(575, 82);
+  ctx.stroke();
+  ctx.restore();
+  hc(ctx, 565, 82, 5, '#2980b9', 2, 0.7);
+  ht(ctx, 'Anthropic', 582, 82, 13, '#333');
+
+  ctx.save();
+  ctx.strokeStyle = '#e74c3c';
+  ctx.lineWidth = 2;
+  ctx.globalAlpha = 0.45;
+  ctx.setLineDash([4, 4]);
+  ctx.beginPath();
+  ctx.moveTo(555, 104);
+  ctx.lineTo(575, 104);
+  ctx.stroke();
+  ctx.restore();
+  ht(ctx, 'OpenAI 对比', 582, 104, 13, '#e74c3c');
+}
+
+// ========== roundRect polyfill for older browsers ==========
+if (!CanvasRenderingContext2D.prototype.roundRect) {
+  CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+    const rad = typeof r === 'number' ? r : (r || 0);
+    this.moveTo(x + rad, y);
+    this.arcTo(x + w, y, x + w, y + h, rad);
+    this.arcTo(x + w, y + h, x, y + h, rad);
+    this.arcTo(x, y + h, x, y, rad);
+    this.arcTo(x, y, x + w, y, rad);
+  };
+}
+</script>
+
+</body>
+</html>

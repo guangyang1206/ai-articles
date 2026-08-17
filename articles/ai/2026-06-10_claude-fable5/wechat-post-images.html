@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Fable 5 贴图素材（竖版）</title>
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:#f0f0f0; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif; display:flex; flex-direction:column; align-items:center; gap:30px; padding:30px; }
+
+    /* ===== 竖版贴图卡片 ===== */
+    .post-card {
+      width:1000px;
+      background:#fff;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    /* ===== 图1：首图（竖版 1000×1250） ===== */
+    .hero-card {
+      width:1000px; height:1250px;
+      background:linear-gradient(145deg,#0f0f1a 0%,#1a1a2e 40%,#16213e 100%);
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      padding:60px 50px;
+    }
+    .hero-card::before {
+      content:'';
+      position:absolute;
+      top:-200px;right:-200px;
+      width:600px;height:600px;
+      background:radial-gradient(circle,rgba(255,107,53,0.12) 0%,transparent 70%);
+      border-radius:50%;
+    }
+    .hero-card::after {
+      content:'';
+      position:absolute;
+      bottom:-150px;left:-150px;
+      width:500px;height:500px;
+      background:radial-gradient(circle,rgba(100,180,255,0.08) 0%,transparent 70%);
+      border-radius:50%;
+    }
+    .hero-badge {
+      font-size:14px;
+      color:#ff6b35;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      border:1px solid rgba(255,107,53,0.3);
+      padding:8px 20px;
+      border-radius:20px;
+      margin-bottom:36px;
+      z-index:1;
+    }
+    .hero-title {
+      font-size:72px;
+      font-weight:800;
+      color:#fff;
+      text-align:center;
+      line-height:1.15;
+      z-index:1;
+      margin-bottom:20px;
+    }
+    .hero-title span { color:#ff6b35; }
+    .hero-sub {
+      font-size:22px;
+      color:rgba(255,255,255,0.6);
+      text-align:center;
+      z-index:1;
+      margin-bottom:48px;
+      line-height:1.5;
+    }
+    .hero-divider {
+      width:60px;height:2px;
+      background:linear-gradient(90deg,#ff6b35,transparent);
+      margin:0 0 40px;
+      z-index:1;
+    }
+    .hero-meta {
+      display:flex;
+      gap:48px;
+      z-index:1;
+      margin-bottom:32px;
+    }
+    .hero-meta-item { text-align:center; }
+    .hero-meta-item .num {
+      font-size:40px;
+      font-weight:700;
+      color:#fff;
+    }
+    .hero-meta-item .num.gold { color:#ffb347; }
+    .hero-meta-item .label {
+      font-size:14px;
+      color:rgba(255,255,255,0.5);
+      margin-top:6px;
+    }
+    .hero-quote {
+      font-size:16px;
+      color:rgba(255,255,255,0.4);
+      text-align:center;
+      z-index:1;
+      max-width:600px;
+      line-height:1.6;
+    }
+
+    /* ===== 图2：对比图（竖版 1000×1250） ===== */
+    .compare-card {
+      width:1000px; height:1250px;
+      background:#fff;
+      padding:60px 50px;
+      display:flex;
+      flex-direction:column;
+    }
+    .compare-card h2 {
+      font-size:32px;
+      font-weight:700;
+      color:#111;
+      margin-bottom:6px;
+    }
+    .compare-card .desc {
+      font-size:16px;
+      color:#888;
+      margin-bottom:36px;
+    }
+    .compare-grid {
+      display:flex;
+      gap:24px;
+      flex:1;
+    }
+    .compare-col {
+      flex:1;
+      border-radius:12px;
+      padding:32px 28px;
+      display:flex;
+      flex-direction:column;
+    }
+    .compare-col.new {
+      background:linear-gradient(180deg,#fff5f0,#fff);
+      border:1.5px solid #ff6b35;
+    }
+    .compare-col.old {
+      background:#f8f8f8;
+      border:1.5px solid #e0e0e0;
+    }
+    .compare-col .tag {
+      font-size:13px;
+      font-weight:600;
+      padding:4px 12px;
+      border-radius:12px;
+      display:inline-block;
+      margin-bottom:14px;
+      width:fit-content;
+    }
+    .compare-col.new .tag { background:#ff6b35; color:#fff; }
+    .compare-col.old .tag { background:#ccc; color:#666; }
+    .compare-col h3 {
+      font-size:24px;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+    .compare-col.new h3 { color:#111; }
+    .compare-col.old h3 { color:#666; }
+    .compare-col ul {
+      list-style:none;
+      padding:0;
+      flex:1;
+    }
+    .compare-col li {
+      font-size:15px;
+      color:#555;
+      padding:10px 0;
+      border-bottom:1px solid rgba(0,0,0,0.05);
+      line-height:1.5;
+    }
+    .compare-col li:last-child { border-bottom:none; }
+    .compare-col li .highlight { color:#ff6b35; font-weight:600; }
+    .compare-col.old li { color:#999; }
+
+    /* ===== 图3：定价+安全（竖版 1000×1250） ===== */
+    .pricing-card {
+      width:1000px; height:1250px;
+      background:linear-gradient(135deg,#0f0f1a,#1a1a2e);
+      padding:60px 50px;
+      display:flex;
+      flex-direction:column;
+    }
+    .pricing-card h2 {
+      font-size:32px;
+      font-weight:700;
+      color:#fff;
+      margin-bottom:6px;
+    }
+    .pricing-card .desc {
+      font-size:16px;
+      color:rgba(255,255,255,0.5);
+      margin-bottom:32px;
+    }
+    .pricing-grid {
+      display:flex;
+      gap:24px;
+      flex:1;
+    }
+    .pricing-left {
+      flex:1;
+      display:flex;
+      flex-direction:column;
+    }
+    .pricing-box {
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:12px;
+      padding:28px;
+      flex:1;
+    }
+    .pricing-row {
+      display:flex;
+      justify-content:space-between;
+      padding:14px 0;
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .pricing-row:last-child { border-bottom:none; }
+    .pricing-row .key { color:rgba(255,255,255,0.6); font-size:16px; }
+    .pricing-row .val { color:#ffb347; font-size:16px; font-weight:600; }
+    .pricing-right {
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .safety-box {
+      background:rgba(255,107,53,0.08);
+      border:1px solid rgba(255,107,53,0.2);
+      border-radius:12px;
+      padding:24px 22px;
+      flex:1;
+    }
+    .safety-box .shield { font-size:28px; margin-bottom:10px; }
+    .safety-box h3 { font-size:18px; color:#ff6b35; margin-bottom:8px; }
+    .safety-box p { font-size:15px; color:rgba(255,255,255,0.6); line-height:1.7; }
+
+    /* ===== 图4：总结（竖版 1000×1250） ===== */
+    .summary-card {
+      width:1000px; height:1250px;
+      background:#fff;
+      padding:60px 50px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+    }
+    .summary-card .emoji { font-size:64px; margin-bottom:20px; }
+    .summary-card h2 {
+      font-size:36px;
+      font-weight:700;
+      color:#111;
+      margin-bottom:16px;
+      line-height:1.4;
+    }
+    .summary-card p {
+      font-size:18px;
+      color:#888;
+      max-width:650px;
+      margin:0 auto 36px;
+      line-height:1.7;
+    }
+    .summary-card .tags {
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .summary-card .tags span {
+      font-size:14px;
+      color:#666;
+      background:#f5f5f5;
+      padding:8px 18px;
+      border-radius:20px;
+    }
+
+    /* ===== 图5：朋友圈分享图（400×400） ===== */
+    .moment-card {
+      width:400px; height:400px;
+      background:linear-gradient(145deg,#0f0f1a,#1a1a2e);
+      border-radius:8px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      padding:40px;
+      text-align:center;
+    }
+    .moment-card .icon { font-size:48px; margin-bottom:12px; }
+    .moment-card .title {
+      font-size:22px;
+      font-weight:700;
+      color:#fff;
+      margin-bottom:8px;
+    }
+    .moment-card .title span { color:#ff6b35; }
+    .moment-card .sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:16px; }
+    .moment-card .price { font-size:16px; color:#ffb347; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== 图1：首图（竖版 1000×1250） ===== -->
+  <div class="post-card">
+    <div class="hero-card">
+      <div class="hero-badge">ANTHROPIC · 2026.06.09</div>
+      <div class="hero-title">Claude <span>Fable 5</span></div>
+      <div class="hero-sub">Mythos 级底座 · 迄今最强公开 Claude 模型</div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="num gold">$10</div>
+          <div class="label">每百万输入 tokens</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="num gold">$50</div>
+          <div class="label">每百万输出 tokens</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="num">1M</div>
+          <div class="label">上下文窗口</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="num">Opus</div>
+          <div class="label">安全降级兜底</div>
+        </div>
+      </div>
+      <div class="hero-quote">软件工程 · 知识工作 · 视觉理解 · 科学研究 — 全面领先</div>
+    </div>
+  </div>
+
+  <!-- ===== 图2：Fable 5 vs Opus 4.8 对比（竖版 1000×1250） ===== -->
+  <div class="post-card">
+    <div class="compare-card">
+      <h2>📊 Fable 5 vs Opus 4.8</h2>
+      <p class="desc">同一 Mythos 底座，不同安全护栏，不同定位</p>
+      <div class="compare-grid">
+        <div class="compare-col new">
+          <div class="tag">NEW</div>
+          <h3>Claude Fable 5</h3>
+          <ul>
+            <li><span class="highlight">SWE-Bench Pro:</span> 领先 Opus 4.8 约 10%</li>
+            <li><span class="highlight">自主运行时间:</span> 史上最长，复杂任务无压力</li>
+            <li><span class="highlight">安全策略:</span> 新分类器系统，命中后降级至 Opus 4.8</li>
+            <li><span class="highlight">拦截范围:</span> 网络安全 / 生物化学 / 蒸馏</li>
+            <li><span class="highlight">定价:</span> $10 / $50 per M tokens</li>
+          </ul>
+        </div>
+        <div class="compare-col old">
+          <div class="tag">EXISTING</div>
+          <h3>Claude Opus 4.8</h3>
+          <ul>
+            <li>2026年5月28日发布</li>
+            <li>编程 / 智能体 / 企业级工作流</li>
+            <li>标准安全策略</li>
+            <li>已上线 Microsoft Foundry</li>
+            <li>定价: $15 / $75 per M tokens</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 图3：定价 + 安全策略（竖版 1000×1250） ===== -->
+  <div class="post-card">
+    <div class="pricing-card">
+      <h2>💰 定价策略</h2>
+      <p class="desc">Fable 5 比 Opus 4.8 便宜约 33%</p>
+      <div class="pricing-grid">
+        <div class="pricing-left">
+          <div class="pricing-box">
+            <div class="pricing-row">
+              <span class="key">Fable 5 输入</span>
+              <span class="val">$10 / M tokens</span>
+            </div>
+            <div class="pricing-row">
+              <span class="key">Fable 5 输出</span>
+              <span class="val">$50 / M tokens</span>
+            </div>
+            <div class="pricing-row">
+              <span class="key">Opus 4.8 输入</span>
+              <span class="val" style="color:rgba(255,255,255,0.4);">$15 / M tokens</span>
+            </div>
+            <div class="pricing-row">
+              <span class="key">Opus 4.8 输出</span>
+              <span class="val" style="color:rgba(255,255,255,0.4);">$75 / M tokens</span>
+            </div>
+          </div>
+        </div>
+        <div class="pricing-right">
+          <div class="safety-box">
+            <div class="shield">🛡️</div>
+            <h3>安全护栏升级</h3>
+            <p>新增分类器系统，重点拦截网络安全、生物化学和蒸馏相关请求。命中后自动降级至 Opus 4.8 响应。</p>
+          </div>
+          <div class="safety-box">
+            <div class="shield">🔬</div>
+            <h3>Mythos 5 同步发布</h3>
+            <p>全球最强网络安全 AI 模型，通过 Project Glasswing 向约 200 家组织开放。药物设计提速约 10 倍。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 图4：一句话总结（竖版 1000×1250） ===== -->
+  <div class="post-card">
+    <div class="summary-card">
+      <div class="emoji">🚀</div>
+      <h2>Anthropic 的"双模型"策略</h2>
+      <p>Fable 5 面向大众，能力最强、价格更低；Mythos 5 面向安全，能力最专、门槛最高。同一底座，不同护栏，精准切分市场。</p>
+      <div class="tags">
+        <span>#Claude</span>
+        <span>#Fable5</span>
+        <span>#Mythos5</span>
+        <span>#Anthropic</span>
+        <span>#AI资讯</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 图5：朋友圈分享图（400×400 不变） ===== -->
+  <p style="width:1000px;font-size:14px;color:#999;text-align:center;margin:0;">▼ 朋友圈分享图（400×400）</p>
+  <div class="moment-card">
+    <div class="icon">🧠</div>
+    <div class="title">Claude <span>Fable 5</span></div>
+    <div class="sub">Anthropic 迄今最强公开模型</div>
+    <div class="price">$10 / $50 per M tokens</div>
+  </div>
+
+</body>
+</html>

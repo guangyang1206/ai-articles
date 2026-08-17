@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7000 亿美元的账单：科技巨头 AI 投入到底花在哪了</title>
+<meta name="description" content="2026年四大科技巨头AI基础设施投入超7300亿美元，Q2单季超1800亿。本文拆解账单：钱从哪来、花到哪去、什么时候能挣回来。">
+<meta name="keywords" content="AI资本开支,微软,谷歌,亚马逊,Meta,Nvidia,数据中心,GPU,AI投资,科技巨头">
+<meta property="og:title" content="7000 亿美元的账单：科技巨头 AI 投入到底花在哪了">
+<meta property="og:description" content="四大科技巨头2026年AI基础设施投入超7300亿美元。拆解这7000亿账单——花到哪了？能挣回来吗？">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI 深度解读">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #0a0e17; color: #e0e6f0; line-height: 1.85; font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ====== Hero Header ====== */
+  .hero {
+    position: relative;
+    background: #060b14;
+    padding: 80px 24px 60px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0.06;
+    background-image:
+      repeating-linear-gradient(0deg, #3b82f6 0, #3b82f6 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(90deg, #3b82f6 0, #3b82f6 1px, transparent 1px, transparent 40px);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+  .hero-ornament {
+    width: 160px; height: 160px; border-radius: 50%;
+    background: radial-gradient(circle, #3b82f6 0%, #8b5cf6 40%, transparent 70%);
+    opacity: 0.15; margin: 0 auto 24px;
+  }
+  .hero h1 {
+    color: #f0f4ff; font-size: 26px; font-weight: 700; line-height: 1.5;
+    letter-spacing: 0.5px; margin-bottom: 16px;
+  }
+  .hero .subtitle { color: #7c8db0; font-size: 15px; margin-bottom: 8px; }
+  .hero .date { color: #556580; font-size: 13px; }
+  .hero .tag {
+    display: inline-block; background: #1a2744; color: #6d8bd0;
+    padding: 4px 14px; border-radius: 4px; font-size: 12px; margin-bottom: 16px;
+    border: 1px solid #253a5e;
+  }
+
+  /* ====== Sections ====== */
+  .section {
+    max-width: 720px; margin: 0 auto; padding: 36px 24px;
+  }
+  .section-dark { background: #0d1322; }
+  .section-darker { background: #080c18; }
+
+  h2 {
+    font-size: 21px; font-weight: 700; color: #e8edf5; margin-bottom: 20px;
+    border-bottom: 2px solid #1e3050; padding-bottom: 10px;
+  }
+  h3 {
+    font-size: 17px; font-weight: 700; color: #6d8bd0; margin: 28px 0 10px;
+  }
+  p { margin: 14px 0; font-size: 15px; color: #b0bed0; }
+  strong { color: #e8edf5; }
+
+  /* ====== Data Box ====== */
+  .data-box {
+    background: #11192a; border: 1px solid #1e3050; border-radius: 10px;
+    padding: 20px 24px; margin: 16px 0;
+  }
+  .data-box p { margin: 6px 0; font-size: 14px; line-height: 2.0; }
+  .data-box .label { color: #6d8bd0; font-weight: 600; }
+
+  /* ====== Highlight ====== */
+  .highlight {
+    background: #11192a; border-left: 4px solid #3b82f6;
+    padding: 16px 20px; margin: 20px 0; border-radius: 0 6px 6px 6px;
+  }
+  .highlight p { margin: 0.4em 0; font-size: 15px; }
+
+  /* ====== Data Note ====== */
+  .data-note {
+    background: #0d1422; border: 1px solid #253a5e; border-radius: 8px;
+    padding: 18px 20px; margin: 20px 0;
+  }
+  .data-note h4 { font-size: 14px; color: #6d8bd0; margin-bottom: 8px; }
+  .data-note p, .data-note li { font-size: 13px; color: #7c8db0; line-height: 1.8; }
+  .data-note ul { padding-left: 18px; }
+
+  /* ====== Illustration Wrapper ====== */
+  .illus-wrap {
+    background: #0f1a2e; border: 1px solid #1e3050; border-radius: 10px;
+    padding: 24px; margin: 24px 0; text-align: center; overflow-x: auto;
+  }
+  .illus-wrap svg { max-width: 100%; }
+  .illus-caption {
+    font-size: 12px; color: #556580; margin-top: 10px; line-height: 1.5;
+  }
+
+  /* ====== Chart Box ====== */
+  .chart-box {
+    background: #0f1a2e; border: 1px solid #1e3050; border-radius: 10px;
+    padding: 16px; margin: 16px 0;
+  }
+  .chart-legend {
+    font-size: 12px; color: #7c8db0; margin-bottom: 12px; text-align: center;
+  }
+  .chart-legend span { display: inline-block; margin: 0 6px; }
+
+  /* ====== Data Table ====== */
+  .data-table-wrap { overflow-x: auto; margin: 16px 0; }
+  .data-table {
+    width: 100%; min-width: 500px; border-collapse: collapse;
+    font-size: 13px; color: #b0bed0;
+  }
+  .data-table th {
+    background: #11192a; color: #6d8bd0; padding: 10px 12px;
+    text-align: left; border-bottom: 2px solid #1e3050; font-weight: 600;
+  }
+  .data-table td {
+    padding: 10px 12px; border-bottom: 1px solid #1c2a40;
+  }
+  .data-table tr:hover td { background: #11192a; }
+  .data-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* ====== Conclusion ====== */
+  .conclusion {
+    max-width: 720px; margin: 0 auto; padding: 48px 24px;
+    text-align: center; background: #060b14;
+  }
+  .conclusion h2 { border-bottom: none; margin-bottom: 24px; }
+  .conclusion p { color: #8899b5; font-size: 15px; line-height: 1.9; }
+
+  /* ====== Footer ====== */
+  .footer {
+    max-width: 720px; margin: 0 auto; padding: 24px;
+    text-align: center; background: #080c18;
+    border-top: 1px solid #1c2a40;
+  }
+  .footer p { font-size: 13px; color: #556580; margin: 4px 0; }
+  .footer a { color: #6d8bd0; text-decoration: none; }
+
+  /* ====== Hand-drawn box (for key insights) ====== */
+  .hand-drawn {
+    background: #fffff0; border: 2.5px solid #333; border-radius: 18px;
+    padding: 20px 20px; margin: 24px 0;
+    box-shadow: 6px 6px 0 #00000015;
+  }
+  .hand-drawn, .hand-drawn p, .hand-drawn strong, .hand-drawn span { color: #1a1a1a; }
+  .hand-drawn h3 { color: #1a1a1a; }
+
+  /* ====== Responsive ====== */
+  @media (max-width: 600px) {
+    .hero { padding: 48px 16px 36px; }
+    .hero h1 { font-size: 22px; }
+    .section { padding: 24px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== Hero Header ====== -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="tag">AI · 深度解读</div>
+    <div class="hero-ornament"></div>
+    <h1>7000 亿美元的账单：<br>科技巨头 AI 投入到底花在哪了</h1>
+    <p class="subtitle">四大科技巨头 2026 年 AI 基础设施投入超 7300 亿美元，Q2 单季超 1800 亿。拆解这笔账单——钱从哪来、花到哪去、什么时候能挣回来。</p>
+    <p class="date">2026 年 8 月 1 日 · 阅读约 8 分钟 · 数据来源：各公司 Q2 2026 财报</p>
+  </div>
+</header>
+
+<!-- ====== 数据口径说明 ====== -->
+<section class="section section-darker">
+  <div class="data-note">
+    <h4>📊 数据口径说明</h4>
+    <p>本文所有数字基于四大科技巨头（微软、谷歌/Alphabet、亚马逊、Meta）公开披露的 2026 年 Q2 财报及全年资本开支指引。具体说明：</p>
+    <ul>
+      <li><strong>微软：</strong>FY2026 全年 capex 约 $1900 亿（截至 2026 年 6 月，含融资租赁）</li>
+      <li><strong>谷歌：</strong>2026 年 capex 计划 $1950-2050 亿（取中值估算）</li>
+      <li><strong>亚马逊：</strong>2026 年 capex 指引上调至约 $2200 亿（7 月 30 日 Q2 财报更新）</li>
+      <li><strong>Meta：</strong>2026 年 capex 预计 $1250-1450 亿（取中值估算）</li>
+      <li><strong>合计：</strong>四家 2026 年预计投入约 $7300-7600 亿美元</li>
+      <li>成本拆分中，芯片采购占总 capex 约 20-25%；人才/研发主要为运营支出（OpEx），非资本支出，此处单独展示以反映 AI 全口径投入，标注 * 以示区分</li>
+      <li>所有预测数据为市场一致预期/公司指引取中值，实际数据以全年财报为准</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ====== 一、账单全景 ====== -->
+<section class="section section-dark">
+  <h2>一、账单全景：每家都在破自己的纪录</h2>
+
+  <p>7 月底，四大科技巨头悉数公布 Q2 2026 财报。各家股价涨跌不一，但有一组数字是齐刷刷向上的：<strong>资本开支。</strong></p>
+
+  <div class="data-box">
+    <p><span class="label">▸ 微软：</span>FY2026 资本开支约 <strong>1900 亿美元</strong>（含融资租赁），Azure 年收入首次突破 1000 亿美元</p>
+    <p><span class="label">▸ 谷歌：</span>2026 capex <strong>1950-2050 亿美元</strong>，Google Cloud Q2 收入 $248 亿，同比 +82%</p>
+    <p><span class="label">▸ 亚马逊：</span>2026 capex 上调至约 <strong>2200 亿美元</strong>。CEO Jassy："即使在这个水平，今年产能仍不足"</p>
+    <p><span class="label">▸ Meta：</span>2026 capex <strong>1250-1450 亿美元</strong>。扎克伯格："我们宁愿在需要之前就建成"</p>
+  </div>
+
+  <p>四家合计 2026 年预计投入 <strong>7300-7600 亿美元</strong>，比 2025 年增长约 77%。把时间轴拉长看：2021 年全年四家加起来不到 900 亿，五年增长约 <strong>8 倍</strong>。单是 2026 年的增量（约 3200 亿美元），就超过 2024 全年总和。</p>
+
+  <!-- 五年 capex 增长趋势图 -->
+  <div class="illus-wrap">
+    <svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+      <!-- 背景网格 -->
+      <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e3050" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="680" height="340" fill="url(#grid)" opacity="0.5"/>
+
+      <!-- Y轴标签 -->
+      <text x="36" y="30" text-anchor="end" font-size="12" fill="#6d8bd0">$8000亿</text>
+      <text x="36" y="88" text-anchor="end" font-size="12" fill="#6d8bd0">$6000亿</text>
+      <text x="36" y="146" text-anchor="end" font-size="12" fill="#6d8bd0">$4000亿</text>
+      <text x="36" y="204" text-anchor="end" font-size="12" fill="#6d8bd0">$2000亿</text>
+      <text x="36" y="262" text-anchor="end" font-size="12" fill="#6d8bd0">$0</text>
+
+      <!-- Y轴网格线 -->
+      <line x1="44" y1="40" x2="620" y2="40" stroke="#1e3050" stroke-width="0.5" stroke-dasharray="6,4"/>
+      <line x1="44" y1="98" x2="620" y2="98" stroke="#1e3050" stroke-width="0.5" stroke-dasharray="6,4"/>
+      <line x1="44" y1="156" x2="620" y2="156" stroke="#1e3050" stroke-width="0.5" stroke-dasharray="6,4"/>
+      <line x1="44" y1="214" x2="620" y2="214" stroke="#1e3050" stroke-width="0.5" stroke-dasharray="6,4"/>
+      <line x1="44" y1="272" x2="620" y2="272" stroke="#1e3050" stroke-width="0.5" stroke-dasharray="6,4"/>
+
+      <!-- Y轴 -->
+      <line x1="44" y1="30" x2="44" y2="272" stroke="#6d8bd0" stroke-width="1.5"/>
+
+      <!-- X轴 -->
+      <line x1="44" y1="272" x2="620" y2="272" stroke="#6d8bd0" stroke-width="1.5"/>
+
+      <!-- 总柱子 -->
+      <!-- 2021: 882亿 → 高度 ~29px (比例: 240px = 8000亿, 每10亿=0.3px) -->
+      <!-- 使用简化比例: max=8000亿 ~ 240px from baseline, 所以 882亿 = 882/8000*240 = 26.5px from baseline -->
+      <!-- 更直观比例: baseline=272, 8000亿=32, 所以 height= (val/8000)*240 -->
+
+      <!-- 2021: 880亿 height=26 -->
+      <rect x="72" y="246" width="44" height="26" fill="#3b82f6" rx="2"/>
+      <!-- 2022: 1175亿 height=35 -->
+      <rect x="170" y="237" width="44" height="35" fill="#3b82f6" rx="2"/>
+      <!-- 2023: 1231亿 height=37 -->
+      <rect x="268" y="235" width="44" height="37" fill="#3b82f6" rx="2"/>
+      <!-- 2024: 1535亿 height=46 -->
+      <rect x="366" y="226" width="44" height="46" fill="#3b82f6" rx="2"/>
+      <!-- 2025: 3150亿 height=95 -->
+      <rect x="464" y="177" width="44" height="95" fill="#0ea5e9" rx="2"/>
+      <!-- 2026E: 7450亿 height=224 -->
+      <rect x="562" y="48" width="44" height="224" fill="#8b5cf6" rx="2"/>
+
+      <!-- 柱子上的数值 -->
+      <text x="94" y="239" text-anchor="middle" font-size="11" fill="#e8edf5" font-weight="600">$882</text>
+      <text x="192" y="230" text-anchor="middle" font-size="11" fill="#e8edf5" font-weight="600">$1175</text>
+      <text x="290" y="228" text-anchor="middle" font-size="11" fill="#e8edf5" font-weight="600">$1231</text>
+      <text x="388" y="219" text-anchor="middle" font-size="11" fill="#e8edf5" font-weight="600">$1535</text>
+      <text x="486" y="170" text-anchor="middle" font-size="11" fill="#e8edf5" font-weight="600">$3150</text>
+      <text x="584" y="42" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="700">$7450亿</text>
+
+      <!-- 增长箭头 -->
+      <path d="M 554 48 Q 540 70 540 96" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,3"/>
+      <polygon points="540,96 536,84 544,84" fill="#f59e0b"/>
+
+      <!-- X轴标签 -->
+      <text x="94" y="295" text-anchor="middle" font-size="12" fill="#7c8db0">2021</text>
+      <text x="192" y="295" text-anchor="middle" font-size="12" fill="#7c8db0">2022</text>
+      <text x="290" y="295" text-anchor="middle" font-size="12" fill="#7c8db0">2023</text>
+      <text x="388" y="295" text-anchor="middle" font-size="12" fill="#7c8db0">2024</text>
+      <text x="486" y="295" text-anchor="middle" font-size="12" fill="#7c8db0">2025</text>
+      <text x="584" y="295" text-anchor="middle" font-size="12" fill="#f59e0b" font-weight="600">2026E</text>
+
+      <!-- 标题 -->
+      <text x="340" y="330" text-anchor="middle" font-size="11" fill="#556580" font-style="italic">单位：亿美元 · 四巨头（微软+谷歌+亚马逊+Meta）capex 合计</text>
+    </svg>
+    <div class="illus-caption">▲ 五年 8 倍增长。2026E 为四家公司全年指引/市场一致预期取中值</div>
+  </div>
+</section>
+
+<!-- ====== 二、花到哪了 ====== -->
+<section class="section section-darker">
+  <h2>二、花到哪了：芯片只是零头</h2>
+
+  <h3>芯片：最大的单笔支出，但不是大头</h3>
+  <p>一块 Nvidia GB200 售价约 3-4 万美元。买 10 万块就是 300-400 亿美元。微软、谷歌、亚马逊各有自研芯片（Azure Maia、TPU、Trainium），但短期内 Nvidia 仍是主力——尤其训练场景。<strong>整体芯片采购占 capex 约 20-25%。</strong></p>
+
+  <h3>数据中心建造：真正的吞金兽</h3>
+  <p>一座新式 AI 数据中心的建造成本约 <strong>10-20 亿美元</strong>。更关键的是：AI 数据中心需要的冷却方案和电力基础设施复杂度远高于传统数据中心。微软最近在威斯康星签了重启废弃核电站的合同来供电——这种事 5 年前听都没听过。数据中心建造和基建占 capex 的 <strong>40-50%</strong>。</p>
+
+  <!-- 成本构成饼图 -->
+  <div class="illus-wrap">
+    <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+      <!-- 环形图: 从右侧开始顺时针 -->
+      <!-- 芯片 24% = 86.4度 → 从顶部开始 -->
+      <!-- 数据中心 32% = 115.2度 -->
+      <!-- 电力 18% = 64.8度 -->
+      <!-- 人才研发 15% = 54度 -->
+      <!-- 其他 11% = 39.6度 -->
+
+      <!-- 环形: cx=220 cy=180 r=100, stroke-width=40 -->
+      <!-- 总周长 = 2*PI*100 = 628.32 -->
+      <!-- 芯片 24%: 150.8 → stroke-dasharray: 150.8 628.32, stroke-dashoffset: 0 -->
+      <!-- 数据中心 32%: 201.06 → stroke-dashoffset: -150.8 -->
+      <!-- 电力 18%: 113.1 → stroke-dashoffset: -351.86 -->
+      <!-- 人才 15%: 94.25 → stroke-dashoffset: -464.96 -->
+      <!-- 其他 11%: 69.12 → stroke-dashoffset: -559.21 -->
+
+      <text x="300" y="28" text-anchor="middle" font-size="14" fill="#e8edf5" font-weight="700">2026 年 AI 基础设施成本构成（估算）</text>
+
+      <!-- Ring -->
+      <circle cx="240" cy="190" r="100" fill="none" stroke="#3b82f6" stroke-width="36" stroke-dasharray="150.8 628.32" stroke-dashoffset="0" />
+      <circle cx="240" cy="190" r="100" fill="none" stroke="#8b5cf6" stroke-width="36" stroke-dasharray="201.06 628.32" stroke-dashoffset="-150.8" />
+      <circle cx="240" cy="190" r="100" fill="none" stroke="#f59e0b" stroke-width="36" stroke-dasharray="113.1 628.32" stroke-dashoffset="-351.86" />
+      <circle cx="240" cy="190" r="100" fill="none" stroke="#10b981" stroke-width="36" stroke-dasharray="94.25 628.32" stroke-dashoffset="-464.96" />
+      <circle cx="240" cy="190" r="100" fill="none" stroke="#e2e8f0" stroke-width="36" stroke-dasharray="69.12 628.32" stroke-dashoffset="-559.21" />
+
+      <!-- Center text -->
+      <text x="240" y="182" text-anchor="middle" font-size="16" fill="#e8edf5" font-weight="700">约$7450亿</text>
+      <text x="240" y="202" text-anchor="middle" font-size="11" fill="#7c8db0">四巨头合计</text>
+
+      <!-- Legend -->
+      <rect x="410" y="70" width="12" height="12" fill="#3b82f6" rx="2"/>
+      <text x="430" y="82" font-size="13" fill="#b0bed0">GPU / 芯片 24%</text>
+
+      <rect x="410" y="100" width="12" height="12" fill="#8b5cf6" rx="2"/>
+      <text x="430" y="112" font-size="13" fill="#b0bed0">数据中心建造 32%</text>
+
+      <rect x="410" y="130" width="12" height="12" fill="#f59e0b" rx="2"/>
+      <text x="430" y="142" font-size="13" fill="#b0bed0">电力基础设施 18%</text>
+
+      <rect x="410" y="160" width="12" height="12" fill="#10b981" rx="2"/>
+      <text x="430" y="172" font-size="13" fill="#b0bed0">人才 / 研发 15%*</text>
+
+      <rect x="410" y="190" width="12" height="12" fill="#e2e8f0" rx="2"/>
+      <text x="430" y="202" font-size="13" fill="#b0bed0">网络 / 其他 11%</text>
+
+      <!-- Footnote -->
+      <text x="300" y="370" text-anchor="middle" font-size="11" fill="#556580">* 人才/研发主要为 OpEx，* 单独展示以反映 AI 全口径投入</text>
+    </svg>
+    <div class="illus-caption">▲ 四巨头 capex 拆解。芯片（GPU）只占约 1/4；数据中心建造+电力才是真正的大头</div>
+  </div>
+
+  <!-- GB200 机架分解图 -->
+  <div class="hand-drawn">
+    <h3 style="text-align:center; font-size:15px; margin-bottom:14px;">一枚 GB200 NVL72 机架的硬件构成</h3>
+    <table style="width:100%; border-collapse:collapse; font-size:13px;">
+      <tr style="background:#fef3c7;">
+        <td style="padding:10px 12px; border:2px solid #333; text-align:center; font-weight:700; width:50%;">
+          72× GB200 GPU<br><span style="font-size:11px; color:#555;">每颗 $3.5万 = $252万</span>
+        </td>
+        <td style="padding:10px 12px; border:2px solid #333; text-align:center; font-weight:700;">
+          36× Grace CPU<br><span style="font-size:11px; color:#555;">= $10万</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:10px 12px; border:2px solid #333; text-align:center;">
+          NVLink Switch + 网卡<br><span style="font-size:11px; color:#555;">= $8万</span>
+        </td>
+        <td style="padding:10px 12px; border:2px solid #333; text-align:center;">
+          液冷 + 供电模块<br><span style="font-size:11px; color:#555;">= $30万</span>
+        </td>
+      </tr>
+    </table>
+    <p style="text-align:center; margin-top:10px; font-size:12px; color:#555;">单台机架 ≈ $300万 · 一座数据中心 = 数千台机架 + 基建 + 电力</p>
+  </div>
+
+  <h3>电力：最被低估的瓶颈</h3>
+  <p>一座 2GW 的 AI 数据中心，年耗电约 160 亿度——差不多是深圳全市居民一年的用电量。现在全球酝酿的 AI 数据中心总规划容量已超 100GW。<strong>电网扩容跟不上建设速度，是比芯片短缺更棘手的问题。</strong>这也是为什么科技巨头开始自己买核电站、签 20 年购电协议——不是因为想做能源公司，是除此之外没有别的办法。</p>
+
+  <h3>人才与研发：隐形成本不容忽视</h3>
+  <p>四巨头 2026 年 AI 相关研发人员薪资和算力使用费用合计约 800-1000 亿美元。一个顶尖 AI 研究员的全年薪酬包（含股权）已经突破 500 万美元。</p>
+</section>
+
+<!-- ====== 三、回报开始出现 ====== -->
+<section class="section section-dark">
+  <h2>三、回报开始出现——虽然离回本还很远</h2>
+
+  <p>7000 亿美元的年投入，最合理的质疑是：挣得回来吗？Q2 财报给出了一些初步信号：</p>
+
+  <!-- 云收入对比 -->
+  <div class="data-box">
+    <p><span class="label">▸ 谷歌云：</span>Q2 收入 <strong>$248 亿</strong>，同比 +82%，AI 工作负载约贡献 40%。TPU 自研芯片推动利润率到 35.6%</p>
+    <p><span class="label">▸ 微软 Azure：</span>Q2 FY26 收入 <strong>$480 亿</strong>，同比 +33%，其中 AI 贡献了 12 个百分点的增速</p>
+    <p><span class="label">▸ AWS：</span>Q2 收入 <strong>$290 亿</strong>，同比 +19%，增速回升，AI 推理负载是主要驱动力</p>
+  </div>
+
+  <!-- 云收入柱状对比图 -->
+  <div class="illus-wrap">
+    <svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+      <!-- Azure -->
+      <text x="80" y="20" text-anchor="middle" font-size="12" fill="#7c8db0">Azure</text>
+      <rect x="40" y="96" width="30" height="144" fill="#1e3050" rx="4"/>
+      <rect x="78" y="28" width="30" height="192" fill="#3b82f6" rx="4"/>
+      <text x="55" y="90" text-anchor="middle" font-size="10" fill="#7c8db0">$361</text>
+      <text x="93" y="22" text-anchor="middle" font-size="10" fill="#ffffff" font-weight="600">$480</text>
+      <text x="93" y="220" text-anchor="middle" font-size="11" fill="#10b981">+33%</text>
+
+      <!-- Google Cloud -->
+      <text x="250" y="20" text-anchor="middle" font-size="12" fill="#7c8db0">谷歌云</text>
+      <rect x="210" y="148" width="30" height="72" fill="#1e3050" rx="4"/>
+      <rect x="248" y="80" width="30" height="140" fill="#3b82f6" rx="4"/>
+      <text x="225" y="142" text-anchor="middle" font-size="10" fill="#7c8db0">$136</text>
+      <text x="263" y="74" text-anchor="middle" font-size="10" fill="#ffffff" font-weight="600">$248</text>
+      <text x="263" y="220" text-anchor="middle" font-size="11" fill="#10b981">+82%</text>
+
+      <!-- AWS -->
+      <text x="410" y="20" text-anchor="middle" font-size="12" fill="#7c8db0">AWS</text>
+      <rect x="370" y="128" width="30" height="92" fill="#1e3050" rx="4"/>
+      <rect x="408" y="96" width="30" height="124" fill="#3b82f6" rx="4"/>
+      <text x="385" y="122" text-anchor="middle" font-size="10" fill="#7c8db0">$244</text>
+      <text x="423" y="90" text-anchor="middle" font-size="10" fill="#ffffff" font-weight="600">$290</text>
+      <text x="423" y="220" text-anchor="middle" font-size="11" fill="#10b981">+19%</text>
+
+      <!-- Legend -->
+      <rect x="100" y="230" width="14" height="14" fill="#1e3050" rx="2"/>
+      <text x="120" y="242" font-size="11" fill="#7c8db0">Q2 2025</text>
+      <rect x="200" y="230" width="14" height="14" fill="#3b82f6" rx="2"/>
+      <text x="220" y="242" font-size="11" fill="#7c8db0">Q2 2026</text>
+      <text x="320" y="242" font-size="11" fill="#556580">单位：亿美元</text>
+    </svg>
+    <div class="illus-caption">▲ 三大云厂商 Q2 收入对比。谷歌云同比 +82% 受益于 AI 推理负载和自研 TPU</div>
+  </div>
+
+  <p>但乐观之下有几个冷事实：</p>
+
+  <div class="highlight">
+    <p><strong>第一，资本开支增速远超云收入增速。</strong>投入一年涨了 77%，收入涨了 19-82%（中国科技大厂的云收入增速更高）。按照这个节奏，乐观也要 5 年以上才能回本——前提是增速不降。</p>
+    <p><strong>第二，C 端用户还没付钱。</strong>ChatGPT 有 6 亿月活但付费渗透率不到 10%。AI 聊天、AI 搜索这些消费者产品目前赚的不是用户的钱，而是投资人的钱。</p>
+    <p><strong>第三，B 端是最硬的商业模式，但还没跑通闭环。</strong>企业 API 调用、AI 编码工具证明"能干活"的 AI 值得企业花钱。但这部分收入在整个 AI 生态中还是"小头"。</p>
+  </div>
+
+  <!-- ROI 算式示意 -->
+  <div class="hand-drawn">
+    <h3 style="text-align:center; font-size:15px; margin-bottom:14px;">谷歌云 Q2 2026：投入回报比估算</h3>
+    <table style="width:100%; border-collapse:collapse; font-size:13px;">
+      <tr style="background:#fce4ec;">
+        <td style="padding:10px 12px; border:2px solid #333; text-align:center; width:50%; color:#1a1a1a;">
+          <strong>Q2 谷歌 capex</strong><br><span style="font-size:16px; font-weight:700;">$449亿</span>
+        </td>
+        <td style="padding:10px 12px; border:2px solid #333; text-align:center; color:#1a1a1a;">
+          <strong>Q2 Google Cloud 收入</strong><br><span style="font-size:16px; font-weight:700;">$248亿</span>
+        </td>
+      </tr>
+      <tr style="background:#e8f5e9;">
+        <td style="padding:10px 12px; border:2px solid #333; text-align:center; color:#1a1a1a;">
+          <strong>年化 capex</strong><br><span style="font-size:14px;">≈ $1950亿</span>
+        </td>
+        <td style="padding:10px 12px; border:2px solid #333; text-align:center; color:#1a1a1a;">
+          <strong>年化云收入</strong><br><span style="font-size:14px;">≈ $992亿</span>
+        </td>
+      </tr>
+    </table>
+    <p style="text-align:center; margin-top:10px; font-size:12px; color:#555;">
+      年化 capex $1950亿 ÷ 年化云收入 $992亿 ≈ <strong>2.0:1</strong><br>
+      但这笔 capex 摊销周期为 3-5 年，且 AI 收入增速远高于 capex 增速<br>
+      ——短期看似不平衡，长期关键看 AI 收入能否持续翻倍
+    </p>
+  </div>
+</section>
+
+<!-- Footer -->
+<section style="background:#0f172a;padding:32px 24px;text-align:center;">
+  <div style="max-width:680px;margin:0 auto;">
+    <p style="color:#64748b;font-size:13px;margin:0 0 8px;">本文数据来源：四巨头 2026 Q2 财报（2026 年 7 月底-8 月初发布）</p>
+    <p style="color:#64748b;font-size:13px;margin:0;">公众号「AI 深度解读」· 让普通人也能了解 AI，不制造焦虑</p>
+  </div>
+</section>
+
+</body>
+</html>

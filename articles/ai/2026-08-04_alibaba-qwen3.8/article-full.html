@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>16 天，265 次提交，零人类干预 —— 阿里 Qwen3.8 从"会写代码"跨入"会交付项目"</title>
+<style>
+  body { margin: 0; padding: 0; background: #0f172a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif; color: #e2e8f0; line-height: 1.9; font-size: 16px; }
+  .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  h1 { font-size: 26px; font-weight: 800; line-height: 1.45; margin: 0 0 8px; color: #f1f5f9; }
+  h2 { font-size: 20px; font-weight: 700; margin: 0 0 18px; color: #f8fafc; border-left: 4px solid #3b82f6; padding-left: 14px; }
+  h3 { font-size: 17px; font-weight: 700; margin: 0 0 12px; color: #cbd5e1; }
+  p { margin: 0 0 16px; }
+  a { color: #3b82f6; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  strong { color: #f1f5f9; }
+  em { color: #94a3b8; font-style: normal; }
+
+  /* Header */
+  .header { background: #0a0f1e; border-bottom: 1px solid #1e293b; padding: 32px 0 24px; }
+  .header .tag { display: inline-block; background: #1e293b; color: #3b82f6; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 4px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
+  .header .meta { color: #64748b; font-size: 14px; margin-top: 8px; }
+  .header .meta span { margin-right: 18px; }
+
+  /* Hero */
+  .hero { background: #0f172a; padding: 48px 0; text-align: center; }
+  .hero .hero-num { font-size: 72px; font-weight: 900; color: #3b82f6; line-height: 1; margin-bottom: 8px; }
+  .hero .hero-unit { font-size: 18px; color: #94a3b8; letter-spacing: 4px; }
+  .hero .hero-sub { font-size: 18px; color: #cbd5e1; margin-top: 18px; }
+  .hero .hero-divider { width: 60px; height: 2px; background: #3b82f6; margin: 24px auto; }
+
+  /* Key data row */
+  .data-row { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 28px 32px; margin: 32px 0; }
+  .data-row .data-grid { text-align: center; }
+  .data-row .data-item { display: inline-block; width: 23%; vertical-align: top; }
+  .data-row .data-val { font-size: 28px; font-weight: 800; color: #3b82f6; line-height: 1.2; margin-bottom: 4px; }
+  .data-row .data-label { font-size: 13px; color: #94a3b8; line-height: 1.4; }
+
+  /* Highlight box */
+  .hl-box { background: #0a1629; border: 1px solid #1e3a5f; border-left: 4px solid #3b82f6; border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 24px 0; }
+  .hl-box p { margin: 0.4em 0; font-size: 15px; }
+  .hl-box strong { color: #60a5fa; }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+  th { text-align: left; padding: 10px 14px; background: #1e293b; color: #94a3b8; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #334155; }
+  td { padding: 10px 14px; border-bottom: 1px solid #1e293b; vertical-align: top; }
+  tr:nth-child(even) td { background: #0f1a2e; }
+
+  /* Win/Lose labels */
+  .win-tag { display: inline-block; background: #064e3b; color: #34d399; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 3px; }
+  .lose-tag { display: inline-block; background: #451a03; color: #fbbf24; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 3px; }
+
+  /* Section */
+  .section { padding: 40px 0; border-bottom: 1px solid #1e293b; }
+  .section:last-of-type { border-bottom: none; }
+
+  /* Quote */
+  blockquote { border-left: 3px solid #334155; padding: 12px 20px; margin: 20px 0; background: #0a1629; border-radius: 0 6px 6px 0; font-style: italic; color: #94a3b8; }
+  blockquote strong { color: #cbd5e1; }
+
+  /* Checklist */
+  .check-list { list-style: none; padding: 0; margin: 16px 0; }
+  .check-list li { padding: 6px 0 6px 24px; position: relative; margin-bottom: 4px; }
+  .check-list li::before { content: '▸'; position: absolute; left: 0; color: #3b82f6; font-weight: 700; }
+
+  /* Footer */
+  .footer { background: #0a0f1e; border-top: 1px solid #1e293b; padding: 40px 0; margin-top: 20px; }
+  .footer .refs { font-size: 13px; color: #64748b; line-height: 2; }
+  .footer .refs li { margin-bottom: 2px; }
+  .footer .disclaimer { font-size: 12px; color: #475569; margin-top: 24px; border-top: 1px solid #1e293b; padding-top: 16px; text-align: center; }
+
+  /* Metadata bar */
+  .meta-bar { background: #1e293b; border-radius: 8px; padding: 16px 20px; margin: 32px 0; font-size: 13px; color: #94a3b8; line-height: 1.7; }
+  .meta-bar strong { color: #cbd5e1; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="container">
+    <div class="tag">阿里巴巴 · 千问系列</div>
+    <h1>16 天，265 次提交，零人类干预</h1>
+    <p style="color:#cbd5e1;font-size:17px;margin:0 0 4px;">阿里 Qwen3.8 发布，国产大模型从"会写代码"跨入"会交付项目"</p>
+    <div class="meta">
+      <span>📅 2026-08-04</span>
+      <span>🏷️ AI 深度解读</span>
+      <span>📊 2.4T MoE · 1M 上下文</span>
+    </div>
+  </div>
+</div>
+
+<!-- Metadata Bar -->
+<div class="container">
+  <div class="meta-bar">
+    <strong>数据口径说明：</strong>Benchmark 数据来自阿里官方公开的技术报告及天池平台评测结果。oh-my-cli 仓库数据截至 2026 年 8 月 3 日，可公开审计。财务数据引用阿里巴巴集团 2026 财年 Q4 财报及投资者电话会议。第三方评测（SWE-bench Pro、TextArena 等）来自各榜单公开排名。<br>
+    <strong>免责声明：</strong>本文为技术分析文章，不构成任何投资建议。所有观点仅代表作者个人判断。
+  </div>
+</div>
+
+<!-- Hero Numbers -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-num">265</div>
+    <div class="hero-unit">次提交 / 127 个 PR / 16 天</div>
+    <div class="hero-divider"></div>
+    <div class="hero-sub">全程没有人类工程师写过一行代码。<br>AI 独立交付了一个真实可运行的项目。</div>
+  </div>
+</div>
+
+<!-- Key Data Row -->
+<div class="container">
+  <div class="data-row">
+    <div class="data-grid">
+      <div class="data-item">
+        <div class="data-val">2.4T</div>
+        <div class="data-label">总参数<br>MoE 稀疏架构</div>
+      </div>
+      <div class="data-item">
+        <div class="data-val">95B</div>
+        <div class="data-label">单次激活<br>稀疏度 1:25</div>
+      </div>
+      <div class="data-item">
+        <div class="data-val">1M</div>
+        <div class="data-label">上下文窗口<br>原生多模态</div>
+      </div>
+      <div class="data-item">
+        <div class="data-val">¥12</div>
+        <div class="data-label">国内输入<br>/ 百万 tokens</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 1 -->
+<div class="container">
+  <div class="section">
+    <h2>一、规格不是新闻，但有两个细节值得单说</h2>
+
+    <p>8 月 3 日上午，阿里巴巴正式发布 Qwen3.8-Max。Preview 版早在 7 月 19 日上线，比 Kimi K3 晚两天，期间以"日更"模式迭代两周，部分开发者戏称"裸奔式发布"——限时一折换大规模用户反馈 <sup>[4][7]</sup>。正式版在 Preview 基础上经过多轮打磨。</p>
+
+    <table>
+      <tr><th>规格项</th><th>Qwen3.8-Max</th></tr>
+      <tr><td>总参数量</td><td>2.4 万亿（2.4T）</td></tr>
+      <tr><td>单次激活参数</td><td>95B（MoE 稀疏架构）</td></tr>
+      <tr><td>上下文窗口</td><td>1M tokens</td></tr>
+      <tr><td>多模态</td><td>原生视觉理解（非外挂 OCR）</td></tr>
+      <tr><td>开源计划</td><td>下周开源 Max 权重 + Qwen3.8-27B</td></tr>
+      <tr><td>API 价格（国内）</td><td>输入 ¥12/百万，输出 ¥36/百万，缓存 ¥1.5</td></tr>
+    </table>
+
+    <p><strong>第一，2.4T 总参数但只激活 95B。</strong>稀疏度接近 1:25，推理时只有约 4% 的参数在干活。这意味着模型的"体重"是超重量级，但"代谢"是中量级。这就是为什么输出价能做到 ¥36/百万——稠密 2.4T 这个价格跑不出来。</p>
+
+    <p><strong>第二，Max 级首次开源。</strong>过去千问的规矩是"开源中杯、闭源大杯"。这次阿里把最大杯也放出来了。对金融、政务等需要私有化部署的客户，这句话比任何跑分都有分量。</p>
+  </div>
+</div>
+
+<!-- Section 2 -->
+<div class="container">
+  <div class="section">
+    <h2>二、16 天，从空文件夹到可运行项目</h2>
+
+    <p>oh-my-cli 仓库公开可审计。任务起点是一个空文件夹，终点是一个可用的自进化智能体框架。中间 16 天，模型自己做了这些事：</p>
+
+    <ul class="check-list">
+      <li>自己建 Issue、自己领任务、自己写代码</li>
+      <li>写完跑 E2E 测试，通过才合 PR</li>
+      <li>不通过就把错误路由回 Issue，重新修</li>
+      <li>全程由一个 watchdog 监控状态机，防止静默挂死</li>
+    </ul>
+
+    <p>这套机制里，模型本身只占一半。另一半是外围工程——任务状态机、自动领取、CI 闭环、异常重入。但能把这两半捏在一起连续跑 <strong>16 天不崩</strong>，说明模型的<strong>长程一致性</strong>（long-horizon coherence）已经跨过了门槛。</p>
+
+    <p>这个门槛是什么？写一个函数，模型只需维持几百 token 的上下文。写一个能跑 16 天的项目，模型要在成千上万次交互中记住架构决策、不推翻昨天的设计、不在第 200 次提交时把第 10 次的接口改崩。过去两年，绝大多数"AI 自主编程"在第四五天开始自我矛盾。</p>
+
+    <p>阿里还公布了其他几组长周期任务数据：科研复现连续运行约 125 小时、芯片设计经历约 500 轮交互、电商经营模拟 365 天周期取得 4.16 倍回报。这些任务的共同点不是难度，而是<strong>时间</strong>——都不是"一问一答"，而是"派个活，过几天来收"。</p>
+  </div>
+</div>
+
+<!-- Section 3 -->
+<div class="container">
+  <div class="section">
+    <h2>三、跑分怎么读：赢的地方很硬，输的地方很诚实</h2>
+
+    <p>阿里这次公开的 Benchmark 表异常完整——连输的项目都列出来了。值得尊重。</p>
+
+    <h3><span class="win-tag">WIN</span> 赢的</h3>
+
+    <table>
+      <tr><th>评测</th><th>Qwen3.8-Max</th><th>对比</th><th>含义</th></tr>
+      <tr><td>PaperBench（科研复现）</td><td>93.0</td><td>Fable 5: 88.8</td><td>长程任务执行力</td></tr>
+      <tr><td>IFBench（指令遵循）</td><td>82.8</td><td>Fable 5: 63.5</td><td>工程可用性地基，差距近 20 分</td></tr>
+      <tr><td>OSWorld-Verified（电脑操作）</td><td>86.1</td><td>主流模型首位</td><td>GUI Agent，落地价值高</td></tr>
+      <tr><td>Arena Frontend Code</td><td>—</td><td>仅差 Claude Opus 5 High 1 分</td><td>匿名 PK 榜，人为刷分难度大</td></tr>
+    </table>
+
+    <h3><span class="lose-tag">LOSE</span> 输的</h3>
+
+    <table>
+      <tr><th>评测</th><th>Qwen3.8-Max</th><th>对比</th><th>含义</th></tr>
+      <tr><td>SWE-bench Pro</td><td>67.7</td><td>Fable 5: 80.0</td><td>仓库级精准修复，差距 12.3 分</td></tr>
+      <tr><td>Terminal-Bench 2.1</td><td>86.6</td><td>GPT-5.6 Sol: 88.8</td><td>终端驱动 Agent 作业</td></tr>
+      <tr><td>TextArena 综合</td><td>第五名</td><td>Anthropic 系列仍居前</td><td>匿名 PK 综合排名</td></tr>
+    </table>
+
+    <p>SWE-bench Pro 这行输得很诚实，而且恰恰是对大多数开发者最重要的一行——考的是"给我修 Issue#134"，不是从零建项目，而是插进已有代码库做外科手术。</p>
+
+    <p>赢和输放在一起看，Qwen3.8-Max 的能力画像很清晰：</p>
+    <p><span class="win-tag">擅长</span> 从零开始、长周期、目标开放的任务——给方向，自己搭框架、自己验证、自己迭代。</p>
+    <p><span class="lose-tag">相对弱</span> 插进已有大型代码库做精准修复——这是 Fable 5 的强项。</p>
+  </div>
+</div>
+
+<!-- Section 4 -->
+<div class="container">
+  <div class="section">
+    <h2>四、价格、开源、千问办公：阿里在下一盘什么棋</h2>
+
+    <p>定价直白：国际价格是 Claude Opus 5 的 <strong>40%（输入）和 24%（输出）</strong>。国内 ¥12/¥36 比 DeepSeek V4-Flash（¥1/¥2）贵一个数量级，但也贵得有理——多模态、1M 上下文、Max 级智能。</p>
+
+    <p>关键细节：隐式缓存命中 <strong>¥1.5/百万</strong>。对 Agent 应用——系统提示词长、工具定义多、多轮反复调用——缓存命中率往往 60%+，真实账单可能比标价低不少。</p>
+
+    <p>同日开启公测的「千问办公」整合了 QoderWork、MuleRun、悟空三款产品，核心设计是<strong>"组织级 Skill"</strong>：资深员工完成多轮交互流程后，把全过程沉淀为可复用 Skill，新人一键调用。解决了企业上 AI 的最大阻力——经验无法沉淀、质量无法统一。</p>
+
+    <blockquote>
+      <strong>阿里的商业逻辑：</strong>最强模型当矛，办公入口当盾，把 Token 消耗绑进企业日常工作流。参考：阿里云 AI 相关产品收入连续 11 个季度三位数增长，占外部云收入 30%；AI MaaS 业务 ARR 突破 100 亿元，目标年底 300 亿元 <sup>[1]</sup>。
+    </blockquote>
+  </div>
+</div>
+
+<!-- Section 5 -->
+<div class="container">
+  <div class="section">
+    <h2>五、中国 AI 军团这一周打了什么牌</h2>
+
+    <p>7 月 31 日—8 月 3 日，四天之内：</p>
+
+    <ul class="check-list">
+      <li><strong>7·31</strong> 字节 Seedance 2.5 单次视频生成拉至 30 秒 | MiniMax H3 开源登顶视频编辑榜 | DeepSeek V4-Flash 正式版 API 公测</li>
+      <li><strong>8·03</strong> 阿里 Qwen3.8-Max 压轴发布</li>
+    </ul>
+
+    <p>四家国产厂商，三天之内把"参数、开源、Agent、价格"四张牌全打了一遍。</p>
+
+    <div class="hl-box">
+      <p><strong>趋势判断：</strong>2024-2025 年，大模型比的是"参数和跑分"。</p>
+      <p><strong>2026 年，比的是"能不能自己把活干完"。</strong></p>
+    </div>
+
+    <p>DeepSeek V4-Flash 证明参数不变、纯靠后训练把 Agent 能力拉高 7.5 倍 <sup>[2]</sup>。MiniMax H3 证明开源能在视频编辑上登顶。Qwen3.8-Max 证明模型可以连续工作 16 天交付一个真实项目。三件事指向同一个方向——模型正在从"回答问题的工具"变成<strong>"承接任务的角色"</strong>。</p>
+
+    <blockquote>
+      "由于美国的芯片限制或普遍的怀疑，许多投资者继续低估中国的 AI 模型。实际上，差距可能要小得多，而且正在迅速缩小。"<br>— Vey-Sern Ling，瑞士 UBP 董事总经理 <sup>[3]</sup>
+    </blockquote>
+  </div>
+</div>
+
+<!-- Section 6 -->
+<div class="container">
+  <div class="section">
+    <h2>六、冷静一下：五个必须说清楚的边界</h2>
+
+    <p><strong>1. Benchmark 数字来自阿里自己的运行。</strong>截至 8 月 3 日无独立第三方复测。oh-my-cli 仓库公开可审计，但科研复现和竞赛成绩在阿里自家平台。下周权重开源后第三方跑出的数字才是真正的验收点。</p>
+
+    <p><strong>2. 跑分领先 ≠ 日常体感领先。</strong>PaperBench 93.0、IFBench 82.8 对应特定基准。真实工作中的模糊指令、脏数据、多轮纠偏，任何榜单测不出来。Fable 5 在某些主观体验维度上依然被很多重度用户认为更"懂人话"。</p>
+
+    <p><strong>3. "开源"和"用得起的开源"是两回事。</strong>2.4T 参数对绝大多数团队门槛太高。真正的落地选项是下周的 27B 版本。历史经验：小尺寸版本通常只能继承旗舰 60-75% 的综合能力。</p>
+
+    <p><strong>4. Preview 争议不可回避。</strong>Preview 版被部分开发者称为"裸奔式发布"——有参数没数据、有口号没证据 <sup>[7]</sup>。部分用户反馈后劲不足、稳定性还差口气。阿里用"日更+限时一折"策略换反馈做最后打磨，此策略是否适用于旗舰级模型，业界仍有争议。</p>
+
+    <p><strong>5. 团队变动不容忽视。</strong>Qwen 系列前技术负责人林俊旸已于今年 3 月离开阿里。Qwen3.8 是林俊旸离职 140 天后重回开源路线的第一款旗舰 <sup>[7]</sup>。此次 Max 开源，某种程度上也是在对外部疑虑做出回应。</p>
+  </div>
+</div>
+
+<!-- Closing -->
+<div class="container">
+  <div style="text-align:center;padding:48px 0;">
+    <p style="font-size:18px;color:#cbd5e1;margin-bottom:8px;">2026 年 8 月这个时点，Qwen3.8-Max 给出了国产旗舰模型迄今最具说服力的长程自主交付证据。</p>
+    <p style="font-size:16px;color:#94a3b8;">不是"又快又强"，是<strong style="color:#cbd5e1;">"能跑 16 天不崩"</strong>。这个区别，比任何跑分都重要。</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="container">
+    <h3 style="color:#94a3b8;font-size:15px;margin-bottom:16px;">📚 参考文献</h3>
+    <ol class="refs">
+      <li>[1] 阿里巴巴集团 2026 财年 Q4 财报（2026 年 3 月季度）及投资者电话会议</li>
+      <li>[2] DeepSeek V4-Flash 正式版技术报告，2026 年 7 月</li>
+      <li>[3] 腾讯新闻，2026 年 8 月 3 日，"阿里巴巴发布千问 3.8-Max"</li>
+      <li>[4] 财新网，2026 年 8 月 3 日，"阿里发布 2.4 万亿参数大模型 Qwen3.8"</li>
+      <li>[5] AI工具宝箱，2026 年 8 月 4 日，"Qwen3.8-Max 发布：2.4万亿参数首次开源超大杯"</li>
+      <li>[6] 掘金，2026 年 8 月 4 日，"Qwen3.8-Max 拆解：2.4T 参数首个开源 Max 级模型"</li>
+      <li>[7] Tech星期天（腾讯新闻），2026 年 7 月 23 日，"林俊旸离职140天，Qwen3.8重回开源"</li>
+      <li>[8] 新浪财经，2026 年 8 月 3 日，"阿里重磅发布：千问办公开启公测"</li>
+    </ol>
+
+    <div class="disclaimer">
+      <p>AI 深度解读 · 报道新闻背后的商业逻辑和技术趋势</p>
+      <p>本文所有数据均标注来源，可溯源核查 · 不构成任何投资建议</p>
+      <p>数据口径说明：本文 Benchmark 数据来自阿里官方公开技术报告及天池平台，截止 2026-08-03。股价数据来自港交所/纳斯达克公开行情。</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

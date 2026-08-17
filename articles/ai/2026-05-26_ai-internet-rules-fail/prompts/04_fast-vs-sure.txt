@@ -1,0 +1,31 @@
+请生成一张手绘风格的信息图，对应"反共识四：快不一定赢，慢有时是产品战略"。
+
+图片规格：
+- 比例 16:9，宽 800px
+- 背景色：米黄色 #fffff7
+- 整体风格：手绘线框、铅笔草图感
+
+图片内容结构（分左右两部分）：
+
+【左栏：互联网逻辑 — "快"】
+- 标题："Internet Playbook: Move Fast"（手写风格，红色）
+- 三个手绘方框纵向排列，快速箭头串联：
+  - 框1："Build fast"（快速上线）— 闪电图标
+  - 框2："Ship fast"（快速发布）— 火箭图标
+  - 框3："Grow fast"（快速抢用户）— 向上箭头
+- 底部评价（绿色对勾）："Works for apps without consequences"
+
+【右栏：AI 逻辑 — "稳"】
+- 标题："AI Playbook: Move Sure"（手写风格，蓝色）
+- 五个手绘小图标/文字，横向排列，代表 AI 产品要考虑的维度：
+  - 图标1：盾牌 → "Reliable"（可靠）
+  - 图标2：开关 → "Controllable"（可控）
+  - 图标3：音量静音 → "Non-intrusive"（不打扰）
+  - 图标4：拼图 → "Integrated"（融入流程）
+  - 图标5：责任盾牌 → "Accountable"（可问责）
+- 底部金句（用方框框起来，手绘感）："Slow is a strategy when trust is the product"
+
+【分隔】
+- 左右两栏之间用一条手绘竖虚线分开
+
+所有中英文文字必须清晰可读。手绘风格，铅笔线稿 + 随意阴影。

@@ -1,17 +1,17 @@
 #!/bin/bash
 # ============================================================
 # 索引更新脚本
-# 自动扫描 content/ 目录，生成最新的文章列表
+# 自动扫描 articles/ai/ 目录，生成最新的文章列表
 # 更新以下文件：
-#   1. content/README.md 中的"已有选题"表格
+#   1. articles/ai/README.md 中的"已有选题"表格
 #   2. 根 README.md 中的文章列表
-#   3. content/ai-articles-index.html 中的文章条目（部分）
+#   3. articles/ai/index.html 中的文章条目（部分）
 # 用法: ./scripts/update-index.sh
 # ============================================================
 
 set -euo pipefail
 
-CONTENT_DIR="content"
+CONTENT_DIR="articles/ai"
 README_FILE="${CONTENT_DIR}/README.md"
 ROOT_README="README.md"
 
@@ -51,7 +51,7 @@ echo "  找到 ${#topics[@]} 个选题"
 
 echo ""
 echo "📝 更新 README.md 文章列表..."
-echo "  请在 content/README.md 中手动更新已有选题表格"
+echo "  请在 articles/ai/README.md 中手动更新已有选题表格"
 echo "  或使用编辑器替换"
 
 echo ""
@@ -65,9 +65,9 @@ echo ""
 echo "✅ 索引检查完成"
 echo ""
 echo "提示: 每次新增或发布选题后，手动更新:"
-echo "  1. content/README.md - 已有选题表格"
+echo "  1. articles/ai/README.md - 已有选题表格"
 echo "  2. 根 README.md - 文章列表"
-echo "  3. content/ai-articles-index.html - 网页版索引"
+echo "  3. articles/ai/index.html - 网页版索引"
 echo ""
 
 # 生成根 README 文章列表建议

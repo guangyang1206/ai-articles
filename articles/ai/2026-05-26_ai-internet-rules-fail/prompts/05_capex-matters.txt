@@ -1,0 +1,34 @@
+请生成一张手绘风格的信息图，对应"反共识五：AI 投入不一定拖累利润"。
+
+图片规格：
+- 比例 16:9，宽 800px
+- 背景色：米黄色 #fffff7
+- 整体风格：手绘线框、铅笔草图感
+
+图片内容结构（分上下两行，共 4 个象限）：
+
+【左上：烧钱买增长 — 红色区域】
+- 标题："Burning Cash for Hype"（红色手写字体）
+- 四个手绘标签（纵向排列，每个前面打红色叉号）：
+  - ✗ Subsidizing users（补贴用户）
+  - ✗ Low-value queries（低价值调用）
+  - ✗ No clear paying path（无清晰付费路径）
+  - ✗ DAU as the only KPI（唯 DAU 论）
+- 底部箭头向下，标注："Cash flow ↓"
+
+【右上：提升主业效率 — 绿色区域】
+- 标题："Improving Core Business"（绿色手写字体）
+- 五个手绘标签（纵向排列，每个前面打绿色对勾）：
+  - ✓ Ad targeting efficiency（广告投放效率）
+  - ✓ Content production cost ↓（内容生产成本降低）
+  - ✓ Customer service automation（客服自动化）
+  - ✓ Software monetization（软件变现增强）
+  - ✓ Gross margin ↑（毛利率提升）
+- 底部箭头向上，标注："Margin ↑"
+
+【底部金句（跨全图宽度）】
+- 用深色手绘方框框起来
+- 文字："Not all AI CapEx is created equal"
+- 中文小字："不是投了多少钱，而是有没有进入高价值业务闭环"
+
+所有中英文文字必须清晰可读。手绘风格，铅笔线稿 + 随意手绘阴影。

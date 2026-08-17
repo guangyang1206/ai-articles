@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 编码 Agent 终端战争 - 贴图分享卡片</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+.card {
+  width: 375px;
+  min-height: 520px;
+  border-radius: 16px;
+  padding: 40px 32px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Card 1: 封面 ===== */
+.card-1 {
+  background: #000000;
+  color: #ffffff;
+}
+
+.card-1 .tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid #333;
+  border-radius: 100px;
+  font-size: 11px;
+  color: #888;
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+}
+
+.card-1 h1 {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.card-1 h1 span {
+  color: #10b981;
+}
+
+.card-1 .subtitle {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.7;
+  margin-bottom: auto;
+}
+
+.card-1 .brand-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.card-1 .brand-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.card-1 .brand-tag.blue { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+.card-1 .brand-tag.purple { background: rgba(139,92,246,0.15); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
+.card-1 .brand-tag.gray { background: rgba(107,114,128,0.15); color: #9ca3af; border: 1px solid rgba(107,114,128,0.3); }
+.card-1 .brand-tag.yellow { background: rgba(234,179,8,0.15); color: #fbbf24; border: 1px solid rgba(234,179,8,0.3); }
+.card-1 .brand-tag.green { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+
+.card-1 .footer-info {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #222;
+}
+
+.card-1 .footer-info p {
+  font-size: 11px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ===== Card Light ===== */
+.card-light {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #111;
+}
+
+.card-light .card-number {
+  font-size: 11px;
+  font-weight: 600;
+  color: #10b981;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.card-light h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+}
+
+.card-light .content {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.9;
+  flex: 1;
+}
+
+.card-light .content strong {
+  color: #111;
+}
+
+.card-light .highlight-box {
+  background: #f9fafb;
+  border-left: 3px solid #10b981;
+  padding: 14px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.card-light .code-block {
+  background: #111827;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  font-family: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
+  font-size: 12px;
+  color: #e5e7eb;
+  line-height: 1.8;
+}
+
+.card-light .card-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-light .card-footer .page-num {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.card-light .card-footer .author {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* ===== Card Dark ===== */
+.card-dark {
+  background: #0a0a0a;
+  border: 1px solid #1f1f1f;
+  color: #fafafa;
+}
+
+.card-dark .card-number {
+  font-size: 11px;
+  font-weight: 600;
+  color: #10b981;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.card-dark h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+  color: #fafafa;
+}
+
+.card-dark .content {
+  font-size: 14px;
+  color: #a1a1aa;
+  line-height: 1.9;
+  flex: 1;
+}
+
+.card-dark .content strong {
+  color: #fafafa;
+}
+
+.card-dark .highlight-box {
+  background: #18181b;
+  border-left: 3px solid #10b981;
+  padding: 14px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #d4d4d8;
+}
+
+.card-dark .code-block {
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  font-family: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
+  font-size: 12px;
+  color: #a1a1aa;
+  line-height: 1.8;
+}
+
+.card-dark .card-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #27272a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-dark .card-footer .page-num {
+  font-size: 11px;
+  color: #52525b;
+}
+
+.card-dark .card-footer .author {
+  font-size: 11px;
+  color: #52525b;
+}
+
+/* Table styling */
+.mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 12px;
+}
+
+.mini-table th {
+  text-align: left;
+  padding: 8px 10px;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+  color: #374151;
+}
+
+.mini-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #555;
+}
+
+.mini-table-dark th {
+  background: #18181b;
+  border-bottom: 1px solid #27272a;
+  color: #d4d4d8;
+}
+
+.mini-table-dark td {
+  border-bottom: 1px solid #1f1f1f;
+  color: #a1a1aa;
+}
+
+/* Metric pills */
+.metric-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+
+.metric-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.metric-pill-green {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+}
+
+.metric-pill-blue {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+}
+
+.metric-pill-purple {
+  background: #f5f3ff;
+  border: 1px solid #ddd6fe;
+  color: #5b21b6;
+}
+
+.metric-pill-amber {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+}
+
+/* Player mini card */
+.player-mini {
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin: 8px 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.player-mini .pm-name {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.player-mini .pm-desc {
+  color: #666;
+  font-size: 12px;
+}
+
+/* Print/Screenshot helper */
+@media print {
+  body { background: white; }
+  .card { break-inside: avoid; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="card-container">
+
+<!-- ===== CARD 1: 封面 ===== -->
+<div class="card card-1">
+  <span class="tag">深度解读 · 2026.05.17</span>
+  <h1>AI 编码 Agent<br><span>终端战争</span></h1>
+  <p class="subtitle">
+    五强争霸，谁能成为开发者的"新操作系统"？
+  </p>
+  <div class="brand-logos">
+    <span class="brand-tag blue">Claude Code</span>
+    <span class="brand-tag purple">Cursor</span>
+    <span class="brand-tag gray">Copilot</span>
+    <span class="brand-tag yellow">Windsurf</span>
+    <span class="brand-tag green">Grok Build</span>
+  </div>
+  <p class="subtitle" style="margin-top: 8px;">
+    从代码补全到 Agent 自主编码<br>
+    终端正在取代编辑器成为核心入口<br><br>
+    · 谁在烧钱？谁在免费？<br>
+    · 工程师的角色还能是什么？<br>
+    · 普通人到底该怎么选？
+  </p>
+  <div class="footer-info">
+    <p>「AI 深度解读」· 2026.05.17</p>
+  </div>
+</div>
+
+<!-- ===== CARD 2: 五强概览 ===== -->
+<div class="card card-light">
+  <span class="card-number">01 / 07</span>
+  <h2>🏆 五强争霸：谁在参战？</h2>
+  <div class="content">
+    <p><strong>AI 编码 Agent 战场五大玩家全景：</strong></p>
+
+    <table class="mini-table">
+      <tr><th>产品</th><th>公司</th><th>价格</th><th>核心定位</th></tr>
+      <tr><td><strong style="color:#60a5fa">Claude Code</strong></td><td>Anthropic</td><td style="color:#ef4444;font-weight:600">$200/月</td><td>终端 Agent · 自主编码最强</td></tr>
+      <tr><td><strong style="color:#a78bfa">Cursor</strong></td><td>Anysphere</td><td>$20/月</td><td>AI-first IDE · 体验最丝滑</td></tr>
+      <tr><td><strong style="color:#9ca3af">Copilot</strong></td><td>GitHub/MS</td><td>$10-39/月</td><td>VS Code 深度集成 · 企业级</td></tr>
+      <tr><td><strong style="color:#fbbf24">Windsurf</strong></td><td>OpenAI</td><td>免费 / $15</td><td>Agentic IDE · 免费层慷慨</td></tr>
+      <tr><td><strong style="color:#34d399">Grok Build</strong></td><td>xAI</td><td><strong style="color:#10b981">免费</strong></td><td>终端 CLI · 完全免费</td></tr>
+    </table>
+
+    <div class="metric-row">
+      <span class="metric-pill metric-pill-blue">💙 Claude Code 跑分最强</span>
+      <span class="metric-pill metric-pill-purple">💜 Cursor 体验最佳</span>
+      <span class="metric-pill metric-pill-green">💚 Grok Build 免费</span>
+      <span class="metric-pill metric-pill-amber">💛 Windsurf 性价比</span>
+    </div>
+
+    <div class="highlight-box">
+      💡 不是"哪个更好"的问题，是"哪个更适合你"——不同场景有不同的最优解。
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">1/7</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 3: Claude Code ===== -->
+<div class="card card-dark">
+  <span class="card-number">02 / 07</span>
+  <h2>💙 Claude Code：终端最强王者</h2>
+  <div class="content">
+    <p><strong>Anthropic 的终端原生编码 Agent</strong></p>
+
+    <p style="margin-top:12px">直接在命令行运行，不需要编辑器。自主读代码、理解上下文、写代码、跑测试、修 Bug、提 PR。</p>
+
+    <div class="code-block">
+      $ claude "为这个 repo 加一个<br>健康检查端点"<br><br>
+      → 读取项目结构<br>
+      → 理解路由逻辑<br>
+      → 实现 /health endpoint<br>
+      → 添加测试<br>
+      → 运行通过 ✓
+    </div>
+
+    <p><strong>数据说话：</strong></p>
+    <p>• SWE-bench <strong style="color:#10b981">80%+</strong> 跑分，行业最高</p>
+    <p>• Claude Opus 4 系列驱动，代码理解力最强</p>
+    <p>• 自主性最高，能处理复杂任务链</p>
+    <p>• Anthropic 营收从 $90 亿 → $300 亿+</p>
+
+    <div class="highlight-box">
+      💰 代价：$200/月 + 重度使用数千美元 / 月 — Uber 4 个月烧光全年预算
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">2/7</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 4: Cursor vs Copilot ===== -->
+<div class="card card-light">
+  <span class="card-number">03 / 07</span>
+  <h2>⚔️ Cursor vs Copilot：IDE 内决战</h2>
+  <div class="content">
+    <p><strong>两条路线的终极对决：</strong></p>
+    <br>
+
+    <table class="mini-table">
+      <tr><th>维度</th><th style="color:#a78bfa"><strong>Cursor</strong></th><th style="color:#9ca3af"><strong>Copilot</strong></th></tr>
+      <tr><td>本质</td><td>AI-first 编辑器</td><td>VS Code 插件</td></tr>
+      <tr><td>体验</td><td>⭐ 丝滑，多模型切换</td><td>⭐ 原生深度集成</td></tr>
+      <tr><td>Agent 模式</td><td>✅ 完整 Agent</td><td>✅ Copilot Workspace</td></tr>
+      <tr><td>价格</td><td>$20 / 月</td><td>$10-39 / 月</td></tr>
+      <tr><td>渠道</td><td>从内部瓦解 VS Code</td><td>全球最大开发者生态</td></tr>
+      <tr><td>隐忧</td><td>依赖 VS Code 生态</td><td>Claude Code 绕道终端抢用户</td></tr>
+    </table>
+
+    <div class="highlight-box">
+      🔥 更残酷的是：OpenAI 收购 Windsurf 布局 IDE，终端选手直接绕路。Copilot 正面临两面夹击。
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">3/7</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 5: Windsurf & Grok Build ===== -->
+<div class="card card-dark">
+  <span class="card-number">04 / 07</span>
+  <h2>💛🤍 Windsurf + Grok Build</h2>
+  <div class="content">
+    <p><strong>两个搅局者，两条不同的路</strong></p>
+    <br>
+
+    <div class="player-mini" style="background:#18181b;border:1px solid #27272a;border-left:3px solid #fbbf24">
+      <div class="pm-name" style="color:#fbbf24">Windsurf（OpenAI）</div>
+      <div class="pm-desc">原 Codeium 团队打造的 Agentic IDE，强调"Flow"协作模式。OpenAI 入局 IDE 赛道的战略产品，免费层最慷慨。</div>
+      <div class="pm-desc" style="margin-top:6px;color:#a1a1aa">💰 免费版可用 · Pro $15/月</div>
+    </div>
+
+    <div class="player-mini" style="background:#18181b;border:1px solid #27272a;border-left:3px solid #34d399">
+      <div class="pm-name" style="color:#34d399">Grok Build（xAI）</div>
+      <div class="pm-desc">Elon Musk 的 CLI 编码工具，背靠 Colossus 超级算力集群。Grok 模型驱动，直接对标 Claude Code。</div>
+      <div class="pm-desc" style="margin-top:6px;color:#10b981">💰 完全免费（需 X Premium）</div>
+    </div>
+
+    <div class="highlight-box">
+      💡 一个拼性价比（Windsurf），一个玩免费策略（Grok Build）。格局已从"谁更强"演变为"谁能活下去"。
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">4/7</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 6: 成本与选型 ===== -->
+<div class="card card-light">
+  <span class="card-number">05 / 07</span>
+  <h2>💰 真实成本 &amp; 选型指南</h2>
+  <div class="content">
+    <p><strong>按月订阅只是冰山一角：</strong></p>
+
+    <table class="mini-table">
+      <tr><th>工具</th><th>月费</th><th>隐性成本</th></tr>
+      <tr><td>Claude Code</td><td>$200+</td><td>重度使用可达数千美元</td></tr>
+      <tr><td>Cursor</td><td>$20</td><td>多模型切换额外计费</td></tr>
+      <tr><td>Copilot</td><td>$10-39</td><td>企业版按席位，成本线性</td></tr>
+      <tr><td>Windsurf</td><td>$0-15</td><td>免费层够用，升级不贵</td></tr>
+      <tr><td>Grok Build</td><td>$0</td><td>需 X Premium（$8-16/月）</td></tr>
+    </table>
+
+    <p style="margin-top:14px"><strong>按场景推荐：</strong></p>
+    <p>🎯 <strong>高级工程师</strong> → Claude Code（自主性强）</p>
+    <p>🎯 <strong>日常开发</strong> → Cursor（体验最佳）</p>
+    <p>🎯 <strong>企业团队</strong> → Copilot（合规优先）</p>
+    <p>🎯 <strong>预算有限</strong> → Windsurf（性价比高）</p>
+    <p>🎯 <strong>尝鲜用户</strong> → Grok Build（免费）</p>
+
+    <div class="highlight-box">
+      🧠 个人建议：主力 Cursor/Windsurf 日常开发 + 学习 Claude Code 处理复杂任务。别把鸡蛋放一个篮子。
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="page-num">5/7</span>
+    <span class="author">@Guang Yang</span>
+  </div>
+</div>
+
+<!-- ===== CARD 7: 总结 ===== -->
+<div class="card card-1" style="min-height:480px">
+  <span class="tag">总结 · TAKEAWAY</span>
+  <h1 style="font-size:22px">范式之变：未来属于 <span>Agent</span></h1>
+  <div class="subtitle" style="margin-top:20px;line-height:2.2;font-size:14px">
+    <p>1. 2026 年正式进入 <span style="color:#10b981">Agent 编码时代</span><br>
+    — 从补全 → 对话 → 自主</p>
+    <br>
+    <p>2. <span style="color:#10b981">终端</span> 正在取代编辑器成为核心入口</p>
+    <br>
+    <p>3. "渠道"成了新护城河<br>
+    — 谁控制入口，谁控制分发</p>
+    <br>
+    <p>4. 烧钱 · 维护债 · 角色焦虑<br>
+    — AI 编码从来不是免费午餐</p>
+    <br>
+    <p>5. 工程师价值正从 <span style="color:#10b981">"写代码"</span><br>
+    转向 <span style="color:#10b981">"判断力 + 架构能力"</span></p>
+    <br>
+    <p style="font-size:13px;color:#10b981;line-height:1.6">
+      "别怕 AI 写代码比你快。<br>
+      怕的是你除了写代码之外，什么都不会。"
+    </p>
+  </div>
+  <div class="footer-info" style="margin-top:auto">
+    <p style="color:#10b981;font-size:12px">只分享真正有用的 · 不装 · 不水</p>
+    <p>「AI 深度解读」· 2026.05.17</p>
+  </div>
+</div>
+
+</div>
+
+<!-- 使用说明 -->
+<div style="max-width:600px;margin-top:40px;padding:24px;background:#fff;border-radius:12px;border:1px solid #e5e7eb">
+  <h3 style="font-size:16px;margin-bottom:12px;color:#111">📋 使用说明</h3>
+  <p style="font-size:13px;color:#555;line-height:1.8">
+    1. 每张卡片尺寸 375×520px+，适合手机屏幕截图分享<br>
+    2. 可直接对每张卡片截图，用于小红书 / 即刻 / 朋友圈分享<br>
+    3. 黑 → 浅 → 深 → 浅 → 深 → 浅 → 黑 交替视觉节奏<br>
+    4. 设计风格：极简黑白灰 + 绿色 #10b981 + 品牌色点缀
+  </p>
+</div>
+
+</body>
+</html>

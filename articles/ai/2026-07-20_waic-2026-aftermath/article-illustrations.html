@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章配图 · WAIC 2026</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+      background: #f5f0eb;
+      padding: 30px 20px;
+    }
+    h1 { text-align: center; font-size: 18px; margin-bottom: 30px; color: #555; }
+    .gallery { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+    .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); overflow: hidden; width: 100%; max-width: 680px; }
+    .card-header {
+      padding: 12px 18px; background: #2d2d2d; color: #10b981; font-size: 12px;
+      display: flex; justify-content: space-between; align-items: center; letter-spacing: 1px;
+    }
+    .card-footer { padding: 10px 18px; font-size: 11px; color: #999; background: #fafafa; }
+    .note { max-width: 800px; margin: 0 auto 30px; padding: 14px 18px; background: #fffbe6; border-left: 3px solid #f5a623; border-radius: 4px; font-size: 12px; color: #666; }
+
+    /* 手绘风格画布 */
+    .sketch-box {
+      background-color: #fffff7;
+      border: 2.5px solid #2d2d2d;
+      border-radius: 18px;
+      position: relative;
+      margin: 24px;
+      padding: 28px 24px;
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.07);
+    }
+    .sketch-box::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border: 2px dashed #cccccc;
+      border-radius: 14px;
+      pointer-events: none;
+    }
+    .sketch-label {
+      display: inline-block;
+      font-size: 10px;
+      color: #666;
+      border: 1.5px solid #ccc;
+      border-radius: 20px;
+      padding: 2px 12px;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+      background-color: #fffff7;
+    }
+    .sketch-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #2d2d2d;
+      line-height: 1.5;
+      margin-bottom: 9px;
+      position: relative;
+      z-index: 1;
+    }
+    .sketch-sub {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+    .sketch-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .sketch-tag {
+      font-size: 9px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      border: 1.5px solid #ccc;
+      background-color: #fffff7;
+      color: #555;
+    }
+    .sketch-icon {
+      font-size: 32px;
+      margin-bottom: 10px;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+    /* 虚线箭头装饰 */
+    .dash-arrow {
+      position: relative;
+      z-index: 1;
+      margin: 10px 0 6px;
+      font-size: 11px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎨 文章内文配图 · WAIC 2026</h1>
+  <div class="note">
+    <strong>使用说明：</strong> 浏览器打开 → 逐张截图（建议 680px 宽）→ 插入公众号编辑器。<br>
+    手绘风格：米黄底 + 深色实线框 + 虚线内框阴影。每张对应文章一个 PART。
+  </div>
+
+  <div class="gallery">
+
+    <!-- 配图 1：导语 — 从PPT到产线 -->
+    <div class="card">
+      <div class="card-header"><span>🎯 配图 1</span><span>导语 · 中国 AI 从"能做什么"到"做了什么"</span></div>
+      <div class="card-body">
+        <div class="sketch-box">
+          <span class="sketch-label">📍 2026.07 上海世博中心</span>
+          <span class="sketch-icon">🏗️</span>
+          <div class="sketch-title">中国 AI：从"能做什么"<br>到"做了什么"</div>
+          <div class="sketch-sub">
+            前几年的展台：PPT 上的参数竞赛<br>
+            今年的展台：真实的产线、拧螺丝的机器人、<br>讨论合规的企业
+          </div>
+          <div class="dash-arrow">- - - - - - - - - - - - - - - - - - - -</div>
+          <div class="sketch-tags">
+            <span class="sketch-tag">PPT → 产线</span>
+            <span class="sketch-tag">演示 → 部署</span>
+            <span class="sketch-tag">能力 → 价值</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><strong>插入位置：</strong>导语段落后（"三条张力线索"之前）</div>
+    </div>
+
+    <!-- 配图 2：PART 1 — 开源 vs 闭源 -->
+    <div class="card">
+      <div class="card-header"><span>🔓 配图 2</span><span>暗线一 · 开源与闭源，同时在进化</span></div>
+      <div class="card-body">
+        <div class="sketch-box">
+          <span class="sketch-label">🔓 暗线一</span>
+          <span class="sketch-icon">⚔️</span>
+          <div class="sketch-title">同一场战争，两条战线</div>
+          <div class="sketch-sub" style="display:flex;justify-content:space-between;text-align:left;gap:16px;flex-wrap:wrap">
+            <div style="flex:1;min-width:140px">
+              <strong style="color:#065f46">🌍 开源路线</strong><br>
+              生态效应 + 价格优势<br>
+              扩大用户基数<br>
+              降低接入门槛
+            </div>
+            <div style="flex:1;min-width:140px">
+              <strong style="color:#075985">🏰 闭源路线</strong><br>
+              系统集成 + 垂直方案<br>
+              锁定企业客户<br>
+              构建护城河
+            </div>
+          </div>
+          <div class="dash-arrow">- - - - - - - - - - - - - - - - - - - -</div>
+          <div class="sketch-tags">
+            <span class="sketch-tag">Kimi K3 2.8T 参数</span>
+            <span class="sketch-tag">DeepSeek V4 GA</span>
+            <span class="sketch-tag">Claude Fable 5</span>
+            <span class="sketch-tag">华为 Atlas 950</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><strong>插入位置：</strong>暗线一结尾（"两条战线"段落之后）</div>
+    </div>
+
+    <!-- 配图 3：PART 2 — 机器人打工 -->
+    <div class="card">
+      <div class="card-header"><span>🤖 配图 3</span><span>暗线二 · 机器人不再跳舞，开始打工</span></div>
+      <div class="card-body">
+        <div class="sketch-box">
+          <span class="sketch-label">🤖 暗线二 · 具身智能</span>
+          <span class="sketch-icon">🔧</span>
+          <div class="sketch-title">让 AI 不仅能"思考"<br>还能在物理世界"动手"</div>
+          <div class="sketch-sub">
+            ✅ 展台上做咖啡、装线束 — 没问题<br>
+            ❌ 真实产线连续 72h 不出错 — 还没人做到
+          </div>
+          <div class="sketch-sub" style="margin-top:6px;color:#2d2d2d;font-weight:600">
+            关键瓶颈：数据
+          </div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:6px;position:relative;z-index:1">
+            <span style="font-size:10px;color:#999">全球真实数据</span>
+            <span style="font-size:14px;font-weight:700;color:#dc2626">50 万小时</span>
+            <span style="font-size:10px;color:#999">→ 需要</span>
+            <span style="font-size:14px;font-weight:700;color:#10b981">1 亿小时</span>
+          </div>
+          <div class="dash-arrow">- - - - - - - - - - - - - - - - - - - -</div>
+          <div class="sketch-tags">
+            <span class="sketch-tag">世界模型</span>
+            <span class="sketch-tag">数据飞轮</span>
+            <span class="sketch-tag">京东 60 万人网络</span>
+            <span class="sketch-tag">智元亿小时目标</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><strong>插入位置：</strong>暗线二结尾（"远不是一个 demo 能解决"段落之后）</div>
+    </div>
+
+    <!-- 配图 4：PART 3 — 治理竞争力 -->
+    <div class="card">
+      <div class="card-header"><span>📜 配图 4</span><span>暗线三 · 治理从标语变成了产业竞争力</span></div>
+      <div class="card-body">
+        <div class="sketch-box">
+          <span class="sketch-label">📜 暗线三 · AI 治理</span>
+          <span class="sketch-icon">🛡️</span>
+          <div class="sketch-title">安全能力：从"合规成本"<br>到"市场准入"</div>
+          <div class="sketch-sub" style="text-align:left">
+            <div style="margin-bottom:4px">• 29 国签署成立 WAICO 协定</div>
+            <div style="margin-bottom:4px">• 拟人化互动新规 7/15 施行</div>
+            <div style="margin-bottom:4px">• 5 年培训 5000 发展中国家 AI 人才</div>
+          </div>
+          <div class="sketch-sub" style="margin-top:8px;font-weight:600;color:#2d2d2d">
+            核心问题不再是"AI 能做多好"<br>而是"AI 能管多好"
+          </div>
+          <div class="dash-arrow">- - - - - - - - - - - - - - - - - - - -</div>
+          <div class="sketch-tags">
+            <span class="sketch-tag">WAICO</span>
+            <span class="sketch-tag">治理指数 2026</span>
+            <span class="sketch-tag">拟人化新规</span>
+            <span class="sketch-tag">合规 → 准入</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><strong>插入位置：</strong>暗线三结尾（"谁的产品能卖到哪里"段落之后）</div>
+    </div>
+
+    <!-- 配图 5：结尾 — WAIC 散场 -->
+    <div class="card">
+      <div class="card-header"><span>🌙 配图 5</span><span>写在最后 · 真正的问题不在展台上</span></div>
+      <div class="card-body">
+        <div class="sketch-box" style="background-color:#2d2d2d;border-color:#444444">
+          <span class="sketch-label" style="background-color:#2d2d2d;color:#10b981;border-color:#555">写在最后</span>
+          <span class="sketch-icon" style="color:#10b981">💡</span>
+          <div class="sketch-title" style="color:#ffffff">展台上展出的<br>是答案</div>
+          <div class="sketch-sub" style="color:#999999">
+            展台之间流动的<br>才是问题
+          </div>
+          <div class="dash-arrow" style="color:#555">- - - - - - - - - - - - - - - - - - - -</div>
+          <div class="sketch-sub" style="color:#bbbbbb">
+            开源 vs 闭源 · 机器人进工厂 · 治理边界<br>
+            答案不在展台上——在每一天的产品决策里
+          </div>
+          <div class="sketch-tags">
+            <span class="sketch-tag" style="background-color:#2d2d2d;border-color:#555;color:#10b981">WAIC 2026</span>
+            <span class="sketch-tag" style="background-color:#2d2d2d;border-color:#555;color:#999">散场之后，问题才刚开始</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><strong>插入位置：</strong>结尾段落前</div>
+    </div>
+
+  </div>
+</body>
+</html>

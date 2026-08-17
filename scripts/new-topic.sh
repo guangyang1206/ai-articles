@@ -8,7 +8,7 @@
 set -euo pipefail
 
 # 配置
-CONTENT_DIR="content"
+CONTENT_DIR="articles/ai"
 DATE=$(date +%Y-%m-%d)
 
 # 参数

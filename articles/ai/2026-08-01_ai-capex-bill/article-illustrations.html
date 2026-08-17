@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文章配图 - 7000亿美元账单</title>
+<style>
+  body { font-family: -apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif; background:#f5f5f5; padding:20px; }
+  h2 { color:#333; margin:24px 0 8px; }
+  .note { color:#999; font-size:12px; margin-bottom:12px; }
+  .sketch-box {
+    background: #fffff7;
+    border: 2.5px solid #2d2d2d;
+    border-radius: 18px;
+    padding: 24px 20px;
+    margin: 24px 0;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.07);
+    position: relative;
+    max-width: 680px;
+    color: #1e293b;
+  }
+  .sketch-box::after {
+    content: '';
+    position: absolute;
+    top: 6px; left: 6px; right: -6px; bottom: -6px;
+    border: 2px dashed #ccc;
+    border-radius: 18px;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .bar-blue { height: 24px; background: #3b82f6; border-radius: 3px 3px 0 0; }
+  .bar-red { height: 24px; background: #ea4335; border-radius: 3px 3px 0 0; }
+  .bar-orange { height: 24px; background: #ff9900; border-radius: 3px 3px 0 0; }
+  .bar-meta { height: 24px; background: #1877f2; border-radius: 3px 3px 0 0; }
+  .bar-green { height: 24px; background: #10b981; border-radius: 3px 3px 0 0; }
+  .bar-purple { height: 24px; background: #8b5cf6; border-radius: 3px 3px 0 0; }
+  .bar-amber { height: 24px; background: #f59e0b; border-radius: 3px 3px 0 0; }
+  .bar-other { height: 24px; background: #e2e8f0; border-radius: 3px 3px 0 0; }
+</style>
+</head>
+<body>
+
+<h2>配图1：四巨头 Capex 柱状图对比</h2>
+<p class="note">柱状图，注意 Y 轴从小处起始（不是从0起始）</p>
+<div class="sketch-box">
+  <p style="font-weight:700; font-size:16px; text-align:center;">2026 年 AI Capex 指引 — 谁会花最多？</p>
+  <p style="font-size:12px; color:#64748b; text-align:center;">单位：十亿美元 | 数据来源：各公司 2026 Q2 财报</p>
+  <table style="width:100%; border-collapse:collapse; margin-top:16px;">
+    <tr>
+      <td style="width:60px; text-align:right; font-size:11px; color:#64748b; padding-right:6px;">$220</td>
+      <td><div class="bar-orange" style="width:96%;"></div></td>
+    </tr>
+    <tr>
+      <td style="text-align:right; font-size:11px; color:#64748b; padding-right:6px;">$200</td>
+      <td><div class="bar-red" style="width:87%;"></div></td>
+    </tr>
+    <tr>
+      <td style="text-align:right; font-size:11px; color:#64748b; padding-right:6px;">$190</td>
+      <td><div class="bar-blue" style="width:83%;"></div></td>
+    </tr>
+    <tr>
+      <td style="text-align:right; font-size:11px; color:#64748b; padding-right:6px;">$135</td>
+      <td><div class="bar-meta" style="width:59%;"></div></td>
+    </tr>
+  </table>
+  <div style="display:flex; gap:10px; margin-top:8px; font-size:11px; color:#475569; justify-content:center;">
+    <span>Amazon$220B</span><span>|</span><span>Google~$200B</span><span>|</span><span>Microsoft$190B</span><span>|</span><span>Meta~$135B</span>
+  </div>
+  <p style="font-size:10px; color:#94a3b8; margin-top:6px;">▲ Y 轴从小处起始，突出差距。注意：不同公司 capex 口径略有差异（含/不含融资租赁）。</p>
+</div>
+
+<h2>配图2：五年 Capex 增长趋势</h2>
+<p class="note">2021-2026 增长曲线</p>
+<div class="sketch-box">
+  <p style="font-weight:700; font-size:16px; text-align:center;">AI 基础设施投入：五年翻 8 倍</p>
+  <p style="font-size:12px; color:#64748b; text-align:center;">四巨头 AI 相关 Capex（含数据中心）| 单位：十亿美元</p>
+  <div style="margin-top:14px;">
+    <table style="width:100%; border-collapse:collapse; font-size:13px;">
+      <tr style="color:#64748b; border-bottom:1px solid #e2e8f0;">
+        <td style="width:60px;"></td>
+        <td style="text-align:center;">2021</td>
+        <td style="text-align:center;">2022</td>
+        <td style="text-align:center;">2023</td>
+        <td style="text-align:center;">2024</td>
+        <td style="text-align:center;">2025</td>
+        <td style="text-align:center;font-weight:700;color:#1e293b;">2026E</td>
+      </tr>
+      <tr style="border-bottom:1px solid #e2e8f0;">
+        <td style="color:#64748b;">合计</td>
+        <td style="text-align:center;">~$90</td>
+        <td style="text-align:center;">~$110</td>
+        <td style="text-align:center;">~$160</td>
+        <td style="text-align:center;">~$230</td>
+        <td style="text-align:center;">~$420</td>
+        <td style="text-align:center;font-weight:700;color:#ea4335;">~$745</td>
+      </tr>
+    </table>
+  </div>
+  <div style="margin-top:12px; display:flex; align-items:flex-end; height:120px; gap:12px; justify-content:space-around;">
+    <div style="text-align:center;"><div style="width:36px;height:14px;background:#cbd5e1;border-radius:3px 3px 0 0;"></div><span style="font-size:10px;color:#94a3b8;">'21</span></div>
+    <div style="text-align:center;"><div style="width:36px;height:18px;background:#cbd5e1;border-radius:3px 3px 0 0;"></div><span style="font-size:10px;color:#94a3b8;">'22</span></div>
+    <div style="text-align:center;"><div style="width:36px;height:26px;background:#cbd5e1;border-radius:3px 3px 0 0;"></div><span style="font-size:10px;color:#94a3b8;">'23</span></div>
+    <div style="text-align:center;"><div style="width:36px;height:37px;background:#cbd5e1;border-radius:3px 3px 0 0;"></div><span style="font-size:10px;color:#94a3b8;">'24</span></div>
+    <div style="text-align:center;"><div style="width:36px;height:68px;background:#93c5fd;border-radius:3px 3px 0 0;"></div><span style="font-size:10px;color:#94a3b8;">'25</span></div>
+    <div style="text-align:center;"><div style="width:36px;height:120px;background:#3b82f6;border-radius:3px 3px 0 0;"></div><span style="font-size:10px;color:#3b82f6;">'26E</span></div>
+  </div>
+  <p style="font-size:10px; color:#94a3b8; margin-top:6px; text-align:center;">2026E 基于 Q2 2026 最新指引；早期年份数据为 AI 相关部分估算</p>
+</div>
+
+<h2>配图3：成本构成分解</h2>
+<p class="note">饼图替代——用卡片顺序排列</p>
+<div class="sketch-box">
+  <p style="font-weight:700; font-size:16px; text-align:center;">$7,450 亿花到哪里了？</p>
+  <p style="font-size:12px; color:#64748b; text-align:center;">结构化估算 · 基于行业报告及供应链公开信息</p>
+  <div style="margin-top:14px;">
+    <div style="display:flex; align-items:center; margin:8px 0;">
+      <div style="width:66px;height:66px;border-radius:50%;border:5px solid #3b82f6;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">24%</div>
+      <div style="margin-left:12px;"><strong>GPU / AI 芯片</strong><br><span style="font-size:12px;color:#64748b;">~$1,790亿 | NVIDIA GB200/GB300 + 自研芯片</span></div>
+    </div>
+    <div style="display:flex; align-items:center; margin:8px 0;">
+      <div style="width:66px;height:66px;border-radius:50%;border:5px solid #8b5cf6;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">32%</div>
+      <div style="margin-left:12px;"><strong>数据中心建造</strong><br><span style="font-size:12px;color:#64748b;">~$2,384亿 | 选址、建筑、冷却系统</span></div>
+    </div>
+    <div style="display:flex; align-items:center; margin:8px 0;">
+      <div style="width:66px;height:66px;border-radius:50%;border:5px solid #f59e0b;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">18%</div>
+      <div style="margin-left:12px;"><strong>电力基础设施</strong><br><span style="font-size:12px;color:#64748b;">~$1,341亿 | 输电线路、变电站、备用电源</span></div>
+    </div>
+    <div style="display:flex; align-items:center; margin:8px 0;">
+      <div style="width:66px;height:66px;border-radius:50%;border:5px solid #10b981;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">15%*</div>
+      <div style="margin-left:12px;"><strong>人才 / 研发</strong><br><span style="font-size:12px;color:#64748b;">~$1,118亿 | *主要计入运营支出（OpEx）</span></div>
+    </div>
+    <div style="display:flex; align-items:center; margin:8px 0;">
+      <div style="width:66px;height:66px;border-radius:50%;border:5px solid #e2e8f0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">11%</div>
+      <div style="margin-left:12px;"><strong>网络 / 其他</strong><br><span style="font-size:12px;color:#64748b;">~$820亿 | 光纤、交换机、存储、安全</span></div>
+    </div>
+  </div>
+</div>
+
+<h2>配图4：ROI 算式演示</h2>
+<p class="note">以谷歌为例，投入 vs 产出</p>
+<div class="sketch-box">
+  <p style="font-weight:700; font-size:16px; text-align:center;">谷歌的例子：$2000亿的赌注，回报多少？</p>
+  <table style="width:100%; border-collapse:collapse; margin:14px 0; font-size:14px;">
+    <tr style="background:#fefce8;">
+      <td style="padding:12px; border:1px solid #e2e8f0; width:40%; color:#64748b;">2026 总 Capex</td>
+      <td style="padding:12px; border:1px solid #e2e8f0; font-weight:700;">~$2,000亿</td>
+    </tr>
+    <tr>
+      <td style="padding:12px; border:1px solid #e2e8f0; color:#64748b;">Google Cloud Q2 收入</td>
+      <td style="padding:12px; border:1px solid #e2e8f0;">$248亿（YoY +82%）</td>
+    </tr>
+    <tr style="background:#fefce8;">
+      <td style="padding:12px; border:1px solid #e2e8f0; color:#64748b;">Cloud 年化收入</td>
+      <td style="padding:12px; border:1px solid #e2e8f0;">~$992亿</td>
+    </tr>
+    <tr>
+      <td style="padding:12px; border:1px solid #e2e8f0; color:#64748b;">Capex / 云收入比</td>
+      <td style="padding:12px; border:1px solid #e2e8f0; font-weight:700; color:#ea4335;">≈ 2.0 : 1</td>
+    </tr>
+    <tr style="background:#fefce8;">
+      <td style="padding:12px; border:1px solid #e2e8f0; color:#64748b;">关键假设</td>
+      <td style="padding:12px; border:1px solid #e2e8f0; font-size:12px;">capex 3-5年摊销 + AI 云收入增速 >> capex 增速</td>
+    </tr>
+  </table>
+  <p style="font-size:11px; color:#94a3b8; margin-top:6px;">短期看是烧钱，长期看是铺路。核心变量：AI 需求能否持续翻倍增长。</p>
+</div>
+
+</body>
+</html>

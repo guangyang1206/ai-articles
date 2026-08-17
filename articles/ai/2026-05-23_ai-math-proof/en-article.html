@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 80-Year-Old Math Problem That AI and Mathematicians Solved Together</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Georgia, serif; max-width: 700px; margin: 0 auto; padding: 24px; line-height: 1.7; color: #1a1a1a; background: #fafafa; }
+  h1 { font-size: 24px; font-weight: 700; line-height: 1.3; margin-bottom: 6px; color: #111; }
+  .meta { color: #888; font-size: 14px; margin-bottom: 28px; }
+  p { margin: 1.1em 0; font-size: 16.5px; }
+  .highlight { background: #fffde7; padding: 16px 20px; border-left: 4px solid #ffc107; margin: 22px 0; border-radius: 0 6px 6px 6px; }
+  .highlight p { margin: 0.4em 0; }
+  .key-box { background: #e3f2fd; padding: 16px 20px; border-left: 4px solid #1a73e8; margin: 22px 0; border-radius: 0 6px 6px 6px; }
+  .key-box p { margin: 0.4em 0; }
+  sup { font-size: 12px; color: #1a73e8; }
+  sup a { color: #1a73e8; text-decoration: none; }
+  .section-title { font-size: 20px; font-weight: 700; margin: 32px 0 12px; color: #1a1a1a; border-bottom: 2px solid #e0e0e0; padding-bottom: 6px; }
+  .section-title .num { color: #1a73e8; margin-right: 6px; }
+  .ref-section { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 14px; color: #555; }
+  .ref-section li { margin: 6px 0; }
+</style>
+</head>
+<body>
+
+<h1>The 80-Year-Old Math Problem That AI and Mathematicians Solved Together</h1>
+<div class="meta">May 23, 2026 · <a href="#references">Sources</a></div>
+
+<p>Here's a simple game. Place <em>n</em> dots on a piece of paper. Score one point for every pair of dots that are exactly 1 centimeter apart. How many points can you get?</p>
+
+<p>Line them up and each dot only connects to its two neighbors — roughly <em>n</em> pairs, not great. Arrange them in a square grid and each dot connects to four neighbors — roughly <em>2n</em> pairs, much better. For 80 years, mathematicians believed this was essentially the best you could do.</p>
+
+<p><strong>They were wrong.</strong> Last week, an AI model from OpenAI proved it.<sup><a href="#ref-1">[1]</a></sup></p>
+
+<p>But the most remarkable part of this story isn't that an AI solved a hard math problem. It's what happened next: <strong>a group of world-class mathematicians took the AI's raw idea, refined it, extended it, and together produced a result that none of them could have reached alone</strong>.</p>
+
+<div class="highlight">
+<p><strong>The gist:</strong> OpenAI's general-purpose reasoning model disproved a 1946 conjecture by Paul Erdős about how many unit-distance pairs you can create with n points on a plane. It did so by drawing on algebraic number theory — a branch of math far removed from the geometry where mathematicians had been searching for 80 years. Nine leading mathematicians then validated, improved, and deepened the result. This is a textbook case of human-AI collaboration, not replacement.</p>
+</div>
+
+<h2 class="section-title"><span class="num">I.</span> The $500 Question</h2>
+
+<p>The "unit distance problem" was posed by Hungarian mathematician Paul Erdős in 1946.<sup><a href="#ref-2">[2]</a></sup> It asks a deceptively simple question: given <em>n</em> points on a plane, what's the maximum number of pairs that can be exactly 1 unit apart?</p>
+
+<p>Erdős believed the square grid was essentially optimal. He even offered a cash prize — starting at $300 in 1982, rising to $500 by 1995<sup><a href="#ref-3">[3]</a></sup> — for anyone who could prove or disprove his conjecture. Over the decades, a who's-who of geometers (Spencer, Szemerédi, Trotter, Székely, Katz, Pach, Raz, Solymosi) chipped away at the problem, but nobody could beat the grid.</p>
+
+<p>The problem sat, untouched in its essence, for 80 years.</p>
+
+<h2 class="section-title"><span class="num">II.</span> What the AI Did — and Didn't Do</h2>
+
+<p>OpenAI's breakthrough came from a generic reasoning model — not a system purpose-built for mathematics. The company hasn't released this model publicly yet.<sup><a href="#ref-4">[4]</a></sup></p>
+
+<p>Here's what's genuinely surprising: <strong>the model didn't try to improve on the geometric approach</strong>. Instead of asking "how should I arrange points on a plane?", it effectively asked "what kind of number system maps onto a plane in a way that naturally creates more unit distances?"</p>
+
+<p>It found the answer in algebraic number theory — a field far removed from discrete geometry. Specifically, it used concepts called "infinite class field towers" and Golod-Shafarevich theory to construct a number system with richer symmetries than the Gaussian integers mathematicians had been using for the grid construction.<sup><a href="#ref-5">[5]</a></sup></p>
+
+<div class="key-box">
+<p><strong>Analogy:</strong> Imagine engineers spent 80 years trying to build a better bridge by improving steel alloys and rivet patterns. Then someone shows up and says — "what if we don't need a stronger bridge? What if we build it somewhere else entirely, where the terrain naturally supports more weight?"</p>
+</div>
+
+<p>The AI produced a valid construction that beat the grid. But it was incomplete — the original proof didn't specify the precise exponent of improvement. That came next.</p>
+
+<h2 class="section-title"><span class="num">III.</span> The Handoff</h2>
+
+<p>OpenAI released its finding alongside a commentary paper <strong>co-authored by nine leading mathematicians</strong>.<sup><a href="#ref-6">[6]</a></sup> Among them:</p>
+
+<p><strong>Timothy Gowers</strong>, a Fields Medalist from Cambridge, said: <strong>"If this paper were submitted to the Annals of Mathematics under a human name, I would unhesitatingly recommend it for publication."</strong><sup><a href="#ref-7">[7]</a></sup></p>
+
+<p><strong>Thomas Bloom</strong>, a mathematician at the University of Manchester. His name matters because <strong>seven months earlier, he was the one who publicly debunked OpenAI's previous false claim</strong> — when a former OpenAI VP said GPT-5 had solved 10 Erdős problems, Bloom checked and found it had simply retrieved known solutions from the literature. That incident ended with a deleted post and the VP leaving OpenAI in April 2026.<sup><a href="#ref-8">[8]</a></sup></p>
+
+<p>Now the same Bloom was signing off on a real result. He called it "both surprising and impressive." But he also noted something crucial: <strong>the AI's original proof, while valid, was significantly improved by the human researchers and mathematicians who worked on it</strong>.</p>
+
+<p>Then <strong>Will Sawin</strong>, a Princeton mathematician, refined the AI's result into a precise mathematical form, establishing a fixed exponent (c = 0.014) for the improvement. The AI opened the door; the mathematician walked through and mapped the room.</p>
+
+<p>This handoff — AI generates, human validates and refines — is the real story here.</p>
+
+<h2 class="section-title"><span class="num">IV.</span> What Each Side Contributed</h2>
+
+<p><strong>The AI contributed:</strong></p>
+<p>· A cross-domain insight (geometry → number theory)<br>
+· A complete construction<br>
+· The skeleton of a proof</p>
+
+<p><strong>The mathematicians contributed:</strong></p>
+<p>· Verification of correctness<br>
+· Refinement of the proof into publishable form<br>
+· A precise mathematical formulation (Sawin's exponent)<br>
+· Context: understanding what this result means for mathematics<br>
+· Judgment: deciding this was worth publishing</p>
+
+<p><strong>Neither could have done it alone.</strong></p>
+
+<p>Bloom captured this beautifully in his commentary: <strong>"The frontier of knowledge is uneven and jagged, full of peaks. AI is helping us explore the great cathedral of mathematics more fully. What undiscovered wonders still await in its deeper chambers?"</strong><sup><a href="#ref-9">[9]</a></sup></p>
+
+<p>He also noted the most valuable legacy of this work: not that it solved a specific problem, but that <strong>it revealed an unexpected connection between algebraic number theory and discrete geometry</strong>. This may open up entirely new lines of inquiry.</p>
+
+<h2 class="section-title"><span class="num">V.</span> A New Mode of Discovery</h2>
+
+<p>OpenAI CEO Sam Altman posted on X: "Excited for AI to vastly expand human understanding of the world. Feeling complicated today."<sup><a href="#ref-10">[10]</a></sup></p>
+
+<p>The complexity is understandable. This isn't a story about AI replacing mathematicians — it's a story about a new division of labor. AI proposes; humans judge. AI explores the combinatorial space; humans decide what's meaningful.</p>
+
+<p>Bloom's earlier criticism of OpenAI's false claim makes this result more credible, not less. The scientific process worked: inflated claims were caught and corrected; genuine progress was evaluated by the same skeptical lens and found to hold up.</p>
+
+<p>The future this points to isn't one where mathematicians become obsolete. It's one where they gain a new kind of partner — one that can roam freely across domains, make unexpected connections, and hand back raw material for human judgment to refine.</p>
+
+<p><strong>The 80-year-old Erdős problem wasn't solved by AI alone, or by mathematicians alone. It was solved by both, together.</strong> And that's a much more interesting story than either one going it alone.</p>
+
+<hr>
+
+<h2 class="section-title" id="references">Sources</h2>
+<div class="ref-section">
+<ol>
+<li id="ref-1">OpenAI, "Model disproves central conjecture in discrete geometry", May 20, 2026. <a href="https://openai.com/index/model-disproves-discrete-geometry-conjecture/">openai.com</a></li>
+<li id="ref-2">Paul Erdős, "On sets of distances of n points", American Mathematical Monthly, 1946.</li>
+<li id="ref-3">Erdős problem list, erdosproblems.com. Unit distance problem: $500 prize.</li>
+<li id="ref-4">OpenAI announcement. The model is described as a general-purpose reasoning model, not a specialized math system.</li>
+<li id="ref-5">36Kr (China) / Machine Intelligence, May 21, 2026. Technical breakdown of the AI's use of class field towers and Golod-Shafarevich theory.</li>
+<li id="ref-6">OpenAI commentary paper, co-signed by 9 mathematicians including Thomas Bloom, Noga Alon, Tim Gowers, and Will Sawin.</li>
+<li id="ref-7">Timothy Gowers, commentary published alongside OpenAI's announcement, May 20, 2026.</li>
+<li id="ref-8">ZDNet / 36Kr, reporting on the October 2025 false claim incident and the April 2026 departure of OpenAI VP Kevin Weil.</li>
+<li id="ref-9">Thomas Bloom, commentary published alongside OpenAI's announcement, May 20, 2026.</li>
+<li id="ref-10">Sam Altman, post on X, May 20, 2026.</li>
+</ol>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文章配图素材 — AI 时代，互联网增长公式正在失效</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f0eee8;
+  font-family: 'PingFang SC', 'Noto Sans CJK SC', -apple-system, sans-serif;
+  padding: 48px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+.page-label {
+  font-size: 13px;
+  color: #888;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  text-align: center;
+}
+/* ===== 通用手绘卡片容器 ===== */
+.sketch-box {
+  background: #fffff7;
+  border: 2.5px solid #2d2d2d;
+  border-radius: 18px;
+  padding: 36px 32px;
+  position: relative;
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.07);
+  width: 680px;
+}
+.sketch-box::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #ccc;
+  border-radius: 18px;
+  z-index: -1;
+}
+.sk-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #2d2d2d;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sk-title .dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: #2d2d2d;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.sk-caption {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.7;
+  margin-top: 16px;
+  padding: 10px 14px;
+  background: #f9fafb;
+  border-radius: 8px;
+  border-left: 3px solid #9ca3af;
+}
+.sk-caption a {
+  color: #2563eb;
+  text-decoration: none;
+}
+.sk-image {
+  width: 100%;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  margin-top: 8px;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 配图1：LLM 推理价格趋势（反共识一支撑数据）===== -->
+<div class="page-label">FIG.1 &nbsp;·&nbsp; 开源数据图 · Epoch AI (CC-BY)</div>
+<section class="sketch-box">
+  <div class="sk-title">
+    <span class="dot"></span>
+    LLM 推理价格三年暴跌 1000x — 但每次调用仍有真实成本
+  </div>
+  <img class="sk-image" src="assets/images/epoch-inference-price-trends.png" alt="LLM inference price trends chart">
+  <div class="sk-caption">
+    数据来源：<a href="https://epoch.ai/data-insights/llm-inference-price-trends" target="_blank">Epoch AI</a> — "LLM inference prices have fallen rapidly but unequally across tasks"（CC-BY 授权，可免费使用并注明来源）。横轴为时间，纵轴为达到给定 benchmark 分数所需的最低价格，对数坐标。GPT-4 级别性能的价格每年下降约 40x。
+  </div>
+</section>
+
+<!-- ===== 配图2：AI 芯片成本结构（反共识二支撑数据）===== -->
+<div class="page-label">FIG.2 &nbsp;·&nbsp; 开源数据图 · Epoch AI (CC-BY)</div>
+<section class="sketch-box">
+  <div class="sk-title">
+    <span class="dot"></span>
+    HBM 内存已占 AI 芯片组件成本的 63% — 供应链瓶颈可视化
+  </div>
+  <img class="sk-image" src="assets/images/epoch-chip-cost.png" alt="AI chip component cost shares chart">
+  <div class="sk-caption">
+    数据来源：<a href="https://epoch.ai/data-insights/ai-chip-component-shares" target="_blank">Epoch AI</a> — "Memory has grown to nearly two-thirds of AI chip component costs"（CC-BY 授权）。2024 年底先进封装制约 AI 芯片生产，2025 年 HBM 内存持续成为瓶颈。GPU 竞争的上半场是算力，下半场是供应链。
+  </div>
+</section>
+
+<!-- ===== 配图3：OpenAI 推理支出（反共识一支撑数据）===== -->
+<div class="page-label">FIG.3 &nbsp;·&nbsp; 开源数据图 · Epoch AI (CC-BY)</div>
+<section class="sketch-box">
+  <div class="sk-title">
+    <span class="dot"></span>
+    OpenAI 推理支出 >$5B（2025 年 H1），超过同期收入
+  </div>
+  <img class="sk-image" src="assets/images/epoch-openai-spend.png" alt="OpenAI compute spend chart">
+  <div class="sk-caption">
+    数据来源：<a href="https://epoch.ai/data-insights/openai-compute-spend" target="_blank">Epoch AI</a> — "Most of OpenAI's 2024 compute went to inference"（CC-BY 授权）。2025 年 H1 推理支出超 $5B，同期收入约 $4.15B，"成本-收入剪刀差"不断扩大。这是"用户越多 ≠ 越好"最直观的财务证据。
+  </div>
+</section>
+
+<!-- ===== 配图4：5 个反共识总结卡片 ===== -->
+<div class="page-label">FIG.4 &nbsp;·&nbsp; 信息图 · 文章核心框架</div>
+<section class="sketch-box">
+  <div class="sk-title">
+    <span class="dot"></span>
+    AI 时代 5 个反共识 — 判断框架
+  </div>
+  <div style="display:flex; flex-direction:column; gap:14px; margin-top:12px;">
+    <div style="padding:12px 16px; border:1.5px solid #2d2d2d; border-radius:10px; background:#fefce8;">
+      <span style="font-size:13px; font-weight:700; color:#92400e;">① 用户越多 ≠ 越好</span>
+      <span style="font-size:12px; color:#78350f; margin-left:8px;">每 1 次调用都有真实成本</span>
+    </div>
+    <div style="padding:12px 16px; border:1.5px solid #2d2d2d; border-radius:10px; background:#eff6ff;">
+      <span style="font-size:13px; font-weight:700; color:#1e40af;">② AI 竞争 = 供应链竞争</span>
+      <span style="font-size:12px; color:#1e3a8a; margin-left:8px;">模型能力是桌面筹码，供给能力才是护城河</span>
+    </div>
+    <div style="padding:12px 16px; border:1.5px solid #2d2d2d; border-radius:10px; background:#f0fdf4;">
+      <span style="font-size:13px; font-weight:700; color:#166534;">③ Chatbot 不是终局，Agent 才是</span>
+      <span style="font-size:12px; color:#14532d; margin-left:8px;">聊天是 UX，完成任务才是商业化核心</span>
+    </div>
+    <div style="padding:12px 16px; border:1.5px solid #2d2d2d; border-radius:10px; background:#fdf4ff;">
+      <span style="font-size:13px; font-weight:700; color:#6b21a8;">④ 快不一定赢，慢有时是战略</span>
+      <span style="font-size:12px; color:#581c87; margin-left:8px;">可靠性 > 上线速度，信任是 AI 产品的真正壁垒</span>
+    </div>
+    <div style="padding:12px 16px; border:1.5px solid #2d2d2d; border-radius:10px; background:#fff7ed;">
+      <span style="font-size:13px; font-weight:700; color:#9a3412;">⑤ AI 投入分两类，不是所有都拖累利润</span>
+      <span style="font-size:12px; color:#7c2d12; margin-left:8px;">烧钱买增长 vs. 提升主业效率，两码事</span>
+    </div>
+  </div>
+  <div class="sk-caption">
+    使用方式：浏览器打开本页，对每张配图逐张截图，贴入公众号文章对应位置。所有 Epoch AI 图表均为 CC-BY 授权，使用时注明来源即可。
+  </div>
+</section>
+
+</body>
+</html>

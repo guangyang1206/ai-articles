@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>封面素材 - AI 解开80年数学谜题</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.label {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 10px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ===== 公众号头图 900x383 ===== */
+.cover-main {
+  width: 900px;
+  height: 383px;
+  background: #0a0a0a;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-main::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -8%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.cover-main::after {
+  content: '';
+  position: absolute;
+  bottom: -25%;
+  left: -5%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cover-main .bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.cover-main .content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 40px;
+}
+
+.cover-main .tag {
+  display: inline-block;
+  padding: 5px 16px;
+  border: 1px solid #333;
+  border-radius: 100px;
+  font-size: 11px;
+  color: #666;
+  letter-spacing: 1.5px;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+
+.cover-main h1 {
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.cover-main h1 .highlight {
+  color: #3b82f6;
+  display: block;
+}
+
+.cover-main .sub {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* ===== 缩略图 200x200 ===== */
+.cover-thumb {
+  width: 200px;
+  height: 200px;
+  background: #0a0a0a;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-thumb::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -30%;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cover-thumb .content {
+  position: relative;
+  z-index: 1;
+  padding: 0 12px;
+}
+
+.cover-thumb h2 {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.cover-thumb h2 span {
+  color: #3b82f6;
+  font-size: 18px;
+  font-weight: 900;
+  display: block;
+}
+
+.cover-thumb .sub {
+  font-size: 10px;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* ===== 朋友圈分享图 400x400 ===== */
+.cover-share {
+  width: 400px;
+  height: 400px;
+  background: #0a0a0a;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 32px;
+}
+
+.cover-share::before {
+  content: '';
+  position: absolute;
+  top: -25%;
+  left: -15%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cover-share .content {
+  position: relative;
+  z-index: 1;
+}
+
+.cover-share .icon {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.cover-share h2 {
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.cover-share h2 .highlight {
+  color: #3b82f6;
+  display: block;
+}
+
+.cover-share .divider {
+  width: 40px;
+  height: 2px;
+  background: #333;
+  margin: 16px auto;
+}
+
+.cover-share .meta {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* ===== 信息卡片：问题示意图 680x300 ===== */
+.info-card {
+  width: 680px;
+  background: #111111;
+  border-radius: 12px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.info-card .card-label {
+  font-size: 11px;
+  color: #666;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.info-card .card-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 24px;
+  line-height: 1.35;
+}
+
+.info-card .viz {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.info-card .viz-col {
+  flex: 1;
+  text-align: center;
+}
+
+.info-card .viz-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+/* 直线排法示意图 */
+.viz-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 0;
+}
+
+.viz-line .dot {
+  width: 10px;
+  height: 10px;
+  background: #3b82f6;
+  border-radius: 50%;
+  border: 2px solid #1e40af;
+  flex-shrink: 0;
+}
+
+.viz-line .conn {
+  width: 24px;
+  height: 2px;
+  background: #3b82f6;
+}
+
+/* 方格排法示意图 */
+.viz-grid {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 10px);
+  grid-template-rows: repeat(3, 10px);
+  gap: 20px;
+  padding: 16px 0;
+}
+
+.viz-grid .dot {
+  width: 10px;
+  height: 10px;
+  background: #10b981;
+  border-radius: 50%;
+  border: 2px solid #065f46;
+}
+
+.info-card .viz-note {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.info-card .viz-note strong {
+  color: #3b82f6;
+}
+
+.info-card .viz-note .green {
+  color: #10b981;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 1. 公众号头图 900x383 ===== -->
+<div class="label">① 公众号头图（建议尺寸 900 × 383）</div>
+<section class="cover-main">
+  <div class="bg-grid"></div>
+  <div class="content">
+    <div class="tag">AI · 数学前沿 · 2026.05</div>
+    <h1>AI 和数学家一起，<span class="highlight">解开了一道 80 年的数学谜题</span></h1>
+    <p class="sub">OpenAI 通用推理模型，推翻了埃尔德什 1946 年的猜想</p>
+  </div>
+</section>
+
+<!-- ===== 2. 缩略图 200x200 ===== -->
+<div class="label" style="margin-top:40px">② 缩略图（200 × 200，用于历史消息列表）</div>
+<section class="cover-thumb">
+  <div class="content">
+    <h2>AI 证明<span>80 年猜想</span></h2>
+    <p class="sub">OpenAI · 数学家接力</p>
+  </div>
+</section>
+
+<!-- ===== 3. 朋友圈分享图 400x400 ===== -->
+<div class="label" style="margin-top:40px">③ 朋友圈分享图（400 × 400 或 1:1）</div>
+<section class="cover-share">
+  <div class="content">
+    <div class="icon">🔬</div>
+    <h2>人机协作<span class="highlight">新范式</span></h2>
+    <div class="divider"></div>
+    <p class="meta">AI 提出思路跃迁<br>数学家验证、改进、放大</p>
+  </div>
+</section>
+
+<!-- ===== 4. 信息卡片：两种排法对比 ===== -->
+<div class="label" style="margin-top:40px">④ 文章内文贴图 — 两种排法对比（680 × 约 300）</div>
+<section class="info-card">
+  <div class="card-label">💡 直观理解：两种排法对比</div>
+  <div class="card-title">单位距离问题：哪种排法更好？</div>
+  <div class="viz">
+    <div class="viz-col">
+      <div class="viz-label">直线排法（低效）</div>
+      <div class="viz-line">
+        <div class="dot"></div>
+        <div class="conn"></div>
+        <div class="dot"></div>
+        <div class="conn"></div>
+        <div class="dot"></div>
+        <div class="conn"></div>
+        <div class="dot"></div>
+        <div class="conn"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="viz-note">每点只有 <strong>2 个</strong>邻居<br>U(n) ≈ n</div>
+    </div>
+    <div class="viz-col">
+      <div class="viz-label" style="color:#aaa;">方格排法（Erdős 猜想最优）</div>
+      <div class="viz-grid">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="viz-note">每点有 <strong class="green">4 个</strong>邻居<br>U(n) ≈ <span class="green">2n</span></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

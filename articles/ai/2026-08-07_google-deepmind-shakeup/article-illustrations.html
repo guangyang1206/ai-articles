@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文章配图素材 - 谷歌AI一日双震</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f0eee8;
+  font-family: 'PingFang SC', 'Noto Sans CJK SC', -apple-system, sans-serif;
+  padding: 48px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+
+.page-label {
+  font-size: 13px;
+  color: #888;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* ===== 通用手绘卡片容器 ===== */
+.sketch-box {
+  background: #fffff7;
+  border: 2.5px solid #2d2d2d;
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.07);
+  padding: 32px 28px;
+  position: relative;
+}
+.sketch-box::after {
+  content: '';
+  position: absolute;
+  top: 6px; left: 6px;
+  right: 6px; bottom: 6px;
+  border: 2px dashed #ccc;
+  border-radius: 18px;
+  pointer-events: none;
+}
+.sketch-box h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+  line-height: 1.3;
+  position: relative;
+  z-index: 1;
+}
+.sketch-box p {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+.sketch-box .highlight {
+  color: #e94560;
+  font-weight: 700;
+}
+
+/* ===== Part 1: 两条线并行 ===== */
+.two-column {
+  width: 680px;
+  display: flex;
+  gap: 20px;
+}
+.two-column .col {
+  flex: 1;
+  position: relative;
+}
+.two-column .sketch-box {
+  height: 100%;
+}
+.col .arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 12px 0;
+  font-size: 20px;
+  color: #e94560;
+}
+.col .result {
+  background: #fef2f2;
+  border: 2px solid #e94560;
+  border-radius: 10px;
+  padding: 12px 16px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #e94560;
+  margin-top: 12px;
+}
+
+/* ===== Part 3: 投资人关系 ===== */
+.invest-flow {
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.invest-flow .node {
+  background: #fffff7;
+  border: 2.5px solid #2d2d2d;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a1a2e;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.07);
+}
+.invest-flow .arrow-node {
+  font-size: 24px;
+  color: #e94560;
+  font-weight: 700;
+}
+.invest-flow .bidir {
+  font-size: 16px;
+  color: #3b82f6;
+}
+
+/* ===== Part 4: 时间线 ===== */
+.timeline {
+  width: 680px;
+}
+.timeline .event {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+.timeline .date {
+  min-width: 80px;
+  background: #1a1a2e;
+  color: #f1f5f9;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-align: center;
+}
+.timeline .content {
+  flex: 1;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+  padding-top: 2px;
+}
+.timeline .divider {
+  width: 2px;
+  height: 20px;
+  background: #ccc;
+  margin: 0 0 0 38px;
+}
+
+/* ===== Part 5: 人才流失图 ===== */
+.talent-grid {
+  width: 680px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.talent-item {
+  background: #fffff7;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.talent-item .name {
+  font-weight: 700;
+  color: #1a1a2e;
+  font-size: 15px;
+}
+.talent-item .to {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 4px;
+}
+.talent-item .to span {
+  color: #e94560;
+  font-weight: 600;
+}
+</style>
+</head>
+<body>
+
+<!-- Part 1: 两条人事变动的并行结构 -->
+<div class="page-label">配图 1 · PART 1</div>
+<div class="two-column">
+  <div class="col">
+    <div class="sketch-box" style="text-align:center;">
+      <h3 style="font-size:18px;">Demis Hassabis</h3>
+      <p style="font-size:13px;color:#64748b;">DeepMind CEO</p>
+      <div class="arrow">⬇️</div>
+      <p style="font-size:13px;">Google DeepMind <span class="highlight">董事长</span><br>Alphabet <span class="highlight">首席科学家</span></p>
+      <div class="result">仍在谷歌体系内</div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="sketch-box" style="text-align:center;">
+      <h3 style="font-size:18px;">Jeff Dean</h3>
+      <p style="font-size:13px;color:#64748b;">谷歌首席科学家 · 27年</p>
+      <div class="arrow">⬇️</div>
+      <p style="font-size:13px;">创立 <span class="highlight">Discovery Loop</span><br>带走 3 位资深研究员</p>
+      <div class="result">离开谷歌，独立创业</div>
+    </div>
+  </div>
+</div>
+
+<!-- Part 3: 谷歌投资 Discovery Loop -->
+<div class="page-label">配图 2 · PART 3</div>
+<div class="sketch-box" style="width:600px;">
+  <h3 style="text-align:center;">"体面分手"的逻辑</h3>
+  <div class="invest-flow" style="margin-top:20px;">
+    <div class="node">Google<br><span style="font-size:10px;">Alphabet</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <span class="arrow-node" style="font-size:20px;">💰→</span>
+      <span style="font-size:10px;color:#64748b;">创始投资</span>
+    </div>
+    <div class="node">Discovery<br><span style="font-size:10px;">Loop</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <span style="font-size:20px;color:#3b82f6;">☁️←</span>
+      <span style="font-size:10px;color:#64748b;">云服务合作</span>
+    </div>
+    <div class="node">Google<br><span style="font-size:10px;">Cloud</span></div>
+  </div>
+  <p style="text-align:center;margin-top:20px;font-size:13px;color:#64748b;">谷歌送走顶尖人才，但保留了生态联系和经济利益</p>
+</div>
+
+<!-- Part 4: 时间线 -->
+<div class="page-label">配图 3 · PART 4</div>
+<div class="sketch-box" style="width:680px;">
+  <h3 style="text-align:center;">谷歌 AI 的"多事之夏"</h3>
+  <div class="timeline" style="margin-top:20px;position:relative;z-index:1;">
+    <div class="event">
+      <div class="date">7月中旬</div>
+      <div class="content"><strong>Gemini 3.5 Pro 延期</strong> · 代码能力不及预期 · 股价单日跌 4.5%</div>
+    </div>
+    <div class="divider"></div>
+    <div class="event">
+      <div class="date">7月22日</div>
+      <div class="content"><strong>Q2 财报</strong> · 资本开支翻倍至 449 亿美元 · 自由现金流转负 · 股价盘后再跌 3%+</div>
+    </div>
+    <div class="divider"></div>
+    <div class="event">
+      <div class="date">8月5日</div>
+      <div class="content"><strong>人事双震</strong> · Hassabis 转岗 + Jeff Dean 离职 · 股价跌近 4%</div>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:16px;font-size:12px;color:#94a3b8;">不是孤立事件，是一连串压力的阶段性爆发</p>
+</div>
+
+<!-- Part 5: 人才流失全景 -->
+<div class="page-label">配图 4 · PART 5</div>
+<div class="sketch-box" style="width:680px;">
+  <h3 style="text-align:center;">谷歌近期 AI 核心人才流失</h3>
+  <div class="talent-grid" style="margin-top:20px;position:relative;z-index:1;">
+    <div class="talent-item">
+      <div class="name">Noam Shazeer</div>
+      <div style="font-size:12px;color:#64748b;">Transformer 作者之一</div>
+      <div class="to">→ <span>OpenAI</span></div>
+    </div>
+    <div class="talent-item">
+      <div class="name">John Jumper</div>
+      <div style="font-size:12px;color:#64748b;">诺贝尔化学奖得主</div>
+      <div class="to">→ <span>Anthropic</span></div>
+    </div>
+    <div class="talent-item">
+      <div class="name">Jonas Adler</div>
+      <div style="font-size:12px;color:#64748b;">Gemini 核心贡献者</div>
+      <div class="to">→ <span>Anthropic</span></div>
+    </div>
+    <div class="talent-item">
+      <div class="name">Alexander Pritzel</div>
+      <div style="font-size:12px;color:#64748b;">Gemini 核心贡献者</div>
+      <div class="to">→ <span>Anthropic</span></div>
+    </div>
+  </div>
+  <div style="background:#fef2f2;border:2px solid #e94560;border-radius:10px;padding:12px 16px;margin-top:16px;text-align:center;position:relative;z-index:1;">
+    <span style="font-size:14px;color:#e94560;font-weight:700;">⚡ 8月5日：Jeff Dean + Sanjay Ghemawat + Oriol Vinyals + Quoc Le<br>四人集体出走，创立 Discovery Loop</span>
+  </div>
+  <p style="text-align:center;margin-top:12px;font-size:12px;color:#64748b;">Gemini 三位主要领导者——Jeff Dean、Oriol Vinyals、Noam Shazeer——均已离开谷歌</p>
+</div>
+
+</body>
+</html>
