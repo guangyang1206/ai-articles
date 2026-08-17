@@ -41,11 +41,11 @@ yeranyang-cn/
 
 | # | 日期 | 标题 | 状态 |
 |---|------|------|------|
-| 1 | 2026-08-14 | [谷歌AI危机延烧：布林亲自接管，Gemini 3.5 Pro被曝取消](./articles/ai/2026-08-14_google-gemini-crisis/) | 📝 待发布 |
-| 2 | 2026-08-07 | [谷歌AI一日双震：哈萨比斯退居幕后，Jeff Dean 27年后离职创业](./articles/ai/2026-08-07_google-deepmind-shakeup/) | 📝 待发布 |
-| 3 | 2026-08-04 | [阿里 Qwen3.8 发布：16 天，265 次提交，零人类干预](./articles/ai/2026-08-04_alibaba-qwen3.8/) | 📝 待发布 |
+| 1 | 2026-08-14 | [谷歌AI危机延烧：布林重回一线，Gemini 3.5 Pro被曝取消](./articles/ai/2026-08-14_google-gemini-crisis/) | 📝 待发布 |
+| 2 | 2026-08-07 | [谷歌AI一日双震：哈萨比斯转任董事长，Jeff Dean 27年后离职创业](./articles/ai/2026-08-07_google-deepmind-shakeup/) | 📝 待发布 |
+| 3 | 2026-08-04 | [阿里 Qwen3.8 发布：16 天，265 次提交，全程无人值守](./articles/ai/2026-08-04_alibaba-qwen3.8/) | 📝 待发布 |
 | 4 | 2026-08-01 | [AI 正在学会处理需要好几天才能完成的任务](./articles/ai/2026-08-01_ai-long-horizon/) | 📝 待发布 |
-| 5 | 2026-08-01 | [7450 亿美元的账单：科技巨头 AI 投入到底花在哪了](./articles/ai/2026-08-01_ai-capex-bill/) | 📝 待发布 |
+| 5 | 2026-08-01 | [7000 亿美元的账单：科技巨头 AI 投入到底花在哪了](./articles/ai/2026-08-01_ai-capex-bill/) | 📝 待发布 |
 | 6 | 2026-07-20 | [WAIC 散场了，真正的问题才开始](./articles/ai/2026-07-20_waic-2026-aftermath/) | ✅ 已发布 |
 | 7 | 2026-06-10 | [Claude Fable 5 贴图素材](./articles/ai/2026-06-10_claude-fable5/) | 素材 |
 | 8 | 2026-06-07 | [AI军备竞赛到底有多烧钱？——800亿美元能建什么？](./articles/ai/2026-06-07_ai-infra-cost/) | ✅ 已发布 |

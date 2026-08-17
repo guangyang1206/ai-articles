@@ -2,7 +2,7 @@
   {
     "id": "2026-08-14_google-gemini-crisis",
     "date": "2026-08-14",
-    "title": "谷歌AI危机延烧：布林亲自接管，Gemini 3.5 Pro被曝取消",
+    "title": "谷歌AI危机延烧：布林重回一线，Gemini 3.5 Pro被曝取消",
     "desc": "SemiAnalysis判断谷歌旗舰模型已悄悄取消，创始人罕见重返一线，背后是算力分配的深层矛盾。",
     "tags": ["scope", "business"],
     "status": "draft"
@@ -10,7 +10,7 @@
   {
     "id": "2026-08-07_google-deepmind-shakeup",
     "date": "2026-08-07",
-    "title": "谷歌AI一日双震：哈萨比斯退居幕后，Jeff Dean 27年后离职创业",
+    "title": "谷歌AI一日双震：哈萨比斯转任董事长，Jeff Dean 27年后离职创业",
     "desc": "Google DeepMind 重组、Hassabis 转任首席科学家、Jeff Dean 带团队出走创业，一天之内谷歌 AI 权力格局巨变。",
     "tags": ["scope", "business"],
     "status": "draft"
@@ -18,7 +18,7 @@
   {
     "id": "2026-08-04_alibaba-qwen3.8",
     "date": "2026-08-04",
-    "title": "阿里 Qwen3.8 发布：16 天，265 次提交，零人类干预",
+    "title": "阿里 Qwen3.8 发布：16 天，265 次提交，全程无人值守",
     "desc": "2.4T 参数的 Qwen3.8-Max 在 oh-my-cli 仓库完成了国产旗舰首次可公开验证的长程自主交付。",
     "tags": ["tech", "scope"],
     "status": "draft"
@@ -34,8 +34,8 @@
   {
     "id": "2026-08-01_ai-capex-bill",
     "date": "2026-08-01",
-    "title": "7450 亿美元的账单：科技巨头 AI 投入到底花在哪了",
-    "desc": "芯片、数据中心、电力、人才——四大巨头 2026 年投入超 7450 亿，逐项拆解。",
+    "title": "7000 亿美元的账单：科技巨头 AI 投入到底花在哪了",
+    "desc": "芯片、数据中心、电力、人才——四大巨头 2026 年投入约 7300-7500 亿，逐项拆解。",
     "tags": ["data", "business"],
     "status": "draft"
   },
