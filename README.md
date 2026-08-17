@@ -24,7 +24,9 @@ yeranyang-cn/
 ├── share/                   # ← 非 AI 分享
 │   ├── ylgl/                #   韵乐共流（完整版）
 │   ├── ylgl-brief/          #   韵乐共流（精简版）
-│   └── xauat-2026/          #   AI 启蒙 slides（西安建大分享）
+│   ├── xauat-2026/          #   西安建大校友分享 slides
+│   ├── ai-enlightenment/    #   AI 启蒙 slides（双语科普）
+│   └── workbuddy-intro/     #   WorkBuddy 产品介绍 slides
 ├── scripts/                 # 自动化工具
 │   ├── new-topic.sh         #   选题脚手架生成器
 │   ├── deploy.py            #   内网站点部署（yeranyang-iai.***REMOVED***）
@@ -44,7 +46,7 @@ yeranyang-cn/
 | 3 | 2026-08-04 | [阿里 Qwen3.8 发布：16 天，265 次提交，零人类干预](./articles/ai/2026-08-04_alibaba-qwen3.8/) | 📝 待发布 |
 | 4 | 2026-08-01 | [AI 正在学会处理需要好几天才能完成的任务](./articles/ai/2026-08-01_ai-long-horizon/) | 📝 待发布 |
 | 5 | 2026-08-01 | [7450 亿美元的账单：科技巨头 AI 投入到底花在哪了](./articles/ai/2026-08-01_ai-capex-bill/) | 📝 待发布 |
-| 6 | 2026-07-20 | [WAIC 散场了，真正的问题才开始](./articles/ai/2026-07-20_waic-2026-aftermath/) | 📝 待发布 |
+| 6 | 2026-07-20 | [WAIC 散场了，真正的问题才开始](./articles/ai/2026-07-20_waic-2026-aftermath/) | ✅ 已发布 |
 | 7 | 2026-06-10 | [Claude Fable 5 贴图素材](./articles/ai/2026-06-10_claude-fable5/) | 素材 |
 | 8 | 2026-06-07 | [AI军备竞赛到底有多烧钱？——800亿美元能建什么？](./articles/ai/2026-06-07_ai-infra-cost/) | ✅ 已发布 |
 | 9 | 2026-06-07 | [AI安全：科学家们坐不住了——解读《IDAIS伦敦宣言》](./articles/ai/2026-06-07_ai-safety-london-declaration/) | 📝 待发布 |
@@ -71,7 +73,9 @@ yeranyang-cn/
 |------|------|
 | `ylgl/` | 韵乐共流（完整版） |
 | `ylgl-brief/` | 韵乐共流（精简版） |
-| `xauat-2026/` | AI 启蒙 slides（西安建大分享，17 页中英双语） |
+| `xauat-2026/` | 西安建大校友分享 slides（当人工智能开始涌现，人往何处） |
+| `ai-enlightenment/` | AI 启蒙 slides（面向非技术观众的中英双语科普） |
+| `workbuddy-intro/` | WorkBuddy 产品介绍 slides（12 页中文版） |
 
 ---
 
@@ -105,6 +109,8 @@ yeranyang-cn/
   → 更新 README 状态 → 部署
 ```
 
+> ⚠️ **文档同步铁律**：任何内容更新（新文章、状态变更、目录调整、站点增删）都必须在**同一个 commit** 内同步更新所有相关文档，清单见 `MEMORY.md` 第零节。
+
 ---
 
 ## 🌐 部署
@@ -128,4 +134,4 @@ yeranyang-cn/
 - 作者：艾AI
 
 ---
-*首次初始化：2026-04-24 · 最近更新：2026-08-17（仓库结构重构）*
+*首次初始化：2026-04-24 · 最近更新：2026-08-17（结构重构 + 文档同步规范）*

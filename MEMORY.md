@@ -5,6 +5,37 @@
 
 ---
 
+## 零、文档同步铁律（2026-08-17 确立）
+
+> **任何内容更新，必须在同一个 commit 内同步更新所有相关文档。**
+> 不允许"先改内容、文档后补"——文档不同步 = 发布未完成。
+
+### 更新类型 → 必须同步的文件清单
+
+| 更新类型 | 必须同步的文件 |
+|---|---|
+| 新增文章 | 文章目录（`README.md` + HTML 文件）→ `articles/ai/README.md` 表格 → `articles/ai/articles.json` → `articles/ai/index.html` → 根 `README.md` 文章表 |
+| 文章发布（状态变更） | 文章目录 `README.md` 状态 → `articles/ai/README.md` → `articles/ai/articles.json` → 根 `README.md` |
+| `share/` 站点增删 | `share/README.md` 子目录表 → 根 `README.md` share 表 + 目录树 |
+| 目录结构调整 | 根 `README.md` 目录树 → `share/README.md` 职责表 → `MEMORY.md` 所有路径引用 → `articles/ai/README.md` |
+| 规范变更 | `MEMORY.md` → 根 `README.md` 对应章节交叉引用 |
+
+### commit 前自检
+
+```bash
+# 1. 确认本次改动是一次完整同步（没有漏掉的关联文件）
+git status
+
+# 2. 确认没有旧名称/旧路径残留（按需替换关键词）
+grep -rn "旧目录名或旧文件名" --include="*.md" .
+
+# 3. 确认状态标记一致（两个 README 与 articles.json 不打架）
+grep -n "待发布\|已完成\|已发布" README.md articles/ai/README.md
+grep -n '"status"' articles/ai/articles.json
+```
+
+---
+
 ## 一、写作规范
 
 ### 1. 数据口径铁律
@@ -114,7 +145,7 @@ articles/ai/YYYY-MM-DD_slug/
 **新增文章后必须更新首页！** 步骤：
 
 1. 在 `articles/ai/README.md` 表格里加一行（状态先写"📝 待发布"）
-2. 在 `ai-articles-index.html` 里找到上一个同日期的 `<section class="topic-section">`
+2. 在 `articles/ai/index.html` 里找到上一个同日期的 `<section class="topic-section">`
 3. 在该 section 的 `</section>` 前插入新文章的卡片 HTML
 4. 卡片模板（直接复制改数据）：
 
@@ -175,10 +206,10 @@ articles/ai/YYYY-MM-DD_slug/
 #    → articles/ai/README.md 表格新增一行，状态"📝 待发布"
 
 # 4. 更新首页
-#    → ai-articles-index.html 新增 <section class="topic-section">
+#    → articles/ai/index.html 新增 <section class="topic-section">
 
 # 5. 提交代码
-cd ***REMOVED***
+cd <仓库根目录>
 git add -A
 git commit -m "feat: 新文章 slug"
 git push
@@ -245,7 +276,7 @@ docs: 更新 README 文章状态（✅ 已完成）
 
 ```bash
 # ✅ 正确方法（security=full 才能跑）
-cd ***REMOVED***
+cd <仓库根目录>
 WOA_PAGES_API_KEY="oa-pages-key-xxx" python3 -c "
 import sys, os
 sys.path.insert(0, 'scripts')
@@ -314,7 +345,7 @@ python3 scripts/deploy.py   # ← 带路径的调用会被拦截
 
 ### 错误 4：首页更新漏了入口卡片
 
-**原因**：只更新了 `README.md`，忘了 `ai-articles-index.html`。
+**原因**：只更新了 `README.md`，忘了 `articles/ai/index.html`。
 
 **解决**：每次新增文章，两个文件一起改（有脚本 `scripts/update-index.sh` 但只是提示，目前还需手动）。
 
@@ -374,6 +405,6 @@ git push origin master:main --force
 
 ---
 
-*最后更新：2026-08-08*  
+*最后更新：2026-08-17*  
 *适用文章：全部*  
 *整理者：AI 深度解读主理人*

@@ -10,9 +10,9 @@
 
 | 目录 | 用途 | 谁负责 |
 |-----|-----|-------|
-| `content/` | AI 深度解读**公众号文章**（Markdown / HTML 文章版） | OpenClaw 云端 + 本地都可写 |
+| `articles/ai/` | AI 深度解读**公众号文章**（HTML 文章版 + 配图素材） | OpenClaw 云端 + 本地都可写 |
 | `share/` | **非文章类**静态站点：web slides、demo、工具页 | **仅本地维护**，OpenClaw 云端**只读、不写** |
-| `ylgl/`, `ylgl-brief/` | 韵乐共流导读页 | 已有内容，保持现状 |
+| `content/` | 旧版部署脚本存档 | 不再写入新内容 |
 | `scripts/`, `index.html`, `README.md`, `BRAND_GUIDELINES.md`, `CNAME` | 站点基础设施 | 双方修改需先在 issue 里知会 |
 
 **不要跨界写**。如需在 `share/` 里增删任何子目录，请以本文件（`share/README.md`）明确记录归属。
@@ -26,6 +26,8 @@
 | `xauat-2026/` | 西安建筑科技大学校友分享 · 当人工智能开始涌现·人往何处 | 2026-07 | https://yeranyang.cn/share/xauat-2026/ |
 | `ai-enlightenment/` | AI 启蒙 · 从零理解 AI · 面向非技术观众的双语（EN / 中）科普 slides | 2025 首发 · 2026-08 更新 | https://yeranyang.cn/share/ai-enlightenment/ |
 | `workbuddy-intro/` | WorkBuddy 产品介绍 web slides · 12 页中文版 · 面向外部大众用户 | 2026-08 | https://yeranyang.cn/share/workbuddy-intro/ |
+| `ylgl/` | 韵乐共流（完整版）· 音乐内容导读页 | 既有内容 · 2026-08 迁入 | https://yeranyang.cn/share/ylgl/ |
+| `ylgl-brief/` | 韵乐共流（精简版）· 音乐内容导读页 | 既有内容 · 2026-08 迁入 | https://yeranyang.cn/share/ylgl-brief/ |
 
 ---
 
