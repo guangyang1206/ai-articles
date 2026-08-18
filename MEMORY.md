@@ -165,17 +165,32 @@ Anthropic 900b 那篇的 `<!-- 设计原则 -->` 注释是铁律：
 
 ```
 articles/ai/YYYY-MM-DD_slug/
-├── README.md                # 选题元数据（状态、日期、类型）
-├── wechat-article-mp.html  # 公众号专用版（内联样式，复制粘贴）
-├── article-full.html        # 个人网站全文版（深色科技风）
-├── cover-assets.html       # 公众号封面素材（头图/缩略图/分享图）
+├── README.md                # 选题元数据（状态、日期、类型、信源）
+├── wechat-article-mp.html  # ① 公众号版：内联样式，复制粘贴样式不变
+├── article-full.html        # ② 完整版：网页阅读，移动端适配，可交互
+├── share-cards.html        # ③ 贴图版：竖版 3:4 分享卡片（公众号贴图/小红书）
+├── cover-assets.html       # 公众号后台素材（头图/缩略图/朋友圈分享图）
 ├── article-illustrations.html # 文章内文配图素材（手绘风格）
+├── review-round-N.md       # ④ 审核记录：每轮审核结论与修改（见第一节）
 ├── en-article.html         # （可选）英文版
 ├── prompts/                # AI 生图 prompt（备查）
 └── assets/                 # 参考资料、图片素材
 ```
 
-### 2. 首页索引（`articles/ai/index.html`）
+### 2. 四类核心文件职责（2026-08-18 明确）
+
+每篇文章的目录以四类文件为骨架，各司其职，不互相替代：
+
+| # | 文件 | 职责 | 关键约束 |
+|---|------|------|---------|
+| ① | `wechat-article-mp.html` | 公众号版正文，唯一目标是**复制进公众号编辑器样式不变** | 样式铁律见第三节（内联 style、HEX、table 布局、meta 检查）；**公众号不支持非公众号文章的外部链接**——正文不放外链，参考文献以纯文本列于文末 |
+| ② | `article-full.html` | 完整版，面向网页与移动端阅读 | 可充分发挥 HTML 特性：Chart.js/SVG 图表、动画、交互；深色科技风；移动端适配 |
+| ③ | `share-cards.html` | 贴图版，文章要点浓缩为竖版分享卡片 | 竖版 3:4（建议 1080×1440 导出）；一卡一信息点；含标题+核心数据+「烨然漫笔」署名；浏览器打开截图，用于公众号图片消息与小红书 |
+| ④ | `review-round-N.md` | 审核记录，每轮审核与修改的忠实记录者 | 结构见第一节；随文章终身保留，定稿后不删除 |
+
+> `cover-assets.html`（公众号后台尺寸素材）与 `article-illustrations.html`（内文配图）为辅助素材，规格见第七节；`README.md` 为选题与状态的唯一权威来源。
+
+### 3. 首页索引（`articles/ai/index.html`）
 
 **新增文章后必须更新首页！** 步骤：
 
@@ -212,6 +227,12 @@ articles/ai/YYYY-MM-DD_slug/
           <span class="desc">公众号头图 + 缩略图 + 分享图</span>
           <span class="tag">设计</span>
         </a>
+        <a class="file-card" href="slug/share-cards.html">
+          <span class="icon">📲</span>
+          <span class="name">贴图版</span>
+          <span class="desc">竖版 3:4 分享卡片（公众号图片消息/小红书）</span>
+          <span class="tag">分享</span>
+        </a>
         <a class="file-card" href="slug/article-illustrations.html">
           <span class="icon">🎨</span>
           <span class="name">文章配图</span>
@@ -233,7 +254,8 @@ articles/ai/YYYY-MM-DD_slug/
 #    → 检查数据口径、标题严谨性、措辞情绪化
 
 # 2. 生成素材
-#    → 创建 cover-assets.html（封面素材）
+#    → 创建 cover-assets.html（公众号后台素材）
+#    → 创建 share-cards.html（竖版贴图：公众号图片消息/小红书）
 #    → 创建 article-illustrations.html（文章配图）
 #    → 浏览器打开，截图使用
 
@@ -338,6 +360,18 @@ python3 scripts/deploy.py   # ← 带路径的调用会被拦截
 | 朋友圈分享图 | 400×400（1:1） | 朋友圈分享卡片 |
 | 信息卡片 | 680×约300 | 文章内文贴图 |
 
+### 3. `share-cards.html` 标准结构
+
+文章要点的竖版分享卡片集（公众号图片消息 + 小红书共用）：
+
+| 项 | 规格 |
+|---|---|
+| 画幅 | 竖版 3:4，建议 1080×1440 导出（小红书最佳显示比例） |
+| 张数 | 3-6 张：1 张封面卡（标题+导语+署名）+ N 张要点卡（一卡一信息点）+ 1 张结尾卡（核心结论+公众号名） |
+| 内容 | 只放提炼后的要点与关键数字，不搬正文长段落 |
+| 署名 | 每张带「烨然漫笔」标识 |
+| 视觉 | 与 BRAND_GUIDELINES.md 一致；浏览器打开后逐张截图使用 |
+
 ### 2. `article-illustrations.html` 标准结构
 
 每 PART 一张配图，手绘风格（跟 Anthropic 900b 那篇保持一致）：
@@ -440,6 +474,6 @@ git push origin master:main --force
 
 ---
 
-*最后更新：2026-08-17*  
+*最后更新：2026-08-18*  
 *适用文章：全部*  
 *整理者：AI 深度解读主理人*
