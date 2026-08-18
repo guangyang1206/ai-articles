@@ -13,8 +13,9 @@ yeranyang-cn/
 ├── CNAME                    # 域名 yeranyang.cn
 ├── index.html               # 站点首页（导航到各分区）
 ├── README.md                # 仓库总说明（本文件）
-├── MEMORY.md                # 创作与发布规范（Agent 工作用）
-├── BRAND_GUIDELINES.md      # 品牌视觉规范
+├── CONTENT_STANDARD.md      # 内容创作与交付规范（唯一真相源）
+├── MEMORY.md                # 踩坑日志与历史经验（Agent 工作用）
+├── BRAND_GUIDELINES.md      # （已归档）视觉规范，指向 CONTENT_STANDARD.md
 ├── articles/
 │   └── ai/                  # ← AI 文章（23 篇）
 │       ├── index.html       #   AI 分区首页（数据驱动）
@@ -104,12 +105,14 @@ yeranyang-cn/
 ### 发布流程
 
 ```
-选题确定 → 脚手架生成 → 撰写正文 → 生成配图
-  → git commit → 粘贴公众号编辑器 → 发布
+选题确定 → 脚手架生成 → 撰写正文 → 三轮审核定稿（review-log.md）
+  → 生成素材（cover/poster/illustrations）→ git commit → 粘贴公众号编辑器 → 发布
   → 更新 README 状态 → 部署
 ```
 
-> ⚠️ **文档同步铁律**：任何内容更新（新文章、状态变更、目录调整、站点增删）都必须在**同一个 commit** 内同步更新所有相关文档，清单见 `MEMORY.md` 第零节。
+> 📐 **内容创作与交付规范**：所有写作、排版、审核、交付、发布规范，统一见 **[`CONTENT_STANDARD.md`](./CONTENT_STANDARD.md)**（唯一真相源）。
+>
+> 🤖 **智能体协作**：面向智能体的可执行规范已沉淀为 skill `ai-article-standard`，可直接调用。
 
 ---
 
@@ -124,7 +127,7 @@ yeranyang-cn/
 
 - 所有数据必须有明确来源，引用需标明出处
 - 数据交叉核实后再使用，严禁编造数据
-- 详见 `MEMORY.md` 中的「数据口径铁律」
+- 详见 [`CONTENT_STANDARD.md`](./CONTENT_STANDARD.md) §2「数据口径铁律」与 §12「术语与数据口径表」
 
 ---
 
