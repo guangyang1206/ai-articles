@@ -4,11 +4,11 @@
 
 | 字段 | 值 |
 |------|-----|
-| **标题** | 从***REMOVED*** CI/CD 到本地脚本——部署个人静态网站的踩坑实录 |
+| **标题** | 从公司内部 CI/CD 平台 到本地脚本——部署个人静态网站的踩坑实录 |
 | **Slug** | deploy-static-site-lessons |
 | **创建日期** | 2026-05-03 |
 | **作者** | Yeran |
-| **标签** | DevOps, SSH, CI/CD, ***REMOVED***, 静态网站, 腾讯云, 部署 |
+| **标签** | DevOps, SSH, CI/CD, 公司内部 CI/CD 平台, 静态网站, 腾讯云, 部署 |
 | **状态** | 草稿 |
 
 ## 选题理由
@@ -22,9 +22,9 @@
 | 文件 | 说明 |
 |------|------|
 | `README.md` | 选题元数据和发布记录 |
-| `wechat-article-mp.html` | 公众号专用版（纯内联样式） |
+| `article-wechat.html` | 公众号专用版（纯内联样式） |
 | `article-full.html` | 网站全文版（深色科技风） |
-| `share-cards.html` | 贴图分享卡片 |
+| `poster.html` / `poster.png` | 竖版贴图长图 |
 | `cover-assets.html` | 封面素材 |
 | `troubleshooting-log.md` | 完整排查日志 |
 

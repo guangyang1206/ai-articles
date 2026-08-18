@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siri的救赎之战</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; }
+  body {
+    font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+    background:#0a0a0f; display:flex; justify-content:center; -webkit-font-smoothing:antialiased;
+  }
+  .poster {
+    width:100%; max-width:1080px;
+    background:linear-gradient(175deg,#0c0c1a 0%,#0f1029 25%,#0a0f2e 50%,#0d0a25 75%,#0a0a0f 100%);
+    position:relative; overflow:hidden;
+  }
+  .poster::before{content:'';position:absolute;top:-220px;right:-220px;width:820px;height:820px;
+    background:radial-gradient(circle,rgba(204,120,50,.13) 0%,rgba(204,120,50,.03) 40%,transparent 70%);pointer-events:none;}
+  .poster::after{content:'';position:absolute;bottom:120px;left:-320px;width:720px;height:720px;
+    background:radial-gradient(circle,rgba(100,80,200,.09) 0%,transparent 60%);pointer-events:none;}
+  .content{position:relative;z-index:1;padding:9vw 6vw 7vw;}
+  .header{text-align:center;margin-bottom:7vw;}
+  .brand{display:inline-block;letter-spacing:3px;font-size:clamp(11px,2.8vw,15px);color:#cc7832;
+    font-weight:500;margin-bottom:3.2vw;}
+  .main-title{font-size:clamp(30px,8vw,58px);font-weight:900;color:#fff;line-height:1.28;letter-spacing:-.5px;}
+  .main-title .hl{background:linear-gradient(135deg,#cc7832,#e8a060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .sub-title{font-size:clamp(15px,3.9vw,28px);color:rgba(255,255,255,.55);font-weight:300;letter-spacing:1px;margin-top:14px;line-height:1.6;}
+  .divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(204,120,50,.35),transparent);margin:6vw 0;}
+  .sec-label{display:flex;align-items:center;gap:10px;margin-bottom:3.4vw;}
+  .badge-num{width:clamp(26px,5vw,34px);height:clamp(26px,5vw,34px);border-radius:8px;
+    background:linear-gradient(135deg,#cc7832,#b56428);display:flex;align-items:center;justify-content:center;
+    font-size:clamp(13px,3vw,17px);font-weight:700;color:#fff;flex-shrink:0;}
+  .badge-label{font-size:clamp(16px,3.8vw,23px);font-weight:700;color:#fff;letter-spacing:1px;}
+  .key-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,2vw,16px);}
+  .data-card{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);
+    border-radius:clamp(10px,2.4vw,16px);padding:clamp(16px,3.4vw,26px) clamp(14px,3vw,24px);}
+  .data-card .icon{font-size:clamp(18px,4vw,26px);margin-bottom:clamp(8px,1.8vw,14px);}
+  .data-card .data-label{font-size:clamp(11px,2.4vw,14px);color:rgba(255,255,255,.42);margin-bottom:4px;line-height:1.5;}
+  .data-card .data-value{font-size:clamp(20px,4.6vw,30px);font-weight:800;color:#fff;line-height:1.25;}
+  .data-card .data-value .unit{font-size:clamp(11px,2.3vw,14px);font-weight:400;color:rgba(255,255,255,.42);margin-left:4px;}
+  .headline-box{background:linear-gradient(135deg,rgba(204,120,50,.09),rgba(204,120,50,.03));
+    border:1px solid rgba(204,120,50,.18);border-radius:clamp(12px,2.8vw,18px);
+    padding:clamp(18px,3.8vw,30px);}
+  .headline-text{font-size:clamp(15px,3.3vw,23px);font-weight:700;color:#fff;line-height:1.7;}
+  .headline-text .accent{color:#cc7832;}
+  .analysis{display:flex;flex-direction:column;gap:clamp(12px,2.4vw,18px);}
+  .analysis-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);
+    border-radius:clamp(12px,2.8vw,16px);padding:clamp(16px,3.4vw,26px) clamp(16px,3.4vw,28px);
+    padding-left:clamp(20px,4.4vw,34px);position:relative;overflow:hidden;}
+  .analysis-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:4px;
+    background:linear-gradient(180deg,#cc7832,#e8a060);}
+  .analysis-title{font-size:clamp(15px,3.2vw,20px);font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:8px;line-height:1.45;}
+  .analysis-title .dot{width:8px;height:8px;border-radius:50%;background:#cc7832;flex-shrink:0;}
+  .analysis-body{font-size:clamp(13px,2.8vw,16px);color:rgba(255,255,255,.58);line-height:1.78;}
+  .analysis-body strong{color:rgba(255,255,255,.88);font-weight:600;}
+  .footer{margin-top:7vw;text-align:center;padding-top:clamp(18px,3.6vw,30px);border-top:1px solid rgba(255,255,255,.05);}
+  .footer-brand{font-size:clamp(14px,3vw,18px);color:#e8a060;font-weight:700;letter-spacing:1px;margin-bottom:6px;}
+  .footer-date{font-size:clamp(11px,2.4vw,14px);color:rgba(255,255,255,.3);letter-spacing:2px;margin-bottom:6px;}
+  .footer-source{font-size:clamp(9px,2vw,12px);color:rgba(255,255,255,.16);letter-spacing:1px;line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="poster"><div class="content">
+
+<div class="header">
+  <div class="brand">AI应用 · 苹果</div>
+  <div class="main-title"><span class="hl">Siri</span>的<br>救赎之战</div>
+  <div class="sub-title">全球最有钱的公司为什么做不好AI，WWDC 2026是Siri翻身的最后机会。</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">1</div><div class="badge-label">核心数据</div></div>
+<div class="key-grid">
+  <div class="data-card"><div class="icon">👥</div><div class="data-label">ChatGPT周活用户</div><div class="data-value">9亿<span class="unit">人（2025.12）</span></div></div>
+  <div class="data-card"><div class="icon">🗓️</div><div class="data-label">Siri发展历史</div><div class="data-value">15<span class="unit">年</span></div></div>
+  <div class="data-card"><div class="icon">💸</div><div class="data-label">苹果AI资本支出</div><div class="data-value">120-140亿<span class="unit">美元</span></div></div>
+  <div class="data-card"><div class="icon">📱</div><div class="data-label">ChatGPT月活用户</div><div class="data-value">10亿<span class="unit">人（2026.5）</span></div></div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">2</div><div class="badge-label">要点速览</div></div>
+<div class="headline-box"><div class="headline-text">WWDC 2026召开在即，Siri迎来15年来最关键的翻身之战。面对ChatGPT<span class="accent">9亿周活</span>的碾压，苹果被曝将开放第三方模型选择、深度集成App并上线本地大模型。Siri的成败，本质是苹果能否<span class="accent">自我革新</span>。</div></div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">3</div><div class="badge-label">深度解读</div></div>
+<div class="analysis">
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>Siri的问题是战略</div><div class="analysis-body">Siri诞生于2011年，是最早的语音助手之一。苹果一直把它当“功能”而非“平台”运营，导致其在ChatGPT、Gemini面前明显落后。</div></div>
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>WWDC三大更新看点</div><div class="analysis-body">据彭博社报道，苹果将允许用户在Siri中切换第三方模型、直接操作第三方App，并用自研本地大模型支持离线任务。开放生态是苹果过去15年最不愿做的事。</div></div>
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>苹果文化的根本挑战</div><div class="analysis-body">AI需要数据驱动、快速迭代与开放生态，与苹果硬件设计驱动的传统基因相悖。Siri的救赎不只是技术问题，更是苹果能否自我革新的问题。</div></div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">AI 深度解读</div>
+  <div class="footer-date">2026.06.07</div>
+  <div class="footer-source">数据来源：彭博社、OpenAI官方数据、SensorTower、苹果SEC文件</div>
+</div>
+
+</div></div>
+</body>
+</html>

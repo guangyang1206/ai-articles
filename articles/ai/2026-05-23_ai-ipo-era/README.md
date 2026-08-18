@@ -23,9 +23,9 @@
 
 ## 发布记录
 - 2026-05-23 创建目录，完成写作
-- 待发布：公众号版（wechat-article-mp.html）+ 个人站版（article-full.html）
+- 待发布：公众号版（article-wechat.html）+ 个人站版（article-full.html）
 
 ## 文件清单
 - `article-full.html` — 个人站全文版（深色科技风）
-- `wechat-article-mp.html` — 公众号专用版（内联样式，复制粘贴）
+- `article-wechat.html` — 公众号专用版（内联样式，复制粘贴）
 - `prompts/` — 生图 prompt（待补充）

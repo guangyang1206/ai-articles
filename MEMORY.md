@@ -48,17 +48,34 @@ grep -n '"status"' articles/ai/articles.json
 | 第 2 轮 | 修订验证：确认第 1 轮问题已修正 + 数据口径复查（ARR/实际、币种、估值/融资） | 无新增事实错误 |
 | 第 3 轮 | 终稿把关：全文通读、标题严谨性、措辞情绪化、排版规范 | 零事实/数据错误，可定稿 |
 
-- 每轮审核在文章目录产出 `review-round-N.md`（N = 轮次号），记录核查清单、结论与修改建议
+- 审核记录统一写入文章目录下的 `review-log.md`（**单文件，按轮次追加**，不是每轮一个文件），忠实记录每一轮审核与修改
 - 任一轮发现新的硬错误，修正后重新计轮：需连续无错误直至满三轮
 - 三轮全部通过后，文章目录 `README.md` 状态改为「定稿」，方可进入发布流程
 
-### 2. `review-round-N.md` 必备结构
+### 2. `review-log.md` 结构（三合一：结论 + 问题清单 + 修改记录）
 
-1. 头部：文章标题、审核日期、审核范围（事实准确性 / 数据口径 / 来源可靠性 / 标题与措辞）
-2. 结论：✅ 通过 / ⚠️ 修改后可通过 / ❌ 不通过
-3. 事实核查清单表：声明 → 核查结果 → 依据/来源 → 处理建议
-4. 修改建议：可直接替换的文本，不只给批评
-5. 下轮审核重点
+每个轮次一个 `## 第 N 轮审核（日期）` 章节，内含四段：
+
+```markdown
+## 第 1 轮审核（2026-08-17）
+
+### 审核结论
+一句话判断：✅ 通过 / ⚠️ 修改后可过 / ❌ 需大改；说明硬错误、风险措辞、待核实各几条。
+
+### 问题清单
+| # | 文中声明 | 严重度 | 问题 | 修改建议 |
+|---|---------|--------|------|---------|
+| 1 | ... | 硬错误 | ... | 可直接替换的文本 |
+
+### 修改记录
+- [已解决] #1：旧表述 → 新表述
+- [待确认] #3：...
+
+### 状态
+已解决 N 处 / 待确认 M 处；下轮审核重点：...
+```
+
+> 审核报告（发现问题）+ 修改流水账（怎么改的）**合并在同一文件**，一个文件既能当审核报告看，又能追溯修改历史。
 
 ### 3. 审核方法
 
@@ -102,7 +119,7 @@ grep -n '"status"' articles/ai/articles.json
 
 ## 三、HTML 格式规范
 
-### 1. 公众号版（`wechat-article-mp.html`）
+### 1. 公众号版（`article-wechat.html`）
 
 **必须遵守 Anthropic 900b 那篇的格式标准：**
 
@@ -124,17 +141,17 @@ grep -n '"status"' articles/ai/articles.json
 
 ### 2. HTML 语法强制检查清单
 
-每次生成/修改 `wechat-article-mp.html` 后必须检查：
+每次生成/修改 `article-wechat.html` 后必须检查：
 
 ```bash
 # 快速检查脚本（可加入 pre-commit）
-grep -n 'charset="UTF' articles/ai/*/wechat-article-mp.html
+grep -n 'charset="UTF' articles/ai/*/article-wechat.html
 # 应该输出：charset="UTF-8"（有横杠）
 
-grep -n 'user-scalable' articles/ai/*/wechat-article-mp.html
+grep -n 'user-scalable' articles/ai/*/article-wechat.html
 # 应该无输出（不允许 user-scalable=no）
 
-grep -n '<meta name="viewport"' articles/ai/*/wechat-article-mp.html
+grep -n '<meta name="viewport"' articles/ai/*/article-wechat.html
 # 应该只有 content="width=device-width, initial-scale=1.0"
 ```
 
@@ -166,12 +183,12 @@ Anthropic 900b 那篇的 `<!-- 设计原则 -->` 注释是铁律：
 ```
 articles/ai/YYYY-MM-DD_slug/
 ├── README.md                # 选题元数据（状态、日期、类型、信源）
-├── wechat-article-mp.html  # ① 公众号版：内联样式，复制粘贴样式不变
-├── article-full.html        # ② 完整版：网页阅读，移动端适配，可交互
-├── share-cards.html        # ③ 贴图版：竖版 3:4 分享卡片（公众号贴图/小红书）
-├── cover-assets.html       # 公众号后台素材（头图/缩略图/朋友圈分享图）
+├── article-wechat.html       # ① 公众号版：内联样式，复制粘贴样式不变
+├── article-full.html         # ② 完整版：网页阅读，移动端适配，可交互
+├── poster.html               # ③ 贴图版：竖版长图 + 一句导语（小红书/朋友圈/公众号图片消息）
+├── cover-assets.html         # 公众号后台素材（头图/缩略图/朋友圈分享图）
 ├── article-illustrations.html # 文章内文配图素材（手绘风格）
-├── review-round-N.md       # ④ 审核记录：每轮审核结论与修改（见第一节）
+├── review-log.md             # ④ 审核记录：每轮审核与修改流水账（见第一节）
 ├── en-article.html         # （可选）英文版
 ├── prompts/                # AI 生图 prompt（备查）
 └── assets/                 # 参考资料、图片素材
@@ -183,10 +200,10 @@ articles/ai/YYYY-MM-DD_slug/
 
 | # | 文件 | 职责 | 关键约束 |
 |---|------|------|---------|
-| ① | `wechat-article-mp.html` | 公众号版正文，唯一目标是**复制进公众号编辑器样式不变** | 样式铁律见第三节（内联 style、HEX、table 布局、meta 检查）；**公众号不支持非公众号文章的外部链接**——正文不放外链，参考文献以纯文本列于文末 |
+| ① | `article-wechat.html` | 公众号版正文，唯一目标是**复制进公众号编辑器样式不变** | 样式铁律见第三节（内联 style、HEX、table 布局、meta 检查）；**公众号不支持非公众号文章的外部链接**——正文不放外链，参考文献以纯文本列于文末 |
 | ② | `article-full.html` | 完整版，面向网页与移动端阅读 | 可充分发挥 HTML 特性：Chart.js/SVG 图表、动画、交互；深色科技风；移动端适配 |
-| ③ | `share-cards.html` | 贴图版，文章要点浓缩为竖版分享卡片 | 竖版 3:4（建议 1080×1440 导出）；一卡一信息点；含标题+核心数据+「烨然漫笔」署名；浏览器打开截图，用于公众号图片消息与小红书 |
-| ④ | `review-round-N.md` | 审核记录，每轮审核与修改的忠实记录者 | 结构见第一节；随文章终身保留，定稿后不删除 |
+| ③ | `poster.html` | 贴图版，文章浓缩为一张竖版长图（标题 + 一句导语 + 核心要点 + 署名） | 竖版长图（约 1080 宽，2x 导出约 2160 宽）；`poster.html` 是排版源，浏览器截图导出 `poster.png` 交付；用于小红书 / 朋友圈 / 公众号「图片消息」 |
+| ④ | `review-log.md` | 审核记录，每轮审核与修改的忠实记录者 | 结构见第一节；随文章终身保留，定稿后不删除 |
 
 > `cover-assets.html`（公众号后台尺寸素材）与 `article-illustrations.html`（内文配图）为辅助素材，规格见第七节；`README.md` 为选题与状态的唯一权威来源。
 
@@ -215,7 +232,7 @@ articles/ai/YYYY-MM-DD_slug/
           <span class="desc">深色科技风，完整深度分析</span>
           <span class="tag">网站</span>
         </a>
-        <a class="file-card" href="slug/wechat-article-mp.html">
+        <a class="file-card" href="slug/article-wechat.html">
           <span class="icon">📱</span>
           <span class="name">公众号专用版</span>
           <span class="desc">白底内联样式，复制粘贴到微信编辑器即可</span>
@@ -227,10 +244,10 @@ articles/ai/YYYY-MM-DD_slug/
           <span class="desc">公众号头图 + 缩略图 + 分享图</span>
           <span class="tag">设计</span>
         </a>
-        <a class="file-card" href="slug/share-cards.html">
+        <a class="file-card" href="slug/poster.html">
           <span class="icon">📲</span>
           <span class="name">贴图版</span>
-          <span class="desc">竖版 3:4 分享卡片（公众号图片消息/小红书）</span>
+          <span class="desc">竖版长图 + 一句导语（小红书/朋友圈/公众号图片消息）</span>
           <span class="tag">分享</span>
         </a>
         <a class="file-card" href="slug/article-illustrations.html">
@@ -255,7 +272,7 @@ articles/ai/YYYY-MM-DD_slug/
 
 # 2. 生成素材
 #    → 创建 cover-assets.html（公众号后台素材）
-#    → 创建 share-cards.html（竖版贴图：公众号图片消息/小红书）
+#    → 创建 poster.html（竖版长图 + 一句导语：小红书/朋友圈/公众号图片消息）
 #    → 创建 article-illustrations.html（文章配图）
 #    → 浏览器打开，截图使用
 
@@ -308,7 +325,7 @@ deploy.deploy()
 
 ```bash
 # ✅ 推荐：显式指定文件
-git add articles/ai/2026-05-23_ai-math-proof/wechat-article-mp.html
+git add articles/ai/2026-05-23_ai-math-proof/article-wechat.html
 git add articles/ai/README.md
 git add articles/ai/index.html
 
@@ -360,17 +377,17 @@ python3 scripts/deploy.py   # ← 带路径的调用会被拦截
 | 朋友圈分享图 | 400×400（1:1） | 朋友圈分享卡片 |
 | 信息卡片 | 680×约300 | 文章内文贴图 |
 
-### 3. `share-cards.html` 标准结构
+### 3. `poster.html` 标准结构
 
-文章要点的竖版分享卡片集（公众号图片消息 + 小红书共用）：
+一张竖版长图（小红书 / 朋友圈 / 公众号「图片消息」共用），参考 `fable5-poster.html` 模板：
 
 | 项 | 规格 |
 |---|---|
-| 画幅 | 竖版 3:4，建议 1080×1440 导出（小红书最佳显示比例） |
-| 张数 | 3-6 张：1 张封面卡（标题+导语+署名）+ N 张要点卡（一卡一信息点）+ 1 张结尾卡（核心结论+公众号名） |
-| 内容 | 只放提炼后的要点与关键数字，不搬正文长段落 |
-| 署名 | 每张带「烨然漫笔」标识 |
-| 视觉 | 与 BRAND_GUIDELINES.md 一致；浏览器打开后逐张截图使用 |
+| 画幅 | 竖版长图，设计宽 1080px（浏览器 2x DPR 截图导出约 2160px 宽 PNG） |
+| 结构 | 顶部 tag → 主标题 → 一句导语 → 核心要点/数据卡（3-5 个）→ 结尾（日期 + 署名「烨然漫笔」） |
+| 内容 | 只放标题、一句导语、几个核心数字/要点，不搬正文长段落 |
+| 署名 | 底部带「烨然漫笔」标识 + 日期 |
+| 交付 | `poster.html` 为排版源，浏览器 2x DPR 截图导出同目录 `poster.png` 交付 |
 
 ### 2. `article-illustrations.html` 标准结构
 

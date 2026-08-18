@@ -70,7 +70,7 @@ yeranyang-cn/
     ├── articles.json      # 文章元数据
     └── YYYY-MM-DD_slug/        # 每个选题独立目录`
         ├── README.md           # 选题元数据 & 发布追踪`
-        ├── wechat-article-mp.html  # 公众号专用版（内联样式，复制粘贴）
+        ├── article-wechat.html  # 公众号专用版（内联样式，复制粘贴）
         ├── article-full.html       # 个人网站全文版（深色科技风）
         ├── article-illustrations.html # 文章内文配图素材（手绘风格）
         ├── cover-assets.html       # 公众号封面/缩略图素材`
@@ -91,7 +91,7 @@ yeranyang-cn/
 | 文件 | 用途 | 使用方式 |
 |------|------|----------|
 | `README.md` | 选题元数据 & 发布追踪 | 每次发布后更新状态 |
-| `wechat-article-mp.html` | 微信公众号正文 | 浏览器打开 → Ctrl+A → 粘贴到编辑器 |
+| `article-wechat.html` | 微信公众号正文 | 浏览器打开 → Ctrl+A → 粘贴到编辑器 |
 | `article-full.html` | 个人网站全文版 | 部署到个人网站 |
 | `article-illustrations.html` | 文章内文配图素材 | 浏览器打开 → 逐张截图 |
 | `cover-assets.html` | 公众号封面/缩略图 | 浏览器打开 → 截图对应尺寸 |

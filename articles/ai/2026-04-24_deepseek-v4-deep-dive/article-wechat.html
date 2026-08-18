@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeepSeek V4 深度解读 - 公众号版</title>
+</head>
+<body>
+
+<!--
+====================================================================
+微信公众号专用版 — 导入方法：
+1. 在浏览器中打开此 HTML 文件
+2. 全选复制（Ctrl+A → Ctrl+C）
+3. 粘贴到公众号编辑器（Ctrl+V）
+
+设计原则：
+- 每个元素都有独立的 section 容器带 background-color
+- 不依赖 CSS Grid/Flex 布局，用 table 实现列布局
+- 不使用 rgba()，全用 HEX 颜色
+- 不使用 linear-gradient（除头图 section 独立背景）
+- 不使用 -webkit-background-clip:text
+- 所有文字颜色可在白底和深色底上清晰阅读
+====================================================================
+-->
+
+<section style="max-width:680px;margin:0 auto;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Microsoft YaHei',sans-serif;font-size:15px;color:#333333;line-height:1.85;word-wrap:break-word">
+
+<!-- ===== 封面区 ===== -->
+<section style="background-color:#0d1033;padding:52px 28px 44px;text-align:center;border-radius:0">
+  <p style="display:inline-block;padding:4px 16px;border:1px solid #3a5a8a;border-radius:100px;font-size:12px;color:#7faadd;letter-spacing:1px;margin:0 0 18px 0">⚡ AI 前沿 · 深度解读 · 2026.04.24</p>
+  <h1 style="font-size:28px;font-weight:900;line-height:1.3;letter-spacing:-0.5px;margin:0 0 14px 0;color:#ffffff"><span style="color:#6ba3ff">DeepSeek V4</span> 深度解读</h1>
+  <p style="font-size:15px;color:#9a9abc;font-weight:400;margin:0 0 10px 0">58 页技术报告拆解 × 腾讯 Hy3 Preview 对比 × 六大旗舰横评</p>
+  <p style="font-size:12px;color:#5a5a72;margin:14px 0 0 0">基于 DeepSeek V4 官方技术报告（58页）与 Hy3 Preview HuggingFace 数据</p>
+</section>
+
+<!-- ===== 导语 ===== -->
+<section style="padding:28px 24px 24px;background-color:#ffffff">
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">2026 年 4 月 24 日，DeepSeek 正式发布 V4 系列模型，同时公开了长达 <strong style="color:#222222">58 页的技术报告</strong>。仅一天前（4月23日），腾讯混元团队也开源了 <strong style="color:#222222">Hy3 Preview</strong>。</p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">本文将深入解读 V4 技术报告的核心内容，并与 Hy3 Preview 及 Claude、GPT、Gemini 等闭源旗舰进行全面对比分析。</p>
+</section>
+
+<!-- ===== 目录 ===== -->
+<section style="padding:20px 24px;background-color:#f7f8fa">
+  <p style="font-size:12px;color:#4a7fd4;letter-spacing:2px;margin:0 0 10px 0">📑 目录</p>
+  <table cellpadding="0" cellspacing="6" border="0" style="width:100%">
+    <tr>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#eef3fc;border:1px solid #d4dfef;font-size:13px;color:#3a6dba;text-align:center;white-space:nowrap">一、报告核心解读</td>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#f0ecfc;border:1px solid #dbd4ef;font-size:13px;color:#6b4dba;text-align:center;white-space:nowrap">二、架构创新详解</td>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#ecf9fc;border:1px solid #cceef5;font-size:13px;color:#1a8fa8;text-align:center;white-space:nowrap">三、V4 vs Hy3</td>
+    </tr>
+    <tr>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#fef7ec;border:1px solid #f0ddba;font-size:13px;color:#a67b1a;text-align:center;white-space:nowrap">四、旗舰大乱斗</td>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#ecfcf3;border:1px solid #c8eed8;font-size:13px;color:#1a8c56;text-align:center;white-space:nowrap">五、总结与展望</td>
+      <td></td>
+    </tr>
+  </table>
+</section>
+
+<!-- ===== PART 1 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#4a7fd4;letter-spacing:3px;margin:0 0 6px 0">PART 1</p>
+  <h2 style="font-size:22px;font-weight:700;color:#222222;margin:0 0 16px 0">📄 V4 技术报告核心解读</h2>
+
+  <!-- 四大数字 -->
+  <table cellpadding="0" cellspacing="8" border="0" style="width:100%;margin:16px 0">
+    <tr>
+      <td style="width:50%;padding:18px 14px;border-radius:12px;background-color:#eef3fc;border:1px solid #d4dfef;text-align:center">
+        <p style="font-size:28px;font-weight:900;color:#3a6dba;margin:0">1.6T</p>
+        <p style="font-size:12px;color:#7a8aa0;margin:4px 0 0 0">V4-Pro 总参数</p>
+      </td>
+      <td style="width:50%;padding:18px 14px;border-radius:12px;background-color:#f0ecfc;border:1px solid #dbd4ef;text-align:center">
+        <p style="font-size:28px;font-weight:900;color:#7a4db8;margin:0">284B</p>
+        <p style="font-size:12px;color:#7a8aa0;margin:4px 0 0 0">V4-Flash 总参数</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="width:50%;padding:18px 14px;border-radius:12px;background-color:#ecf9fc;border:1px solid #cceef5;text-align:center">
+        <p style="font-size:28px;font-weight:900;color:#0a8aaa;margin:0">1M</p>
+        <p style="font-size:12px;color:#7a8aa0;margin:4px 0 0 0">原生上下文长度</p>
+      </td>
+      <td style="width:50%;padding:18px 14px;border-radius:12px;background-color:#ecfcf3;border:1px solid #c8eed8;text-align:center">
+        <p style="font-size:28px;font-weight:900;color:#0a8a56;margin:0">33T</p>
+        <p style="font-size:12px;color:#7a8aa0;margin:4px 0 0 0">预训练 Tokens (Pro)</p>
+      </td>
+    </tr>
+  </table>
+
+  <p style="font-size:15px;color:#444444;margin:18px 0;line-height:1.9"><strong style="color:#222222">一句话总结：</strong>DeepSeek V4 的核心目标是<strong style="color:#3a6dba">打破超长上下文的效率瓶颈</strong>。通过全新的混合注意力架构（CSA + HCA），在百万 Token 场景下将推理 FLOPs 降至 V3.2 的 27%、KV 缓存降至 10%，同时在绝大多数评测中超越前代并逼近最强闭源模型。</p>
+
+  <!-- 关键亮点 -->
+  <section style="padding:18px 20px;border-radius:12px;background-color:#f4f7fe;border-left:4px solid #3a6dba;margin:20px 0">
+    <p style="font-size:14px;font-weight:700;color:#222222;margin:0 0 10px 0">🏆 关键数据亮点（数据来源：技术报告 Table 6）</p>
+    <p style="font-size:14px;color:#444444;line-height:2.0;margin:0">
+      • <strong>LiveCodeBench 93.5%</strong> — 超越 Gemini-3.1-Pro（91.7%），所有模型最高<br>
+      • <strong>Codeforces Rating 3206</strong> — 超越 GPT-5.4 xHigh（3168）和 Gemini（3052）<br>
+      • <strong>Apex Shortlist 90.2%</strong> — 超越所有闭源模型，Gemini 89.1%<br>
+      • <strong>SimpleQA-Verified 57.9%</strong> — 开源最高，超第二名 K2.6（36.9%）20 个百分点<br>
+      • <strong>SWE-Verified 80.6%</strong> — 与 Opus-4.6（80.8%）和 Gemini（80.6%）持平<br>
+      • <strong>Putnam-2025 形式化数学 120/120</strong> — 满分，与 Axiom 并列最佳
+    </p>
+  </section>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e8eaef;margin:0;border:none"></p></section>
+
+<!-- ===== PART 2 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#7a4db8;letter-spacing:3px;margin:0 0 6px 0">PART 2</p>
+  <h2 style="font-size:22px;font-weight:700;color:#222222;margin:0 0 16px 0">🧩 三大架构创新详解</h2>
+  <p style="font-size:14px;color:#666666;margin:0 0 20px 0">V4 在 V3 的 MoE + MTP 基础上引入了三项核心创新，彻底改变超长序列处理的效率格局。</p>
+
+  <!-- 创新1 -->
+  <section style="padding:20px;border-radius:12px;background-color:#f4f7fe;border:1px solid #d4dfef;margin:0 0 12px 0">
+    <p style="font-size:16px;font-weight:700;color:#222222;margin:0 0 8px 0">🔬 混合注意力：CSA + HCA</p>
+    <p style="font-size:13.5px;color:#555555;line-height:1.85;margin:0">
+      <strong style="color:#333333">CSA（压缩稀疏注意力）</strong>：将每 m=4 个 Token 的 KV 压缩为 1 条，再用 Lightning Indexer 选 top-k=512 条做稀疏注意力。<br>
+      <strong style="color:#333333">HCA（重度压缩注意力）</strong>：更激进地将 m'=128 个 Token 压缩为 1 条，但保持全注意力。<br>
+      两者交替使用，外加 128 窗口滑动注意力保留局部细粒度信息。
+    </p>
+  </section>
+
+  <!-- 创新2 -->
+  <section style="padding:20px;border-radius:12px;background-color:#f6f3fc;border:1px solid #dbd4ef;margin:0 0 12px 0">
+    <p style="font-size:16px;font-weight:700;color:#222222;margin:0 0 8px 0">🌐 流形约束超连接 (mHC)</p>
+    <p style="font-size:13.5px;color:#555555;line-height:1.85;margin:0">
+      将残差映射矩阵约束到<strong style="color:#333333">双随机矩阵流形（Birkhoff 多面体）</strong>，保证谱范数 ≤ 1，使深层网络中信号传播非扩张且稳定。通过 Sinkhorn-Knopp 算法（20 次迭代）投影，配合动态参数化生成三个映射矩阵。
+    </p>
+  </section>
+
+  <!-- 创新3 -->
+  <section style="padding:20px;border-radius:12px;background-color:#eefaf4;border:1px solid #c8eed8;margin:0 0 12px 0">
+    <p style="font-size:16px;font-weight:700;color:#222222;margin:0 0 8px 0">⚡ Muon 优化器</p>
+    <p style="font-size:13.5px;color:#555555;line-height:1.85;margin:0">
+      替代 AdamW 用于大部分参数训练（embedding、预测头和 RMSNorm 仍用 AdamW）。momentum=0.95，weight_decay=0.1。实现更快收敛和更好的训练稳定性。
+    </p>
+  </section>
+
+  <!-- 效率革命 -->
+  <section style="padding:20px;border-radius:12px;background-color:#f0f3fb;border:1px solid #d4dfef;margin:20px 0">
+    <p style="font-size:16px;font-weight:700;color:#222222;margin:0 0 14px 0">💡 效率革命：1M Token 场景下</p>
+    <table cellpadding="0" cellspacing="6" border="0" style="width:100%">
+      <tr>
+        <td style="width:50%;text-align:center;padding:12px 8px;border-radius:10px;background-color:#e4eaf6">
+          <p style="font-size:24px;font-weight:900;color:#3a6dba;margin:0">27%</p>
+          <p style="font-size:11px;color:#6878a0;margin:4px 0 0 0">Pro 推理 FLOPs<br>（仅为 V3.2 的）</p>
+        </td>
+        <td style="width:50%;text-align:center;padding:12px 8px;border-radius:10px;background-color:#ebe4f6">
+          <p style="font-size:24px;font-weight:900;color:#7a4db8;margin:0">10%</p>
+          <p style="font-size:11px;color:#6878a0;margin:4px 0 0 0">Pro KV 缓存<br>（仅为 V3.2 的）</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:50%;text-align:center;padding:12px 8px;border-radius:10px;background-color:#e0f2f6">
+          <p style="font-size:24px;font-weight:900;color:#0a8aaa;margin:0">10%</p>
+          <p style="font-size:11px;color:#6878a0;margin:4px 0 0 0">Flash 推理 FLOPs<br>（仅为 V3.2 的）</p>
+        </td>
+        <td style="width:50%;text-align:center;padding:12px 8px;border-radius:10px;background-color:#e0f6ec">
+          <p style="font-size:24px;font-weight:900;color:#0a8a56;margin:0">7%</p>
+          <p style="font-size:11px;color:#6878a0;margin:4px 0 0 0">Flash KV 缓存<br>（仅为 V3.2 的）</p>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- 后训练流程 -->
+  <p style="font-size:16px;font-weight:700;color:#222222;margin:24px 0 14px 0">🔄 后训练流水线：两阶段范式</p>
+  <table cellpadding="0" cellspacing="0" border="0" style="width:100%;margin:0 0 16px 0">
+    <tr>
+      <td style="width:44%;padding:14px;border-radius:12px;background-color:#f4f7fe;border:1px solid #d4dfef;text-align:center;vertical-align:top">
+        <p style="font-size:10px;color:#3a6dba;letter-spacing:1px;margin:0 0 4px 0">STAGE 1</p>
+        <p style="font-size:14px;font-weight:600;color:#222222;margin:0 0 4px 0">领域专家培养</p>
+        <p style="font-size:12px;color:#7888a0;margin:0">SFT + GRPO RL<br>生成式奖励模型 (GRM)</p>
+      </td>
+      <td style="width:12%;text-align:center;vertical-align:middle;font-size:20px;color:#3a6dba">→</td>
+      <td style="width:44%;padding:14px;border-radius:12px;background-color:#f6f3fc;border:1px solid #dbd4ef;text-align:center;vertical-align:top">
+        <p style="font-size:10px;color:#7a4db8;letter-spacing:1px;margin:0 0 4px 0">STAGE 2</p>
+        <p style="font-size:14px;font-weight:600;color:#222222;margin:0 0 4px 0">On-Policy 蒸馏</p>
+        <p style="font-size:12px;color:#7888a0;margin:0">10+ Teacher 模型<br>全词表 logit 蒸馏</p>
+      </td>
+    </tr>
+  </table>
+  <p style="font-size:13px;color:#666666;line-height:1.8;margin:0">V4 还支持 <strong style="color:#333333">三种推理模式</strong>：Non-Think（直觉响应）、Think High（深度分析，128K ctx）、Think Max（极限推理，384K ctx）。</p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e8eaef;margin:0;border:none"></p></section>
+
+<!-- ===== PART 3 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#0a8aaa;letter-spacing:3px;margin:0 0 6px 0">PART 3</p>
+  <h2 style="font-size:22px;font-weight:700;color:#222222;margin:0 0 16px 0">⚔️ V4 vs Hy3 Preview 正面交锋</h2>
+  <p style="font-size:14px;color:#666666;margin:0 0 20px 0">Hy3 Preview 于 4 月 23 日发布，仅比 V4 早一天。两者定位不同但直接竞争。</p>
+
+  <!-- 模型规格对比表 -->
+  <table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;font-size:13px;border-radius:12px;overflow:hidden;border:1px solid #e0e4ea;margin:0 0 20px 0">
+    <thead>
+      <tr style="background-color:#f0f3f8">
+        <th style="padding:10px 10px;text-align:left;color:#666666;font-size:12px;border-bottom:1px solid #e0e4ea">规格</th>
+        <th style="padding:10px 8px;text-align:center;color:#3a6dba;font-size:12px;font-weight:700;border-bottom:1px solid #e0e4ea">V4-Pro</th>
+        <th style="padding:10px 8px;text-align:center;color:#0a8aaa;font-size:12px;font-weight:700;border-bottom:1px solid #e0e4ea">V4-Flash</th>
+        <th style="padding:10px 8px;text-align:center;color:#0a8a56;font-size:12px;font-weight:700;border-bottom:1px solid #e0e4ea">Hy3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:8px 10px;border-bottom:1px solid #f0f0f0;color:#666666">总参数</td><td style="padding:8px;text-align:center;border-bottom:1px solid #f0f0f0;font-weight:700;color:#3a6dba">1.6T</td><td style="padding:8px;text-align:center;border-bottom:1px solid #f0f0f0">284B</td><td style="padding:8px;text-align:center;border-bottom:1px solid #f0f0f0">295B</td></tr>
+      <tr style="background-color:#fafbfc"><td style="padding:8px 10px;border-bottom:1px solid #f0f0f0;color:#666666">激活参数</td><td style="padding:8px;text-align:center;border-bottom:1px solid #f0f0f0">49B</td><td style="padding:8px;text-align:center;border-bottom:1px solid #f0f0f0">13B</td><td style="padding:8px;text-align:center;border-bottom:1px solid #f0f0f0">21B</td></tr>
+      <tr><td style="padding:8px 10px;border-bottom:1px solid #f0f0f0;color:#666666">上下文</td><td style="padding:8px;text-align:center;border-bottom:1px solid #f0f0f0;font-weight:700;color:#3a6dba">1M tokens</td><td style="padding:8px;text-align:center;border-bottom:1px solid #f0f0f0;font-weight:700;color:#0a8aaa">1M tokens</td><td style="padding:8px;text-align:center;border-bottom:1px solid #f0f0f0">256K tokens</td></tr>
+      <tr style="background-color:#fafbfc"><td style="padding:8px 10px;border-bottom:1px solid #f0f0f0;color:#666666">MoE 架构</td><td style="padding:8px;text-align:center;border-bottom:1px solid #f0f0f0">256路由+1共享</td><td style="padding:8px;text-align:center;border-bottom:1px solid #f0f0f0">256路由+1共享</td><td style="padding:8px;text-align:center;border-bottom:1px solid #f0f0f0">192专家 top-8</td></tr>
+      <tr><td style="padding:8px 10px;border-bottom:1px solid #f0f0f0;color:#666666">预训练</td><td style="padding:8px;text-align:center;border-bottom:1px solid #f0f0f0">33T tokens</td><td style="padding:8px;text-align:center;border-bottom:1px solid #f0f0f0">32T tokens</td><td style="padding:8px;text-align:center;border-bottom:1px solid #f0f0f0">未公布</td></tr>
+      <tr style="background-color:#fafbfc"><td style="padding:8px 10px;color:#666666">许可证</td><td style="padding:8px;text-align:center;font-weight:600;color:#0a8a56">MIT</td><td style="padding:8px;text-align:center;font-weight:600;color:#0a8a56">MIT</td><td style="padding:8px;text-align:center">Hy Community</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Instruct 模型对比 -->
+  <p style="font-size:16px;font-weight:700;color:#222222;margin:24px 0 14px 0">📊 Instruct 模型关键基准对比</p>
+  <table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;font-size:12px;border:1px solid #e0e4ea;margin:0 0 18px 0">
+    <thead>
+      <tr style="background-color:#f0f3f8">
+        <th style="padding:9px 6px;text-align:left;color:#666666;font-size:11px;border-bottom:1px solid #e0e4ea">基准</th>
+        <th style="padding:9px 5px;text-align:center;color:#3a6dba;font-size:11px;font-weight:700;border-bottom:1px solid #e0e4ea">V4-Pro<br>Max</th>
+        <th style="padding:9px 5px;text-align:center;color:#0a8a56;font-size:11px;font-weight:700;border-bottom:1px solid #e0e4ea">Hy3<br>Preview</th>
+        <th style="padding:9px 5px;text-align:center;color:#7a4db8;font-size:11px;font-weight:700;border-bottom:1px solid #e0e4ea">Gemini<br>3.1</th>
+        <th style="padding:9px 5px;text-align:center;color:#c07a1a;font-size:11px;font-weight:700;border-bottom:1px solid #e0e4ea">GPT-5.4<br>xHigh</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background-color:#f8f9fb"><td colspan="5" style="padding:5px 6px;font-size:11px;font-weight:600;color:#888888">— STEM & 推理 —</td></tr>
+      <tr><td style="padding:7px 6px;border-bottom:1px solid #f0f0f0;color:#666666">GPQA Diamond</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">90.1</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">87.2</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0;color:#7a4db8;font-weight:700">94.3</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">92.8</td></tr>
+      <tr style="background-color:#fafbfc"><td style="padding:7px 6px;border-bottom:1px solid #f0f0f0;color:#666666">IMO Answer</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">89.8</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">84.3</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">—</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0;color:#c07a1a;font-weight:700">91.8</td></tr>
+      <tr><td style="padding:7px 6px;border-bottom:1px solid #f0f0f0;color:#666666">HLE</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">37.7</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">30.0</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0;color:#7a4db8;font-weight:700">44.4</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">39.8</td></tr>
+      <tr style="background-color:#f8f9fb"><td colspan="5" style="padding:5px 6px;font-size:11px;font-weight:600;color:#888888">— 代码 —</td></tr>
+      <tr><td style="padding:7px 6px;border-bottom:1px solid #f0f0f0;color:#666666">LiveCodeBench</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0;color:#3a6dba;font-weight:700">93.5 🏆</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">—</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">91.7</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">—</td></tr>
+      <tr style="background-color:#fafbfc"><td style="padding:7px 6px;border-bottom:1px solid #f0f0f0;color:#666666">Codeforces</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0;color:#3a6dba;font-weight:700">3206 🏆</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">—</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">3052</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">3168</td></tr>
+      <tr style="background-color:#f8f9fb"><td colspan="5" style="padding:5px 6px;font-size:11px;font-weight:600;color:#888888">— Agent —</td></tr>
+      <tr><td style="padding:7px 6px;border-bottom:1px solid #f0f0f0;color:#666666">SWE-Verified</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">80.6</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">74.4</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">80.6</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">—</td></tr>
+      <tr style="background-color:#fafbfc"><td style="padding:7px 6px;border-bottom:1px solid #f0f0f0;color:#666666">Terminal-Bench</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">67.9</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">54.4</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0">68.5</td><td style="padding:7px 5px;text-align:center;border-bottom:1px solid #f0f0f0;color:#c07a1a;font-weight:700">75.1</td></tr>
+      <tr><td style="padding:7px 6px;color:#666666">BrowseComp</td><td style="padding:7px 5px;text-align:center">83.4</td><td style="padding:7px 5px;text-align:center">67.1</td><td style="padding:7px 5px;text-align:center;color:#7a4db8;font-weight:700">85.9</td><td style="padding:7px 5px;text-align:center">82.7</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 注意事项 -->
+  <section style="padding:14px 18px;border-radius:10px;background-color:#fef8ec;border-left:4px solid #d4a01a;margin:16px 0">
+    <p style="font-size:13px;font-weight:600;color:#a67b1a;margin:0 0 4px 0">⚠️ 评测框架差异说明</p>
+    <p style="font-size:12px;color:#777777;line-height:1.7;margin:0">V4 数据来自 DeepSeek 报告（Table 6），Hy3 数据来自其 HuggingFace README 的 benchmark 图表，两者的评测框架和 prompt 设置可能存在差异。跨报告的绝对数值不宜精确比较，但可反映相对水平。</p>
+  </section>
+
+  <!-- V4 优势 -->
+  <section style="padding:18px 20px;border-radius:12px;background-color:#f4f7fe;border:1px solid #d4dfef;margin:20px 0 12px 0">
+    <p style="font-size:15px;font-weight:700;color:#3a6dba;margin:0 0 8px 0">✅ DeepSeek V4 的优势</p>
+    <p style="font-size:13px;color:#555555;line-height:2;margin:0">
+      • <strong style="color:#333333">上下文碾压</strong>：1M vs 256K，4 倍差距<br>
+      • <strong style="color:#333333">推理效率革命</strong>：混合注意力使长上下文推理成本极低<br>
+      • <strong style="color:#333333">代码竞赛顶尖</strong>：Codeforces 3206、LiveCodeBench 93.5%<br>
+      • <strong style="color:#333333">Agent 全面领先</strong>：SWE-Verified 80.6%、BrowseComp 83.4%<br>
+      • <strong style="color:#333333">知识能力强</strong>：SimpleQA 57.9%，开源遥遥领先<br>
+      • <strong style="color:#333333">MIT 开源</strong>：最宽松许可，商用友好
+    </p>
+  </section>
+
+  <!-- Hy3 优势 -->
+  <section style="padding:18px 20px;border-radius:12px;background-color:#eefaf4;border:1px solid #c8eed8;margin:0 0 0 0">
+    <p style="font-size:15px;font-weight:700;color:#0a8a56;margin:0 0 8px 0">✅ Hy3 Preview 的优势</p>
+    <p style="font-size:13px;color:#555555;line-height:2;margin:0">
+      • <strong style="color:#333333">超高效率比</strong>：仅 21B 激活即达相当竞争力，部署成本低<br>
+      • <strong style="color:#333333">Base 模型数学强</strong>：MATH 76.3% 远超 V4-Pro Base 的 64.5%<br>
+      • <strong style="color:#333333">进步飞速</strong>：BrowseComp 28.7%→67.1%，SWE 53.0%→74.4%<br>
+      • <strong style="color:#333333">中文学术场景</strong>：清华数学博资考 88.4 avg@3，生物竞赛 87.8<br>
+      • <strong style="color:#333333">腾讯生态</strong>：ModelScope / GitCode / cnb.cool 多平台
+    </p>
+  </section>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e8eaef;margin:0;border:none"></p></section>
+
+<!-- ===== PART 4 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#c07a1a;letter-spacing:3px;margin:0 0 6px 0">PART 4</p>
+  <h2 style="font-size:22px;font-weight:700;color:#222222;margin:0 0 16px 0">🏆 六大旗舰模型全面横评</h2>
+  <p style="font-size:14px;color:#666666;margin:0 0 4px 0">数据来源：DeepSeek V4 技术报告 Table 6</p>
+  <p style="font-size:12px;color:#999999;margin:0 0 18px 0">对比：Opus-4.6 Max / GPT-5.4 xHigh / Gemini-3.1-Pro / K2.6 / GLM-5.1 / V4-Pro Max</p>
+
+  <table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;font-size:11.5px;border:1px solid #e0e4ea">
+    <thead>
+      <tr style="background-color:#f0f3f8">
+        <th style="padding:7px 4px;text-align:left;color:#666666;font-size:10px;border-bottom:1px solid #e0e4ea">基准</th>
+        <th style="padding:7px 3px;text-align:center;color:#888888;font-size:9px;border-bottom:1px solid #e0e4ea">Opus<br>4.6</th>
+        <th style="padding:7px 3px;text-align:center;color:#888888;font-size:9px;border-bottom:1px solid #e0e4ea">GPT<br>5.4</th>
+        <th style="padding:7px 3px;text-align:center;color:#888888;font-size:9px;border-bottom:1px solid #e0e4ea">Gemini<br>3.1</th>
+        <th style="padding:7px 3px;text-align:center;color:#888888;font-size:9px;border-bottom:1px solid #e0e4ea">K2.6</th>
+        <th style="padding:7px 3px;text-align:center;color:#888888;font-size:9px;border-bottom:1px solid #e0e4ea">GLM<br>5.1</th>
+        <th style="padding:7px 3px;text-align:center;color:#3a6dba;font-size:9px;font-weight:700;border-bottom:1px solid #e0e4ea">V4-Pro<br>Max</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background-color:#f8f9fb"><td colspan="7" style="padding:4px 4px;font-size:10px;font-weight:600;color:#888888">知识与推理</td></tr>
+      <tr><td style="padding:5px 4px;border-bottom:1px solid #f0f0f0;color:#666666">MMLU-Pro</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">89.1</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">87.5</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0;color:#7a4db8;font-weight:700">91.0</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">87.1</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">86.0</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">87.5</td></tr>
+      <tr style="background-color:#fafbfc"><td style="padding:5px 4px;border-bottom:1px solid #f0f0f0;color:#666666">SimpleQA</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">46.2</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">45.3</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0;color:#7a4db8;font-weight:700">75.6</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">36.9</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">38.1</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0;color:#0a8aaa;font-weight:600">57.9</td></tr>
+      <tr><td style="padding:5px 4px;border-bottom:1px solid #f0f0f0;color:#666666">GPQA Diamond</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">91.3</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">93.0</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0;color:#7a4db8;font-weight:700">94.3</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">90.5</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">86.2</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">90.1</td></tr>
+      <tr style="background-color:#f8f9fb"><td colspan="7" style="padding:4px 4px;font-size:10px;font-weight:600;color:#888888">代码与数学</td></tr>
+      <tr><td style="padding:5px 4px;border-bottom:1px solid #f0f0f0;color:#666666">LiveCodeBench</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">88.8</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">—</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">91.7</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">89.6</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">—</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0;color:#3a6dba;font-weight:700">93.5🏆</td></tr>
+      <tr style="background-color:#fafbfc"><td style="padding:5px 4px;border-bottom:1px solid #f0f0f0;color:#666666">Codeforces</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">—</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">3168</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">3052</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">—</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">—</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0;color:#3a6dba;font-weight:700">3206🏆</td></tr>
+      <tr><td style="padding:5px 4px;border-bottom:1px solid #f0f0f0;color:#666666">Apex Shortlist</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">85.9</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">78.1</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">89.1</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">75.5</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">72.4</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0;color:#3a6dba;font-weight:700">90.2🏆</td></tr>
+      <tr style="background-color:#f8f9fb"><td colspan="7" style="padding:4px 4px;font-size:10px;font-weight:600;color:#888888">Agent 能力</td></tr>
+      <tr><td style="padding:5px 4px;border-bottom:1px solid #f0f0f0;color:#666666">SWE-Verified</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0;color:#c04060;font-weight:700">80.8</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">—</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">80.6</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">80.2</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">—</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0;color:#0a8aaa;font-weight:600">80.6</td></tr>
+      <tr style="background-color:#fafbfc"><td style="padding:5px 4px;border-bottom:1px solid #f0f0f0;color:#666666">BrowseComp</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">83.7</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">82.7</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0;color:#7a4db8;font-weight:700">85.9</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">83.2</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">79.3</td><td style="padding:5px 3px;text-align:center;border-bottom:1px solid #f0f0f0">83.4</td></tr>
+      <tr><td style="padding:5px 4px;color:#666666">MCP Atlas</td><td style="padding:5px 3px;text-align:center;color:#c04060;font-weight:700">73.8</td><td style="padding:5px 3px;text-align:center">67.2</td><td style="padding:5px 3px;text-align:center">69.2</td><td style="padding:5px 3px;text-align:center">66.6</td><td style="padding:5px 3px;text-align:center">71.8</td><td style="padding:5px 3px;text-align:center;color:#0a8aaa;font-weight:600">73.6</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 五大发现 -->
+  <p style="font-size:16px;font-weight:700;color:#222222;margin:24px 0 14px 0">🔍 五大核心发现</p>
+  <p style="font-size:13.5px;color:#555555;line-height:2;margin:0 0 12px 0"><strong style="color:#3a6dba">1. V4-Pro 确立开源编码之王</strong> — LiveCodeBench 93.5%、Codeforces 3206 均为全场最高，开源模型首次在编码竞赛中超越所有闭源模型。在 Codeforces 人类排行中位列第 23 名。</p>
+  <p style="font-size:13.5px;color:#555555;line-height:2;margin:0 0 12px 0"><strong style="color:#7a4db8">2. Gemini 3.1 知识称王</strong> — SimpleQA 75.6%、MMLU-Pro 91.0% 明显领先。V4-Pro 以 57.9% 大幅超越其他开源模型（K2.6 仅 36.9%），但距 Gemini 仍有差距。</p>
+  <p style="font-size:13.5px;color:#555555;line-height:2;margin:0 0 12px 0"><strong style="color:#c07a1a">3. 数学推理 GPT-5.4 最强</strong> — HMMT 97.7%、IMO Answer 91.4% 均为最高。V4-Pro 紧随其后（95.2%、89.8%），差距很小。</p>
+  <p style="font-size:13.5px;color:#555555;line-height:2;margin:0 0 12px 0"><strong style="color:#0a8aaa">4. 长上下文 V4 优势明显</strong> — 1M token 下 CorpusQA 62.0% 大幅领先 Gemini 的 53.8%。</p>
+  <p style="font-size:13.5px;color:#555555;line-height:2;margin:0"><strong style="color:#0a8a56">5. Hy3 以小博大</strong> — 仅 21B 激活参数却进入开源第一梯队。从 Hy2 到 Hy3 的巨大飞跃（SWE 53.0%→74.4%）令人瞩目。</p>
+
+  <!-- 谁是赢家 -->
+  <table cellpadding="0" cellspacing="6" border="0" style="width:100%;margin:20px 0 0 0">
+    <tr>
+      <td style="width:33%;padding:14px 8px;border-radius:10px;background-color:#f4f7fe;border-top:3px solid #3a6dba;text-align:center">
+        <p style="font-size:18px;margin:0 0 2px 0">🥇</p>
+        <p style="font-size:11px;color:#888888;margin:0 0 2px 0">编码之王</p>
+        <p style="font-size:14px;font-weight:700;color:#3a6dba;margin:0 0 4px 0">V4-Pro</p>
+        <p style="font-size:10px;color:#888888;margin:0">LCB 93.5% · CF 3206</p>
+      </td>
+      <td style="width:33%;padding:14px 8px;border-radius:10px;background-color:#fef8ec;border-top:3px solid #d4a01a;text-align:center">
+        <p style="font-size:18px;margin:0 0 2px 0">🥇</p>
+        <p style="font-size:11px;color:#888888;margin:0 0 2px 0">知识之王</p>
+        <p style="font-size:14px;font-weight:700;color:#c07a1a;margin:0 0 4px 0">Gemini 3.1</p>
+        <p style="font-size:10px;color:#888888;margin:0">SQA 75.6%</p>
+      </td>
+      <td style="width:33%;padding:14px 8px;border-radius:10px;background-color:#f6f3fc;border-top:3px solid #7a4db8;text-align:center">
+        <p style="font-size:18px;margin:0 0 2px 0">🥇</p>
+        <p style="font-size:11px;color:#888888;margin:0 0 2px 0">效率之王</p>
+        <p style="font-size:14px;font-weight:700;color:#7a4db8;margin:0 0 4px 0">V4-Flash</p>
+        <p style="font-size:10px;color:#888888;margin:0">13B · 10% FLOPs</p>
+      </td>
+    </tr>
+  </table>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e8eaef;margin:0;border:none"></p></section>
+
+<!-- ===== PART 5 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#0a8a56;letter-spacing:3px;margin:0 0 6px 0">PART 5</p>
+  <h2 style="font-size:22px;font-weight:700;color:#222222;margin:0 0 16px 0">📝 总结与展望</h2>
+
+  <p style="font-size:14px;color:#555555;line-height:1.9;margin:0 0 14px 0">2026 年 4 月，大模型竞争进入新阶段。DeepSeek V4 和 Hy3 Preview 几乎同日发布，代表了开源大模型的<strong style="color:#222222">两种不同进化路径</strong>：</p>
+
+  <p style="font-size:14px;color:#555555;line-height:1.9;margin:0 0 14px 0"><strong style="color:#3a6dba">DeepSeek V4 — "效率为王"</strong>：通过 CSA+HCA 混合注意力架构彻底解决百万 Token 上下文的推理成本问题，同时以 1.6T 参数量确保旗舰级绝对性能。首次让开源模型在编码竞赛中超越闭源模型。MIT 许可为社区和商业应用扫清障碍。</p>
+
+  <p style="font-size:14px;color:#555555;line-height:1.9;margin:0 0 14px 0"><strong style="color:#0a8aaa">Hy3 Preview — "小而强"</strong>：以 295B/21B 的紧凑参数量实现了令人印象深刻的性能。从 Hy2 到 Hy3 的巨大飞跃预示着混元系列的快速追赶态势。</p>
+
+  <section style="padding:20px;border-radius:12px;background-color:#f4f7fe;border:1px solid #d4dfef;margin:20px 0;text-align:center">
+    <p style="font-size:15px;font-weight:700;color:#222222;line-height:1.7;margin:0">开源与闭源的差距正在快速缩小。<br><span style="color:#3a6dba">开源大模型的"超级时刻"正在到来。</span></p>
+  </section>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e8eaef;margin:0;border:none"></p></section>
+
+<!-- ===== 参考文献 ===== -->
+<section style="padding:28px 24px;background-color:#f7f8fa">
+  <p style="font-size:16px;font-weight:700;color:#222222;margin:0 0 14px 0">📚 参考文献与数据来源</p>
+  <p style="font-size:12px;color:#777777;line-height:2.0;margin:0 0 8px 0"><strong style="color:#555555">[1] DeepSeek V4 技术报告</strong><br>DeepSeek-AI. "DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence." 2026.<br>所有 V4 评测数据均来自 Table 1（Base）、Table 6（Instruct）和 Table 7。</p>
+  <p style="font-size:12px;color:#777777;line-height:2.0;margin:0 0 8px 0"><strong style="color:#555555">[2] DeepSeek V4 模型主页</strong><br>huggingface.co/deepseek-ai/DeepSeek-V4-Pro</p>
+  <p style="font-size:12px;color:#777777;line-height:2.0;margin:0 0 8px 0"><strong style="color:#555555">[3] Hy3 Preview</strong><br>Tencent Hunyuan Team. HuggingFace, 2026-04-23.<br>Hy3 评测数据来自 README 中的 Benchmark 图表。</p>
+  <p style="font-size:12px;color:#777777;line-height:2.0;margin:0 0 8px 0"><strong style="color:#555555">[4] 评测基准</strong><br>MMLU-Pro / GPQA Diamond / HLE / SimpleQA / LiveCodeBench / Apex / SWE-bench Verified / Terminal-Bench 2.0 / BrowseComp / MCP Atlas / IMO Answer / Putnam / CorpusQA / MRCR</p>
+  <p style="font-size:12px;color:#777777;line-height:2.0;margin:0"><strong style="color:#555555">[5] 免责声明</strong><br>不同报告的评测框架、prompt 格式、few-shot 设置可能存在差异，跨报告的绝对数值比较仅供参考。</p>
+</section>
+
+<!-- ===== 底部 ===== -->
+<section style="padding:24px;background-color:#f0f1f4;text-align:center">
+  <p style="font-size:13px;font-weight:600;color:#666666;margin:0 0 4px 0">DeepSeek V4 × Hy3 Preview — 深度解读</p>
+  <p style="font-size:11px;color:#999999;margin:0 0 12px 0">2026.04.24 · 基于 58 页技术报告与官方 Benchmark 数据</p>
+  <p style="font-size:10px;color:#aaaaaa;margin:0">点击「在看」收藏本文 · 转发给关注 AI 前沿的朋友 👋</p>
+</section>
+
+</section>
+
+</body>
+</html>

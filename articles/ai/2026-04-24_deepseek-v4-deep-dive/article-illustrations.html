@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>DeepSeek V4 - Cover & Assets Generator</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #111; font-family: 'Noto Sans SC', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; gap: 40px; color: #fff; }
+.label { font-size: 14px; color: #888; margin-bottom: 8px; letter-spacing: 1px; }
+.tip { font-size: 12px; color: #555; margin-top: 8px; }
+
+/* ===== 封面图 900x383 ===== */
+.cover {
+  width: 900px; height: 383px;
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #0d1033 0%, #1a0a3e 40%, #2d1b69 70%, #0a1628 100%);
+  border-radius: 4px;
+}
+.cover::before {
+  content: ''; position: absolute; inset: 0;
+  background: 
+    radial-gradient(circle at 15% 50%, rgba(0,212,255,.08) 0%, transparent 50%),
+    radial-gradient(circle at 85% 30%, rgba(168,85,247,.06) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(79,140,255,.04) 0%, transparent 40%);
+}
+/* 网格线 */
+.cover .grid {
+  position: absolute; inset: 0;
+  background-image: 
+    linear-gradient(rgba(79,140,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,140,255,.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+/* 装饰圆 */
+.cover .deco-circles {
+  position: absolute; inset: 0;
+}
+.cover .circle {
+  position: absolute; border-radius: 50%;
+}
+.c1 { width: 300px; height: 300px; left: -80px; top: -60px; border: 1px solid rgba(0,212,255,.08); }
+.c2 { width: 200px; height: 200px; right: -40px; bottom: -40px; border: 1px solid rgba(168,85,247,.08); }
+.c3 { width: 120px; height: 120px; left: 60px; bottom: 20px; border: 1px solid rgba(79,140,255,.06); }
+.c4 { width: 160px; height: 160px; right: 120px; top: -30px; border: 1px solid rgba(0,212,255,.05); }
+
+/* 节点和连线 */
+.cover .nodes { position: absolute; inset: 0; }
+.node { position: absolute; border-radius: 50%; }
+.n1 { width: 6px; height: 6px; background: #00d4ff; left: 12%; top: 30%; box-shadow: 0 0 12px rgba(0,212,255,.6); }
+.n2 { width: 4px; height: 4px; background: #a855f7; left: 8%; top: 55%; box-shadow: 0 0 10px rgba(168,85,247,.5); }
+.n3 { width: 5px; height: 5px; background: #4f8cff; left: 18%; top: 70%; box-shadow: 0 0 10px rgba(79,140,255,.5); }
+.n4 { width: 4px; height: 4px; background: #00d4ff; left: 25%; top: 20%; box-shadow: 0 0 8px rgba(0,212,255,.4); }
+.n5 { width: 6px; height: 6px; background: #a855f7; right: 10%; top: 25%; box-shadow: 0 0 12px rgba(168,85,247,.6); }
+.n6 { width: 4px; height: 4px; background: #4f8cff; right: 15%; top: 60%; box-shadow: 0 0 8px rgba(79,140,255,.4); }
+.n7 { width: 5px; height: 5px; background: #00d4ff; right: 8%; bottom: 25%; box-shadow: 0 0 10px rgba(0,212,255,.5); }
+.n8 { width: 3px; height: 3px; background: #ec4899; left: 30%; top: 85%; box-shadow: 0 0 8px rgba(236,72,153,.4); }
+
+/* 主标题区 */
+.cover .main-text {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  text-align: center; z-index: 2;
+}
+.cover .badge {
+  display: inline-block; padding: 4px 16px; border: 1px solid rgba(0,212,255,.3); border-radius: 100px;
+  font-size: 11px; color: #6dd8ff; letter-spacing: 2px; margin-bottom: 14px;
+  background: rgba(0,212,255,.04);
+}
+.cover .title {
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  font-size: 52px; font-weight: 700; letter-spacing: -1px; line-height: 1.1;
+  color: #fff;
+  text-shadow: 0 0 40px rgba(79,140,255,.3), 0 0 80px rgba(168,85,247,.15);
+}
+.cover .title .v4 {
+  background: linear-gradient(135deg, #4f8cff, #a855f7 50%, #00d4ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.cover .divider {
+  width: 200px; height: 2px; margin: 14px auto;
+  background: linear-gradient(90deg, transparent, #00d4ff, #a855f7, transparent);
+  border-radius: 2px;
+}
+.cover .subtitle {
+  font-size: 16px; color: #9898b0; font-weight: 400; letter-spacing: 2px;
+}
+.cover .subtitle em { font-style: normal; color: #b0b0d0; }
+/* 底部信息 */
+.cover .bottom-left {
+  position: absolute; bottom: 16px; left: 24px;
+  font-size: 11px; color: #4a4a6a; z-index: 2;
+}
+.cover .bottom-right {
+  position: absolute; bottom: 14px; right: 24px;
+  font-size: 13px; color: #3a3a5a; z-index: 2; display: flex; gap: 12px; align-items: center;
+}
+.cover .code-icon { font-family: 'Space Grotesk', monospace; font-size: 14px; color: #4f8cff; opacity: .5; }
+.cover .brain-icon { font-size: 14px; opacity: .5; }
+
+/* ===== 缩略图 200x200 ===== */
+.thumb {
+  width: 200px; height: 200px;
+  position: relative; overflow: hidden;
+  background: linear-gradient(145deg, #0d1033, #1a0a3e);
+  border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.thumb::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0,212,255,.06) 0%, transparent 70%);
+}
+.thumb .ds { font-family: 'Space Grotesk', sans-serif; font-size: 14px; color: #a855f7; letter-spacing: 4px; font-weight: 600; z-index: 1; }
+.thumb .v4t { font-family: 'Space Grotesk', sans-serif; font-size: 64px; font-weight: 700; z-index: 1;
+  background: linear-gradient(135deg, #fff, #00d4ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  text-shadow: none; filter: drop-shadow(0 0 20px rgba(0,212,255,.3));
+}
+
+/* ===== 摘要卡片 900x500 ===== */
+.summary-card {
+  width: 900px; position: relative; overflow: hidden;
+  background: linear-gradient(145deg, #0d1033, #1a0a3e, #0a1628);
+  border-radius: 4px; padding: 48px 56px;
+}
+.summary-card .sc-title {
+  font-size: 24px; font-weight: 700; margin-bottom: 28px;
+  background: linear-gradient(135deg, #4f8cff, #a855f7);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.summary-card .metrics {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px;
+}
+.summary-card .metric {
+  padding: 20px 16px; border-radius: 14px; text-align: center;
+  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
+}
+.summary-card .metric .num { font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700; }
+.summary-card .metric .lab { font-size: 12px; color: #6878a0; margin-top: 4px; }
+.summary-card .highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.summary-card .hl {
+  padding: 14px 18px; border-radius: 10px; font-size: 13px; line-height: 1.7;
+  background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.04);
+}
+.summary-card .hl strong { color: #e4e4ec; }
+.summary-card .hl .emoji { margin-right: 6px; }
+
+/* ===== 对比卡片 900x500 ===== */
+.compare-card {
+  width: 900px; position: relative; overflow: hidden;
+  background: linear-gradient(145deg, #0d1033, #0a1628);
+  border-radius: 4px; padding: 48px 56px;
+}
+.compare-card .cc-title {
+  font-size: 24px; font-weight: 700; margin-bottom: 28px;
+  background: linear-gradient(135deg, #00d4ff, #10b981);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.compare-card .versus { display: flex; gap: 24px; align-items: stretch; }
+.compare-card .vs-col {
+  flex: 1; padding: 24px; border-radius: 14px;
+  background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.05);
+}
+.compare-card .vs-col h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.compare-card .vs-col .sub { font-size: 12px; color: #6878a0; margin-bottom: 14px; }
+.compare-card .vs-col .stat { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,.03); font-size: 13px; }
+.compare-card .vs-col .stat:last-child { border-bottom: none; }
+.compare-card .vs-col .stat .val { font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+.compare-card .vs-mid {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 900; color: #3a3a5a; flex-shrink: 0; width: 40px;
+}
+</style>
+</head>
+<body>
+
+<div class="label">📐 公众号封面图 — 900×383（2.35:1）</div>
+<div class="cover" id="cover">
+  <div class="grid"></div>
+  <div class="deco-circles">
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+    <div class="circle c4"></div>
+  </div>
+  <div class="nodes">
+    <div class="node n1"></div><div class="node n2"></div><div class="node n3"></div><div class="node n4"></div>
+    <div class="node n5"></div><div class="node n6"></div><div class="node n7"></div><div class="node n8"></div>
+  </div>
+  <div class="main-text">
+    <div class="badge">⚡ AI 前沿深度解读</div>
+    <div class="title">DeepSeek <span class="v4">V4</span></div>
+    <div class="divider"></div>
+    <div class="subtitle"><em>技术报告拆解</em> × <em>Hy3 对比</em> × <em>旗舰横评</em></div>
+  </div>
+  <div class="bottom-left">2026.04.24 · 58页技术报告深度解读</div>
+  <div class="bottom-right">
+    <span class="code-icon">&lt;/&gt;</span>
+    <span class="brain-icon">🧠</span>
+  </div>
+</div>
+<div class="tip">右键 → 另存为图片 或 截图工具截取此区域</div>
+
+<div class="label">📐 文章缩略图 — 200×200</div>
+<div class="thumb" id="thumb">
+  <div class="ds">DEEPSEEK</div>
+  <div class="v4t">V4</div>
+</div>
+
+<div class="label">📐 文章内分享卡片 — 核心数据速览</div>
+<div class="summary-card" id="summary">
+  <div class="sc-title">DeepSeek V4 · 核心数据速览</div>
+  <div class="metrics">
+    <div class="metric"><div class="num" style="color:#4f8cff">1.6T</div><div class="lab">V4-Pro 总参数</div></div>
+    <div class="metric"><div class="num" style="color:#a855f7">284B</div><div class="lab">V4-Flash 总参数</div></div>
+    <div class="metric"><div class="num" style="color:#00d4ff">1M</div><div class="lab">原生上下文</div></div>
+    <div class="metric"><div class="num" style="color:#10b981">33T</div><div class="lab">预训练 Tokens</div></div>
+  </div>
+  <div class="highlights">
+    <div class="hl"><span class="emoji">🏆</span><strong>LiveCodeBench 93.5%</strong><br><span style="color:#6878a0">全场最高，超越 Gemini 3.1 的 91.7%</span></div>
+    <div class="hl"><span class="emoji">🏆</span><strong>Codeforces 3206</strong><br><span style="color:#6878a0">超越 GPT-5.4（3168）和 Gemini（3052）</span></div>
+    <div class="hl"><span class="emoji">⚡</span><strong>推理 FLOPs 仅 27%</strong><br><span style="color:#6878a0">1M 上下文下仅为 V3.2 的 27%</span></div>
+    <div class="hl"><span class="emoji">📦</span><strong>KV 缓存仅 10%</strong><br><span style="color:#6878a0">混合注意力 CSA+HCA 带来革命性效率</span></div>
+  </div>
+</div>
+
+<div class="label">📐 文章内分享卡片 — V4 vs Hy3 对比</div>
+<div class="compare-card" id="compare">
+  <div class="cc-title">DeepSeek V4 vs 混元 Hy3 Preview</div>
+  <div class="versus">
+    <div class="vs-col">
+      <h3 style="color:#4f8cff">DeepSeek V4-Pro</h3>
+      <div class="sub">1.6T 总参 / 49B 激活 / MIT 许可</div>
+      <div class="stat"><span style="color:#8898b0">上下文</span><span class="val" style="color:#4f8cff">1M tokens</span></div>
+      <div class="stat"><span style="color:#8898b0">SWE-Verified</span><span class="val">80.6%</span></div>
+      <div class="stat"><span style="color:#8898b0">BrowseComp</span><span class="val">83.4%</span></div>
+      <div class="stat"><span style="color:#8898b0">LiveCodeBench</span><span class="val" style="color:#4f8cff">93.5% 🏆</span></div>
+      <div class="stat"><span style="color:#8898b0">Codeforces</span><span class="val" style="color:#4f8cff">3206 🏆</span></div>
+      <div class="stat"><span style="color:#8898b0">GPQA Diamond</span><span class="val">90.1%</span></div>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-col">
+      <h3 style="color:#10b981">Hy3 Preview</h3>
+      <div class="sub">295B 总参 / 21B 激活 / Hy Community</div>
+      <div class="stat"><span style="color:#8898b0">上下文</span><span class="val">256K tokens</span></div>
+      <div class="stat"><span style="color:#8898b0">SWE-Verified</span><span class="val">74.4%</span></div>
+      <div class="stat"><span style="color:#8898b0">BrowseComp</span><span class="val">67.1%</span></div>
+      <div class="stat"><span style="color:#8898b0">LiveCodeBench</span><span class="val" style="color:#6878a0">—</span></div>
+      <div class="stat"><span style="color:#8898b0">Codeforces</span><span class="val" style="color:#6878a0">—</span></div>
+      <div class="stat"><span style="color:#8898b0">GPQA Diamond</span><span class="val" style="color:#10b981">87.2%</span></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
