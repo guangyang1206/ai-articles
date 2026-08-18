@@ -70,9 +70,9 @@ if [ ! -f "${DIR_PATH}/README.md" ]; then
 | 文件 | 说明 | 状态 |
 |------|------|------|
 | README.md | 选题元数据 | ✅ |
-| wechat-article-mp.html | 公众号专用版 | 🔲 |
+| article-wechat.html | 公众号专用版 | 🔲 |
 | article-full.html | 网站全文版 | 🔲 |
-| share-cards.html | 贴图分享卡片 | 🔲 |
+| poster.html | 贴图分享卡片 | 🔲 |
 | cover-assets.html | 封面素材 | 🔲 |
 | prompts/ | AI 生图 prompt | 🔲 |
 
@@ -93,8 +93,8 @@ README
 fi
 
 # ====== 公众号版 HTML 模板 ======
-if [ ! -f "${DIR_PATH}/wechat-article-mp.html" ]; then
-  cat > "${DIR_PATH}/wechat-article-mp.html" << 'HTMLTEMPLATE'
+if [ ! -f "${DIR_PATH}/article-wechat.html" ]; then
+  cat > "${DIR_PATH}/article-wechat.html" << 'HTMLTEMPLATE'
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -124,7 +124,7 @@ if [ ! -f "${DIR_PATH}/wechat-article-mp.html" ]; then
 </body>
 </html>
 HTMLTEMPLATE
-  echo "   📄 wechat-article-mp.html (模板)"
+  echo "   📄 article-wechat.html (模板)"
 fi
 
 # ====== prompts/ 目录 ======
@@ -147,6 +147,6 @@ echo "   目录: ${DIR_PATH}"
 echo ""
 echo "下一步:"
 echo "  1. 编辑 README.md 完善选题信息"
-echo "  2. 编辑 wechat-article-mp.html 撰写正文"
+echo "  2. 编辑 article-wechat.html 撰写正文"
 echo "  3. 文章写完后运行: git add -A && git commit -m \"content: ${DATE} ${TITLE}\" && git push"
 echo ""

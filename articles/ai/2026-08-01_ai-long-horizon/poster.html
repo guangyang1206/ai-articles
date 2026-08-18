@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 长周期任务</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; }
+  body {
+    font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+    background:#0a0a0f; display:flex; justify-content:center; -webkit-font-smoothing:antialiased;
+  }
+  .poster {
+    width:100%; max-width:1080px;
+    background:linear-gradient(175deg,#0c0c1a 0%,#0f1029 25%,#0a0f2e 50%,#0d0a25 75%,#0a0a0f 100%);
+    position:relative; overflow:hidden;
+  }
+  .poster::before{content:'';position:absolute;top:-220px;right:-220px;width:820px;height:820px;
+    background:radial-gradient(circle,rgba(204,120,50,.13) 0%,rgba(204,120,50,.03) 40%,transparent 70%);pointer-events:none;}
+  .poster::after{content:'';position:absolute;bottom:120px;left:-320px;width:720px;height:720px;
+    background:radial-gradient(circle,rgba(100,80,200,.09) 0%,transparent 60%);pointer-events:none;}
+  .content{position:relative;z-index:1;padding:9vw 6vw 7vw;}
+  .header{text-align:center;margin-bottom:7vw;}
+  .brand{display:inline-block;letter-spacing:3px;font-size:clamp(11px,2.8vw,15px);color:#cc7832;
+    font-weight:500;margin-bottom:3.2vw;}
+  .main-title{font-size:clamp(30px,8vw,58px);font-weight:900;color:#fff;line-height:1.28;letter-spacing:-.5px;}
+  .main-title .hl{background:linear-gradient(135deg,#cc7832,#e8a060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .sub-title{font-size:clamp(15px,3.9vw,28px);color:rgba(255,255,255,.55);font-weight:300;letter-spacing:1px;margin-top:14px;line-height:1.6;}
+  .divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(204,120,50,.35),transparent);margin:6vw 0;}
+  .sec-label{display:flex;align-items:center;gap:10px;margin-bottom:3.4vw;}
+  .badge-num{width:clamp(26px,5vw,34px);height:clamp(26px,5vw,34px);border-radius:8px;
+    background:linear-gradient(135deg,#cc7832,#b56428);display:flex;align-items:center;justify-content:center;
+    font-size:clamp(13px,3vw,17px);font-weight:700;color:#fff;flex-shrink:0;}
+  .badge-label{font-size:clamp(16px,3.8vw,23px);font-weight:700;color:#fff;letter-spacing:1px;}
+  .key-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,2vw,16px);}
+  .data-card{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);
+    border-radius:clamp(10px,2.4vw,16px);padding:clamp(16px,3.4vw,26px) clamp(14px,3vw,24px);}
+  .data-card .icon{font-size:clamp(18px,4vw,26px);margin-bottom:clamp(8px,1.8vw,14px);}
+  .data-card .data-label{font-size:clamp(11px,2.4vw,14px);color:rgba(255,255,255,.42);margin-bottom:4px;line-height:1.5;}
+  .data-card .data-value{font-size:clamp(20px,4.6vw,30px);font-weight:800;color:#fff;line-height:1.25;}
+  .data-card .data-value .unit{font-size:clamp(11px,2.3vw,14px);font-weight:400;color:rgba(255,255,255,.42);margin-left:4px;}
+  .headline-box{background:linear-gradient(135deg,rgba(204,120,50,.09),rgba(204,120,50,.03));
+    border:1px solid rgba(204,120,50,.18);border-radius:clamp(12px,2.8vw,18px);
+    padding:clamp(18px,3.8vw,30px);}
+  .headline-text{font-size:clamp(15px,3.3vw,23px);font-weight:700;color:#fff;line-height:1.7;}
+  .headline-text .accent{color:#cc7832;}
+  .analysis{display:flex;flex-direction:column;gap:clamp(12px,2.4vw,18px);}
+  .analysis-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);
+    border-radius:clamp(12px,2.8vw,16px);padding:clamp(16px,3.4vw,26px) clamp(16px,3.4vw,28px);
+    padding-left:clamp(20px,4.4vw,34px);position:relative;overflow:hidden;}
+  .analysis-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:4px;
+    background:linear-gradient(180deg,#cc7832,#e8a060);}
+  .analysis-title{font-size:clamp(15px,3.2vw,20px);font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:8px;line-height:1.45;}
+  .analysis-title .dot{width:8px;height:8px;border-radius:50%;background:#cc7832;flex-shrink:0;}
+  .analysis-body{font-size:clamp(13px,2.8vw,16px);color:rgba(255,255,255,.58);line-height:1.78;}
+  .analysis-body strong{color:rgba(255,255,255,.88);font-weight:600;}
+  .footer{margin-top:7vw;text-align:center;padding-top:clamp(18px,3.6vw,30px);border-top:1px solid rgba(255,255,255,.05);}
+  .footer-brand{font-size:clamp(14px,3vw,18px);color:#e8a060;font-weight:700;letter-spacing:1px;margin-bottom:6px;}
+  .footer-date{font-size:clamp(11px,2.4vw,14px);color:rgba(255,255,255,.3);letter-spacing:2px;margin-bottom:6px;}
+  .footer-source{font-size:clamp(9px,2vw,12px);color:rgba(255,255,255,.16);letter-spacing:1px;line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="poster"><div class="content">
+
+<div class="header">
+  <div class="brand">技术趋势 · 长周期任务</div>
+  <div class="main-title">AI 正在学会处理<span class="hl">需要好几天</span><br>才能完成的任务</div>
+  <div class="sub-title">从“秒回”的聊天工具，变成能干活的生产力引擎</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">1</div><div class="badge-label">核心数据</div></div>
+<div class="key-grid">
+  <div class="data-card"><div class="icon">🚀</div><div class="data-label">DeepSeek V4-Flash</div><div class="data-value">7.3→54.4<span class="unit">DeepSWE 涨 7.5 倍</span></div></div>
+  <div class="data-card"><div class="icon">💵</div><div class="data-label">Claude Code ARR</div><div class="data-value">约 25 亿<span class="unit">美元</span></div></div>
+  <div class="data-card"><div class="icon">📚</div><div class="data-label">上下文窗口</div><div class="data-value">200 万<span class="unit">token（Gemini 3.5 Pro）</span></div></div>
+  <div class="data-card"><div class="icon">⏱️</div><div class="data-label">单次任务时长</div><div class="data-value">分钟级→天级<span class="unit">GPT-4 到 Astra</span></div></div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">2</div><div class="badge-label">要点速览</div></div>
+<div class="headline-box"><div class="headline-text">OpenAI Astra、Claude Code、DeepSeek V4-Flash 三条线索指向同一方向——<span class="accent">AI 正从“秒回”变成能处理数小时甚至数天任务的生产力引擎</span>。这件事的影响，可能比“模型又变强了”深远得多。</div></div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">3</div><div class="badge-label">深度解读</div></div>
+<div class="analysis">
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>三个信号，同一个方向</div><div class="analysis-body">① OpenAI <strong>Astra</strong> 让多个 Agent 组队干活，内部已用它推翻 Erdős 猜想；② <strong>Claude Code</strong> 从“补一行”到“重构整个代码库”；③ <strong>DeepSeek V4-Flash</strong> 参数不变，纯靠后训练把 Agent 能力拉满 7.5 倍。</div></div>
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>为什么是 2026 年夏天</div><div class="analysis-body">三项基础同时成熟：<strong>上下文窗口</strong>从 GPT-4 的 32K 扩到 200 万 token（约 60 倍）；<strong>成本下降</strong>（DeepSeek 输入 ¥1/百万）；<strong>多 Agent 架构</strong>从论文走向工程。</div></div>
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>该泼的冷水</div><div class="analysis-body">Astra 还没公开发布、连名字都没敲定；<strong>长周期 AI 的安全问题更棘手</strong>（OpenAI 披露了内部沙箱突破案例）；成本不是零——几天级 Agent 任务的 token 消耗可能是对话式的几百倍。</div></div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">AI 深度解读</div>
+  <div class="footer-date">2026.08.01</div>
+  <div class="footer-source">数据来源：OpenAI 官方安全报告 · DeepSeek 技术文档 · The Information · Anthropic 披露</div>
+</div>
+
+</div></div>
+</body>
+</html>

@@ -38,13 +38,12 @@
 | 文件 | 说明 | 状态 |
 |------|------|------|
 | README.md | 选题元数据 | ✅ |
-| wechat-article-mp.html | 公众号专用版（白底内联样式） | ✅ |
+| article-wechat.html | 公众号专用版（白底内联样式） | ✅ |
 | article-full.html | 网站全文版（深色科技风） | ✅ |
-| share-cards.html | 贴图分享卡片（旧版深色科技风） | ✅ |
-| share-cards-handdrawn.html | 贴图分享卡片（新版手绘竖向排版） | ✅ |
-| screenshot-cards.mjs | 贴图截图脚本 | ✅ |
-| assets/ | 6 张竖向手绘贴图 PNG | ✅ |
+| poster.html / poster.png | 竖版贴图长图 | ✅ |
+| review-log.md | 审核记录 | ✅ |
 | cover-assets.html | 封面素材（头图+缩略图+分享图） | ✅ |
+| wechat-article-mp-en.html | 英文版公众号 | ✅ |
 
 ## 发布记录
 

@@ -1,29 +1,29 @@
 # 部署踩坑排查日志
 
-> 完整记录从***REMOVED*** CI/CD 到本地脚本部署过程中所有执行的脚本、指令、执行结果和分析研究过程。
+> 完整记录从公司内部 CI/CD 平台 到本地脚本部署过程中所有执行的脚本、指令、执行结果和分析研究过程。
 
 ## 环境信息
 
 | 项目 | 详情 |
 |------|------|
-| 代码仓库 | https://***REMOVED***/yeranyang/my-space.git |
+| 代码仓库 | https://***REMOVED***/yourname/my-space.git |
 | 服务器 | 腾讯云轻量应用服务器，IP: ***REMOVED***，Ubuntu 24.04 |
-| SSH 版本 | 服务器 OpenSSH_9.6p1，***REMOVED*** 容器 OpenSSH_8.0p1 |
-| 密钥文件 | ***REMOVED***.pem（RSA 1678字节） |
+| SSH 版本 | 服务器 OpenSSH_9.6p1，***REMOVED*** OpenSSH_8.0p1 |
+| 密钥文件 | deploy_key.pem（RSA 1678字节） |
 | 登录用户 | ubuntu |
 | 网站目录 | /var/www/my-space |
-| CI/CD 平台 | ***REMOVED***（BK-CI）***REMOVED***模式 |
+| CI/CD 平台 | 公司内部 CI/CD 平台经典模式 |
 
 ---
 
-## 第 1 轮：***REMOVED***流水线创建与凭证配置
+## 第 1 轮：公司内部 CI/CD 平台流水线创建与凭证配置
 
 ### 流水线配置
 
 - **创建方式**：直接创建
 - **应用**：yspace
 - **任务名称**：构建-yeranyang-yspace
-- **代码路径**：https://***REMOVED***/yeranyang/my-space.git
+- **代码路径**：https://***REMOVED***/yourname/my-space.git
 - **开发语言**：Node.js（无更合适选项）
 - **制品类型**：软件包
 - **制品路径**：`.`
@@ -32,7 +32,7 @@
 
 ### 问题：变量系统不支持凭证类型
 
-***REMOVED***经典模式的变量类型下拉框只有：字符串、文本框、布尔值、单选框、复选框、SVN分支或TAG、GIT分支或TAG。**没有「凭证」选项**。
+公司内部 CI/CD 平台经典模式的变量类型下拉框只有：字符串、文本框、布尔值、单选框、复选框、SVN分支或TAG、GIT分支或TAG。**没有「凭证」选项**。
 
 ### 解决方案
 
@@ -119,7 +119,7 @@ Error: Process completed with exit code 2199011
 
 - `kex_exchange_identification` 错误发生在 SSH 协议的密钥交换阶段
 - 连接在认证之前就被关闭了
-- 初步怀疑：防火墙/安全组拦截了***REMOVED***构建机 IP
+- 初步怀疑：防火墙/安全组拦截了公司内部 CI/CD 平台构建机 IP
 
 ### 排查：防火墙确认
 
@@ -156,17 +156,17 @@ TCP 22 端口可达，但 SSH 协议层被拒绝。**不是防火墙问题**。
 
 ### 假设
 
-***REMOVED***文本框变量在注入脚本时破坏了私钥的多行格式（换行符丢失）。
+公司内部 CI/CD 平台文本框变量在注入脚本时破坏了私钥的多行格式（换行符丢失）。
 
 ### 解决方案
 
 在 Mac 上将私钥 Base64 编码为单行：
 
 ```bash
-base64 < ***REMOVED***/Downloads/YSpace/***REMOVED***.pem | tr -d '\n' | pbcopy
+base64 < ***REMOVED***Downloads/YSpace/deploy_key.pem | tr -d '\n' | pbcopy
 ```
 
-更新***REMOVED***变量值为 Base64 编码的单行字符串。
+更新公司内部 CI/CD 平台变量值为 Base64 编码的单行字符串。
 
 ### 编译脚本 v2（含 Base64 解码和格式验证）
 
@@ -284,9 +284,9 @@ ubuntu@VM-0-6-ubuntu:~$ sudo tail -100 /var/log/auth.log | grep -i "ssh\|connect
 
 **分析**：
 - 大量外部 IP 在尝试暴力破解（admin、root 密码猜测）
-- `14.22.11.x` 和 `14.116.239.x` 是***REMOVED***构建机的出口 IP
-- ***REMOVED***连接在 `[preauth]` 阶段被关闭
-- 三个***REMOVED*** IP 同一秒连接，全部被关闭
+- `14.22.11.x` 和 `14.116.239.x` 是公司内部 CI/CD 平台构建机的出口 IP
+- 公司内部 CI/CD 平台连接在 `[preauth]` 阶段被关闭
+- 三个公司内部 CI/CD 平台 IP 同一秒连接，全部被关闭
 
 ### 4.4 初步判断（后来证明是误判）
 
@@ -358,7 +358,7 @@ Status for the jail: sshd
    `- Banned IP list:
 ```
 
-### 5.6 加固后再次触发***REMOVED***
+### 5.6 加固后再次触发公司内部 CI/CD 平台
 
 ```
 ========== 开始部署 my-space ==========
@@ -403,10 +403,10 @@ kexalgorithms sntrup761x25519-sha512@openssh.com,curve25519-sha256,curve25519-sh
 
 ```bash
 ubuntu@VM-0-6-ubuntu:~$ cat ***REMOVED***.ssh/authorized_keys
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCSvbCI7OrrskzqqK5TkzPIbYmK1o4wS0oiZtb2OpxZZz13kNXMfkpLasjP7buIXyBl9ocnbq8/qCA3fjYNZznHLC6dNv/3RTw6fwtsXfv4KLXL/3jUUXBk028WqD9hN9fUvxo+jb/x2NrK2Axp170gMpBFjDbkUTrrz0VLgE16TddlJynZZhNjAkle5tiC+n3IhysrtblLOPtCrm9E6amWxCClqJXQtHLDngwpTo4vnEzlz34p7OHhFbjiiHK7xCSITBpRtgKMhNiSHTQUmKskpABqpodNLTVajWQG8u9N76IC2skAdymBX1PJ5xgjXz2BkJySXxgaRqzyWmPPwVtt ***REMOVED***
+ssh-rsa <PUBLIC_KEY_MASKED> your-keypair-id
 ```
 
-**结论**：公钥存在（***REMOVED*** 即腾讯云密钥对标识）。
+**结论**：公钥存在（your-keypair-id 即腾讯云密钥对标识）。
 
 ### 6.4 全面排查汇总
 
@@ -428,9 +428,9 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCSvbCI7OrrskzqqK5TkzPIbYmK1o4wS0oiZtb2OpxZ
 
 ## 第 7 轮：***REMOVED*** 开发容器测试
 
-### 7.1 在 ***REMOVED*** 容器中执行部署脚本
+### 7.1 在 ***REMOVED***中执行部署脚本
 
-从另一个 ***REMOVED*** 容器执行，结果：
+从另一个 ***REMOVED***执行，结果：
 
 ```
 kex_exchange_identification: Connection closed by remote host
@@ -443,7 +443,7 @@ rsync error: unexplained error (code 255) at io.c(226) [sender=3.1.3]
 ### 7.2 使用 ssh -v 详细模式测试
 
 ```bash
-[root@***REMOVED*** home]# ssh -v -i /data/workspace/***REMOVED***.pem ubuntu@***REMOVED***
+[root@internal-container home]# ssh -v -i /data/workspace/deploy_key.pem ubuntu@***REMOVED***
 ```
 
 **输出（关键信息）**：
@@ -460,11 +460,11 @@ debug1: Reading configuration data /etc/ssh/ssh_config.d/05-redhat.conf
 debug1: Reading configuration data /etc/crypto-policies/back-ends/openssh.config
 debug1: Connecting to ***REMOVED*** [***REMOVED***] port 36000.
 debug1: Connection established.
-debug1: identity file /data/workspace/***REMOVED***.pem type -1
-debug1: identity file /data/workspace/***REMOVED***.pem-cert type -1
+debug1: identity file /data/workspace/deploy_key.pem type -1
+debug1: identity file /data/workspace/deploy_key.pem-cert type -1
 debug1: Local version string SSH-2.0-OpenSSH_8.0
 debug1: kex_exchange_identification: banner line 0: HTTP/1.1 502 Server UnReachable
-debug1: kex_exchange_identification: banner line 1: proxy-agent: ***REMOVED***
+debug1: kex_exchange_identification: banner line 1: proxy-agent: internal-proxy
 debug1: kex_exchange_identification: banner line 2: 
 kex_exchange_identification: Connection closed by remote host
 ```
@@ -479,16 +479,16 @@ kex_exchange_identification: Connection closed by remote host
 debug1: Connecting to ***REMOVED*** [***REMOVED***] port 36000.
 ```
 
-***REMOVED*** 容器的 SSH 客户端配置文件 `/etc/ssh/ssh_config.d/05-redhat.conf` 将默认端口改成了 36000（企业内部 SSH 跳板端口）。
+***REMOVED***的 SSH 客户端配置文件 `/etc/ssh/ssh_config.d/05-redhat.conf` 将默认端口改成了 36000（企业内部 SSH 跳板端口）。
 
 #### 问题 2：中间有一个 HTTP 代理在拦截 SSH 流量
 
 ```
 debug1: kex_exchange_identification: banner line 0: HTTP/1.1 502 Server UnReachable
-debug1: kex_exchange_identification: banner line 1: proxy-agent: ***REMOVED***
+debug1: kex_exchange_identification: banner line 1: proxy-agent: internal-proxy
 ```
 
-容器所有外网 SSH 连接经过一个 HTTP 代理（`proxy-agent: ***REMOVED***`），该代理无法理解 SSH 协议，直接返回了 HTTP 502 错误。
+容器所有外网 SSH 连接经过一个 HTTP 代理（`proxy-agent: internal-proxy`），该代理无法理解 SSH 协议，直接返回了 HTTP 502 错误。
 
 #### 为什么之前的所有排查都找不到原因
 
@@ -508,7 +508,7 @@ set -e
 
 SERVER_IP="***REMOVED***"
 SERVER_USER="ubuntu"
-SSH_KEY="***REMOVED***.ssh/light_server.pem"
+SSH_KEY="***REMOVED***.pem"
 DEPLOY_PATH="/var/www/my-space"
 
 echo "========== 开始部署 my-space =========="
@@ -587,14 +587,14 @@ alias deploy="git push && ./deploy.sh"
 
 ### 2. 企业网络环境的 SSH 限制
 
-- ***REMOVED***构建机、***REMOVED*** 开发容器等企业环境的外网流量走 HTTP 代理
+- 公司内部 CI/CD 平台构建机、***REMOVED*** 开发容器等企业环境的外网流量走 HTTP 代理
 - HTTP 代理无法理解 SSH 协议，会返回 HTTP 502
 - SSH 客户端配置可能被全局修改（默认端口不是 22）
 - 服务端完全看不到这个问题（连接没到达服务器）
 
 ### 3. CI/CD 多行密文传递
 
-- ***REMOVED***文本框变量会破坏多行内容的换行符
+- 公司内部 CI/CD 平台文本框变量会破坏多行内容的换行符
 - Base64 编码转单行是最稳妥的传递方式
 - 脚本中解码：`echo "$VAR" | base64 -d > file`
 

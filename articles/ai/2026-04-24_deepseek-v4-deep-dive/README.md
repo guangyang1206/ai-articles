@@ -14,20 +14,18 @@
 
 | 文件 | 说明 |
 |------|------|
-| `wechat-article-mp.html` | 公众号专用版（白底内联样式） |
-| `wechat-article.html` | 深色科技风版（备选） |
-| `deepseek-v4-article.html` | V4 发布介绍版 |
-| `deepseek-v4-analysis.html` | 技术深度分析版 |
-| `assets-generator.html` | 封面素材生成器 |
-| `prompts/` | AI 生图 prompt |
-| `DeepSeek_V4.pdf` | 原始技术报告（58页） |
-| `bench_*.jpg` | 评测对比截图参考 |
+| `article-wechat.html` | 公众号专用版（白底内联样式） |
+| `article-full.html` | 网站全文版（深色科技风） |
+| `poster.html` / `poster.png` | 竖版贴图长图（2160px 宽） |
+| `review-log.md` | 审核记录 |
+| `cover-assets.html` | 封面素材 |
+| `article-illustrations.html` | 配图素材生成器 |
 
 ## 发布记录
 
 - [x] 微信公众号 — 已发布，获官方推广奖励
 - [x] 个人网站 — 已部署
-- [x] 贴图分享卡片 share-cards.html — 已制作
+- [x] 竖版贴图 poster.html — 已制作
 - [x] 封面素材 cover-assets.html — 已制作
 
 ---

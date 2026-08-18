@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>静态网站部署踩坑实录</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; }
+  body {
+    font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+    background:#0a0a0f; display:flex; justify-content:center; -webkit-font-smoothing:antialiased;
+  }
+  .poster {
+    width:100%; max-width:1080px;
+    background:linear-gradient(175deg,#0c0c1a 0%,#0f1029 25%,#0a0f2e 50%,#0d0a25 75%,#0a0a0f 100%);
+    position:relative; overflow:hidden;
+  }
+  .poster::before{content:'';position:absolute;top:-220px;right:-220px;width:820px;height:820px;
+    background:radial-gradient(circle,rgba(204,120,50,.13) 0%,rgba(204,120,50,.03) 40%,transparent 70%);pointer-events:none;}
+  .poster::after{content:'';position:absolute;bottom:120px;left:-320px;width:720px;height:720px;
+    background:radial-gradient(circle,rgba(100,80,200,.09) 0%,transparent 60%);pointer-events:none;}
+  .content{position:relative;z-index:1;padding:9vw 6vw 7vw;}
+  .header{text-align:center;margin-bottom:7vw;}
+  .brand{display:inline-block;letter-spacing:3px;font-size:clamp(11px,2.8vw,15px);color:#cc7832;
+    font-weight:500;margin-bottom:3.2vw;}
+  .main-title{font-size:clamp(30px,8vw,58px);font-weight:900;color:#fff;line-height:1.28;letter-spacing:-.5px;}
+  .main-title .hl{background:linear-gradient(135deg,#cc7832,#e8a060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .sub-title{font-size:clamp(15px,3.9vw,28px);color:rgba(255,255,255,.55);font-weight:300;letter-spacing:1px;margin-top:14px;line-height:1.6;}
+  .divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(204,120,50,.35),transparent);margin:6vw 0;}
+  .sec-label{display:flex;align-items:center;gap:10px;margin-bottom:3.4vw;}
+  .badge-num{width:clamp(26px,5vw,34px);height:clamp(26px,5vw,34px);border-radius:8px;
+    background:linear-gradient(135deg,#cc7832,#b56428);display:flex;align-items:center;justify-content:center;
+    font-size:clamp(13px,3vw,17px);font-weight:700;color:#fff;flex-shrink:0;}
+  .badge-label{font-size:clamp(16px,3.8vw,23px);font-weight:700;color:#fff;letter-spacing:1px;}
+  .key-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,2vw,16px);}
+  .data-card{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);
+    border-radius:clamp(10px,2.4vw,16px);padding:clamp(16px,3.4vw,26px) clamp(14px,3vw,24px);}
+  .data-card .icon{font-size:clamp(18px,4vw,26px);margin-bottom:clamp(8px,1.8vw,14px);}
+  .data-card .data-label{font-size:clamp(11px,2.4vw,14px);color:rgba(255,255,255,.42);margin-bottom:4px;line-height:1.5;}
+  .data-card .data-value{font-size:clamp(20px,4.6vw,30px);font-weight:800;color:#fff;line-height:1.25;}
+  .data-card .data-value .unit{font-size:clamp(11px,2.3vw,14px);font-weight:400;color:rgba(255,255,255,.42);margin-left:4px;}
+  .headline-box{background:linear-gradient(135deg,rgba(204,120,50,.09),rgba(204,120,50,.03));
+    border:1px solid rgba(204,120,50,.18);border-radius:clamp(12px,2.8vw,18px);
+    padding:clamp(18px,3.8vw,30px);}
+  .headline-text{font-size:clamp(15px,3.3vw,23px);font-weight:700;color:#fff;line-height:1.7;}
+  .headline-text .accent{color:#cc7832;}
+  .analysis{display:flex;flex-direction:column;gap:clamp(12px,2.4vw,18px);}
+  .analysis-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);
+    border-radius:clamp(12px,2.8vw,16px);padding:clamp(16px,3.4vw,26px) clamp(16px,3.4vw,28px);
+    padding-left:clamp(20px,4.4vw,34px);position:relative;overflow:hidden;}
+  .analysis-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:4px;
+    background:linear-gradient(180deg,#cc7832,#e8a060);}
+  .analysis-title{font-size:clamp(15px,3.2vw,20px);font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:8px;line-height:1.45;}
+  .analysis-title .dot{width:8px;height:8px;border-radius:50%;background:#cc7832;flex-shrink:0;}
+  .analysis-body{font-size:clamp(13px,2.8vw,16px);color:rgba(255,255,255,.58);line-height:1.78;}
+  .analysis-body strong{color:rgba(255,255,255,.88);font-weight:600;}
+  .footer{margin-top:7vw;text-align:center;padding-top:clamp(18px,3.6vw,30px);border-top:1px solid rgba(255,255,255,.05);}
+  .footer-brand{font-size:clamp(14px,3vw,18px);color:#e8a060;font-weight:700;letter-spacing:1px;margin-bottom:6px;}
+  .footer-date{font-size:clamp(11px,2.4vw,14px);color:rgba(255,255,255,.3);letter-spacing:2px;margin-bottom:6px;}
+  .footer-source{font-size:clamp(9px,2vw,12px);color:rgba(255,255,255,.16);letter-spacing:1px;line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="poster"><div class="content">
+
+<div class="header">
+  <div class="brand">工程实践 · 踩坑记录</div>
+  <div class="main-title">从公司内部 CI/CD 平台 到本地脚本<br><span class="hl">SSH 被 HTTP 代理拦截</span> 的排查实录</div>
+  <div class="sub-title">纯静态个人网站的自动部署折腾记：6 轮排查后定位真凶——企业内网 HTTP 代理拦截了 SSH 协议，最终回归本地一键脚本</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">1</div><div class="badge-label">核心数据</div></div>
+<div class="key-grid">
+  <div class="data-card"><div class="icon">🔁</div><div class="data-label">排查轮数</div><div class="data-value">6<span class="unit">轮</span></div></div>
+  <div class="data-card"><div class="icon">🔌</div><div class="data-label">跳板端口</div><div class="data-value">36000<span class="unit">企业 SSH 端口</span></div></div>
+  <div class="data-card"><div class="icon">🛡️</div><div class="data-label">fail2ban 封禁</div><div class="data-value">3次<span class="unit">错 3 次封 1 小时</span></div></div>
+  <div class="data-card"><div class="icon">🚫</div><div class="data-label">真正根因</div><div class="data-value">HTTP 代理<span class="unit">拦截 SSH（502）</span></div></div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">2</div><div class="badge-label">要点速览</div></div>
+<div class="headline-box"><div class="headline-text">一个 kex_exchange_identification 报错排查了 6 轮：密钥换行、暴力破解、服务端配置逐一排除，最后靠 <span class="accent">ssh -v</span> 定位到企业内网 HTTP 代理拦截 SSH 流量；纯静态站点最终用本地 deploy.sh 一键部署解决。</div></div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">3</div><div class="badge-label">深度解读</div></div>
+<div class="analysis">
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>六轮排查路径</div><div class="analysis-body">从公司内部 CI/CD 平台凭证变量、多行私钥换行丢失，到服务器 SSH 暴力破解与安全加固，作者把服务端因素全部排除后才转向网络链路，问题并不在服务器。</div></div>
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>真正的根因</div><div class="analysis-body">开发容器的 SSH 默认端口被改成企业跳板端口 36000，且外网 SSH 都经过只懂 HTTP 的代理，握手被直接回以 502，笼统的报错把排查引向了错误方向。</div></div>
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>简单场景用简单方案</div><div class="analysis-body">纯静态个人站点不需要 CI/CD 的复杂度，本地 rsync 加健康检查的 deploy.sh 足够；经验是 ssh -v 先行、密文用 Base64 传递、公网服务器关密码登录。</div></div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">AI 深度解读</div>
+  <div class="footer-date">2026.05.03</div>
+  <div class="footer-source">数据来源：文章正文（作者亲身排查记录）</div>
+</div>
+
+</div></div>
+</body>
+</html>

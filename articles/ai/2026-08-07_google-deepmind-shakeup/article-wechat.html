@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>谷歌 AI 一日双震</title>
+</head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#333;line-height:1.8;font-size:16px;">
+
+<!-- 头图 -->
+<section style="background:#0f172a;padding:40px 24px;text-align:center;">
+  <div style="max-width:680px;margin:0 auto;">
+    <p style="color:#94a3b8;font-size:14px;margin:0 0 8px;">Google DeepMind · 人事变动</p>
+    <h1 style="color:#f1f5f9;font-size:24px;font-weight:700;margin:0 0 12px;line-height:1.4;">一天之内，谷歌 AI 两根顶梁柱同时松动</h1>
+    <p style="color:#cbd5e1;font-size:17px;margin:0 0 6px;line-height:1.6;">哈萨比斯转任董事长，Jeff Dean 27 年后离职创业，Alphabet 股价应声下跌</p>
+    <p style="color:#64748b;font-size:14px;margin:0;">2026年8月7日 · AI 深度解读</p>
+  </div>
+</section>
+
+<!-- 导语 -->
+<section style="background:#ffffff;padding:28px 24px;">
+  <p style="margin:0 0 16px;">8 月 5 日，谷歌母公司 Alphabet 在同一天做了两件事：一是宣布重组 Google DeepMind，公司首席执行官戴米斯·哈萨比斯（Demis Hassabis）卸下日常管理职务，转任 Google DeepMind 董事长兼 Alphabet 首席科学家；二是官宣，谷歌首席科学家杰夫·迪恩（Jeff Dean）将结束长达 27 年的谷歌生涯，与三位资深同事共同创办一家名为 Discovery Loop 的 AI 初创公司<sup>[1][2]</sup>。</p>
+  <p style="margin:0 0 16px;">这两条消息表面上是两件独立的人事安排——一个是"转岗"，一个是"离职"。但放在同一天官宣，很难说是巧合。消息公布后，Alphabet 股价当日下跌近 4%<sup>[3]</sup>，而这已经是这家公司股价在过去三周内的第三次因 AI 相关消息下挫。</p>
+  <p style="margin:0;">这篇文章想说清楚三件事：这两条人事变动具体是什么；为什么会在同一天发生；以及放在谷歌过去半年的处境里看，这意味着什么。</p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;"><p style="height:1px;background:#e5e7eb;margin:0;"></p></section>
+
+<!-- Part 1: 两条人事变动 -->
+<section style="background:#f8fafc;padding:28px 24px;">
+  <h2 style="font-size:19px;color:#111;margin:0 0 18px;font-weight:700;">一、哈萨比斯：一次"体面的转岗"</h2>
+
+  <p style="margin:0 0 14px;">先说相对温和的那一条。哈萨比斯没有离开谷歌，也没有退出技术决策层。他的新职位是 Google DeepMind 董事长兼 Alphabet 首席科学家，工作重心从组织管理转向长期战略——通用人工智能（AGI）方向、科学突破、全球 AI 治理，同时继续领导 AI 制药公司 Isomorphic Labs<sup>[1]</sup>。</p>
+
+  <p style="margin:0 0 14px;">日常管理交给了科雷·卡武库奥卢（Koray Kavukcuoglu）。他此前是 Google DeepMind 的首席技术官和 Alphabet 首席 AI 架构师，与哈萨比斯共事超过 13 年，曾参与 WaveNet、DQN 等项目，并建立了 DeepMind 深度学习团队。调整之后，他将升任 Google DeepMind 高级副总裁，直接向 CEO 桑达尔·皮查伊汇报，负责 Gemini 模型的后续研发、前沿 AI 研究以及 Gemini App 相关团队<sup>[2]</sup>。</p>
+
+  <p style="margin:0 0 14px;">皮查伊在公司博客里给出的解释是：哈萨比斯近期已经把大量精力投入外部沟通、长期技术路线和全球 AI 治理，双方经过长时间讨论，决定让他从具体运营中释放出来<sup>[2]</sup>。这个说法可以有两种读法——一种是"哈萨比斯本来就更适合做战略"，另一种是"公司需要一个更贴近执行的人来把 Gemini 尽快做出来"。这两种读法并不矛盾，事实可能同时成立。</p>
+
+  <p style="margin:0;">值得一提的细节：哈萨比斯在公开信里提到，新一代模型 Gemini 4 目前"进展良好"<sup>[2]</sup>。这句话本身没有太多信息量，但放在 Gemini 3.5 Pro 已经延期数月、至今没有正式发布的背景下，多少带着安抚市场的意味。</p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;"><p style="height:1px;background:#e5e7eb;margin:0;"></p></section>
+
+<!-- Part 2: Jeff Dean 离职 -->
+<section style="background:#ffffff;padding:28px 24px;">
+  <h2 style="font-size:19px;color:#111;margin:0 0 18px;font-weight:700;">二、Jeff Dean：带走了谷歌半部技术史</h2>
+
+  <p style="margin:0 0 14px;">相比哈萨比斯的转岗，Jeff Dean 的离职分量重得多。</p>
+
+  <p style="margin:0 0 14px;">Dean 于 1999 年以谷歌第 30 号员工身份加入公司，此后 27 年里，几乎参与或主导了谷歌所有关键基础设施与 AI 项目：早期搜索基础设施、Google 文件系统、MapReduce、BigTable、TensorFlow、TPU、Pathways。他后来担任 Google AI 负责人，再升任谷歌首席科学家，是公司技术体系里影响力最高的人物之一<sup>[2]</sup>。</p>
+
+  <p style="margin:0 0 14px;">他这次带走了三位长期合作伙伴：Sanjay Ghemawat（与 Dean 共同开发 Google 文件系统、MapReduce、BigTable，2012 年获 ACM 相关表彰）、Oriol Vinyals（前 Google DeepMind 研究副总裁、Gemini 技术负责人，AlphaStar、AlphaCode 核心人物）、Quoc Le（Google Brain 早期成员，神经架构搜索与 AutoML 研究者）。四人共同工作了 14 到 30 年不等，参与过的项目列出来是一长串谷歌的核心产品线：搜索、广告、新闻、翻译、TensorFlow、TPU、AlphaChip、AlphaStar、AlphaCode、AlphaFold、Gemini<sup>[2]</sup>。</p>
+
+  <p style="margin:0 0 14px;">新公司 Discovery Loop 的方向很明确：用前沿 AI 和大规模算力，把科学研究里"提出假设—设计实验—执行—分析结果—迭代"的循环自动化。这个循环目前高度依赖人力，单次周期动辄数天到数月。Discovery Loop 想做的，是让这套循环能够大规模并行运行，从而加速科研、生物技术、芯片设计和 AI 模型开发本身<sup>[2]</sup>。</p>
+
+  <p style="margin:0 0 14px;">7 月 25 日，Dean 曾在 Y Combinator 的 Startup School 上向约 6000 名创业者演讲，谈的正是这个方向——如何自动化科学假设的提出与验证。台下听众当时并不知道，这正是他新公司的核心思路<sup>[2]</sup>。据 Dean 自述，他几周前才开始认真考虑创业，皮查伊也曾多轮挽留，但四人最终还是决定离开，理由是想要"更大的组织自由"，去搭建一套更适合快速实验的基础设施<sup>[2]</sup>。</p>
+
+  <p style="margin:0;">Ghemawat 对此有个具体解释：谷歌现有基础设施主要服务搜索、广告这类大规模消费级产品，设计目标是稳定性和长期运营；而 Discovery Loop 需要的系统，要能支持频繁修改和大量并行实验，两者的工程要求本质上是两条不同的路<sup>[2]</sup>。</p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;"><p style="height:1px;background:#e5e7eb;margin:0;"></p></section>
+
+<!-- Part 3: 一场体面的分手 -->
+<section style="background:#f8fafc;padding:28px 24px;">
+  <h2 style="font-size:19px;color:#111;margin:0 0 18px;font-weight:700;">三、离职但不撕破脸：谷歌投资了自己的"叛将"</h2>
+
+  <p style="margin:0 0 14px;">这里有个耐人寻味的细节：尽管四位核心研究者集体离开，谷歌依然以创始投资人身份参与了 Discovery Loop 的融资，并与其签署了云计算服务合作协议。皮查伊在公开声明中确认了这一点<sup>[2]</sup>。</p>
+
+  <p style="margin:0 0 14px;">Discovery Loop 的种子轮由 Khosla Ventures 和 Radical Ventures 联合领投，具体金额和估值没有公开，公司的组织架构、办公地点等细节也尚未对外披露<sup>[2]</sup>。</p>
+
+  <p style="margin:0;">这种"体面分手"的处理方式并不罕见——大公司留不住顶尖人才时，投资对方的新公司、换取生态位置和早期股权，是一种常见的止损策略。但它也说明一个问题：谷歌明知道自己可能留不住这些人，选择的策略是"送他们走，同时保留一条联系"，而不是不惜代价挽留到底。</p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;"><p style="height:1px;background:#e5e7eb;margin:0;"></p></section>
+
+<!-- Part 4: 为什么是这个时间点 -->
+<section style="background:#ffffff;padding:28px 24px;">
+  <h2 style="font-size:19px;color:#111;margin:0 0 18px;font-weight:700;">四、为什么是这个时间点：Gemini 延期和资本市场的耐心</h2>
+
+  <p style="margin:0 0 14px;">要理解这次人事变动，绕不开谷歌过去两个月的处境。</p>
+
+  <p style="margin:0 0 14px;">7 月中旬，有报道称谷歌旗舰模型 Gemini 3.5 Pro 原计划 6 月发布，但因为性能——尤其是代码生成能力——未达到内部预期，发布被推迟数月<sup>[4]</sup>。消息传出当天，Alphabet 股价重挫约 4.5%<sup>[4]</sup>。</p>
+
+  <p style="margin:0 0 14px;">7 月 22 日，Alphabet 公布第二季度财报：云业务收入同比增长 82%，创近年来最快增速，但公司同时把 2026 年全年资本支出指引大幅上调至最高 2050 亿美元，并首次出现单季负自由现金流<sup>[5]</sup>。第二季度资本开支同比翻倍至 449 亿美元，自由现金流降至负 59 亿美元——这是 Alphabet 罕见地出现单季负自由现金流<sup>[6]</sup>。叠加 Gemini 3.5 Pro 持续延迟的阴影，股价在财报后盘后交易一度下跌超过 3%。有报道指出，围绕 Gemini 项目延期的担忧，加上多位高管离职，导致 Alphabet 股价自 4 月底以来累计下跌约 9%<sup>[5]</sup>。</p>
+
+  <p style="margin:0;">把这条时间线摆在一起看：模型延期→股价下跌→资本开支创纪录却自由现金流转负→核心人才离职→股价再跌。这不是一次孤立的人事新闻，而是一连串压力共同作用的结果。8 月 5 日的两条人事公告，某种程度上是这条压力链的一个阶段性节点，而不是起点。</p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;"><p style="height:1px;background:#e5e7eb;margin:0;"></p></section>
+
+<!-- Part 5: 人才流失不是新故事 -->
+<section style="background:#f8fafc;padding:28px 24px;">
+  <h2 style="font-size:19px;color:#111;margin:0 0 18px;font-weight:700;">五、人才流失是老问题，但这次伤到了骨头</h2>
+
+  <p style="margin:0 0 14px;">谷歌的顶尖人才外流不是新鲜事。Transformer 论文作者之一 Noam Shazeer 此前已经离开谷歌加入 OpenAI；AlphaFold 核心研究者、2024 年诺贝尔化学奖得主 John Jumper 也转投了 Anthropic<sup>[2]</sup>。这次不同的是量级——一次性带走首席科学家本人，加上三位在分布式系统和深度学习领域各自拥有极高学术影响力的资深研究者。</p>
+
+  <p style="margin:0 0 14px;">据彭博社报道，近期连续发生的人事变化对谷歌组织内部形成了明显冲击。担忧的逻辑是：如果谷歌在前沿模型能力上持续落后，开发者围绕谷歌技术构建产品的意愿可能下降，长期影响甚至可能延伸到搜索这个核心业务<sup>[2]</sup>。</p>
+
+  <p style="margin:0;">有意思的对比是：谷歌是 Transformer 架构的诞生地，某种意义上培养了整个现代 AI 时代最重要的一批技术人才。但这批人才如今正在陆续离开这家公司，去建立自己的研究体系。这不是谷歌能力不行的证据——恰恰相反，正是因为这些人在谷歌积累了足够的经验和信誉，才有底气出去单独创业。人才外流某种程度上是公司过去成功的副产品，但对当下的谷歌来说，这个副产品正在变成一个真实的麻烦。</p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;"><p style="height:1px;background:#e5e7eb;margin:0;"></p></section>
+
+<!-- Part 6: 冷静分析 -->
+<section style="background:#ffffff;padding:28px 24px;">
+  <h2 style="font-size:19px;color:#111;margin:0 0 18px;font-weight:700;">六、几个需要说清楚的边界</h2>
+
+  <p style="margin:0 0 14px;"><strong>第一，哈萨比斯没有"出局"。</strong>他仍然是 Google DeepMind 董事长，仍然会为新任负责人和管理团队提供模型研发和研究方向上的建议，只是不再直接管理庞大的产品和研发组织。把这条新闻简单解读为"哈萨比斯被架空"是不准确的，更准确的说法是管理分工的调整。</p>
+
+  <p style="margin:0 0 14px;"><strong>第二，Discovery Loop 目前只是一个种子轮阶段的构想。</strong>公司融资金额和估值都没有公开，组织架构、办公地点等细节也尚未对外披露。它想做的"科学发现自动化"是一个宏大且有前景的方向，但从构想到能真正跑起来的产品之间，还有很长的路。现在判断它能否成功还太早。</p>
+
+  <p style="margin:0 0 14px;"><strong>第三，谷歌的 AI 竞争力没有被这次人事变动直接削弱。</strong>Google DeepMind 拥有数千名研究人员，Gemini 团队的核心架构决策权仍然在卡武库奥卢和剩余团队手中。一次人事变动不等于技术断层，真正需要观察的是接下来几个季度 Gemini 4 能否如期、以有竞争力的水平发布。</p>
+
+  <p style="margin:0;"><strong>第四，股价下跌的原因是多重叠加，不能全部归因于人事变动。</strong>资本开支上调、自由现金流转负、Gemini 3.5 Pro 延期，这些因素本身就足以让市场紧张。人事变动更像是压力累积后的一次集中释放，而非单一诱因。</p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;"><p style="height:1px;background:#e5e7eb;margin:0;"></p></section>
+
+<!-- 结语 -->
+<section style="background:#0f172a;padding:32px 24px;text-align:center;">
+  <div style="max-width:680px;margin:0 auto;">
+    <p style="color:#cbd5e1;font-size:16px;margin:0 0 8px;line-height:1.8;">谷歌需要证明的已经不只是它仍然拥有世界级的模型、算力和研究团队。</p>
+    <p style="color:#94a3b8;font-size:16px;margin:0;line-height:1.8;">它还需要证明，即便身处一个拥有数十万员工的庞大组织，最优秀的研究者依然愿意留下来，而不是带着积累了十几年的信誉，选择去外面重新搭一套属于自己的系统。</p>
+  </div>
+</section>
+
+<!-- 参考文献 -->
+<section style="background:#f8fafc;padding:28px 24px;">
+  <h2 style="font-size:16px;color:#64748b;margin:0 0 12px;font-weight:600;">参考文献</h2>
+  <p style="margin:0 0 8px;font-size:14px;color:#94a3b8;line-height:1.8;">[1] IT之家，2026年8月6日，《谷歌 DeepMind 重组：哈萨比斯转任首席科学家，聚焦通用人工智能应用》</p>
+  <p style="margin:0 0 8px;font-size:14px;color:#94a3b8;line-height:1.8;">[2] 腾讯新闻，2026年8月6日，《谷歌AI一夜巨震！Gemini换帅，首席科学家带三个大牛出走创业》</p>
+  <p style="margin:0 0 8px;font-size:14px;color:#94a3b8;line-height:1.8;">[3] MSN中文网，2026年8月，《谷歌首席科学家Jeff Dean离职创业，与三资深同事创办Discovery Loop》（Alphabet股价数据）</p>
+  <p style="margin:0 0 8px;font-size:14px;color:#94a3b8;line-height:1.8;">[4] 百家号/财经，2026年7月17日，《Gemini 3.5 Pro发布延期 Alphabet股价连续两日下跌》</p>
+  <p style="margin:0 0 8px;font-size:14px;color:#94a3b8;line-height:1.8;">[5] 百家号/财经，2026年7月23日，《谷歌(GOOGL.US)Q2云营收暴涨82%，资本支出却要飙至2050亿美元》及《Alphabet首席执行官反驳谷歌在AI竞赛中失势的说法》</p>
+  <p style="margin:0 0 8px;font-size:14px;color:#94a3b8;line-height:1.8;">[6] 同花顺财经，2026年7月23日，《谷歌AI豪赌"代价"：自由现金流数十年来首次转负，资本支出翻倍》</p>
+</section>
+
+</body>
+</html>

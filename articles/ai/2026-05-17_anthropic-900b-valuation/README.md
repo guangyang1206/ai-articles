@@ -55,9 +55,9 @@
 | 文件 | 说明 | 状态 |
 |------|------|------|
 | README.md | 选题元数据 | ✅ |
-| wechat-article-mp.html | 公众号专用版（白底内联样式） | ✅ |
+| article-wechat.html | 公众号专用版（白底内联样式） | ✅ |
 | article-full.html | 网站全文版（深色科技风） | ✅ |
-| share-cards.html | 贴图分享卡片 | ✅ |
+| poster.html / poster.png | 竖版贴图长图 | ✅ |
 | cover-assets.html | 封面素材（头图+缩略图+分享图） | ✅ |
 | prompts/ | AI 生图 prompt | 🔲 |
 | assets/ | 参考资料 | 🔲 |
