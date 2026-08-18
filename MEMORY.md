@@ -9,7 +9,7 @@
 ## 事故 1：Token/密钥误提交到仓库（⚠️ 严重，2026-08-01）
 
 **经过**：
-1. `.github-token` 放在仓库根目录 `***REMOVED***/.github-token`
+1. `.github-token` 误放在仓库根目录下
 2. `git add -A` 一键提交新文章时连带把它提交了（commit `7bc746a`）
 3. Push 到 GitHub 被 secret scanning 拦截（检测到 `***REMOVED***...`）
 4. 后续 commit 删了文件，但 token 仍残留在 git 历史
@@ -17,7 +17,7 @@
 **损失**：PAT 暴露需吊销重生成；`git filter-branch` 重写全部 178 个 commit；两次 force push
 
 **教训**：
-1. token/密钥/证书**绝不放仓库目录**，放 `***REMOVED***`、`***REMOVED***.ssh/`、`***REMOVED***.config/`
+1. token/密钥/证书**绝不放仓库目录**，放仓库外（`***REMOVED***.ssh/`、`***REMOVED***.config/` 等）
 2. 必须放仓库目录时，**先加 `.gitignore` 再创建文件**
 3. commit 前 `git status` 确认无敏感文件
 4. `git add -A` 有安全隐患，改显式 `git add <file>`
@@ -37,14 +37,14 @@ git push origin master:main --force
 
 ## 坑 2：部署脚本被 preflight 拦截，误报「key 没了」
 
-**现象**：`python3 scripts/deploy.py` 突然报 key 无效/找不到，但环境变量其实一直在。
+**现象**：部署脚本突然报 key 无效/找不到，但环境变量其实一直在。
 
 **原因**：OpenClaw 的 exec 对「带路径的 Python 脚本调用」触发 preflight 拦截，脚本没跑到读环境变量那步就报错。
 
 **正确做法**：
 ```bash
-cd ***REMOVED***
-WOA_PAGES_API_KEY="***" python3 -c "
+cd <仓库根目录>
+DEPLOY_API_KEY="***" python3 -c "
 import sys, os
 sys.path.insert(0, 'scripts')
 import deploy
@@ -52,7 +52,7 @@ deploy.deploy()
 "
 ```
 
-**教训**：看到「key 没了」先 `echo $WOA_PAGES_API_KEY` 确认环境变量是否真丢，再排查 preflight。
+**教训**：看到「key 没了」先 `echo $DEPLOY_API_KEY` 确认环境变量是否真丢，再排查 preflight。
 
 ---
 
@@ -80,7 +80,7 @@ deploy.deploy()
 
 **正确做法**：`git push github master:main --force`
 
-**教训**：内网（***REMOVED*** `origin`）和外网（GitHub `github`）都要推；GitHub 默认分支是 `main`。
+**教训**：内网源和外网（GitHub `github`）都要推；GitHub 默认分支是 `main`。
 
 ---
 
@@ -98,7 +98,7 @@ deploy.deploy()
 2. 标题严谨性第二——「推翻猜想」vs「反证上界」差之毫厘。
 3. HTML 按 Anthropic 900b 标准——强制项，不是可选。
 4. 新增文章，首页必须同步更新（README + index.html）。
-5. 部署脚本只能用 `python3 -c` 方式跑。
+5. 带路径的 Python 脚本调用可能被 exec preflight 拦截（见坑 2）。
 6. 素材生成后浏览器打开截图，别直接用 HTML 文件。
 7. 发文前全文朗读一遍——念出来比看出来更容易发现口径问题。
 8. Token 严禁放仓库目录 + `.gitignore` 兜底。

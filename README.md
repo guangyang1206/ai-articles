@@ -28,12 +28,9 @@ yeranyang-cn/
 │   ├── xauat-2026/          #   西安建大校友分享 slides
 │   ├── ai-enlightenment/    #   AI 启蒙 slides（双语科普）
 │   └── workbuddy-intro/     #   WorkBuddy 产品介绍 slides
-├── scripts/                 # 自动化工具
-│   ├── new-topic.sh         #   选题脚手架生成器
-│   ├── deploy.py            #   内网站点部署（yeranyang-iai.***REMOVED***）
-│   └── update-index.sh      #   索引更新脚本
-└── content/
-    └── deploy_ai_articles.py  # 内网旧版部署脚本（保留备用）
+└── scripts/                 # 自动化工具
+    ├── new-topic.sh         #   选题脚手架生成器
+    └── update-index.sh      #   索引更新脚本
 ```
 
 ---
@@ -120,8 +117,7 @@ yeranyang-cn/
 
 ## 🌐 部署
 
-- **外网站点**：`yeranyang.cn`（GitHub Pages，绑定 `main` 分支）
-- **内网站点**：`yeranyang-iai.***REMOVED***`（`scripts/deploy.py`，需 `WOA_PAGES_API_KEY`）
+- **站点**：`yeranyang.cn`（GitHub Pages，绑定 `main` 分支，push 即自动部署）
 
 ---
 

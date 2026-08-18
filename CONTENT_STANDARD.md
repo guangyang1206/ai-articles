@@ -442,17 +442,13 @@ git add <具体文件...>
 git commit -m "feat: 新文章 slug"
 git push
 
-# 7. 部署到 WOA Pages
-WOA_PAGES_API_KEY="***" python3 -c "
-import sys, os
-sys.path.insert(0, 'scripts')
-import deploy
-deploy.deploy()
-"
+# 7. 部署到 GitHub Pages（push 后自动构建）
+#    → Pages 源为 main 分支根目录，push 即触发部署
+#    → 自定义域名 CNAME = yeranyang.cn
 
 # 8. 验证部署 + 更新状态
-#    → 浏览器打开 https://yeranyang-iai.***REMOVED***/ 检查
-#    → README.md 状态"📝 待发布"→"✅ 已完成"，再提交推送部署
+#    → 浏览器打开 https://yeranyang.cn/ 检查
+#    → README.md 状态"📝 待发布"→"✅ 已完成"，再提交推送
 ```
 
 ### 关键检查点
@@ -498,21 +494,8 @@ docs: 更新 README 文章状态（✅ 已完成）
 
 - ✅ 显式 `git add path/to/file`
 - ❌ 避免 `git add -A`（复杂状态可能误 staged）
-- 🚨 **token/密钥/证书绝不放在仓库目录**，放 `***REMOVED***`、`***REMOVED***.ssh/`、`***REMOVED***.config/`；如必须放，先加 `.gitignore`
+- 🚨 **token/密钥/证书绝不放在仓库目录**，放仓库外（`***REMOVED***.ssh/`、`***REMOVED***.config/` 等）；如必须放，先加 `.gitignore`
 - commit 前 `git status` 确认无敏感文件
-
-### 11.4 部署脚本执行
-
-```bash
-# ✅ 正确（exec preflight 会拦截带路径调用）
-WOA_PAGES_API_KEY="***" python3 -c "
-import sys, os
-sys.path.insert(0, 'scripts')
-import deploy
-deploy.deploy()
-"
-# ❌ 错误：python3 scripts/deploy.py
-```
 
 ---
 
