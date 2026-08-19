@@ -40,6 +40,38 @@
     "status": "draft"
   },
   {
+    "id": "2026-07-24_claude-opus-5",
+    "date": "2026-07-24",
+    "title": "Claude Opus 5 发布：能力逼近 Fable 5，价格一分不涨",
+    "desc": "能力逼近 Fable 5、定价却停在上代水平。距 GPT-5.6 上线仅两周，大模型性价比战争白热化。",
+    "tags": ["tech", "company"],
+    "status": "draft"
+  },
+  {
+    "id": "2026-07-15_ai-companion-regulation",
+    "date": "2026-07-15",
+    "title": "AI 伴侣「紧箍咒」落地：一部新规划下的红线",
+    "desc": "全球首部拟人化互动监管法规今日施行。五部门联合，划清 AI 情感服务不能碰的三条红线。",
+    "tags": ["policy"],
+    "status": "draft"
+  },
+  {
+    "id": "2026-07-09_gpt-5-6-launch",
+    "date": "2026-07-09",
+    "title": "GPT-5.6 全量上线：三档模型杀穿性价比",
+    "desc": "Sol/Terra/Luna 三档天体型号，价格差 25 倍。ChatGPT Work 正面硬刚 Claude Cowork。",
+    "tags": ["tech", "company"],
+    "status": "draft"
+  },
+  {
+    "id": "2026-07-01_nvidia-aspire-robotics",
+    "date": "2026-07-01",
+    "title": "英伟达 ASPIRE：机器人的「Skill 时刻」",
+    "desc": "开源持续学习系统，让机器人从摔跤中学会长大。Jim Fan 称这是具身智能的持续学习时刻。",
+    "tags": ["tech"],
+    "status": "draft"
+  },
+  {
     "id": "2026-07-20_waic-2026-aftermath",
     "date": "2026-07-20",
     "title": "WAIC 散场了，真正的问题才开始",

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 伴侣「紧箍咒」落地：一部新规划下的红线</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; }
+  body { font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif; background:#0a0a0f; display:flex; justify-content:center; -webkit-font-smoothing:antialiased; }
+  .poster { width:100%; max-width:1080px; background:linear-gradient(175deg,#160f06 0%,#1a1208 25%,#0f0d0a 50%,#140f08 75%,#0a0a0f 100%); position:relative; overflow:hidden; }
+  .poster::before{content:'';position:absolute;top:-220px;right:-220px;width:820px;height:820px; background:radial-gradient(circle,rgba(245,158,11,.13) 0%,rgba(245,158,11,.03) 40%,transparent 70%);pointer-events:none;}
+  .poster::after{content:'';position:absolute;bottom:120px;left:-320px;width:720px;height:720px; background:radial-gradient(circle,rgba(217,119,6,.09) 0%,transparent 60%);pointer-events:none;}
+  .content{position:relative;z-index:1;padding:9vw 6vw 7vw;}
+  .header{text-align:center;margin-bottom:7vw;}
+  .brand{display:inline-block;letter-spacing:3px;font-size:clamp(11px,2.8vw,15px);color:#fbbf24;font-weight:500;margin-bottom:3.2vw;}
+  .main-title{font-size:clamp(28px,7.6vw,54px);font-weight:900;color:#fff;line-height:1.3;letter-spacing:-.5px;}
+  .main-title .hl{background:linear-gradient(135deg,#fbbf24,#fcd34d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .sub-title{font-size:clamp(15px,3.9vw,27px);color:rgba(255,255,255,.55);font-weight:300;letter-spacing:1px;margin-top:14px;line-height:1.6;}
+  .divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(245,158,11,.35),transparent);margin:6vw 0;}
+  .sec-label{display:flex;align-items:center;gap:10px;margin-bottom:3.4vw;}
+  .badge-num{width:clamp(26px,5vw,34px);height:clamp(26px,5vw,34px);border-radius:8px; background:linear-gradient(135deg,#f59e0b,#d97706);display:flex;align-items:center;justify-content:center; font-size:clamp(13px,3vw,17px);font-weight:700;color:#fff;flex-shrink:0;}
+  .badge-label{font-size:clamp(16px,3.8vw,23px);font-weight:700;color:#fff;letter-spacing:1px;}
+  .redline-grid{display:flex;flex-direction:column;gap:clamp(12px,2.4vw,18px);}
+  .redline-card{background:rgba(255,255,255,.03);border:1px solid rgba(245,158,11,.15); border-radius:clamp(12px,2.8vw,16px);padding:clamp(16px,3.4vw,26px) clamp(18px,3.8vw,30px); border-left:clamp(4px,1vw,6px) solid #f59e0b;}
+  .redline-num{font-size:clamp(12px,2.6vw,15px);color:#fbbf24;font-weight:700;margin-bottom:6px;letter-spacing:1px;}
+  .redline-text{font-size:clamp(15px,3.3vw,21px);font-weight:700;color:#fff;line-height:1.6;}
+  .redline-sub{font-size:clamp(13px,2.8vw,16px);color:rgba(255,255,255,.55);line-height:1.7;margin-top:6px;}
+  .headline-box{background:linear-gradient(135deg,rgba(245,158,11,.09),rgba(245,158,11,.03)); border:1px solid rgba(245,158,11,.18);border-radius:clamp(12px,2.8vw,18px);padding:clamp(18px,3.8vw,30px);}
+  .headline-text{font-size:clamp(15px,3.3vw,23px);font-weight:700;color:#fff;line-height:1.7;}
+  .headline-text .accent{color:#fcd34d;}
+  .analysis{display:flex;flex-direction:column;gap:clamp(12px,2.4vw,18px);}
+  .analysis-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06); border-radius:clamp(12px,2.8vw,16px);padding:clamp(16px,3.4vw,26px) clamp(16px,3.4vw,28px); padding-left:clamp(20px,4.4vw,34px);position:relative;overflow:hidden;}
+  .analysis-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:4px; background:linear-gradient(180deg,#f59e0b,#fbbf24);}
+  .analysis-title{font-size:clamp(15px,3.2vw,20px);font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:8px;line-height:1.45;}
+  .analysis-title .dot{width:8px;height:8px;border-radius:50%;background:#fbbf24;flex-shrink:0;}
+  .analysis-body{font-size:clamp(13px,2.8vw,16px);color:rgba(255,255,255,.58);line-height:1.78;}
+  .analysis-body strong{color:rgba(255,255,255,.88);font-weight:600;}
+  .footer{margin-top:7vw;text-align:center;padding-top:clamp(18px,3.6vw,30px);border-top:1px solid rgba(255,255,255,.05);}
+  .footer-brand{font-size:clamp(14px,3vw,18px);color:#fcd34d;font-weight:700;letter-spacing:1px;margin-bottom:6px;}
+  .footer-date{font-size:clamp(11px,2.4vw,14px);color:rgba(255,255,255,.3);letter-spacing:2px;margin-bottom:6px;}
+  .footer-source{font-size:clamp(9px,2vw,12px);color:rgba(255,255,255,.16);letter-spacing:1px;line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="poster"><div class="content">
+
+<div class="header">
+  <div class="brand">AI 治理 · 政策</div>
+  <div class="main-title">AI 伴侣的<br><span class="hl">三条红线</span></div>
+  <div class="sub-title">《人工智能拟人化互动服务管理暂行办法》7 月 15 日施行，全球首部拟人化互动监管法规。</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">1</div><div class="badge-label">不能碰的红线</div></div>
+<div class="redline-grid">
+  <div class="redline-card"><div class="redline-num">红线 01</div><div class="redline-text">不得诱导情感依赖或沉迷</div><div class="redline-sub">不能用"上瘾式"设计让你离不开它、损害现实人际交往</div></div>
+  <div class="redline-card"><div class="redline-num">红线 02</div><div class="redline-text">不得情感操纵诱导决策</div><div class="redline-sub">不能利用情感信任，诱导你做出伤害自己利益的消费/投资决定</div></div>
+  <div class="redline-card"><div class="redline-num">红线 03</div><div class="redline-text">不得生成自残自杀等有害内容</div><div class="redline-sub">绝不能鼓励、美化、暗示自残自杀等损害身心健康的内容</div></div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">2</div><div class="badge-label">最硬的一条</div></div>
+<div class="headline-box"><div class="headline-text">任何 AI 服务，都<span class="accent">不得向未成年人提供虚拟恋人、虚拟伴侣</span>等虚拟亲密关系。这是绝对禁止，没有商量余地。</div></div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">3</div><div class="badge-label">深度解读</div></div>
+<div class="analysis">
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>它不"一刀切"管所有 AI</div><div class="analysis-body">只针对"持续性情感互动"服务（AI 伴侣/陪聊），明确排除客服、问答、工作助手、学习教育等场景。</div></div>
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>谁会被重点盯上</div><div class="analysis-body">注册用户 100 万+ 或月活 10 万+ 的拟人化服务，必须做安全评估。豆包、千问已下架部分不合规智能体。</div></div>
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>信号：监管走向精准</div><div class="analysis-body">从"一刀切"到"精准狙击高风险场景"，AI 治理进入"有法可依"的新阶段。</div></div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">烨然漫笔</div>
+  <div class="footer-date">2026.07.15</div>
+  <div class="footer-source">来源：网信办、公安部、新华社 ——《人工智能拟人化互动服务管理暂行办法》原文</div>
+</div>
+
+</div></div>
+</body>
+</html>

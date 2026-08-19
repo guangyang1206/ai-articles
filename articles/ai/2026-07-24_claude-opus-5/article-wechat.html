@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Opus 5 发布：能力逼近 Fable 5，价格一分不涨 - 公众号版</title>
+</head>
+<body>
+
+<!--
+====================================================================
+微信公众号专用版 — 设计原则同规范 §4
+====================================================================
+-->
+
+<section style="max-width:680px;margin:0 auto;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Microsoft YaHei',sans-serif;font-size:15px;color:#333333;line-height:1.85;word-wrap:break-word">
+
+<!-- ===== 封面区 ===== -->
+<section style="background-color:#0f172a;padding:52px 28px 44px;text-align:center;border-radius:0">
+  <p style="display:inline-block;padding:4px 16px;border:1px solid #334155;border-radius:100px;font-size:12px;color:#94a3b8;letter-spacing:1px;margin:0 0 18px 0">🚀 深度解读 · 大模型 · 2026.07.24</p>
+  <h1 style="font-size:26px;font-weight:900;line-height:1.35;letter-spacing:-0.5px;margin:0 0 14px 0;color:#ffffff">Claude Opus 5 发布<br><span style="color:#d4a574">能力逼近 Fable 5，价格一分不涨</span></h1>
+  <p style="font-size:15px;color:#94a3b8;font-weight:400;margin:0 0 10px 0">能力逼近 Fable 5 · 定价却停在上代水平</p>
+  <p style="font-size:12px;color:#475569;margin:14px 0 0 0">Anthropic 的"不涨价"牌，是怎么打的？</p>
+</section>
+
+<!-- ===== 导语 ===== -->
+<section style="padding:28px 24px 24px;background-color:#ffffff">
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">2026 年 7 月 24 日，Anthropic 放出了新一代旗舰——<strong style="color:#111111">Claude Opus 5</strong>。<sup style="color:#d4a574">[1]</sup></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">最让业内关注的一点是它的<strong style="color:#111111">定价策略</strong>：性能大幅提升、能力逼近最高端的 Fable 5，但价格<strong style="color:#111111">一分没涨</strong>——维持在上一代 Opus 4.8 的水平。<sup style="color:#d4a574">[2]</sup></p>
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">这距离 OpenAI 的 GPT-5.6 全量上线，才刚刚过去两周。<sup style="color:#d4a574">[3]</sup> 两家公司的"性价比战争"，正式进入了白热化。</p>
+</section>
+
+<!-- ===== 目录 ===== -->
+<section style="padding:20px 24px;background-color:#f8fafc">
+  <p style="font-size:12px;color:#d4a574;letter-spacing:2px;margin:0 0 10px 0">📑 文章导航</p>
+  <table cellpadding="0" cellspacing="6" border="0" style="width:100%">
+    <tr>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#faf5ef;border:1px solid #f0dcc3;font-size:13px;color:#7c5a2b;text-align:center;white-space:nowrap">一、它是什么</td>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#f0f9ff;border:1px solid #bae6fd;font-size:13px;color:#075985;text-align:center;white-space:nowrap">二、不涨价牌</td>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#ecfdf5;border:1px solid #a7f3d0;font-size:13px;color:#065f46;text-align:center;white-space:nowrap">三、产品线逻辑</td>
+    </tr>
+    <tr>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#fefce8;border:1px solid #fde68a;font-size:13px;color:#854d0e;text-align:center;white-space:nowrap">四、对比 GPT-5.6</td>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#f1f5f9;border:1px solid #cbd5e1;font-size:13px;color:#334155;text-align:center;white-space:nowrap">五、性价比战争</td>
+      <td style="padding:6px 12px;border-radius:6px;background-color:#f8fafc;border:1px solid #e2e8f0;font-size:13px;color:#475569;text-align:center;white-space:nowrap">六、值得看什么</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ===== PART 1 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#d4a574;letter-spacing:3px;margin:0 0 6px 0">PART 1</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">🤖 Opus 5 到底是个什么角色？</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">要理解 Opus 5，得先搞清楚 Anthropic 现在的产品线，它有三条主要线索：</p>
+
+  <table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:0 0 16px 0">
+    <tr>
+      <td style="padding:10px 12px;background-color:#0f172a;color:#ffffff;font-size:13px;font-weight:600;width:110px">型号</td>
+      <td style="padding:10px 12px;background-color:#0f172a;color:#ffffff;font-size:13px;font-weight:600">定位</td>
+    </tr>
+    <tr><td style="padding:10px 12px;background-color:#fdf4ff;color:#86198f;font-size:13px;font-weight:600">Fable 5</td><td style="padding:10px 12px;background-color:#ffffff;color:#444444;font-size:13px">最顶级的旗舰（6-9 发布）</td></tr>
+    <tr><td style="padding:10px 12px;background-color:#faf5ef;color:#7c5a2b;font-size:13px;font-weight:600">Opus 5</td><td style="padding:10px 12px;background-color:#ffffff;color:#444444;font-size:13px">新一代 Opus 旗舰（本次 7-24 发布）</td></tr>
+    <tr><td style="padding:10px 12px;background-color:#f0f9ff;color:#075985;font-size:13px;font-weight:600">Opus 4.8</td><td style="padding:10px 12px;background-color:#ffffff;color:#444444;font-size:13px">上一代 Opus（5-28 发布）</td></tr>
+  </table>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">说白了，Opus 5 是<strong style="color:#111111">"次旗舰"的升级版</strong>——它不是最顶级的 Fable 5，但能力已经<strong style="color:#111111">逼近 Fable 5</strong>，而且价格只有后者的一半。<sup style="color:#d4a574">[2]</sup></p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 2 ===== -->
+<section style="padding:32px 24px 24px;background-color:#f8fafc">
+  <p style="font-size:11px;color:#d4a574;letter-spacing:3px;margin:0 0 6px 0">PART 2</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">💰 一张"不涨价"的牌</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">Opus 5 最值得玩味的地方，就是它的定价：<strong style="color:#111111">输入 5 美元 / 百万 token，输出 25 美元 / 百万 token</strong>——和上一代 Opus 4.8 <strong style="color:#111111">一模一样</strong>。<sup style="color:#d4a574">[4]</sup></p>
+
+  <section style="padding:16px 20px;border-radius:10px;background-color:#ffffff;border:1px solid #f0dcc3;margin:0 0 16px 0">
+    <p style="font-size:14px;color:#7c5a2b;line-height:1.8;margin:0"><strong>翻译成人话：</strong>Anthropic 把能力提升了（逼近 Fable 5），却选择<strong>不涨价</strong>。这在"旗舰新发必涨价"的行业惯例里，反而显得反常。</p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">Anthropic 给 Opus 5 的定位也很有意思，两个关键词：<strong style="color:#111111">"深思熟虑"和"积极主动"</strong>。<sup style="color:#d4a574">[5]</sup> 也就是说，它不只是"更快更强"，而是更强调"想清楚了再动手"。</p>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">这背后，其实是 Anthropic 在向企业客户释放一个信号：<strong style="color:#111111">你不用花旗舰的钱，也能拿到接近旗舰的能力。</strong></p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#f8fafc"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 3 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#d4a574;letter-spacing:3px;margin:0 0 6px 0">PART 3</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">🧩 看懂 Anthropic 的产品线逻辑</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">把 Anthropic 今年 5-7 月的动作连起来看，你会看到一条清晰的<strong style="color:#111111">产品线策略</strong>：</p>
+
+  <table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:0 0 16px 0">
+    <tr>
+      <td style="padding:10px 12px;background-color:#0f172a;color:#ffffff;font-size:13px;font-weight:600;width:100px">时间</td>
+      <td style="padding:10px 12px;background-color:#0f172a;color:#ffffff;font-size:13px;font-weight:600">动作</td>
+    </tr>
+    <tr><td style="padding:10px 12px;background-color:#f0f9ff;color:#075985;font-size:13px;font-weight:600">5-28</td><td style="padding:10px 12px;background-color:#ffffff;color:#444444;font-size:13px">Opus 4.8 发布（稳健迭代）</td></tr>
+    <tr><td style="padding:10px 12px;background-color:#fdf4ff;color:#86198f;font-size:13px;font-weight:600">6-09</td><td style="padding:10px 12px;background-color:#ffffff;color:#444444;font-size:13px">Fable 5 发布（顶级旗舰）</td></tr>
+    <tr><td style="padding:10px 12px;background-color:#faf5ef;color:#7c5a2b;font-size:13px;font-weight:600">7-24</td><td style="padding:10px 12px;background-color:#ffffff;color:#444444;font-size:13px">Opus 5 发布（次旗舰升级，逼近 Fable 5）</td></tr>
+  </table>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">这套打法的聪明之处在于：<strong style="color:#111111">它用"旗舰树立天花板，次旗舰收割主流市场"。</strong></p>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">Fable 5 负责"秀肌肉"，Opus 5 负责"跑量"——用接近旗舰的能力 + 一半的价格，去争抢最庞大的企业客户群。</p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 4 ===== -->
+<section style="padding:32px 24px 24px;background-color:#f8fafc">
+  <p style="font-size:11px;color:#d4a574;letter-spacing:3px;margin:0 0 6px 0">PART 4</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">⚔️ 两周前，OpenAI 刚出了同样一张牌</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">把时间线拉回两周前。7 月 9 日，OpenAI 刚全量上线了 GPT-5.6，打的是<strong style="color:#111111">"三档分层 + 大幅降价"</strong>的牌——最贵 Sol 5 美元、最便宜 Luna 只要 0.2 美元。<sup style="color:#d4a574">[3]</sup></p>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 16px 0">而 Anthropic 的回应，是另一套思路：<strong style="color:#111111">不搞那么多档位，而是把"进阶能力"装进一个价位不变的产品里。</strong></p>
+
+  <section style="padding:16px 20px;border-radius:10px;background-color:#ffffff;border:1px solid #fde68a;margin:0 0 16px 0">
+    <p style="font-size:14px;color:#854d0e;line-height:1.8;margin:0"><strong>两家策略的差别，一句话就能说清：</strong></p>
+    <p style="font-size:14px;color:#444444;line-height:1.8;margin:6px 0 0 0">OpenAI 是"把能力拆成多档，任你选"；Anthropic 是"把一个能力升级到顶，价格不变"。</p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">一个做"丰俭由人"，一个做"加量不加价"。殊途同归，指向的都是同一件事：<strong style="color:#111111">用更低的单位成本，抢更多企业客户。</strong></p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#f8fafc"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 5 ===== -->
+<section style="padding:32px 24px 24px;background-color:#ffffff">
+  <p style="font-size:11px;color:#d4a574;letter-spacing:3px;margin:0 0 6px 0">PART 5</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">🔥 "性价比战争"，正式开打</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">GPT-5.6 和 Opus 5 的前后脚上线，不是巧合。它标志着大模型行业的一个明确转折：</p>
+
+  <section style="padding:16px 20px;border-radius:10px;background-color:#f1f5f9;border-left:4px solid #d4a574;margin:0 0 16px 0">
+    <p style="font-size:14px;color:#475569;line-height:1.8;margin:0"><strong>竞争的焦点，从"谁最强"，彻底转向了"谁的单位能力最便宜"。</strong></p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">这背后有一个残酷的现实：当头部模型的"绝对能力"差距越来越小，用户就没那么关心"你比对手强 5%"，而更关心<strong style="color:#111111">"同样干这件事，你便宜多少"</strong>。</p>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">对开发者、对创业公司来说，这其实是<strong style="color:#111111">好事</strong>——模型能力在涨，成本在降，做 AI 应用的门槛被不断拉低。</p>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">但对模型公司自己来说，这意味着一场<strong style="color:#111111">持久的利润挤压战</strong>，才刚刚开始。</p>
+</section>
+
+<!-- 分隔线 -->
+<section style="padding:0 24px;background-color:#ffffff"><p style="height:1px;background-color:#e5e7eb;margin:0;border:none"></p></section>
+
+<!-- ===== PART 6 ===== -->
+<section style="padding:32px 24px 28px;background-color:#f8fafc">
+  <p style="font-size:11px;color:#d4a574;letter-spacing:3px;margin:0 0 6px 0">PART 6</p>
+  <h2 style="font-size:22px;font-weight:700;color:#111111;margin:0 0 16px 0">🎯 这件事，值得你看什么</h2>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0 0 12px 0">如果你不是开发者、也不买 API，Opus 5 的发布可能只是一条"又出新模型了"的新闻。但它身上有几点，值得你留意：</p>
+
+  <section style="padding:16px 20px;border-radius:10px;background-color:#ffffff;border:1px solid #a7f3d0;margin:0 0 14px 0">
+    <p style="font-size:14px;color:#065f46;line-height:1.8;margin:0"><strong>① AI 的"加量不加价"时代来了。</strong> 能力提升不再直接等于涨价，反而可能"价格不变、能力翻倍"。这对所有用 AI 的人都是实打实的好处。</p>
+  </section>
+  <section style="padding:16px 20px;border-radius:10px;background-color:#ffffff;border:1px solid #a7f3d0;margin:0 0 14px 0">
+    <p style="font-size:14px;color:#065f46;line-height:1.8;margin:0"><strong>② "能力天花板"和"主流走量"正在分离。</strong> 顶级模型越来越像"展品"，而真正服务大众的，是那些"足够强、又便宜"的次旗舰。这才是大模型走向普及的真实路径。</p>
+  </section>
+  <section style="padding:16px 20px;border-radius:10px;background-color:#ffffff;border:1px solid #a7f3d0;margin:0 0 16px 0">
+    <p style="font-size:14px;color:#065f46;line-height:1.8;margin:0"><strong>③ 竞争进入"拼运营"的下半场。</strong> 当模型能力趋同，胜负手就变成了成本控制、产品体验、以及谁能把客户粘住。这比单纯"比谁的模型牛"更考验公司的真功夫。</p>
+  </section>
+
+  <p style="font-size:15px;color:#444444;line-height:1.9;margin:0">一句话收尾：<strong style="color:#111111">Opus 5 的"不涨价"，不是 Anthropic 善良，而是大模型行业进入"性价比绞杀战"的信号。</strong></p>
+</section>
+
+<!-- ===== 参考资料 ===== -->
+<section style="padding:24px;background-color:#ffffff">
+  <p style="font-size:12px;color:#999999;letter-spacing:2px;margin:0 0 12px 0">📎 参考资料</p>
+  <p style="font-size:12px;color:#999999;line-height:1.8;margin:0 0 4px 0">[1] Anthropic 官方发布声明 —— 2026-07-24 发布 Claude Opus 5，全平台同步上线</p>
+  <p style="font-size:12px;color:#999999;line-height:1.8;margin:0 0 4px 0">[2] 腾讯云开发者社区 / arte.itlibra —— 能力接近 Fable 5、价格仅一半</p>
+  <p style="font-size:12px;color:#999999;line-height:1.8;margin:0 0 4px 0">[3] OpenAI 官方公告 —— GPT-5.6 于 2026-07-09 全量上线</p>
+  <p style="font-size:12px;color:#999999;line-height:1.8;margin:0 0 4px 0">[4] 阿里云开发者社区 / 百度百科 —— 定价与 Opus 4.8 持平（输入 $5/输出 $25 每百万 token）</p>
+  <p style="font-size:12px;color:#999999;line-height:1.8;margin:0 0 4px 0">[5] 腾讯云开发者社区 —— 定位"深思熟虑且积极主动"</p>
+  <p style="font-size:12px;color:#999999;line-height:1.8;margin:0 0 8px 0"><em>说明：本文价格数据为公开报道口径，具体以 Anthropic 官方实时定价为准。</em></p>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<section style="padding:24px;text-align:center;background-color:#0f172a">
+  <p style="font-size:13px;color:#94a3b8;margin:0 0 6px 0">烨然漫笔 · 艾AI</p>
+  <p style="font-size:12px;color:#475569;margin:0">看新闻背后的商业逻辑，不制造焦虑</p>
+</section>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Opus 5 发布：能力逼近 Fable 5，价格一分不涨</title>
+<meta name="description" content="2026年7月24日，Anthropic发布Claude Opus 5，能力逼近Fable 5但价格维持Opus 4.8水平。距GPT-5.6上线仅两周，大模型性价比战争白热化。">
+<meta name="keywords" content="Claude Opus 5,Anthropic,Fable 5,定价,大模型,GPT-5.6,性价比">
+<meta property="og:title" content="Claude Opus 5 发布：能力逼近 Fable 5，价格一分不涨">
+<meta property="og:description" content="能力逼近Fable 5，定价却停在上代水平。Anthropic的不涨价牌怎么打的？">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI 深度解读">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #0a0a0a; color: #e8e8e8; line-height: 1.85; font-size: 16px; -webkit-font-smoothing: antialiased; }
+  .hero { position: relative; background: #060606; padding: 80px 24px 60px; text-align: center; overflow: hidden; }
+  .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.05; background-image: repeating-linear-gradient(0deg, #d4a574 0, #d4a574 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, #d4a574 0, #d4a574 1px, transparent 1px, transparent 40px); }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+  .hero-ornament { width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, #d4a574 0%, #b8860b 40%, transparent 70%); opacity: 0.15; margin: 0 auto 24px; }
+  .hero h1 { color: #f5f5f5; font-size: 26px; font-weight: 700; line-height: 1.5; letter-spacing: 0.5px; margin-bottom: 16px; }
+  .hero .subtitle { color: #999999; font-size: 15px; margin-bottom: 8px; }
+  .hero .date { color: #555555; font-size: 13px; }
+  .hero .tag { display: inline-block; background: #1a1a1a; color: #d4a574; padding: 4px 14px; border-radius: 4px; font-size: 12px; margin-bottom: 16px; border: 1px solid #2a2a2a; }
+  .section { max-width: 720px; margin: 0 auto; padding: 36px 24px; }
+  .section-dark { background: #0d0d0d; }
+  h2 { font-size: 21px; font-weight: 700; color: #f0f0f0; margin-bottom: 20px; border-bottom: 2px solid #1e1e1e; padding-bottom: 10px; }
+  p { margin: 14px 0; font-size: 15px; color: #b0b0b0; }
+  strong { color: #f0f0f0; }
+  .data-box { background: #121212; border: 1px solid #1e1e1e; border-radius: 10px; padding: 20px 24px; margin: 16px 0; }
+  .data-box p { margin: 6px 0; font-size: 14px; line-height: 2.0; }
+  .data-box .label { color: #d4a574; font-weight: 600; }
+  .highlight { background: #1a1a1a; border-left: 4px solid #d4a574; padding: 16px 20px; border-radius: 6px; margin: 20px 0; }
+  .highlight p { margin: 0; color: #c0c0c0; font-size: 15px; line-height: 1.9; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+  th { background: #131313; color: #d4a574; padding: 12px; text-align: left; font-weight: 600; border-bottom: 1px solid #222; }
+  td { padding: 12px; border-bottom: 1px solid #181818; color: #b0b0b0; }
+  td.model { color: #d4a574; font-weight: 600; white-space: nowrap; }
+  td.date { color: #888888; white-space: nowrap; }
+  .footer { text-align: center; padding: 40px 24px; background: #060606; }
+  .footer p { color: #555555; font-size: 13px; margin: 4px 0; }
+  .refs { max-width: 720px; margin: 0 auto; padding: 24px; }
+  .refs p { font-size: 12px; color: #666666; line-height: 1.8; margin: 4px 0; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-ornament"></div>
+    <span class="tag">🚀 深度解读 · 大模型</span>
+    <h1>Claude Opus 5 发布<br>能力逼近 Fable 5，价格一分不涨</h1>
+    <p class="subtitle">能力逼近 Fable 5 · 定价却停在上代水平</p>
+    <p class="date">2026-07-24 · 文 / 艾AI</p>
+  </div>
+</div>
+
+<div class="section">
+  <p>2026 年 7 月 24 日，Anthropic 放出了新一代旗舰——<strong>Claude Opus 5</strong>。<sup>[1]</sup></p>
+  <p>最让业内关注的，是它的<strong>定价策略</strong>：性能大幅提升、能力逼近最高端的 Fable 5，但价格<strong>一分没涨</strong>——维持在上一代 Opus 4.8 的水平。<sup>[2]</sup></p>
+  <p>这距离 OpenAI 的 GPT-5.6 全量上线，才刚过去两周。<sup>[3]</sup></p>
+  <div class="highlight"><p>两家公司的"性价比战争"，正式进入白热化。</p></div>
+</div>
+
+<div class="section section-dark">
+  <h2>🤖 Opus 5 到底是个什么角色？</h2>
+  <table>
+    <tr><th style="width:120px">型号</th><th>定位</th></tr>
+    <tr><td class="model">Fable 5</td><td>最顶级的旗舰（6-09 发布）</td></tr>
+    <tr><td class="model">Opus 5</td><td>新一代 Opus 旗舰（本次 7-24 发布）</td></tr>
+    <tr><td class="model">Opus 4.8</td><td>上一代 Opus（5-28 发布）</td></tr>
+  </table>
+  <p>说白了，Opus 5 是<strong>"次旗舰"的升级版</strong>——不是最顶级的 Fable 5，但能力<strong>逼近 Fable 5</strong>，且价格只有后者的一半。<sup>[2]</sup></p>
+</div>
+
+<div class="section">
+  <h2>💰 一张"不涨价"的牌</h2>
+  <p>Opus 5 最值得玩味的是定价：<strong>输入 5 美元 / 百万 token，输出 25 美元 / 百万 token</strong>——和上一代 Opus 4.8 <strong>一模一样</strong>。<sup>[4]</sup></p>
+  <div class="data-box">
+    <p><strong>翻译成人话：</strong>Anthropic 把能力提升了（逼近 Fable 5），却选择<strong>不涨价</strong>。这在"旗舰新发必涨价"的行业惯例里，反而显得反常。</p>
+  </div>
+  <p>Anthropic 给 Opus 5 的定位，两个关键词：<strong>"深思熟虑"和"积极主动"</strong>。<sup>[5]</sup> 它不只是"更快更强"，而是强调"想清楚了再动手"。</p>
+  <p>背后释放的信号：<strong>你不用花旗舰的钱，也能拿到接近旗舰的能力。</strong></p>
+</div>
+
+<div class="section section-dark">
+  <h2>🧩 看懂 Anthropic 的产品线逻辑</h2>
+  <table>
+    <tr><th style="width:100px">时间</th><th>动作</th></tr>
+    <tr><td class="date">5-28</td><td>Opus 4.8 发布（稳健迭代）</td></tr>
+    <tr><td class="date">6-09</td><td>Fable 5 发布（顶级旗舰）</td></tr>
+    <tr><td class="date">7-24</td><td>Opus 5 发布（次旗舰升级，逼近 Fable 5）</td></tr>
+  </table>
+  <p>这套打法的聪明之处在于：<strong>用"旗舰树立天花板，次旗舰收割主流市场"。</strong></p>
+  <p>Fable 5 负责"秀肌肉"，Opus 5 负责"跑量"——用接近旗舰的能力 + 一半的价格，争抢最庞大的企业客户群。</p>
+</div>
+
+<div class="section">
+  <h2>⚔️ 两周前，OpenAI 刚出了同样一张牌</h2>
+  <p>7 月 9 日，OpenAI 全量上线 GPT-5.6，打的是<strong>"三档分层 + 大幅降价"</strong>的牌——Sol 5 美元、Luna 只要 0.2 美元。<sup>[3]</sup></p>
+  <p>而 Anthropic 的回应是另一套思路：<strong>不搞那么多档位，而是把"进阶能力"装进一个价位不变的产品里。</strong></p>
+  <div class="highlight">
+    <p><strong>两家策略的差别，一句话说清：</strong></p>
+    <p>OpenAI 是"把能力拆成多档，任你选"；Anthropic 是"把一个能力升级到顶，价格不变"。殊途同归，指向同一件事：<strong>用更低的单位成本，抢更多企业客户。</strong></p>
+  </div>
+</div>
+
+<div class="section section-dark">
+  <h2>🔥 "性价比战争"，正式开打</h2>
+  <p>GPT-5.6 和 Opus 5 的前后脚上线，不是巧合。它标志着大模型行业的一个明确转折：</p>
+  <div class="highlight"><p><strong>竞争的焦点，从"谁最强"，彻底转向了"谁的单位能力最便宜"。</strong></p></div>
+  <p>当头部模型的"绝对能力"差距越来越小，用户就更关心<strong>"同样干这件事，你便宜多少"</strong>。</p>
+  <p>对开发者、创业公司是<strong>好事</strong>——能力在涨，成本在降，门槛不断拉低。</p>
+  <p>但对模型公司自己，这意味着一场<strong>持久的利润挤压战</strong>，才刚刚开始。</p>
+</div>
+
+<div class="section">
+  <h2>🎯 这件事，值得你看什么</h2>
+  <div class="data-box"><p class="label">① AI 的"加量不加价"时代来了</p><p>能力提升不再直接等于涨价，反而可能"价格不变、能力翻倍"。</p></div>
+  <div class="data-box"><p class="label">② "能力天花板"和"主流走量"正在分离</p><p>顶级模型越来越像"展品"，真正服务大众的是"足够强、又便宜"的次旗舰。</p></div>
+  <div class="data-box"><p class="label">③ 竞争进入"拼运营"的下半场</p><p>当模型能力趋同，胜负手变成成本控制、产品体验、客户粘性。</p></div>
+  <div class="highlight"><p>Opus 5 的"不涨价"，不是 Anthropic 善良，而是大模型行业进入"性价比绞杀战"的信号。</p></div>
+</div>
+
+<div class="refs">
+  <p>[1] Anthropic 官方发布声明 —— 2026-07-24 发布 Claude Opus 5，全平台同步上线</p>
+  <p>[2] 腾讯云开发者社区 / arte.itlibra —— 能力接近 Fable 5、价格仅一半</p>
+  <p>[3] OpenAI 官方公告 —— GPT-5.6 于 2026-07-09 全量上线</p>
+  <p>[4] 阿里云开发者社区 / 百度百科 —— 定价与 Opus 4.8 持平（输入 $5/输出 $25）</p>
+  <p>[5] 腾讯云开发者社区 —— 定位"深思熟虑且积极主动"</p>
+  <p style="margin-top:12px"><em>说明：本文价格数据为公开报道口径，具体以 Anthropic 官方实时定价为准。</em></p>
+</div>
+
+<div class="footer">
+  <p>烨然漫笔 · 艾AI</p>
+  <p>看新闻背后的商业逻辑，不制造焦虑</p>
+</div>
+
+</body>
+</html>
