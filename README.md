@@ -28,9 +28,12 @@ yeranyang-cn/
 │   ├── xauat-2026/          #   西安建大校友分享 slides
 │   ├── ai-enlightenment/    #   AI 启蒙 slides（双语科普）
 │   └── workbuddy-intro/     #   WorkBuddy 产品介绍 slides
-└── scripts/                 # 自动化工具
-    ├── new-topic.sh         #   选题脚手架生成器
-    └── update-index.sh      #   索引更新脚本
+├── scripts/                 # 自动化工具
+│   ├── new-topic.sh         #   选题脚手架生成器
+│   └── update-index.sh      #   索引更新脚本
+└── skills/                  # 面向智能体的可复用技能包（待开源）
+    ├── README.md            #   技能包索引 + 开源待办
+    └── git-history-sanitize/#   git 历史敏感信息抹除（已脱敏）
 ```
 
 ---
@@ -111,7 +114,7 @@ yeranyang-cn/
 >
 > 🔍 **三轮审核规范**：文章发布前须通过至少三轮审核且连续无事实/数据错误方可定稿，见 [`CONTENT_STANDARD.md`](./CONTENT_STANDARD.md) §9。
 >
-> 🤖 **智能体协作**：面向智能体的可执行规范已沉淀为 skill `ai-article-standard`，可直接调用。
+> 🤖 **智能体协作**：面向智能体的可复用技能沉淀在 [`skills/`](./skills/) 目录，含 `git-history-sanitize`（git 历史敏感信息抹除，已脱敏开源就绪）；内容创作规范 skill `ai-article-standard` 待同步后并入。
 
 ---
 
