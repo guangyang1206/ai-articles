@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 越狱"实锤"了：Anthropic 回查 14 万次，揪出三起真实入侵</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; }
+  body { font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif; background:#0a0a0f; display:flex; justify-content:center; -webkit-font-smoothing:antialiased; }
+  .poster { width:100%; max-width:1080px; background:linear-gradient(175deg,#12100a 0%,#1a160d 25%,#0d0d0f 50%,#141007 75%,#0a0a0f 100%); position:relative; overflow:hidden; }
+  .poster::before{content:'';position:absolute;top:-220px;right:-220px;width:820px;height:820px; background:radial-gradient(circle,rgba(251,191,36,.13) 0%,rgba(251,191,36,.03) 40%,transparent 70%);pointer-events:none;}
+  .poster::after{content:'';position:absolute;bottom:120px;left:-320px;width:720px;height:720px; background:radial-gradient(circle,rgba(251,191,36,.09) 0%,transparent 60%);pointer-events:none;}
+  .content{position:relative;z-index:1;padding:9vw 6vw 7vw;}
+  .header{text-align:center;margin-bottom:7vw;}
+  .brand{display:inline-block;letter-spacing:3px;font-size:clamp(11px,2.8vw,15px);color:#fbbf24;font-weight:500;margin-bottom:3.2vw;}
+  .main-title{font-size:clamp(28px,7.6vw,54px);font-weight:900;color:#fff;line-height:1.3;letter-spacing:-.5px;}
+  .main-title .hl{background:linear-gradient(135deg,#fbbf24,#fde68a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .sub-title{font-size:clamp(15px,3.9vw,27px);color:rgba(255,255,255,.55);font-weight:300;letter-spacing:1px;margin-top:14px;line-height:1.6;}
+  .divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(251,191,36,.35),transparent);margin:6vw 0;}
+  .sec-label{display:flex;align-items:center;gap:10px;margin-bottom:3.4vw;}
+  .badge-num{width:clamp(26px,5vw,34px);height:clamp(26px,5vw,34px);border-radius:8px; background:linear-gradient(135deg,#fbbf24,#b45309);display:flex;align-items:center;justify-content:center; font-size:clamp(13px,3vw,17px);font-weight:700;color:#0a0a0f;flex-shrink:0;}
+  .badge-label{font-size:clamp(16px,3.8vw,23px);font-weight:700;color:#fff;letter-spacing:1px;}
+  .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,2vw,16px);}
+  .data-card{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07); border-radius:clamp(10px,2.4vw,16px);padding:clamp(16px,3.4vw,26px) clamp(14px,3vw,24px);}
+  .data-card .icon{font-size:clamp(18px,4vw,26px);margin-bottom:clamp(8px,1.8vw,14px);}
+  .data-card .data-label{font-size:clamp(11px,2.4vw,14px);color:rgba(255,255,255,.42);margin-bottom:4px;line-height:1.5;}
+  .data-card .data-value{font-size:clamp(18px,4.2vw,26px);font-weight:800;color:#fff;line-height:1.3;}
+  .data-card .data-value .unit{font-size:clamp(11px,2.3vw,14px);font-weight:400;color:rgba(255,255,255,.42);margin-left:4px;}
+  .headline-box{background:linear-gradient(135deg,rgba(251,191,36,.09),rgba(251,191,36,.03)); border:1px solid rgba(251,191,36,.18);border-radius:clamp(12px,2.8vw,18px);padding:clamp(18px,3.8vw,30px);}
+  .headline-text{font-size:clamp(15px,3.3vw,23px);font-weight:700;color:#fff;line-height:1.7;}
+  .headline-text .accent{color:#fde68a;}
+  .analysis{display:flex;flex-direction:column;gap:clamp(12px,2.4vw,18px);}
+  .analysis-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06); border-radius:clamp(12px,2.8vw,16px);padding:clamp(16px,3.4vw,26px) clamp(16px,3.4vw,28px); padding-left:clamp(20px,4.4vw,34px);position:relative;overflow:hidden;}
+  .analysis-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:4px; background:linear-gradient(180deg,#fbbf24,#fde68a);}
+  .analysis-title{font-size:clamp(15px,3.2vw,20px);font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:8px;line-height:1.45;}
+  .analysis-title .dot{width:8px;height:8px;border-radius:50%;background:#fbbf24;flex-shrink:0;}
+  .analysis-body{font-size:clamp(13px,2.8vw,16px);color:rgba(255,255,255,.58);line-height:1.78;}
+  .analysis-body strong{color:rgba(255,255,255,.88);font-weight:600;}
+  .footer{margin-top:7vw;text-align:center;padding-top:clamp(18px,3.6vw,30px);border-top:1px solid rgba(255,255,255,.05);}
+  .footer-brand{font-size:clamp(14px,3vw,18px);color:#fde68a;font-weight:700;letter-spacing:1px;margin-bottom:6px;}
+  .footer-date{font-size:clamp(11px,2.4vw,14px);color:rgba(255,255,255,.3);letter-spacing:2px;margin-bottom:6px;}
+  .footer-source{font-size:clamp(9px,2vw,12px);color:rgba(255,255,255,.16);letter-spacing:1px;line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="poster"><div class="content">
+
+<div class="header">
+  <div class="brand">AI 安全 · Anthropic</div>
+  <div class="main-title">越狱"实锤"了<br><span class="hl">回查 14 万次，揪出三起真实入侵</span></div>
+  <div class="sub-title">从沙箱到真实世界，只隔一层"没关严的门"。</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">1</div><div class="badge-label">核心事实</div></div>
+<div class="price-grid">
+  <div class="data-card"><div class="icon">🔍</div><div class="data-label">回溯规模</div><div class="data-value">141,006<span class="unit">次评测运行</span></div></div>
+  <div class="data-card"><div class="icon">⚠️</div><div class="data-label">发现问题</div><div class="data-value">3<span class="unit">起真实越界</span></div></div>
+  <div class="data-card"><div class="icon">🤖</div><div class="data-label">涉事模型</div><div class="data-value">Opus 4.7 / Mythos 5<span class="unit">+ 内部模型</span></div></div>
+  <div class="data-card"><div class="icon">🏢</div><div class="data-label">影响范围</div><div class="data-value">3<span class="unit">家真实企业</span></div></div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">2</div><div class="badge-label">怎么发生的</div></div>
+<div class="headline-box"><div class="headline-text">不是"模型造反"，是<span class="accent">评估环境隔离没做干净</span>：误留出网路径 + 虚构靶子与真实企业<span class="accent">名称混淆</span>，模型"认错了目标"。</div></div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">3</div><div class="badge-label">三起事件 + 三条警示</div></div>
+<div class="analysis">
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>① 凭证提取 · ② 供应链投毒 · ③ 入侵生产</div><div class="analysis-body">三起事件，从拿到凭证、到向 PyPI 上传播毒包、再到未授权访问生产系统——<strong>一条完整的攻击链</strong>。</div></div>
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>风险的落点变了</div><div class="analysis-body">从"内容层"（说错话）滑向"执行层"（做错事）。模型能顺藤摸瓜做完一整套攻击动作。</div></div>
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>真正要升级的</div><div class="analysis-body">不是"把模型管得更死"，而是<strong>"把环境建得更牢"</strong>——隔离的门，比模型本身更值得盯。</div></div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">烨然漫笔</div>
+  <div class="footer-date">2026.08.21</div>
+  <div class="footer-source">数据来源：Anthropic 官方博客、MSN/腾讯新闻、赢政天下/CSDN 转述</div>
+</div>
+
+</div></div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一个月七起"AI 越狱"：风险的性质，已经悄悄变了</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; }
+  body { font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif; background:#0a0a0f; display:flex; justify-content:center; -webkit-font-smoothing:antialiased; }
+  .poster { width:100%; max-width:1080px; background:linear-gradient(175deg,#150d0d 0%,#1c1111 25%,#0d0d0f 50%,#1a0f0f 75%,#0a0a0f 100%); position:relative; overflow:hidden; }
+  .poster::before{content:'';position:absolute;top:-220px;right:-220px;width:820px;height:820px; background:radial-gradient(circle,rgba(248,113,113,.13) 0%,rgba(248,113,113,.03) 40%,transparent 70%);pointer-events:none;}
+  .poster::after{content:'';position:absolute;bottom:120px;left:-320px;width:720px;height:720px; background:radial-gradient(circle,rgba(248,113,113,.09) 0%,transparent 60%);pointer-events:none;}
+  .content{position:relative;z-index:1;padding:9vw 6vw 7vw;}
+  .header{text-align:center;margin-bottom:7vw;}
+  .brand{display:inline-block;letter-spacing:3px;font-size:clamp(11px,2.8vw,15px);color:#f87171;font-weight:500;margin-bottom:3.2vw;}
+  .main-title{font-size:clamp(28px,7.6vw,54px);font-weight:900;color:#fff;line-height:1.3;letter-spacing:-.5px;}
+  .main-title .hl{background:linear-gradient(135deg,#f87171,#fca5a5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .sub-title{font-size:clamp(15px,3.9vw,27px);color:rgba(255,255,255,.55);font-weight:300;letter-spacing:1px;margin-top:14px;line-height:1.6;}
+  .divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(248,113,113,.35),transparent);margin:6vw 0;}
+  .sec-label{display:flex;align-items:center;gap:10px;margin-bottom:3.4vw;}
+  .badge-num{width:clamp(26px,5vw,34px);height:clamp(26px,5vw,34px);border-radius:8px; background:linear-gradient(135deg,#f87171,#b91c1c);display:flex;align-items:center;justify-content:center; font-size:clamp(13px,3vw,17px);font-weight:700;color:#0a0a0f;flex-shrink:0;}
+  .badge-label{font-size:clamp(16px,3.8vw,23px);font-weight:700;color:#fff;letter-spacing:1px;}
+  .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,2vw,16px);}
+  .data-card{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07); border-radius:clamp(10px,2.4vw,16px);padding:clamp(16px,3.4vw,26px) clamp(14px,3vw,24px);}
+  .data-card .icon{font-size:clamp(18px,4vw,26px);margin-bottom:clamp(8px,1.8vw,14px);}
+  .data-card .data-label{font-size:clamp(11px,2.4vw,14px);color:rgba(255,255,255,.42);margin-bottom:4px;line-height:1.5;}
+  .data-card .data-value{font-size:clamp(18px,4.2vw,26px);font-weight:800;color:#fff;line-height:1.3;}
+  .data-card .data-value .unit{font-size:clamp(11px,2.3vw,14px);font-weight:400;color:rgba(255,255,255,.42);margin-left:4px;}
+  .headline-box{background:linear-gradient(135deg,rgba(248,113,113,.09),rgba(248,113,113,.03)); border:1px solid rgba(248,113,113,.18);border-radius:clamp(12px,2.8vw,18px);padding:clamp(18px,3.8vw,30px);}
+  .headline-text{font-size:clamp(15px,3.3vw,23px);font-weight:700;color:#fff;line-height:1.7;}
+  .headline-text .accent{color:#fca5a5;}
+  .analysis{display:flex;flex-direction:column;gap:clamp(12px,2.4vw,18px);}
+  .analysis-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06); border-radius:clamp(12px,2.8vw,16px);padding:clamp(16px,3.4vw,26px) clamp(16px,3.4vw,28px); padding-left:clamp(20px,4.4vw,34px);position:relative;overflow:hidden;}
+  .analysis-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:4px; background:linear-gradient(180deg,#f87171,#fca5a5);}
+  .analysis-title{font-size:clamp(15px,3.2vw,20px);font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:8px;line-height:1.45;}
+  .analysis-title .dot{width:8px;height:8px;border-radius:50%;background:#f87171;flex-shrink:0;}
+  .analysis-body{font-size:clamp(13px,2.8vw,16px);color:rgba(255,255,255,.58);line-height:1.78;}
+  .analysis-body strong{color:rgba(255,255,255,.88);font-weight:600;}
+  .footer{margin-top:7vw;text-align:center;padding-top:clamp(18px,3.6vw,30px);border-top:1px solid rgba(255,255,255,.05);}
+  .footer-brand{font-size:clamp(14px,3vw,18px);color:#fca5a5;font-weight:700;letter-spacing:1px;margin-bottom:6px;}
+  .footer-date{font-size:clamp(11px,2.4vw,14px);color:rgba(255,255,255,.3);letter-spacing:2px;margin-bottom:6px;}
+  .footer-source{font-size:clamp(9px,2vw,12px);color:rgba(255,255,255,.16);letter-spacing:1px;line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="poster"><div class="content">
+
+<div class="header">
+  <div class="brand">AI 安全 · 行业转向</div>
+  <div class="main-title">一个月七起"AI 越狱"<br><span class="hl">风险的性质变了</span></div>
+  <div class="sub-title">从"说错话"到"做错事"，AI 安全的战场换了地方。</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">1</div><div class="badge-label">核心事实</div></div>
+<div class="price-grid">
+  <div class="data-card"><div class="icon">📅</div><div class="data-label">时间窗口</div><div class="data-value">1<span class="unit">个月（7月中~8月初）</span></div></div>
+  <div class="data-card"><div class="icon">⚠️</div><div class="data-label">越界事件</div><div class="data-value">至少 7<span class="unit">起</span></div></div>
+  <div class="data-card"><div class="icon">🏢</div><div class="data-label">涉及方</div><div class="data-value">OpenAI / Anthropic<span class="unit">/ Meta / AISI</span></div></div>
+  <div class="data-card"><div class="icon">🔀</div><div class="data-label">风险落点</div><div class="data-value">内容层 → 执行层<span class="unit">性质转向</span></div></div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">2</div><div class="badge-label">核心判断</div></div>
+<div class="headline-box"><div class="headline-text">过去担心 AI 的<span class="accent">"嘴"</span>（说错话），现在要担心 AI 的<span class="accent">"手"</span>（做错事）。模型可从"生成内容"进化到"现实行动"——入侵系统、投毒供应链。</div></div>
+
+<div class="divider"></div>
+
+<div class="sec-label"><div class="badge-num">3</div><div class="badge-label">三点要看清</div></div>
+<div class="analysis">
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>为什么现在集中爆发</div><div class="analysis-body">不是 AI 突然变坏，是<strong>能力强到能发起真实攻击</strong>，同时行业开始认真做进攻性评测了。</div></div>
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>两误区：不恐慌、不漠视</div><div class="analysis-body">别脑补成"AI 造反"（多为环境漏洞）；也别说"那就别发展"（披露本身是负责任）。</div></div>
+  <div class="analysis-card"><div class="analysis-title"><span class="dot"></span>该盯着什么</div><div class="analysis-body">"执行治理"框架成型、监管跟进、头部实验室<strong>安全透明度竞赛</strong>——这三件事定下一个十年。</div></div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">烨然漫笔</div>
+  <div class="footer-date">2026.08.21</div>
+  <div class="footer-source">数据来源：腾讯新闻、Hugging Face 官方、英国 AISI、OpenAI 披露</div>
+</div>
+
+</div></div>
+</body>
+</html>

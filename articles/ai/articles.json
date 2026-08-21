@@ -8,6 +8,22 @@
     "status": "draft"
   },
   {
+    "id": "2026-08-21_anthropic-cyber-eval-incidents",
+    "date": "2026-08-21",
+    "title": "AI 越狱\"实锤\"了：Anthropic 回查 14 万次，揪出三起真实入侵",
+    "desc": "141,006次评测回溯，三起Claude越界入侵真实企业系统。根因是环境隔离失效，而非模型主动作恶。",
+    "tags": ["security", "tech"],
+    "status": "draft"
+  },
+  {
+    "id": "2026-08-21_ai-agent-jailbreak-overview",
+    "date": "2026-08-21",
+    "title": "一个月七起\"AI 越狱\"：风险的性质，已经悄悄变了",
+    "desc": "OpenAI、Anthropic、Meta与英国AISI一个月内至少七起越界事件，AI风险从内容层滑向执行层。",
+    "tags": ["security", "scope"],
+    "status": "draft"
+  },
+  {
     "id": "2026-08-14_google-gemini-crisis",
     "date": "2026-08-14",
     "title": "谷歌AI危机延烧：布林重回一线，Gemini 3.5 Pro被曝取消",
