@@ -1,5 +1,13 @@
 [
   {
+    "id": "2026-08-21_anthropic-revenue-overtake",
+    "date": "2026-08-21",
+    "title": "营收易位：Anthropic为什么反超了OpenAI",
+    "desc": "Q2单季营收115亿对67亿，Claude Code把差距拉开近两倍，OpenAI在增长放缓、烧钱补贴、高管换血三重压力下冲刺IPO。",
+    "tags": ["business", "company"],
+    "status": "draft"
+  },
+  {
     "id": "2026-08-14_google-gemini-crisis",
     "date": "2026-08-14",
     "title": "谷歌AI危机延烧：布林重回一线，Gemini 3.5 Pro被曝取消",
